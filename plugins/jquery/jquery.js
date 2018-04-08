@@ -4468,7 +4468,7 @@ function createSafeFragment( document ) {
 	support.leadingWhitespace = div.firstChild.nodeType === 3;
 
 	// Make sure that tbody elements aren't automatically inserted
-	// IE will insert them into empty tables
+	// IE will insert them into empty members
 	support.tbody = !div.getElementsByTagName( "tbody" ).length;
 
 	// Make sure that link elements get serialized correctly by innerHTML
@@ -5886,7 +5886,7 @@ var rinlinejQuery = / jQuery\d+="(?:null|\d+)"/g,
 	fragmentDiv = safeFragment.appendChild( document.createElement( "div" ) );
 
 // Support: IE<8
-// Manipulating tables requires a tbody
+// Manipulating members requires a tbody
 function manipulationTarget( elem, content ) {
 	return jQuery.nodeName( elem, "table" ) &&
 		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ?

@@ -11784,7 +11784,7 @@ define("tinymce/html/Schema", [
 			delete schema[name].children[name];
 		});*/
 
-		// Caption can't have tables
+		// Caption can't have members
 		delete schema.caption.children.table;
 
 		// Delete scripts by default due to possible XSS
@@ -12734,7 +12734,7 @@ define("tinymce/html/SaxParser", [
 
 			attrRegExp = /([\w:\-]+)(?:\s*=\s*(?:(?:\"((?:[^\"])*)\")|(?:\'((?:[^\'])*)\')|([^>\s]+)))?/g;
 
-			// Setup lookup tables for empty elements and boolean attributes
+			// Setup lookup members for empty elements and boolean attributes
 			shortEndedElements = schema.getShortEndedElements();
 			selfClosing = settings.self_closing_elements || schema.getSelfClosingElements();
 			fillAttrsMap = schema.getBoolAttrs();
@@ -38840,10 +38840,10 @@ define("tinymce/Editor", [
 		},
 
 		/**
-		 * Adds visual aid for tables, anchors etc so they can be more easily edited inside the editor.
+		 * Adds visual aid for members, anchors etc so they can be more easily edited inside the editor.
 		 *
 		 * @method addVisual
-		 * @param {Element} elm Optional root element to loop though to find tables etc that needs the visual aid.
+		 * @param {Element} elm Optional root element to loop though to find members etc that needs the visual aid.
 		 */
 		addVisual: function(elm) {
 			var self = this, settings = self.settings, dom = self.dom, cls;

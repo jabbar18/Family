@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/pages/UserHandler.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/pages/members/AddMember.php" />
+      <change beforePath="$PROJECT_DIR$/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pages/changelogs.html" afterPath="$PROJECT_DIR$/pages/changelogs.html" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/chartjs.html" afterPath="$PROJECT_DIR$/pages/charts/chartjs.html" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/flot.html" afterPath="$PROJECT_DIR$/pages/charts/flot.html" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/jquery-knob.html" afterPath="$PROJECT_DIR$/pages/charts/jquery-knob.html" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/morris.html" afterPath="$PROJECT_DIR$/pages/charts/morris.html" />
+      <change beforePath="$PROJECT_DIR$/pages/charts/sparkline.html" afterPath="$PROJECT_DIR$/pages/charts/sparkline.html" />
+      <change beforePath="$PROJECT_DIR$/pages/examples/blank.html" afterPath="$PROJECT_DIR$/pages/examples/blank.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/advanced-form-elements.html" afterPath="$PROJECT_DIR$/pages/forms/advanced-form-elements.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/basic-form-elements.html" afterPath="$PROJECT_DIR$/pages/forms/basic-form-elements.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/editors.html" afterPath="$PROJECT_DIR$/pages/forms/editors.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/form-examples.html" afterPath="$PROJECT_DIR$/pages/forms/form-examples.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/form-validation.html" afterPath="$PROJECT_DIR$/pages/forms/form-validation.html" />
+      <change beforePath="$PROJECT_DIR$/pages/forms/form-wizard.html" afterPath="$PROJECT_DIR$/pages/forms/form-wizard.html" />
+      <change beforePath="$PROJECT_DIR$/pages/helper-classes.html" afterPath="$PROJECT_DIR$/pages/helper-classes.html" />
+      <change beforePath="$PROJECT_DIR$/pages/maps/google.html" afterPath="$PROJECT_DIR$/pages/maps/google.html" />
+      <change beforePath="$PROJECT_DIR$/pages/maps/jvectormap.html" afterPath="$PROJECT_DIR$/pages/maps/jvectormap.html" />
+      <change beforePath="$PROJECT_DIR$/pages/maps/yandex.html" afterPath="$PROJECT_DIR$/pages/maps/yandex.html" />
+      <change beforePath="$PROJECT_DIR$/pages/medias/carousel.html" afterPath="$PROJECT_DIR$/pages/medias/carousel.html" />
+      <change beforePath="$PROJECT_DIR$/pages/medias/image-gallery.html" afterPath="$PROJECT_DIR$/pages/medias/image-gallery.html" />
+      <change beforePath="$PROJECT_DIR$/pages/tables/editable-table.html" afterPath="$PROJECT_DIR$/pages/members/editable-table.html" />
+      <change beforePath="$PROJECT_DIR$/pages/tables/jquery-datatable.html" afterPath="$PROJECT_DIR$/pages/members/jquery-datatable.html" />
+      <change beforePath="$PROJECT_DIR$/pages/tables/normal-tables.html" afterPath="$PROJECT_DIR$/pages/members/normal-tables.html" />
+      <change beforePath="$PROJECT_DIR$/pages/typography.html" afterPath="$PROJECT_DIR$/pages/typography.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/alerts.html" afterPath="$PROJECT_DIR$/pages/ui/alerts.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/animations.html" afterPath="$PROJECT_DIR$/pages/ui/animations.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/badges.html" afterPath="$PROJECT_DIR$/pages/ui/badges.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/breadcrumbs.html" afterPath="$PROJECT_DIR$/pages/ui/breadcrumbs.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/buttons.html" afterPath="$PROJECT_DIR$/pages/ui/buttons.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/collapse.html" afterPath="$PROJECT_DIR$/pages/ui/collapse.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/colors.html" afterPath="$PROJECT_DIR$/pages/ui/colors.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/dialogs.html" afterPath="$PROJECT_DIR$/pages/ui/dialogs.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/icons.html" afterPath="$PROJECT_DIR$/pages/ui/icons.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/labels.html" afterPath="$PROJECT_DIR$/pages/ui/labels.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/list-group.html" afterPath="$PROJECT_DIR$/pages/ui/list-group.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/media-object.html" afterPath="$PROJECT_DIR$/pages/ui/media-object.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/modals.html" afterPath="$PROJECT_DIR$/pages/ui/modals.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/notifications.html" afterPath="$PROJECT_DIR$/pages/ui/notifications.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/pagination.html" afterPath="$PROJECT_DIR$/pages/ui/pagination.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/preloaders.html" afterPath="$PROJECT_DIR$/pages/ui/preloaders.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/progressbars.html" afterPath="$PROJECT_DIR$/pages/ui/progressbars.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/range-sliders.html" afterPath="$PROJECT_DIR$/pages/ui/range-sliders.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/sortable-nestable.html" afterPath="$PROJECT_DIR$/pages/ui/sortable-nestable.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/tabs.html" afterPath="$PROJECT_DIR$/pages/ui/tabs.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/thumbnails.html" afterPath="$PROJECT_DIR$/pages/ui/thumbnails.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/tooltips-popovers.html" afterPath="$PROJECT_DIR$/pages/ui/tooltips-popovers.html" />
+      <change beforePath="$PROJECT_DIR$/pages/ui/waves.html" afterPath="$PROJECT_DIR$/pages/ui/waves.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/cards/basic.html" afterPath="$PROJECT_DIR$/pages/widgets/cards/basic.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/cards/colored.html" afterPath="$PROJECT_DIR$/pages/widgets/cards/colored.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/cards/no-header.html" afterPath="$PROJECT_DIR$/pages/widgets/cards/no-header.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/infobox/infobox-1.html" afterPath="$PROJECT_DIR$/pages/widgets/infobox/infobox-1.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/infobox/infobox-2.html" afterPath="$PROJECT_DIR$/pages/widgets/infobox/infobox-2.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/infobox/infobox-3.html" afterPath="$PROJECT_DIR$/pages/widgets/infobox/infobox-3.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/infobox/infobox-4.html" afterPath="$PROJECT_DIR$/pages/widgets/infobox/infobox-4.html" />
+      <change beforePath="$PROJECT_DIR$/pages/widgets/infobox/infobox-5.html" afterPath="$PROJECT_DIR$/pages/widgets/infobox/infobox-5.html" />
+      <change beforePath="$PROJECT_DIR$/plugins/flot-charts/jquery.js" afterPath="$PROJECT_DIR$/plugins/flot-charts/jquery.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/jquery-datatable/jquery.dataTables.js" afterPath="$PROJECT_DIR$/plugins/jquery-datatable/jquery.dataTables.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/jquery/jquery.js" afterPath="$PROJECT_DIR$/plugins/jquery/jquery.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/plugins/paste/plugin.js" afterPath="$PROJECT_DIR$/plugins/tinymce/plugins/paste/plugin.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/plugins/table/plugin.js" afterPath="$PROJECT_DIR$/plugins/tinymce/plugins/table/plugin.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/themes/modern/theme.js" afterPath="$PROJECT_DIR$/plugins/tinymce/themes/modern/theme.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/tinymce.jquery.js" afterPath="$PROJECT_DIR$/plugins/tinymce/tinymce.jquery.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/tinymce.jquery.min.js" afterPath="$PROJECT_DIR$/plugins/tinymce/tinymce.jquery.min.js" />
+      <change beforePath="$PROJECT_DIR$/plugins/tinymce/tinymce.js" afterPath="$PROJECT_DIR$/plugins/tinymce/tinymce.js" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+              <folding>
+                <element signature="e#2709#2716#1#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/UserHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+              <folding>
+                <element signature="e#174#914#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-datatable.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/members/jquery-datatable.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1856" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Members.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="320" column="43" lean-forward="false" selection-start-line="320" selection-start-column="43" selection-end-line="320" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddMember.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/members/AddMember.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="1595" column="12" lean-forward="true" selection-start-line="1595" selection-start-column="12" selection-end-line="1595" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic-form-elements.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1607" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="normal-tables.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/members/normal-tables.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1310" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbconnection.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Admin</find>
+      <find>tables</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/pages/UserHandler.php" />
+        <option value="$PROJECT_DIR$/pages/members/members.php" />
+        <option value="$PROJECT_DIR$/pages/members/AddMember.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="198" />
+    <option name="y" value="209" />
+    <option name="width" value="1614" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="family" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="family" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="family" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="forms" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="family" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="members" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\family\pages\tables" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="" />
+      <created>1523203322732</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1523203322732</updated>
+      <workItem from="1523203324257" duration="2919000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2919000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="198" y="209" width="1614" height="744" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21365915" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-860">
+          <caret line="119" column="20" lean-forward="false" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="36" column="62" lean-forward="false" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
+          <folding>
+            <element signature="e#2709#2716#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/UserHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="81" column="13" lean-forward="false" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+          <folding>
+            <element signature="e#174#914#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/jquery-datatable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1856" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/normal-tables.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1310" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="320" column="43" lean-forward="false" selection-start-line="320" selection-start-column="43" selection-end-line="320" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1607" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/AddMember.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="1595" column="12" lean-forward="true" selection-start-line="1595" selection-start-column="12" selection-end-line="1595" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

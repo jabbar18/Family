@@ -485,7 +485,7 @@ tinymce.ThemeManager.add('modern', function(editor) {
 				relRect = Rect.relativePosition(panelRect, elementRect, relPos);
 				movePanelTo(panel, userConstrain(relRect.x, relRect.y, elementRect, contentAreaRect, panelRect));
 			} else {
-				// Allow overflow below the editor to avoid placing toolbars ontop of tables
+				// Allow overflow below the editor to avoid placing toolbars ontop of members
 				contentAreaRect.h += panelRect.h;
 
 				elementRect = Rect.intersect(contentAreaRect, elementRect);

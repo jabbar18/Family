@@ -4,7 +4,7 @@
 
 /**
  * @summary     DataTables
- * @description Paginate, search and order HTML tables
+ * @description Paginate, search and order HTML members
  * @version     1.10.12
  * @file        jquery.dataTables.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
@@ -190,12 +190,12 @@
 		
 		
 		/**
-		 * Create a DataTables Api instance, with the currently selected tables for
+		 * Create a DataTables Api instance, with the currently selected members for
 		 * the Api's context.
 		 * @param {boolean} [traditional=false] Set the API instance's context to be
 		 *   only the table referred to by the `DataTable.ext.iApiIndex` option, as was
 		 *   used in the API presented by DataTables 1.9- (i.e. the traditional mode),
-		 *   or if all tables captured in the jQuery object should be used.
+		 *   or if all members captured in the jQuery object should be used.
 		 * @return {DataTables.Api}
 		 */
 		this.api = function ( traditional )
@@ -1058,7 +1058,7 @@
 			if ( oInit.bJQueryUI )
 			{
 				/* Use the JUI classes object for display. You could clone the oStdClasses object if
-				 * you want to have multiple tables with multiple independent classes
+				 * you want to have multiple members with multiple independent classes
 				 */
 				$.extend( oClasses, DataTable.ext.oJUIClasses, oInit.oClasses );
 			
@@ -5151,7 +5151,7 @@
 	
 	
 	/**
-	 * Update the header, footer and body tables for resizing - i.e. column
+	 * Update the header, footer and body members for resizing - i.e. column
 	 * alignment.
 	 *
 	 * Welcome to the most horrible function DataTables. The process that this
@@ -5403,7 +5403,7 @@
 			}
 		}
 	
-		/* Finally set the width's of the header and footer tables */
+		/* Finally set the width's of the header and footer members */
 		var iOuterWidth = table.outerWidth();
 		divHeaderTable[0].style.width = _fnStringToCss( iOuterWidth );
 		divHeaderInnerStyle.width = _fnStringToCss( iOuterWidth );
@@ -6779,15 +6779,15 @@
 	
 	/**
 	 * DataTables API class - used to control and interface with  one or more
-	 * DataTables enhanced tables.
+	 * DataTables enhanced members.
 	 *
 	 * The API class is heavily based on jQuery, presenting a chainable interface
-	 * that you can use to interact with tables. Each instance of the API class has
-	 * a "context" - i.e. the tables that it will operate on. This could be a single
-	 * table, all tables on a page or a sub-set thereof.
+	 * that you can use to interact with members. Each instance of the API class has
+	 * a "context" - i.e. the members that it will operate on. This could be a single
+	 * table, all members on a page or a sub-set thereof.
 	 *
 	 * Additionally the API is designed to allow you to easily work with the data in
-	 * the tables, retrieving and manipulating it as required. This is done by
+	 * the members, retrieving and manipulating it as required. This is done by
 	 * presenting the API class as an array like interface. The contents of the
 	 * array depend upon the actions requested by each method (for example
 	 * `rows().nodes()` will return an array of nodes, while `rows().data()` will
@@ -6809,7 +6809,7 @@
 	 *
 	 * @class DataTable.Api
 	 * @param {array|object|string|jQuery} context DataTable identifier. This is
-	 *   used to define which DataTables enhanced tables this API will operate on.
+	 *   used to define which DataTables enhanced members this API will operate on.
 	 *   Can be one of:
 	 *
 	 *   * `string` - jQuery selector. Any DataTables' matching the given selector
@@ -7277,7 +7277,7 @@
 	
 	
 	/**
-	 * Selector for HTML tables. Apply the given selector to the give array of
+	 * Selector for HTML members. Apply the given selector to the give array of
 	 * DataTables settings objects.
 	 *
 	 * @param {string|integer} [selector] jQuery selector string or integer
@@ -7310,17 +7310,17 @@
 	
 	
 	/**
-	 * Context selector for the API's context (i.e. the tables the API instance
+	 * Context selector for the API's context (i.e. the members the API instance
 	 * refers to.
 	 *
 	 * @name    DataTable.Api#tables
-	 * @param {string|integer} [selector] Selector to pick which tables the iterator
-	 *   should operate on. If not given, all tables in the current context are
+	 * @param {string|integer} [selector] Selector to pick which members the iterator
+	 *   should operate on. If not given, all members in the current context are
 	 *   used. This can be given as a jQuery selector (for example `':gt(0)'`) to
-	 *   select multiple tables or as an integer to select a single table.
+	 *   select multiple members or as an integer to select a single table.
 	 * @returns {DataTable.Api} Returns a new API instance if a selector is given.
 	 */
-	_api_register( 'tables()', function ( selector ) {
+	_api_register( 'members()', function ( selector ) {
 		// A new instance is created if there was a selector specified
 		return selector ?
 			new _Api( __table_selector( selector, this.context ) ) :
@@ -7339,35 +7339,35 @@
 	} );
 	
 	
-	_api_registerPlural( 'tables().nodes()', 'table().node()' , function () {
+	_api_registerPlural( 'members().nodes()', 'table().node()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTable;
 		}, 1 );
 	} );
 	
 	
-	_api_registerPlural( 'tables().body()', 'table().body()' , function () {
+	_api_registerPlural( 'members().body()', 'table().body()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTBody;
 		}, 1 );
 	} );
 	
 	
-	_api_registerPlural( 'tables().header()', 'table().header()' , function () {
+	_api_registerPlural( 'members().header()', 'table().header()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTHead;
 		}, 1 );
 	} );
 	
 	
-	_api_registerPlural( 'tables().footer()', 'table().footer()' , function () {
+	_api_registerPlural( 'members().footer()', 'table().footer()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTFoot;
 		}, 1 );
 	} );
 	
 	
-	_api_registerPlural( 'tables().containers()', 'table().container()' , function () {
+	_api_registerPlural( 'members().containers()', 'table().container()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTableWrapper;
 		}, 1 );
@@ -7376,7 +7376,7 @@
 	
 	
 	/**
-	 * Redraw the tables in the current context.
+	 * Redraw the members in the current context.
 	 */
 	_api_register( 'draw()', function ( paging ) {
 		return this.iterator( 'table', function ( settings ) {
@@ -7421,7 +7421,7 @@
 			return this.page.info().page; // not an expensive call
 		}
 	
-		// else, have an action to take on all tables
+		// else, have an action to take on all members
 		return this.iterator( 'table', function ( settings ) {
 			_fnPageChange( settings, action );
 		} );
@@ -7571,7 +7571,7 @@
 	
 	
 	/**
-	 * Reload tables from the Ajax data source. Note that this function will
+	 * Reload members from the Ajax data source. Note that this function will
 	 * automatically re-draw the table when the remote data has been loaded.
 	 *
 	 * @param {boolean} [reset=true] Reset (default) or hold the current paging
@@ -7592,7 +7592,7 @@
 	 *
 	 * @return {string} Current Ajax source URL
 	 *//**
-	 * Set the Ajax URL. Note that this will set the URL for all tables in the
+	 * Set the Ajax URL. Note that this will set the URL for all members in the
 	 * current context.
 	 *
 	 * @param {string} url URL to set.
@@ -9096,18 +9096,18 @@
 	
 	
 	/**
-	 * Get all DataTable tables that have been initialised - optionally you can
-	 * select to get only currently visible tables.
+	 * Get all DataTable members that have been initialised - optionally you can
+	 * select to get only currently visible members.
 	 *
 	 *  @param {boolean} [visible=false] Flag to indicate if you want all (default)
-	 *    or visible tables only.
+	 *    or visible members only.
 	 *  @returns {array} Array of `table` nodes (not DataTable instances) which are
 	 *    DataTables
 	 *  @static
 	 *  @dtopt API-Static
 	 *
 	 *  @example
-	 *    $.each( $.fn.dataTable.tables(true), function () {
+	 *    $.each( $.fn.dataTable.members(true), function () {
 	 *      $(table).DataTable().columns.adjust();
 	 *    } );
 	 */
@@ -9164,7 +9164,7 @@
 	} );
 	
 	
-	// jQuery functions to operate on the tables
+	// jQuery functions to operate on the members
 	$.each( [ 'on', 'one', 'off' ], function (i, key) {
 		_api_register( key+'()', function ( /* event, handler */ ) {
 			var args = Array.prototype.slice.call(arguments);
@@ -9371,7 +9371,7 @@
 
 	/**
 	 * Private data store, containing all of the settings objects that are
-	 * created for the tables on a given page.
+	 * created for the members on a given page.
 	 *
 	 * Note that the `DataTable.settings` object is aliased to
 	 * `jQuery.fn.dataTableExt` through which it may be accessed and
@@ -9802,7 +9802,7 @@
 		/**
 		 * An array of data to use for the table, passed in at initialisation which
 		 * will be used in preference to any data which is already in the DOM. This is
-		 * particularly useful for constructing tables purely in Javascript, for
+		 * particularly useful for constructing members purely in Javascript, for
 		 * example with a custom Ajax call.
 		 *  @type array
 		 *  @default null
@@ -10115,7 +10115,7 @@
 		 * Very similar to `columns`, `columnDefs` allows you to target a specific
 		 * column, multiple columns, or all columns, using the `targets` property of
 		 * each object in the array. This allows great flexibility when creating
-		 * tables, as the `columnDefs` arrays can be of any length, targeting the
+		 * members, as the `columnDefs` arrays can be of any length, targeting the
 		 * columns you specifically want. `columnDefs` may use any of the column
 		 * options available: {@link DataTable.defaults.column}, but it _must_
 		 * have `targets` defined in each object in the array. Values in the `targets`
@@ -10184,7 +10184,7 @@
 		/**
 		 * Enable or disable automatic column width calculation. This can be disabled
 		 * as an optimisation (it takes some time to calculate the widths) if the
-		 * tables widths are passed in using `columns`.
+		 * members widths are passed in using `columns`.
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -10355,7 +10355,7 @@
 	
 		/**
 		 * Enable or disable the display of a 'processing' indicator when the table is
-		 * being processed (e.g. a sort). This is particularly useful for tables with
+		 * being processed (e.g. a sort). This is particularly useful for members with
 		 * large amounts of data where it can take a noticeable amount of time to sort
 		 * the entries.
 		 *  @type boolean
@@ -11474,7 +11474,7 @@
 			 *
 			 * Note that numbers with different decimal places cannot be shown in
 			 * the same table and still be sortable, the table must be consistent.
-			 * However, multiple different tables on the page can use different
+			 * However, multiple different members on the page can use different
 			 * decimal place characters.
 			 *  @type string
 			 *  @default 
@@ -12894,7 +12894,7 @@
 			 * Delay the creation of TR and TD elements until they are actually
 			 * needed by a driven page draw. This can give a significant speed
 			 * increase for Ajax source and Javascript source data, but makes no
-			 * difference at all fro DOM and server-side processing tables.
+			 * difference at all fro DOM and server-side processing members.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
 			 *  @type boolean

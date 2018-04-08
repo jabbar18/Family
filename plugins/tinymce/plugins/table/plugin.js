@@ -150,7 +150,7 @@ define("tinymce/tableplugin/Utils", [
 
 /**
  * This class creates a grid out of a table element. This
- * makes it a whole lot easier to handle complex tables with
+ * makes it a whole lot easier to handle complex members with
  * col/row spans.
  *
  * @class tinymce.tableplugin.TableGrid
@@ -1132,7 +1132,7 @@ define("tinymce/tableplugin/Quirks", [
 
 	return function(editor) {
 		/**
-		 * Fixed caret movement around tables on WebKit.
+		 * Fixed caret movement around members on WebKit.
 		 */
 		function moveWebKitSelection() {
 			function eventHandler(e) {
