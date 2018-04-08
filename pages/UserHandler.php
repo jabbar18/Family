@@ -23,9 +23,9 @@ if($mode == 'login'){
             $_SESSION['id'] = $user['id']; //Put UserId In Session
             $_SESSION['username'] = $user['username']; //Put UserName In Session
 
-            header("location: ../pages/Members.php"); //Redirect To Event Page
+            header("location: ../pages/members/Members.php"); //Redirect To Event Page
         }else{
-            header("location: ../index.php?m=User Name Or Passwrod Is Not Correct"); //Redirect To Event Page
+            header("location: ../login.php?m=User Name Or Passwrod Is Not Correct"); //Redirect To Event Page
         }
 
 
