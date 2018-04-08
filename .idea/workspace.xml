@@ -48,21 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Members.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Members.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="334" column="14" lean-forward="false" selection-start-line="334" selection-start-column="14" selection-end-line="334" selection-end-column="14" />
+            <state relative-caret-position="-588">
+              <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddMember.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AddMember.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/members/AddMember.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="483" column="48" lean-forward="false" selection-start-line="483" selection-start-column="48" selection-end-line="483" selection-end-column="48" />
+            <state relative-caret-position="360">
+              <caret line="327" column="12" lean-forward="false" selection-start-line="327" selection-start-column="12" selection-end-line="327" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -104,8 +104,8 @@
     <findStrings>
       <find>Admin</find>
       <find>Forms</find>
-      <find>tables</find>
       <find>Tables</find>
+      <find>tables</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,8 +118,8 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/pages/UserHandler.php" />
         <option value="$PROJECT_DIR$/pages/members/members.php" />
-        <option value="$PROJECT_DIR$/pages/members/AddMember.php" />
         <option value="$PROJECT_DIR$/pages/members/Members.php" />
+        <option value="$PROJECT_DIR$/pages/members/AddMember.php" />
       </list>
     </option>
   </component>
@@ -220,12 +220,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1523203322732</updated>
-      <workItem from="1523203324257" duration="3596000" />
+      <workItem from="1523203324257" duration="4296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3596000" />
+    <option name="totallyTimeSpent" value="4296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -322,18 +322,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/AddMember.php">
+    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="483" column="48" lean-forward="false" selection-start-line="483" selection-start-column="48" selection-end-line="483" selection-end-column="48" />
+        <state relative-caret-position="-588">
+          <caret line="334" column="0" lean-forward="false" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+    <entry file="file://$PROJECT_DIR$/pages/members/AddMember.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="334" column="14" lean-forward="false" selection-start-line="334" selection-start-column="14" selection-end-line="334" selection-end-column="14" />
+        <state relative-caret-position="360">
+          <caret line="327" column="12" lean-forward="false" selection-start-line="327" selection-start-column="12" selection-end-line="327" selection-end-column="12" />
           <folding />
         </state>
       </provider>
