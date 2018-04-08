@@ -453,9 +453,7 @@
                         <span>Forms</span>
                     </a>
                     <ul class="ml-menu">
-                        <li class="active">
-                            <a href="../../pages/forms/basic-form-elements.html">Basic Form Elements</a>
-                        </li>
+
                         <li>
                             <a href="../../pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
                         </li>
@@ -473,20 +471,17 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="active">
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">view_list</i>
-                        <span>Tables</span>
+                        <span>Family Members</span>
                     </a>
                     <ul class="ml-menu">
-                        <li>
-                            <a href="../members/normal-tables.html">Normal Tables</a>
+                        <li >
+                            <a href="./Members.php">Members</a>
                         </li>
-                        <li>
-                            <a href="../members/jquery-datatable.html">Jquery Datatables</a>
-                        </li>
-                        <li>
-                            <a href="../members/editable-table.html">Editable Tables</a>
+                        <li class="active">
+                            <a href="./AddMember.php">Add Member</a>
                         </li>
                     </ul>
                 </li>
