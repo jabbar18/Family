@@ -333,7 +333,7 @@ if(!isset($_SESSION['username'])){
                             <a href="./Members.php">Members</a>
                         </li>
                         <li class="active">
-                            <a href="./AddMember.php">Add Member</a>
+                            <a href="./AddMember.php">Add New Member</a>
                         </li>
                     </ul>
                 </li>
