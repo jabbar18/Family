@@ -3,7 +3,7 @@ function establishConnectionToDatabase(){
 	global $link;
 
 	$DB_USER_NAME = "root";
-	$DB_PASSWORD = "naveed";
+	$DB_PASSWORD = "jabbar";
 	$DB_HOST = "localhost";
 	$DB_NAME = "family";
 
