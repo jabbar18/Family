@@ -1,6 +1,6 @@
 <?php
   include('dbconnection.inc.php');
-
+establishConnectionToDatabase();
 session_start();
 
 if(!isset($_SESSION['username'])){
@@ -525,28 +525,47 @@ if(!isset($_SESSION['username'])){
                                 <th>Name</th>
                                 <th>Qualification</th>
                                 <th>Contact Number</th>
+                                <th>CNIC</th>
                                 <th>Email</th>
                                 <th>Gender</th>
                                 <th>Date Of Birth</th>
+                                <th>School_Name</th>
+                                <th>School_Fees</th>
+                                <th>School_Contact</th>
+                                <th>School_Latitude</th>
+                                <th>School_Longitude</th>
+                                <th>School_Address</th>
+                                <th>Monthly_Pocket</th>
                             </tr>
                             </thead>
                             <tbody>
                           <?php 
                             $sql = "SELECT * FROM members";
-                                 $result = $link->query($sql);
+                                
 
-                                //if ($result->num_rows > 0) {
-                                // output data of each row
-                              // while($row = $result->fetch_assoc()) {
-                                echo '<tr> <td>'.$row["Member_Name"].'</td>
-                                           <td>'.$row["Qualification"].'</td>
-                                           <td>'.$row["Contact_Number"].'</td>
-                                           <td>'.$row["Email"].'</td>
-                                           <td>'.$row["Gender"].'</td>
-                                           <td>'.$row["Date_Of_Birth"].'</td>
-                                      </tr>';
-                          // }
-                            //      }
+                                 $result = mysqli_query($link,$sql);
+
+                                 while($row = mysqli_fetch_array($result))
+                                {
+                                    echo '<tr>     <td>'.$row["Member_Id"].'</td>
+                                                   <td>'.$row["Member_Name"].'</td>
+                                                   <td>'.$row["Qualification"].'</td>
+                                                   <td>'.$row["Contact_Number"].'</td>
+                                                   <td>'.$row["CNIC"].'</td>
+                                                   <td>'.$row["Email"].'</td>
+                                                   <td>'.$row["Gender"].'</td>
+                                                   <td>'.$row["Date_Of_Birth"].'</td>
+                                                   <td>'.$row["School_Name"].'</td>
+                                                   <td>'.$row["School_Fees"].'</td>
+                                                   <td>'.$row["School_Contact"].'</td>
+                                                   <td>'.$row["School_Latitude"].'</td>
+                                                   <td>'.$row["School_Longitude"].'</td>
+                                                   <td>'.$row["School_Address"].'</td>
+                                                   <td>'.$row["Monthly_Pocket"].'</td>
+                                              </tr>';
+                                }
+
+                           
                            ?>
                             </tbody>
                         </table>

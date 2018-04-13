@@ -1,7 +1,7 @@
 <?php
 
  include('dbconnection.inc.php');
-
+establishConnectionToDatabase();
 session_start();
 
 if(!isset($_SESSION['username'])){
@@ -524,7 +524,7 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="password" class="form-control">
+                                        <input type="text" class="form-control">
                                         <label class="form-label">Qualification</label>
                                     </div>
                                 </div>
@@ -534,8 +534,18 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="password" class="form-control">
+                                        <input type="text" class="form-control">
                                         <label class="form-label">Contact Number</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                            <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">CNIC</label>
                                     </div>
                                 </div>
                             </div>   
@@ -544,7 +554,7 @@ if(!isset($_SESSION['username'])){
                             <div class="col-sm-6">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="password" class="form-control">
+                                        <input type="text" class="form-control">
                                         <label class="form-label">Email</label>
                                     </div>
                                 </div>
@@ -577,6 +587,98 @@ if(!isset($_SESSION['username'])){
                         </div>
                     </div>
         <!--#END# DateTime Picker -->
+
+                     <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Name</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                    <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Fees</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                    <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Contact</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                    <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Latitude</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                    <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Longitude</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                    <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">School Address</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
+                     <div class="body">
+                     <div class="row clearfix">
+                            <div class="col-sm-6">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control">
+                                        <label class="form-label">Monthly Pocket Money</label>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                    </div>
+
                     <div class="body">
                         <div class="row clearfix">
                             <div class="col-sm-4">
