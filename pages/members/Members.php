@@ -536,6 +536,8 @@ if(!isset($_SESSION['username'])){
                                 <th>School_Longitude</th>
                                 <th>School_Address</th>
                                 <th>Monthly_Pocket</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -562,6 +564,8 @@ if(!isset($_SESSION['username'])){
                                                    <td>'.$row["School_Longitude"].'</td>
                                                    <td>'.$row["School_Address"].'</td>
                                                    <td>'.$row["Monthly_Pocket"].'</td>
+                                                   <td><button><a href="#?type=member&id='.$row["Member_Id"].'">Update</a></button></td>
+                                                   <td><button><a href="#?type=member&id='.$row["Member_Id"].'">Delete</a></button></td>
                                               </tr>';
                                 }
 
