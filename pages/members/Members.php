@@ -1,4 +1,5 @@
 <?php
+  include('dbconnection.inc.php');
 
 session_start();
 
@@ -521,42 +522,32 @@ if(!isset($_SESSION['username'])){
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>FIRST NAME</th>
-                                <th>LAST NAME</th>
-                                <th>USERNAME</th>
+                                <th>Name</th>
+                                <th>Qualification</th>
+                                <th>Contact Number</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Date Of Birth</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Larry</td>
-                                <td>Jellybean</td>
-                                <td>@lajelly</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Larry</td>
-                                <td>Kikat</td>
-                                <td>@lakitkat</td>
-                            </tr>
+                          <?php 
+                            $sql = "SELECT * FROM members";
+                                 $result = $link->query($sql);
+
+                                //if ($result->num_rows > 0) {
+                                // output data of each row
+                              // while($row = $result->fetch_assoc()) {
+                                echo '<tr> <td>'.$row["Member_Name"].'</td>
+                                           <td>'.$row["Qualification"].'</td>
+                                           <td>'.$row["Contact_Number"].'</td>
+                                           <td>'.$row["Email"].'</td>
+                                           <td>'.$row["Gender"].'</td>
+                                           <td>'.$row["Date_Of_Birth"].'</td>
+                                      </tr>';
+                          // }
+                            //      }
+                           ?>
                             </tbody>
                         </table>
                     </div>
