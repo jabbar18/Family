@@ -1,7 +1,10 @@
 <?php
    include('dbconnection.inc.php');
 
+
 if(isset($_GET['submit'])) {
+  
+establishConnectionToDatabase();
 
     $Member_Name = $_GET['Member_Name'];
     $Qualification = $_GET['Qualification'];
@@ -20,11 +23,12 @@ if(isset($_GET['submit'])) {
     
     
 
-    $sql = "insert into members (Member_Name, Qualification, Contact_Number, CNIC, Email, Gender, Date_Of_Birth, School_Name, School_Fees, School_Contact, School_Latitude, School_Longitude, School_Adress, Monthly_Pocket) values('$Member_Name', '$Qualification', '$Contact_Number', '$CNIC', '$Email', '$Gender', '$Date_Of_Birth', '$School_Name', '$School_Fees', '$School_Contact', '$School_Contact', '$School_Latitude', '$School_Longitude', '$School_Adress', '$Monthly_Pocket')";
+    $sql = "insert into members (Member_Name, Qualification, Contact_Number, CNIC, Email, Gender, Date_Of_Birth, School_Name, School_Fees, School_Contact, School_Latitude, School_Longitude, School_Address, Monthly_Pocket) values('$Member_Name', '$Qualification', '$Contact_Number', '$CNIC', '$Email', '$Gender', '$Date_Of_Birth', '$School_Name', '$School_Fees', '$School_Contact', '$School_Latitude', '$School_Longitude', '$School_Adress', '$Monthly_Pocket')";
+
    
 
-  if ($result = $conn->query($sql)) {
-    echo "Your data is saved.";
+  if ($result = mysqli_query($link,$sql)) {
+    header("location: Members.php");
   }
 
    else 

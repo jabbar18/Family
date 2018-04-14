@@ -52,7 +52,7 @@ if(!isset($_SESSION['username'])){
 </head>
 
 <body class="theme-red">
-<form id="form1" name="form1" method="post" action="member_process.php">
+
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -505,191 +505,196 @@ if(!isset($_SESSION['username'])){
 
 <section class="content">
     <div class="container-fluid">
+ 
         <div class="block-header">
             <h1>Family Member's Basic Information</h1>
         </div>
-       
-                    <div class="body">
-                        <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">Member Name</label>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">Qualification</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                            <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">Contact Number</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                            <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">CNIC</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                             <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">Email</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                     </div>
+
+         <form action="member_process.php" method="get">
+  
+        <div class="body">
+        <div class="row clearfix">
+        <div class="col-sm-6">
+        <div class="form-group form-float">
+        <div class="form-line">
+            <input type="text" class="form-control" name="Member_Name">
+            <label class="form-label">Member Name</label>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="row clearfix">
+        <div class="col-sm-6">
+        <div class="form-group form-float">
+        <div class="form-line">
+            <input type="text" class="form-control"  name="Qualification">
+            <label class="form-label">Qualification</label>
+        </div>
+        </div>
+        </div>   
+        </div>
+        <div class="row clearfix">
+        <div class="col-sm-6">
+        <div class="form-group form-float">
+        <div class="form-line">
+            <input type="text" class="form-control"  name="Contact_Number">
+            <label class="form-label">Contact Number</label>
+        </div>
+        </div>
+        </div>   
+        </div>
+        <div class="row clearfix">
+        <div class="col-sm-6">
+        <div class="form-group form-float">
+        <div class="form-line">
+            <input type="text" class="form-control"  name="CNIC">
+            <label class="form-label">CNIC</label>
+        </div>
+        </div>
+        </div>   
+        </div>
+        <div class="row clearfix">
+        <div class="col-sm-6">
+        <div class="form-group form-float">
+        <div class="form-line">
+            <input type="text" class="form-control"  name="Email">
+            <label class="form-label">Email</label>
+        </div>
+        </div>
+        </div>   
+        </div>
+        </div>
 
         <!-- Radio -->
 
-                    <div class="body">
-                        <div class="demo-radio-button">
-                            <input name="group1" type="radio" id="radio_1" checked />
-                            <label for="radio_1">Male</label>
-                            <input name="group1" type="radio" id="radio_2" />
-                            <label for="radio_2">Female</label>
-                        </div>
+        <div class="body">
+        <div class="demo-radio-button">
+        <input name="group1" type="radio" id="radio_1" checked   name="Gender"/>
+        <label for="radio_1">Male</label>
+        <input name="group1" type="radio" id="radio_2" name="Gender" />
+        <label for="radio_2">Female</label>
+        </div>
         </div>
         <!-- #END# Radio -->
-       
+
         <!--DateTime Picker -->
-                    <div class="body">
-                        <div class="row clearfix">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" class="datepicker form-control" placeholder="Date Of Birth...">
-                                    </div>
-                                </div>
-                            </div>       
-                        </div>
-                    </div>
+        <div class="body">
+        <div class="row clearfix">
+        <div class="col-sm-4">
+        <div class="form-group">
+        <div class="form-line">
+            <input type="text" class="datepicker form-control" placeholder="Date Of Birth..." name="Date_Of_Birth">
+        </div>
+        </div>
+        </div>       
+        </div>
+        </div>
         <!--#END# DateTime Picker -->
 
-                     <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Name</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Fees</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Contact</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Latitude</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Longitude</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">School Address</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                     <div class="body">
-                     <div class="row clearfix">
-                            <div class="col-sm-6">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control">
-                                        <label class="form-label">Monthly Pocket Money</label>
-                                    </div>
-                                </div>
-                            </div>   
-                            </div>
-                    </div>
-
-                    <div class="body">
-                        <div class="row clearfix">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="submit" name="submit" value="Submit" onClick="member_process.php">
-                                    </div>
-                                </div>
-                            </div>       
+         <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Name"> 
+                            <label class="form-label">School Name</label>
                         </div>
                     </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Fess">
+                            <label class="form-label">School Fees</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Contact">
+                            <label class="form-label">School Contact</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Latitude">
+                            <label class="form-label">School Latitude</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Longitude">
+                            <label class="form-label">School Longitude</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="School_Adress">
+                            <label class="form-label">School Address</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+         <div class="body">
+         <div class="row clearfix">
+                <div class="col-sm-6">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="Monthly_Pocket">
+                            <label class="form-label">Monthly Pocket Money</label>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+
+        <div class="body">
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="submit" name="submit" value="Submit">
+                        </div>
+                    </div>
+                </div>       
+            </div>
+        </div>
+      </form>
+   
     </div>
 </section>
 
@@ -723,6 +728,6 @@ if(!isset($_SESSION['username'])){
 
 <!-- Demo Js -->
 <script src="../../js/demo.js"></script>
-</form>
+
 </body>
 </html>
