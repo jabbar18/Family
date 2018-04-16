@@ -513,9 +513,9 @@ establishConnectionToDatabase();
                             </thead>
                             <tbody>
                           <?php 
-                            $sql = "SELECT * FROM members";
+                            $sql = "SELECT * FROM family_members";
                              $result = mysqli_query($link,$sql);
-                                while($row = mysqli_fetch_array($result))
+                               while($row = mysqli_fetch_array($result))
                                 {
                                     echo '<tr>      
                                     <td>'.$row["MemberId"].'</td>
@@ -536,9 +536,10 @@ establishConnectionToDatabase();
                                     <td><button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
                                     <i class="material-icons">mode_edit</i>
                                 </button></td>
-                                    <td> <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                                    <i class="material-icons">delete</i>
-                                </button></td>
+                               <td>
+                                <a href="../actions/get.php?type=DeleteMember&MemberId='.$row["MemberId"].'">
+                                     <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i></a></td>
                                     </tr>';
                                 }
 

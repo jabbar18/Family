@@ -11,8 +11,11 @@ switch ($sType)
         $objMembersActions = new MembersActions();
         $sReturn = $objMembersActions->AddMember($link);
         break;
-    case "Settings": $sReturn = $this->Settings($objGeneral->fnGet("action"));
+    case "DeleteMember": include('../members/MembersActions.php');
+        $objMembersActions = new MembersActions();
+        $sReturn = $objMembersActions->DeleteMember($link);
         break;
+    
 
 }
 

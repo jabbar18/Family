@@ -33,8 +33,30 @@ class MembersActions
         $dMoney = $_POST['money'];
 
         
-        $sQuery = "INSERT INTO members (MemberName, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney) VALUES('$sMemberName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney')";
+        $sQuery = "INSERT INTO family_members (MemberName, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney) VALUES('$sMemberName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney')";
 
+        if ($result = mysqli_query($link,$sQuery)) 
+        {
+            header("location: ../members/Members.php");
+        }
+        else 
+        {
+             return("Please fill form.");
+        }
+
+
+    }
+
+    function DeleteMember($link)
+    {   
+
+        $iMemberId = $_GET['MemberId'];
+       
+
+        
+        $sQuery = "DELETE From family_members WHERE MemberId = $iMemberId";
+
+        
         if ($result = mysqli_query($link,$sQuery)) 
         {
             header("location: ../members/Members.php");
