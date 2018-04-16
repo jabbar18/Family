@@ -506,17 +506,7 @@ establishConnectionToDatabase();
                                 <th>Email</th>
                                 <th>Gender</th>
                                 <th>Date Of Birth</th>
-<<<<<<< HEAD
                                 <th>View</th>
-=======
-                                <th>School Name</th>
-                                <th>School Fees</th>
-                                <th>School Contact</th>
-                                <th>School Latitude</th>
-                                <th>School Longitude</th>
-                                <th>School Address</th>
-                                <th>Monthly Pocket Money</th>
->>>>>>> 82dc8ddd96be024a0463acadae4fa2149ff8212b
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
