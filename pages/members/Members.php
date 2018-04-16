@@ -1,6 +1,5 @@
 <?php
-  include('dbconnection.inc.php');
-establishConnectionToDatabase();
+
 session_start();
 
 if(!isset($_SESSION['username'])){
@@ -9,36 +8,14 @@ if(!isset($_SESSION['username'])){
 
 }
 
+include('../database/inc/dbconnection.inc.php');
+establishConnectionToDatabase();
+
 ?>
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Family Members</title>
-    <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="../../css/style.css" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="../../css/themes/all-themes.css" rel="stylesheet" />
-</head>
+<?php  include_once('../include/head.php'); ?>
 
 <body class="theme-red">
 <!-- Page Loader -->
@@ -493,7 +470,7 @@ if(!isset($_SESSION['username'])){
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>NORMAL TABLES</h2>
+            <h2>Members</h2>
         </div>
 
         <div class="row clearfix">
@@ -501,8 +478,8 @@ if(!isset($_SESSION['username'])){
                 <div class="card">
                     <div class="header">
                         <h2>
-                            HOVER ROWS
-                            <small>Add <code>.table-hover</code> to enable a hover state on table rows within a <code>&lt;tbody&gt;</code>.</small>
+                            Members
+                           
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -529,13 +506,7 @@ if(!isset($_SESSION['username'])){
                                 <th>Email</th>
                                 <th>Gender</th>
                                 <th>Date Of Birth</th>
-                                <th>School_Name</th>
-                                <th>School_Fees</th>
-                                <th>School_Contact</th>
-                                <th>School_Latitude</th>
-                                <th>School_Longitude</th>
-                                <th>School_Address</th>
-                                <th>Monthly_Pocket</th>
+                                <th>View</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -543,30 +514,32 @@ if(!isset($_SESSION['username'])){
                             <tbody>
                           <?php 
                             $sql = "SELECT * FROM members";
-                                
-
-                                 $result = mysqli_query($link,$sql);
-
-                                 while($row = mysqli_fetch_array($result))
+                             $result = mysqli_query($link,$sql);
+                                while($row = mysqli_fetch_array($result))
                                 {
-                                    echo '<tr>     <td>'.$row["Member_Id"].'</td>
-                                                   <td>'.$row["Member_Name"].'</td>
-                                                   <td>'.$row["Qualification"].'</td>
-                                                   <td>'.$row["Contact_Number"].'</td>
-                                                   <td>'.$row["CNIC"].'</td>
-                                                   <td>'.$row["Email"].'</td>
-                                                   <td>'.$row["Gender"].'</td>
-                                                   <td>'.$row["Date_Of_Birth"].'</td>
-                                                   <td>'.$row["School_Name"].'</td>
-                                                   <td>'.$row["School_Fees"].'</td>
-                                                   <td>'.$row["School_Contact"].'</td>
-                                                   <td>'.$row["School_Latitude"].'</td>
-                                                   <td>'.$row["School_Longitude"].'</td>
-                                                   <td>'.$row["School_Address"].'</td>
-                                                   <td>'.$row["Monthly_Pocket"].'</td>
-                                                   <td><button><a href="#?type=member&id='.$row["Member_Id"].'">Update</a></button></td>
-                                                   <td><button><a href="#?type=member&id='.$row["Member_Id"].'">Delete</a></button></td>
-                                              </tr>';
+                                    echo '<tr>      
+                                    <td>'.$row["MemberId"].'</td>
+                                    <td>'.$row["MemberName"].'</td>
+                                    <td>'.$row["Qualification"].'</td>
+                                    <td>'.$row["ContactNumber"].'</td>
+                                    <td>'.$row["CNIC"].'</td>
+                                    <td>'.$row["Email"].'</td>
+                                    <td>'.$row["Gender"].'</td>
+                                    <td>'.$row["DateOfBirth"].'</td>
+                                    <td>
+                                    <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </button>
+                                
+                               
+                                    </td>
+                                    <td><button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">mode_edit</i>
+                                </button></td>
+                                    <td> <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i>
+                                </button></td>
+                                    </tr>';
                                 }
 
                            
@@ -581,26 +554,8 @@ if(!isset($_SESSION['username'])){
     </div>
 </section>
 
-<!-- Jquery Core Js -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<?php  include_once('../include/bottom.php'); ?>
 
-<!-- Bootstrap Core Js -->
-<script src="../../plugins/bootstrap/js/bootstrap.js"></script>
-
-<!-- Select Plugin Js -->
-<script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-<!-- Slimscroll Plugin Js -->
-<script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-<!-- Waves Effect Plugin Js -->
-<script src="../../plugins/node-waves/waves.js"></script>
-
-<!-- Custom Js -->
-<script src="../../js/admin.js"></script>
-
-<!-- Demo Js -->
-<script src="../../js/demo.js"></script>
 </body>
 
 </html>
