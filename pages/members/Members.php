@@ -55,7 +55,7 @@ establishConnectionToDatabase();
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="../../index.html">ADMINBSB - MATERIAL DESIGN</a>
+            <a class="navbar-brand" href="../../index.html">ADMIN</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -506,7 +506,17 @@ establishConnectionToDatabase();
                                 <th>Email</th>
                                 <th>Gender</th>
                                 <th>Date Of Birth</th>
+<<<<<<< HEAD
                                 <th>View</th>
+=======
+                                <th>School Name</th>
+                                <th>School Fees</th>
+                                <th>School Contact</th>
+                                <th>School Latitude</th>
+                                <th>School Longitude</th>
+                                <th>School Address</th>
+                                <th>Monthly Pocket Money</th>
+>>>>>>> 82dc8ddd96be024a0463acadae4fa2149ff8212b
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
