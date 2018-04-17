@@ -1,7 +1,6 @@
 <?php
    include('dbconnection.inc.php');
 
-
 if(isset($_GET['submit'])) {
   
 establishConnectionToDatabase();
@@ -21,8 +20,6 @@ establishConnectionToDatabase();
     $School_Adress = $_GET['School_Adress'];
     $Monthly_Pocket = $_GET['Monthly_Pocket'];
     
-    
-
     $sql = "insert into members (Member_Name, Qualification, Contact_Number, CNIC, Email, Gender, Date_Of_Birth, School_Name, School_Fees, School_Contact, School_Latitude, School_Longitude, School_Address, Monthly_Pocket) values('$Member_Name', '$Qualification', '$Contact_Number', '$CNIC', '$Email', '$Gender', '$Date_Of_Birth', '$School_Name', '$School_Fees', '$School_Contact', '$School_Latitude', '$School_Longitude', '$School_Adress', '$Monthly_Pocket')";
 
    

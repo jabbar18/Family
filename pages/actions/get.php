@@ -15,6 +15,10 @@ switch ($sType)
         $objMembersActions = new MembersActions();
         $sReturn = $objMembersActions->DeleteMember($link);
         break;
+    case "ViewMember": include('../members/MembersActions.php');
+        $objMembersActions = new MembersActions();
+        $sReturn = $objMembersActions->ViewMember($link);
+        break;   
     
 
 }

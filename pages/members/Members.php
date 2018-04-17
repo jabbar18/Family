@@ -515,6 +515,7 @@ establishConnectionToDatabase();
                           <?php 
                             $sql = "SELECT * FROM family_members";
                              $result = mysqli_query($link,$sql);
+
                                while($row = mysqli_fetch_array($result))
                                 {
                                     echo '<tr>      
@@ -526,20 +527,23 @@ establishConnectionToDatabase();
                                     <td>'.$row["Email"].'</td>
                                     <td>'.$row["Gender"].'</td>
                                     <td>'.$row["DateOfBirth"].'</td>
+
                                     <td>
+                                    <a href="../actions/get.php?type=ViewMember&MemberId='.$row["MemberId"].'">
                                     <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float">
                                     <i class="material-icons">remove_red_eye</i>
-                                </button>
-                                
-                               
-                                    </td>
-                                    <td><button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
+                                    </button></a></td>
+
+                                    <td>
+                                    <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
                                     <i class="material-icons">mode_edit</i>
-                                </button></td>
-                               <td>
-                                <a href="../actions/get.php?type=DeleteMember&MemberId='.$row["MemberId"].'">
+                                    </button></td>
+
+                                    <td>
+                                    <a href="../actions/get.php?type=DeleteMember&MemberId='.$row["MemberId"].'">
                                      <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
                                     <i class="material-icons">delete</i></a></td>
+
                                     </tr>';
                                 }
 

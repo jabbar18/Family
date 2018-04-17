@@ -51,11 +51,8 @@ class MembersActions
     {   
 
         $iMemberId = $_GET['MemberId'];
-       
-
-        
+               
         $sQuery = "DELETE From family_members WHERE MemberId = $iMemberId";
-
         
         if ($result = mysqli_query($link,$sQuery)) 
         {
@@ -66,15 +63,66 @@ class MembersActions
              return("Please fill form.");
         }
 
+    }
 
+
+    function ViewMember($link)
+    {   
+
+        $iMemberId = $_GET['MemberId'];
+               
+        $sQuery = "SELECT MemberId, MemberName, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney From family_members WHERE MemberId = $iMemberId";
+
+         $result = mysqli_query($link,$sQuery);
+
+        if ($result->num_rows > 0) {
+            
+            echo '<div class="body table-responsive">
+                  <table class="table table-hover" border=1>
+                  <thead>
+                  <tr>
+                  <th>#</th>
+                  <th>Member Name</th>
+                  <th>School Name</th>
+                  <th>School Fees</th>
+                  <th>School Contact Number</th>
+                  <th>School Latitude</th>
+                  <th>School Longitude</th>
+                  <th>School Address</th>
+                  <th>Monthly Pocket Money</th>
+                  </tr>
+             </thead>'; 
+
+             
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<tbody>
+                  <tr>      
+                  <td>'.$row["MemberId"].'</td>
+                  <td>'.$row["MemberName"].'</td>
+                  <td>'.$row["SchoolName"].'</td>                                    
+                  <td>'.$row["SchoolFees"].'</td>
+                  <td>'.$row["SchoolContactNumber"].'</td>
+                  <td>'.$row["SchoolLatitude"].'</td>
+                  <td>'.$row["SchoolLongitude"].'</td>
+                  <td>'.$row["SchoolAddress"].'</td>
+                  <td>'.$row["MonthlyPocketMoney"].'</td>
+                  </tr>';
+                  
+        }
+
+    }
+
+      else
+                {
+
+                    echo '<tr><td>Data is not Available</td></tr>';
+
+                }
+     
     }
 
 
 }
-
-
-
-
-
 
 ?>
