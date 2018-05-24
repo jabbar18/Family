@@ -303,6 +303,9 @@ establishConnectionToDatabase();
                         <li >
                             <a href="./AddMember.php">Add Member</a>
                         </li>
+                         <li class="active">
+                            <a href="./Events.php">Events</a>
+                        </li>
                     </ul>
                 </li>
 

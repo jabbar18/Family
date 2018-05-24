@@ -78,7 +78,7 @@ class MembersActions
         if ($result->num_rows > 0) {
             
             echo '<div class="body table-responsive">
-                  <table class="table table-hover" border=1>
+                  <table class="table table-hover" >
                   <thead>
                   <tr>
                   <th>#</th>
@@ -123,6 +123,6 @@ class MembersActions
     }
 
 
-}
+}   //end class
 
 ?>

@@ -302,6 +302,9 @@ if(!isset($_SESSION['username'])){
                         <li class="active">
                             <a href="./AddMember.php">Add Member</a>
                         </li>
+                         <li >
+                            <a href="./Events.php">Events</a>
+                        </li>
                     </ul>
                 </li>
 
