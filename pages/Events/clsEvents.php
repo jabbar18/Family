@@ -298,13 +298,13 @@ establishConnectionToDatabase();
                     </a>
                     <ul class="ml-menu">
                         <li class="active">
-                            <a href="./Members.php">Members</a>
+                            <a href="./clsMembers.php">Members</a>
                         </li>
                         <li >
-                            <a href="./AddMember.php">Add Member</a>
+                            <a href="./clsAddMember.php">Add Member</a>
                         </li>
                          <li class="active">
-                            <a href="./Events.php">Events</a>
+                            <a href="./clsEvents.php">Events</a>
                         </li>
                     </ul>
                 </li>
@@ -473,17 +473,14 @@ establishConnectionToDatabase();
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Members</h2>
+            <h2>Events</h2>
         </div>
 
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>
-                            Members
-                           
-                        </h2>
+                        <h2>Add Event</h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -498,62 +495,7 @@ establishConnectionToDatabase();
                         </ul>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Qualification</th>
-                                <th>Contact Number</th>
-                                <th>CNIC</th>
-                                <th>Email</th>
-                                <th>Gender</th>
-                                <th>Date Of Birth</th>
-                                <th>View</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                          <?php 
-                            $sql = "SELECT * FROM family_members";
-                             $result = mysqli_query($link,$sql);
-
-                               while($row = mysqli_fetch_array($result))
-                                {
-                                    echo '<tr>      
-                                    <td>'.$row["MemberId"].'</td>
-                                    <td>'.$row["MemberName"].'</td>
-                                    <td>'.$row["Qualification"].'</td>
-                                    <td>'.$row["ContactNumber"].'</td>
-                                    <td>'.$row["CNIC"].'</td>
-                                    <td>'.$row["Email"].'</td>
-                                    <td>'.$row["Gender"].'</td>
-                                    <td>'.$row["DateOfBirth"].'</td>
-
-                                    <td>
-                                    <a href="../actions/get.php?type=ViewMember&MemberId='.$row["MemberId"].'">
-                                    <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float">
-                                    <i class="material-icons">remove_red_eye</i>
-                                    </button></a></td>
-
-                                    <td>
-                                    <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
-                                    <i class="material-icons">mode_edit</i>
-                                    </button></td>
-
-                                    <td>
-                                    <a href="../actions/get.php?type=DeleteMember&MemberId='.$row["MemberId"].'">
-                                     <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
-                                    <i class="material-icons">delete</i></a></td>
-
-                                    </tr>';
-                                }
-
-                           
-                           ?>
-                            </tbody>
-                        </table>
+                       
                     </div>
                 </div>
             </div>

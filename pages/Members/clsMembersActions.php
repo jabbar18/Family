@@ -37,7 +37,7 @@ class MembersActions
 
         if ($result = mysqli_query($link,$sQuery)) 
         {
-            header("location: ../members/Members.php");
+            header("location: ../Members/clsMembers.php");
         }
         else 
         {
@@ -56,7 +56,7 @@ class MembersActions
         
         if ($result = mysqli_query($link,$sQuery)) 
         {
-            header("location: ../members/Members.php");
+            header("location: ../Members/clsMembers.php");
         }
         else 
         {

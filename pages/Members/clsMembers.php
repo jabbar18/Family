@@ -8,15 +8,16 @@ if(!isset($_SESSION['username'])){
 
 }
 
-?>
+include('../database/inc/dbconnection.inc.php');
+establishConnectionToDatabase();
 
+?>
 <!DOCTYPE html>
 <html>
 
 <?php  include_once('../include/head.php'); ?>
 
 <body class="theme-red">
-
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
@@ -43,8 +44,7 @@ if(!isset($_SESSION['username'])){
         <i class="material-icons">search</i>
     </div>
     <input type="text" placeholder="START TYPING...">
-    <div class="close-search">
-        <i class="material-icons">close</i>
+    <div class="close-search        <i class="material-icons">close</i>
     </div>
 </div>
 <!-- #END# Search Bar -->
@@ -55,7 +55,8 @@ if(!isset($_SESSION['username'])){
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="javascript:void(0);" class="bars"></a>
             <a class="navbar-brand" href="../../index.html">ADMIN</a>
-        </div>
+        </div>">
+
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Call Search -->
@@ -254,7 +255,7 @@ if(!isset($_SESSION['username'])){
     </div>
 </nav>
 <!-- #Top Bar -->
-<!-- <section>
+<section>
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
         <!-- User Info -->
@@ -296,18 +297,35 @@ if(!isset($_SESSION['username'])){
                         <span>Family Members</span>
                     </a>
                     <ul class="ml-menu">
+                        <li class="active">
+                            <a href="./clsMembers.php">Members</a>
+                        </li>
                         <li >
-                            <a href="./Members.php">Members</a>
+                            <a href="./clsAddMember.php">Add Member</a>
                         </li>
                         <li class="active">
-                            <a href="./AddMember.php">Add Member</a>
+                            <a href="./clsExpenseManagement.php">Expense Management</a>
+                         </li>
+                        <li class="active">
+                            <a href="./clsChildrenEducation.php">Children Education</a>
                         </li>
-                         <li >
-                            <a href="./Events.php">Events</a>
+                         <li class="active">
+                            <a href="./clsEvents.php">Events</a>
+                        </li>
+                         <li class="active">
+                            <a href="./clsTo-do-lists.php">To-do Lists</a>
+                        </li>
+                        <li class="active">
+                            <a href="./clsChatSystem.php">Chat System</a>
+                        </li>
+                        <li class="active">
+                            <a href="./clsContactDirectory.php">Contact Directory</a>
+                        </li>
+                        <li class="active">
+                            <a href="./clsNotifications.php">Notifications</a>
                         </li>
                     </ul>
                 </li>
-
 
 
             </ul>
@@ -468,164 +486,102 @@ if(!isset($_SESSION['username'])){
         </div>
     </aside>
     <!-- #END# Right Sidebar -->
-</section> -->
+</section>
 
- <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>
-                Family Member's Basic Information
-                    </h2>
-            </div>
-            <!-- Basic Validation -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>Add Memeber</h2>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Members</h2>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Members
                            
-                        </div>
-                        <div class="body">
-                            <form action="../actions/get.php?type=AddMember" method="post">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="name" required>
-                                        <label class="form-label">Name</label>
-                                    </div>
-                                </div>
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Qualification</th>
+                                <th>Contact Number</th>
+                                <th>CNIC</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Date Of Birth</th>
+                                <th>View</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                          <?php 
+                            $sql = "SELECT * FROM family_members";
+                             $result = mysqli_query($link,$sql);
 
-                                  <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="uname" required>
-                                        <label class="form-label">Username</label>
-                                    </div>
-                                </div>
+                               while($row = mysqli_fetch_array($result))
+                                {
+                                    echo '<tr>      
+                                    <td>'.$row["MemberId"].'</td>
+                                    <td>'.$row["MemberName"].'</td>
+                                    <td>'.$row["Qualification"].'</td>
+                                    <td>'.$row["ContactNumber"].'</td>
+                                    <td>'.$row["CNIC"].'</td>
+                                    <td>'.$row["Email"].'</td>
+                                    <td>'.$row["Gender"].'</td>
+                                    <td>'.$row["DateOfBirth"].'</td>
 
-                                  <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="password" class="form-control" name="password" required>
-                                        <label class="form-label">Password</label>
-                                    </div>
-                                </div>
-                               
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" name="cnumber">
-                                        <label class="form-label">Contact Number</label>
-                                    </div>
-                                </div>
+                                    <td>
+                                    <a href="../actions/get.php?type=ViewMember&MemberId='.$row["MemberId"].'">
+                                    <button type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">remove_red_eye</i>
+                                    </button></a></td>
 
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" name="cnic">
-                                        <label class="form-label">CNIC</label>
-                                    </div>
-                                </div>
+                                    <td>
+                                    <button type="button" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">mode_edit</i>
+                                    </button></td>
 
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="email" class="form-control" name="email">
-                                        <label class="form-label">Email</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="radio" name="gender" id="male" checked class="with-gap">
-                                    <label for="male">Male</label>
+                                    <td>
+                                    <a href="../actions/get.php?type=DeleteMember&MemberId='.$row["MemberId"].'">
+                                     <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                    <i class="material-icons">delete</i></a></td>
 
-                                    <input type="radio" name="gender" id="female" class="with-gap">
-                                    <label for="female" class="m-l-20">Female</label>
-                                </div>
+                                    </tr>';
+                                }
 
-                                
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label" style="    margin-left: -75px;">
-                                        <label for="email_address_2">Date of Birth</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                            <input type="date" class="form-control" name="dob" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-
-                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" name="money">
-                                        <label class="form-label">Monthly Pocket  Money</label>
-                                    </div>
-                                </div>
-
-                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="qulatification">
-                                        <label class="form-label">Qualification</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="sname">
-                                        <label class="form-label">School Name</label>
-                                    </div>
-                                </div>
-
-                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" name="scontact">
-                                        <label class="form-label">School Contact Number</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class="form-control" name="sfees">
-                                        <label class="form-label">School Fees</label>
-                                    </div>
-                                </div>
-
-                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="form-control" name="saddress" >
-                                        <label class="form-label">School Address</label>
-                                    </div>
-                                </div>
-
-                                
-                                <div class="row clearfix">
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="number" class="form-control" placeholder="School Latitude" name="slatitude">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="number" class="form-control" placeholder="School Longitude" name="slongitude">
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                               
-                                <button type="submit"  class="btn bg-green btn-block btn-lg waves-effect" name="submit">SUBMIT</button>
-                             
-                            </form>
-                        </div>
-
-                         
-                        </div>
+                           
+                           ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-          
         </div>
-    </section>
+
+    </div>
+</section>
 
 <?php  include_once('../include/bottom.php'); ?>
 
 </body>
+
 </html>

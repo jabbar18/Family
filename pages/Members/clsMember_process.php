@@ -25,7 +25,7 @@ establishConnectionToDatabase();
    
 
   if ($result = mysqli_query($link,$sql)) {
-    header("location: Members.php");
+    header("location: clsMembers.php");
   }
 
    else 

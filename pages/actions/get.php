@@ -7,11 +7,11 @@ $sType = $_GET['type'];
 
 switch ($sType)
 {
-    case "AddMember": include('../members/MembersActions.php');
+    case "AddMember": include('../Members/clsMembersActions.php');
         $objMembersActions = new MembersActions();
         $sReturn = $objMembersActions->AddMember($link);
         break;
-    case "DeleteMember": include('../members/MembersActions.php');
+    case "DeleteMember": include('../Members/clsMembersActions.php');
         $objMembersActions = new MembersActions();
         $sReturn = $objMembersActions->DeleteMember($link);
         break;
