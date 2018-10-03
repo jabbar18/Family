@@ -91,7 +91,7 @@ else  if($_SESSION['username'] != 'admin'){
 
                         <form action="MembersHandler.php" method="post" class="form-horizontal">
 
-                            <input type="hidden" name="m" value="s" />
+                            <input type="hidden" name="action" value="AddRecord" />
 
                             <div class="control-group">
                                 <label class="control-label" for="name">Name</label>
@@ -161,9 +161,9 @@ else  if($_SESSION['username'] != 'admin'){
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="qulatification">Qulatification</label>
+                                <label class="control-label" for="qualification">Qualification</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="qulatification" name="qulatification" range=" min=5 ">
+                                    <input type="text" class="span4" id="qualification" name="qualification" range=" min=5 ">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 

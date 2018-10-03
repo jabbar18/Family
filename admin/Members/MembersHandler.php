@@ -11,31 +11,56 @@
 //Include Event Database Functions
 include("MembersDB.php");
 
-if(isset($_POST['m'])){
-	$mode = $_POST['m'];
-}else{
-	$mode = $_GET['m'];
+if(isset($_POST['action']))
+{
+    $sAction = $_POST['action'];
+}
+else
+{
+    $sAction = $_GET['action'];
 }
 
 //If Request is to Create An New Event
-if($mode == 's')
+if($sAction == 'AddRecord')
 {
-    $iMemberId = createMember();
+    $iMemberId = AddRecord();
 
-    if($iMemberId){
+    if($iMemberId)
+    {
 
         header("location: Members.php?m=Member Created Successfully");
-    }else{
+    }
+    else
+    {
         header("location: Members.php?m=Can't Create Member");
     }
 
 }
+else if($sAction == 'EditRecord')
+{
 
-else if($mode == 'd'){
-	$iMemberId = $_GET['MemberId'];
+    $iMemberId = EditRecord();
+
+    if($iMemberId)
+    {
+
+        header("location: EditMember.php?m=Member Edited Successfully");
+    }
+    else
+    {
+        header("location: Members.php?m=Can't Edit Member");
+    }
+
+}
+
+else if($sAction == 'DeleteRecord')
+{
+
+    $iMemberId = $_GET['MemberId'];
+
     DeleteMember($iMemberId);
 
-	header("location: Members.php?m=Member Deleted Successfully");
+    header("location: Members.php?m=Member Deleted Successfully");
 }
 
 ?>

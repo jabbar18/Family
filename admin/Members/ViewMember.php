@@ -2,13 +2,13 @@
 
 session_start();
 
-if(!isset($_SESSION['username'])){
-
+if(!isset($_SESSION['username']))
+{
     header("location: ./index.php");
-
 }
 
-else  if($_SESSION['username'] != 'admin'){
+else  if($_SESSION['username'] != 'admin')
+{
     header("location: ../index.php");
 }
 
@@ -71,47 +71,51 @@ else  if($_SESSION['username'] != 'admin'){
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>Add Member</h3>
+                        <h3>View Member</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
 
-                        <?php
-                        if(isset($_GET['m'])){
-                            ?>
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <?php
-                                echo $_GET['m'];
-                                ?>
-                            </div>
-                            <?php
-                        }
-                        ?>
+                       <?php
+                            include('MembersDB.php');
+
+                            $iMemberId = $_GET['MemberId'];
+
+                            $aMembers = SelectAllMembers($iMemberId);
+
+                            foreach($aMembers as $aMember)
+                            {
+                                $sGender = $aMember['Gender'];
+
+                                if($sGender == "on")
+                                    $sMale = "checked";
+                                else
+                                    $sFemale = "checked";
+                             ?>
 
                         <form action="MembersHandler.php" method="post" class="form-horizontal">
 
-                            <input type="hidden" name="m" value="s" />
+                            <input type="hidden" name="action" value="EditRecord" />
 
                             <div class="control-group">
                                 <label class="control-label" for="name">Name</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name" required>
+                                    <input type="text" class="span4" id="name" name="name"  readonly value="<?php echo $aMember['MemberName'] ?>" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date of Birth</label>
                                 <div class="controls">
-                                    <input type="date" class="span4" id="dob" name="dob" required range=" min=5 ">
+                                    <input type="date" class="span4" id="dob" name="dob" readonly value="<?php echo $aMember['DateOfBirth'] ?>" required range=" min=5 ">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="uname">Gender</label>
+                                <label class="control-label" for="uname" readonly>Gender</label>
                                 <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" checked range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" required range=" min=5 "> Female
+                                    <input type="radio" class="" id="male" name="gender" readonly <?php echo $sMale ?> range=" min=5 "> Male
+                                    <input type="radio" class="" id="female" name="gender" readonly <?php echo $sFemale ?> range=" min=5 "> Female
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
@@ -119,28 +123,28 @@ else  if($_SESSION['username'] != 'admin'){
                             <div class="control-group">
                                 <label class="control-label" for="uname">User Name</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="uname" name="uname" required range=" min=5 ">
+                                    <input type="text" class="span4" id="uname" name="uname" value="<?php echo $aMember['UserName'] ?>" readonly required range=" min=5 ">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="password">Password</label>
                                 <div class="controls">
-                                    <input type="password" class="span4" id="password" name="password" range=" min=5 ">
+                                    <input type="text" class="span4" id="password" value="<?php echo $aMember['Password'] ?>" readonly name="password" range=" min=5 ">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="cnumber">Contact Number</label>
                                 <div class="controls">
-                                    <input type="number" class="span4" id="cnumber" name="cnumber" required>
+                                    <input type="number" class="span4" id="cnumber" name="cnumber" value="<?php echo $aMember['ContactNumber'] ?>" readonly required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="cnic">CNIC</label>
                                 <div class="controls">
-                                    <input type="number" class="span4" id="cnic" name="cnic">
+                                    <input type="number" class="span4" id="cnic" name="cnic" value="<?php echo $aMember['CNIC'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
@@ -149,74 +153,74 @@ else  if($_SESSION['username'] != 'admin'){
                             <div class="control-group">
                                 <label class="control-label" for="email">Email Address</label>
                                 <div class="controls">
-                                    <input type="email" class="span4" id="email" name="email" range=" min=5 ">
+                                    <input type="email" class="span4" id="email" name="email" range=" min=5 " value="<?php echo $aMember['Email'] ?>"readonly >
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="money">Monthely Pocket Money</label>
                                 <div class="controls">
-                                    <input type="number" class="span4" id="money" name="money" range=" min=5 ">
+                                    <input type="number" class="span4" id="money" name="money" range=" min=5 " value="<?php echo $aMember['MonthlyPocketMoney'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="qulatification">Qulatification</label>
+                                <label class="control-label" for="qulatification">Qualification</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="qulatification" name="qulatification" range=" min=5 ">
+                                    <input type="text" class="span4" id="qualification" name="qualification" range=" min=5 " value="<?php echo $aMember['Qualification'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="sname">School Name</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="sname" name="sname" range=" min=5 ">
+                                    <input type="text" class="span4" id="sname" name="sname" range=" min=5 " value="<?php echo $aMember['SchoolName'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="scontact">School Contact Number</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="scontact" name="scontact" range=" min=5 ">
+                                    <input type="text" class="span4" id="scontact" name="scontact" range=" min=5" value="<?php echo $aMember['SchoolContactNumber'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="sfees">School Fees</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="sfees" name="sfees" range=" min=5 ">
+                                    <input type="text" class="span4" id="sfees" name="sfees" range=" min=5 " value="<?php echo $aMember['SchoolFees'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="saddress">School Address</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="saddress" name="saddress" range=" min=5 ">
+                                    <input type="text" class="span4" id="saddress" name="saddress" range=" min=5 " value="<?php echo $aMember['SchoolAddress'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="slatitude">School Latitude</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="slatitude" name="slatitude" range=" min=5 ">
+                                    <input type="text" class="span4" id="slatitude" name="slatitude" range=" min=5 " value="<?php echo $aMember['SchoolLatitude'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="slongitude">School Longitude</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 ">
+                                    <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 " value="<?php echo $aMember['SchoolLongitude'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
-
-
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button class="btn btn-primary" style="width: 200px">Add Member</button>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
                         </form>
+
+                            <?php
+                            }
+
+                            ?>
+
+
+
                     </div>
                 </div>
 

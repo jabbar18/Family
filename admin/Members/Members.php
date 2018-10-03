@@ -101,6 +101,7 @@ else if($_SESSION['username'] != 'admin'){
                                 <th> User Name </th>
                                 <th> Password </th>
                                 <th> View </th>
+                                <th> Edit </th>
                                 <th> Delete </th>
 
                             </tr>
@@ -108,7 +109,8 @@ else if($_SESSION['username'] != 'admin'){
 
                             <?php
                             include('MembersDB.php');
-                            $aMembers = SelectAllmembers();
+
+                            $aMembers = SelectAllMembers(0);
 
                             $iCounter = 0;
 
@@ -122,8 +124,9 @@ else if($_SESSION['username'] != 'admin'){
                                     <td> <?php echo $aMember['MemberName'] ?> </td>
                                     <td> <?php echo $aMember['UserName'] ?> </td>
                                     <td> <?php echo $aMember['Password'] ?> </td>
-                                    <td ><a href="./ViewMember.php?MemberId=<?php echo $aMember['MemberId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only"> </i></a></td>
-                                    <td ><a href="MembersHandler.php?m=d&MemberId=<?php echo $aMember['MemberId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                    <td ><a href="./ViewMember.php?MemberId=<?php echo $aMember['MemberId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="./EditMember.php?MemberId=<?php echo $aMember['MemberId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                    </tr>
                                 <?php
                             }

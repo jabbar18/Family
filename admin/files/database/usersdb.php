@@ -27,8 +27,6 @@ function selectUser($userName, $password){
 
 	$query = "SELECT * FROM admin WHERE user_name = '$userName' AND password = '$password'";
 	$result = mysqli_query($GLOBALS['link'], $query);
-
-	die("here");
 	
 	$user = false;
 	
