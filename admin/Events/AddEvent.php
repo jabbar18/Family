@@ -94,127 +94,41 @@ else  if($_SESSION['username'] != 'admin'){
                             <input type="hidden" name="action" value="AddRecord" />
 
                             <div class="control-group">
-                                <label class="control-label" for="name">Name</label>
+                                <label class="control-label" for="name">Event Name</label>
                                 <div class="controls">
                                     <input type="text" class="span4" id="name" name="name" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="dob">Date of Birth</label>
+                                <label class="control-label" for="dob">Date</label>
                                 <div class="controls">
-                                    <input type="date" class="span4" id="dob" name="dob" required range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="uname">Gender</label>
-                                <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" checked range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" required range=" min=5 "> Female
+                                    <input type="date" class="span4" id="ed" name="ed" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
 
                             <div class="control-group">
-                                <label class="control-label" for="uname">User Name</label>
+                                <label class="control-label" for="uname">Location</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="uname" name="uname" required range=" min=5 ">
+                                    <input type="text" class="span4" id="l" name="l" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="password">Password</label>
+                                <label class="control-label" for="eo">Event Organizor</label>
                                 <div class="controls">
-                                    <input type="password" class="span4" id="password" name="password" range=" min=5 ">
+                                    <input type="text" class="span4" id="eo" name="eo">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="cnumber">Contact Number</label>
+                                <label class="control-label" for="cnumber">Event Members</label>
                                 <div class="controls">
-                                    <input type="number" class="span4" id="cnumber" name="cnumber" required>
+                                    <input type="text" class="span4" id="em" name="em" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
-                            <div class="control-group">
-                                <label class="control-label" for="cnic">CNIC</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="cnic" name="cnic">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-
-
-                            <div class="control-group">
-                                <label class="control-label" for="email">Email Address</label>
-                                <div class="controls">
-                                    <input type="email" class="span4" id="email" name="email" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="money">Monthely Pocket Money</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="money" name="money" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="qualification">Qualification</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="qualification" name="qualification" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sname">School Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sname" name="sname" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="scontact">School Contact Number</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="scontact" name="scontact" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sfees">School Fees</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sfees" name="sfees" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="saddress">School Address</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="saddress" name="saddress" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slatitude">School Latitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slatitude" name="slatitude" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slongitude">School Longitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button class="btn btn-primary" style="width: 200px">Add Event</button>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
 
                         </form>
                     </div>
