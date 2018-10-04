@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/Events/AddEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/Events/AddEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/database/usersdb.php" beforeDir="false" afterPath="$PROJECT_DIR$/files/database/usersdb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/usershandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/files/usershandler.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,34 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Events.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Events/Events.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
-              <folding>
-                <element signature="e#2878#2885#1#HTML" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddEvent.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddEvent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/Events/AddEvent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+            <state relative-caret-position="1102">
+              <caret line="133" column="98" selection-start-line="133" selection-start-column="98" selection-end-line="133" selection-end-column="98" />
               <folding>
                 <element signature="e#3140#3147#1#HTML" expanded="true" />
               </folding>
@@ -48,60 +28,77 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Events/EventsDB.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            <state relative-caret-position="318">
+              <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventsHandler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Events/EventsHandler.php">
+      <file leaf-file-name="usersdb.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/files/database/usersdb.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="42">
+              <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewEvent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Events/ViewEvent.php">
+      <file leaf-file-name="dbconnection.inc.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-49">
-              <caret line="55" column="23" lean-forward="true" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+            <state relative-caret-position="126">
+              <caret line="9" column="83" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="83" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditEvent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Events/EditEvent.php">
+      <file leaf-file-name="usershandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/files/usershandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+            <state relative-caret-position="250">
+              <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usershandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/files/usershandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usersdb.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/files/database/usersdb.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bootstrap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
-                <element signature="e#3133#3140#1#HTML" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#16;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Members.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/Members/Members.php">
+      <file leaf-file-name="AddMember.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/Members/AddMember.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="236">
+              <caret line="216" column="58" lean-forward="true" selection-start-line="212" selection-start-column="28" selection-end-line="216" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -124,6 +121,8 @@
       <find>Home</find>
       <find>$accountType</find>
       <find>function</find>
+      <find>multisel</find>
+      <find>mult</find>
       <find>Member</find>
     </findStrings>
     <replaceStrings>
@@ -159,6 +158,10 @@
         <option value="$PROJECT_DIR$/admin/Events/EventsHandler.php" />
         <option value="$PROJECT_DIR$/admin/Events/ViewEvent.php" />
         <option value="$PROJECT_DIR$/admin/Events/AddEvent.php" />
+        <option value="$PROJECT_DIR$/admin/files/usershandler.php" />
+        <option value="$PROJECT_DIR$/files/usershandler.php" />
+        <option value="$PROJECT_DIR$/files/database/usersdb.php" />
+        <option value="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" />
       </list>
     </option>
   </component>
@@ -201,13 +204,32 @@
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="Members" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="inc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,12 +282,12 @@
       <workItem from="1525840411767" duration="21000" />
       <workItem from="1535880323237" duration="1031000" />
       <workItem from="1536397538088" duration="2992000" />
-      <workItem from="1538673334406" duration="1708000" />
+      <workItem from="1538673334406" duration="2825000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17583000" />
+    <option name="totallyTimeSpent" value="18700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="712" extended-state="6" />
@@ -310,15 +332,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/Members/AddMember.php" />
-    <entry file="file://$PROJECT_DIR$/login.php" />
-    <entry file="file://$PROJECT_DIR$/pages/UserHandler.php" />
-    <entry file="file://$PROJECT_DIR$/pages/Members/Members.php" />
-    <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html" />
-    <entry file="file://$PROJECT_DIR$/pages/members/normal-tables.html" />
-    <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
-    <entry file="file://$PROJECT_DIR$/pages/Members/AddMember.php" />
-    <entry file="file://$PROJECT_DIR$/login.php" />
     <entry file="file://$PROJECT_DIR$/pages/Members/Members.php" />
     <entry file="file://$PROJECT_DIR$/pages/Members/AddMember.php" />
     <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html" />
@@ -352,13 +365,6 @@
     <entry file="file://$PROJECT_DIR$/libraries/clsMembers.php" />
     <entry file="file://$PROJECT_DIR$/pages/Members/clsMembersActions.php" />
     <entry file="file://$PROJECT_DIR$/pages/actions/get.php" />
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Members/Members.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -417,13 +423,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/Members/AddMember.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="216" column="58" lean-forward="true" selection-start-line="212" selection-start-column="28" selection-end-line="216" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery-1.7.2.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="1" column="25347" selection-start-line="1" selection-start-column="25347" selection-end-line="1" selection-end-column="25347" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Events/AddEvent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+        <state relative-caret-position="1102">
+          <caret line="133" column="98" selection-start-line="133" selection-start-column="98" selection-end-line="133" selection-end-column="98" />
           <folding>
             <element signature="e#3140#3147#1#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/files/database/usersdb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="28" column="53" lean-forward="true" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/files/usershandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="72" column="37" selection-start-line="72" selection-start-column="37" selection-end-line="72" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/usershandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysqli/mysqli.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="1580" column="9" selection-start-line="1580" selection-start-column="9" selection-end-line="1580" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/database/usersdb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="83" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="83" />
         </state>
       </provider>
     </entry>

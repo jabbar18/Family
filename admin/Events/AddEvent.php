@@ -129,6 +129,12 @@ else  if($_SESSION['username'] != 'admin'){
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button class="btn btn-primary" style="width: 200px">Add Event</button>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+
 
                         </form>
                     </div>
