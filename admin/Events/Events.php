@@ -7,7 +7,6 @@ if(!isset($_SESSION['username'])){
     header("location: ../../index.php");
 
 }
-
 else if($_SESSION['username'] != 'admin'){
     header("location: ../../index.php");
 }
@@ -19,7 +18,7 @@ else if($_SESSION['username'] != 'admin'){
 
 <head>
     <meta charset="utf-8">
-    <title>Members Management</title>
+    <title>Events Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -51,8 +50,8 @@ else if($_SESSION['username'] != 'admin'){
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li class="active"><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
                 <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
@@ -81,14 +80,14 @@ else if($_SESSION['username'] != 'admin'){
                     }
                     ?>
 
-                <!-- member List -->
+                <!-- Event List -->
                 <div>
                     <div >
                         <div class="w3-card-4 ">
 
                           <div class="w3-display-container w3-teal" style="height:50px;">
-                                <div class="w3-padding w3-display-topleft"><h3>Members</h3></div>
-                                <div class="w3-padding w3-display-topright"><a href="./AddMember.php"><button class="w3-btn w3-blue">Add Member</button></a></div>
+                                <div class="w3-padding w3-display-topleft"><h3>Events</h3></div>
+                                <div class="w3-padding w3-display-topright"><a href="./AddEvent.php"><button class="w3-btn w3-blue">Add Event</button></a></div>
 
                             </div>
 
@@ -108,25 +107,25 @@ else if($_SESSION['username'] != 'admin'){
                             </thead>
 
                             <?php
-                            include('MembersDB.php');
+                            include('EventsDB.php');
 
-                            $aMembers = SelectAllMembers(0);
+                            $aEvents = SelectAllEvents(0);
 
                             $iCounter = 0;
 
-                            foreach($aMembers as $aMember)
+                            foreach($aEvents as $aEvent)
                             {
                                 $iCounter++;
                              ?>
 
                                 <tr>
                                     <td> <?php echo $iCounter ?> </td>
-                                    <td> <?php echo $aMember['MemberName'] ?> </td>
-                                    <td> <?php echo $aMember['UserName'] ?> </td>
-                                    <td> <?php echo $aMember['Password'] ?> </td>
-                                    <td ><a href="./ViewMember.php?MemberId=<?php echo $aMember['MemberId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="./EditMember.php?MemberId=<?php echo $aMember['MemberId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                    <td> <?php echo $aEvent['EventName'] ?> </td>
+                                    <td> <?php echo $aEvent['UserName'] ?> </td>
+                                    <td> <?php echo $aEvent['Password'] ?> </td>
+                                    <td ><a href="./ViewEvent.php?EventId=<?php echo $aEvent['EventId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="./EditEvent.php?EventId=<?php echo $aEvent['EventId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="EventsHandler.php?action=DeleteRecord&EventId=<?php echo $aEvent['EventId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                    </tr>
                                 <?php
                             }
