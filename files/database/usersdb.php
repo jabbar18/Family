@@ -25,14 +25,14 @@ function updateUser($user_id, $userName, $password){
 function selectAdmin($userName, $password){
 	establishConnectionToDatabase();
 
-	$query = "SELECT * FROM admin WHERE user_name = '$userName' AND password = '$password'";
+	$query = "SELECT * FROM members WHERE UserName = '$userName' AND Password = '$password'";
 	$result = mysqli_query($GLOBALS['link'], $query);
 	
 	$user = false;
 	
 	if($result){
 		if($row = mysqli_fetch_array($result)){
-			$user = array("id"=>$row['admin_id'], "username"=>$row['user_name'], "password"=>$row['password']);
+			$user = array("id"=>$row['MemberId'], "username"=>$row['UserName']);
 		}
 	}
 	

@@ -9,7 +9,7 @@
 */
 
 //Include Event Database Functions
-include("EventsDB.php");
+include("ToDoDB.php");
 
 if(isset($_POST['action']))
 {
@@ -28,40 +28,38 @@ if($sAction == 'AddRecord')
     if($iEventId)
     {
 
-        header("location: Events.php?m=Event Created Successfully");
+        header("location: To_Do.php?m=To Do Created Successfully");
     }
     else
     {
-        header("location: Events.php?m=Can't Create Event");
+        header("location: To_Do.php?m=Can't Create To Do");
     }
 
 }
 else if($sAction == 'EditRecord')
 {
-    $iEventId2 = $_POST['EventId'];
-    $iEventId = EditRecord($iEventId2);
-
+    $iCharityId = $_POST['id'];
+    $iEventId = EditRecord();
 
     if($iEventId)
     {
 
-        header("location: EditEvent.php?m=Event Edited Successfully&EventId=$iEventId2");
+        header("location: EditToDo.php?m=Event Edited Successfully&To_Do_Id=$iCharityId");
     }
     else
     {
-        header("location: Events.php?m=Can't Edit Event&EventId=$iEventId2");
+        header("location: To_Do.php?m=Can't Edit Event");
     }
 
 }
-
 else if($sAction == 'DeleteRecord')
 {
 
-    $iEventId = $_GET['EventId'];
+    $iEventId = $_GET['To_Do_Id'];
 
     DeleteEvent($iEventId);
 
-    header("location: Events.php?m=Event Deleted Successfully");
+    header("location: To_Do.php?m=To Do Deleted Successfully");
 }
 
 ?>

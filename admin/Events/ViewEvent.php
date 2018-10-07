@@ -2,13 +2,13 @@
 
 session_start();
 
-if(!isset($_SESSION['username']))
-{
+if(!isset($_SESSION['username'])){
+
     header("location: ./index.php");
+
 }
 
-else  if($_SESSION['username'] != 'admin')
-{
+else  if($_SESSION['username'] != 'admin'){
     header("location: ../index.php");
 }
 
@@ -52,8 +52,10 @@ else  if($_SESSION['username'] != 'admin')
             <ul class="mainnav">
                 <li ><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
                 <li class="active"><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
-                <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
-                <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
+                <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
+                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li><li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
+                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
         </div>
@@ -71,156 +73,135 @@ else  if($_SESSION['username'] != 'admin')
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>View Event</h3>
+                        <h3>Add Event</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
 
-                       <?php
-                            include('EventsDB.php');
+                        <?php
+                        if(isset($_GET['m'])){
+                            ?>
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <?php
+                                echo $_GET['m'];
+                                ?>
+                            </div>
+                            <?php
+                        }
+                        ?>
 
-                            $iEventId = $_GET['EventId'];
+                         <?php
+                        if(isset($_GET['EventId']))
+                          $iEventId= $_GET['EventId']  ;
+                        else 
+                           die("unathorized Way .. !");    
 
-                            $aEvents = SelectAllEvents($iEventId);
 
-                            foreach($aEvents as $aEvent)
-                            {
-                                $sGender = $aEvent['Gender'];
 
-                                if($sGender == "on")
-                                    $sMale = "checked";
-                                else
-                                    $sFemale = "checked";
-                             ?>
+                      include_once('EventsDB.php');
+                        $aEvents = SelectAllEvents($iEventId);  
+                        $aEventsMembers    =   SelectAllEventMember($iEventId);
+                      // print_r($aEventsMembers);    
+                        ?>
 
                         <form action="EventsHandler.php" method="post" class="form-horizontal">
 
-                            <input type="hidden" name="action" value="EditRecord" />
+                            <input type="hidden" name="action" value="AddRecord" />
 
                             <div class="control-group">
-                                <label class="control-label" for="name">Name</label>
+                                <label class="control-label" for="name">Event Name</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name"  readonly value="<?php echo $aEvent['EventName'] ?>" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="dob">Date of Birth</label>
-                                <div class="controls">
-                                    <input type="date" class="span4" id="dob" name="dob" readonly value="<?php echo $aEvent['DateOfBirth'] ?>" required range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="uname" readonly>Gender</label>
-                                <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" readonly <?php echo $sMale ?> range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" readonly <?php echo $sFemale ?> range=" min=5 "> Female
+                                    <input type="text"  readonly class="span4" id="name" name="name"  value=" <?php  echo $aEvents[0]['EventName'] ?>" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
 
-                            <div class="control-group">
-                                <label class="control-label" for="uname">User Name</label>
+                          <div class="control-group">
+                                <label class="control-label" for="name">Members</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="uname" name="uname" value="<?php echo $aEvent['UserName'] ?>" readonly required range=" min=5 ">
+                                    <!-- <input type="text" class="span4" id="name" name="name" required> -->
+                                    <select  required  readonly   class="mdb-select md-form colorful-select dropdown-primary" multiple searchable="Search here.." name="Members[]">
+                              ]
+                                    <?php 
+                                      //  include_once('../Members/MembersDB.php'); 
+                                         $aMembers = SelectAllMembers(0);
+
+
+                                        foreach($aMembers as $aMember)
+                                    {
+                                        
+                                          $select="";
+                                    if( in_array($aMember['MemberId'] , $aEventsMembers)  ) 
+                                        { $select="Selected='true'";} 
+                                     ?>
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId']  ?>"  <?php echo $select ?> ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                      <?php } ?>  
+  
+                                    </select>
+
+
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+  
+
+ 
+
+                            <div class="control-group">
+                                <label class="control-label" for="dob">Date      <?php 
+
+                                 $originalDate = $aEvents[0]['DateTime'];
+                                $newDate = date("Y-m-d\TH:i", strtotime($originalDate));
+                                
+                                ?></label>
+                                <div class="controls">
+                                    <input type="datetime-local" readonly class="span4" id="ed" name="ed" 
+                                    value ="<?php echo $newDate ?>"      required>
+                                           
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+
+
+                            <div class="control-group">
+                                <label class="control-label" for="uname">Location</label>
+                                <div class="controls">
+                                    <input type="text" class="span4" readonly id="l" name="l"  value=" <?php  echo $aEvents[0]['Location'] ?>"   required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
                             <div class="control-group">
-                                <label class="control-label" for="password">Password</label>
+                                <label class="control-label" for="eo">Event Organizor </label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="password" value="<?php echo $aEvent['Password'] ?>" readonly name="password" range=" min=5 ">
+                                    <select required class="" readonly  name="eo" id="eo" >
+                                    <?php 
+                                      // /  include_once('../Members/MembersDB.php'); 
+
+                                        foreach($aMembers as $aMember)
+                                    {
+                                        $select="";
+                                    if($aMember['MemberId']  == $aEvents[0]['EventOrganizorId']  ) 
+                                        { $select="Selected='true'";} 
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId'] ;   ?>  " <?php  echo $select;  ?>   ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                      <?php } ?>  
+                              
+  
+                                    </select>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
+                           
                             <div class="control-group">
-                                <label class="control-label" for="cnumber">Contact Number</label>
                                 <div class="controls">
-                                    <input type="number" class="span4" id="cnumber" name="cnumber" value="<?php echo $aEvent['ContactNumber'] ?>" readonly required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnic">CNIC</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="cnic" name="cnic" value="<?php echo $aEvent['CNIC'] ?>" readonly>
+                                    <!-- <button class="btn btn-primary" style="width: 200px">Edit Event</button> -->
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
 
-
-                            <div class="control-group">
-                                <label class="control-label" for="email">Email Address</label>
-                                <div class="controls">
-                                    <input type="email" class="span4" id="email" name="email" range=" min=5 " value="<?php echo $aEvent['Email'] ?>"readonly >
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="money">Monthely Pocket Money</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="money" name="money" range=" min=5 " value="<?php echo $aEvent['MonthlyPocketMoney'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="qulatification">Qualification</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="qualification" name="qualification" range=" min=5 " value="<?php echo $aEvent['Qualification'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sname">School Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sname" name="sname" range=" min=5 " value="<?php echo $aEvent['SchoolName'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="scontact">School Contact Number</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="scontact" name="scontact" range=" min=5" value="<?php echo $aEvent['SchoolContactNumber'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sfees">School Fees</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sfees" name="sfees" range=" min=5 " value="<?php echo $aEvent['SchoolFees'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="saddress">School Address</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="saddress" name="saddress" range=" min=5 " value="<?php echo $aEvent['SchoolAddress'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slatitude">School Latitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slatitude" name="slatitude" range=" min=5 " value="<?php echo $aEvent['SchoolLatitude'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slongitude">School Longitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 " value="<?php echo $aEvent['SchoolLongitude'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
                         </form>
-
-                            <?php
-                            }
-
-                            ?>
-
-
-
                     </div>
                 </div>
 

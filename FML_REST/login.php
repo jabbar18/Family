@@ -6,20 +6,20 @@ $db = new DB_Functions();
 // json response array
 $response = array("error" => FALSE);
  
-if (isset($_POST['username']) && isset($_POST['password'])) {
+if (isset($_GET['username']) && isset($_GET['password'])) {
  
     // receiving the post params
-    $username = $_POST['username'];
-    $password = $_POST['password'];
- 
+    $username = $_GET['username'];
+    $password = $_GET['password'];
+
     // POST the user by email and password
     $user = $db->getUserByUsernameAndPassword($username, $password);
  
     if ($user != false) {
         // user is found
         $response["error"] = FALSE;
-        $response["user"]["name"] = $user["name"];
-        $response["user"]["id"] = $user["teacher_id"];
+        $response["name"] = $user["UserName"];
+        $response["id"] = $user["MemberId"];
         
         echo json_encode($response);
     } else {

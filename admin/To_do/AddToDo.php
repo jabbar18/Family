@@ -51,10 +51,11 @@ else  if($_SESSION['username'] != 'admin'){
         <div class="container">
             <ul class="mainnav">
                 <li ><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li ><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li class="active"><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
                 <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
-                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li> <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                <li class="active"><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
                 <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
+                 <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -73,7 +74,7 @@ else  if($_SESSION['username'] != 'admin'){
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>Add Event</h3>
+                        <h3>Add To Do</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
@@ -91,16 +92,9 @@ else  if($_SESSION['username'] != 'admin'){
                         }
                         ?>
 
-                        <form action="EventsHandler.php" method="post" class="form-horizontal">
+                        <form action="ToDoHandler.php" method="post" class="form-horizontal">
 
                             <input type="hidden" name="action" value="AddRecord" />
-
-                            <div class="control-group">
-                                <label class="control-label" for="name">Event Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
 
 
                           <div class="control-group">
@@ -126,54 +120,34 @@ else  if($_SESSION['username'] != 'admin'){
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
   
-
+                            <div class="control-group">
+                                <label class="control-label" for="uname">Title</label>
+                                <div class="controls">
+                                    <input type="text" class="span4" id="title" name="title" required>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
 
 
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date</label>
                                 <div class="controls">
-                                    <input type="datetime-local" class="span4" id="ed" name="ed" required>
+                                    <input type="date" class="span4" id="tododate" name="tododate" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
 
                             <div class="control-group">
-                                <label class="control-label" for="uname">Location</label>
+                                <label class="control-label" for="uname">Description</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="l" name="l" required>
+                                    <input type="text" class="span4" id="description" name="description" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
-                            <div class="control-group">
-                                <label class="control-label" for="eo">Event Organizor </label>
-                                <div class="controls">
-                                    <select required class=""  name="eo" id="eo" >
-                                    <?php 
-                                      // /  include_once('../Members/MembersDB.php'); 
-
-                                        foreach($aMembers as $aMember)
-                                    {
-                                       
-                                     ?>
-                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
-
-                                      <?php } ?>  
-                              
-  
-                                    </select>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnumber">Event Members</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="em" name="em" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
+                            
 
                             <div class="control-group">
                                 <div class="controls">
-                                    <button class="btn btn-primary" style="width: 200px">Add Event</button>
+                                    <button class="btn btn-primary" style="width: 200px">Add To Do</button>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 

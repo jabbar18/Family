@@ -51,12 +51,11 @@ else if($_SESSION['username'] != 'admin'){
         <div class="container">
             <ul class="mainnav">
                 <li><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li class="active"><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li ><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
                 <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
-                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
+                <li class="active"><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
                 <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
-                <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
-                 <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
+                  <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -90,8 +89,8 @@ else if($_SESSION['username'] != 'admin'){
                         <div class="w3-card-4 ">
 
                           <div class="w3-display-container w3-teal" style="height:50px;">
-                                <div class="w3-padding w3-display-topleft"><h3>Events</h3></div>
-                                <div class="w3-padding w3-display-topright"><a href="./AddEvent.php"><button class="w3-btn w3-blue">Add Event</button></a></div>
+                                <div class="w3-padding w3-display-topleft"><h3>To Do</h3></div>
+                                <div class="w3-padding w3-display-topright"><a href="./AddToDo.php"><button class="w3-btn w3-blue">Add To Do</button></a></div>
 
                             </div>
 
@@ -100,10 +99,8 @@ else if($_SESSION['username'] != 'admin'){
                             <thead>
                             <tr class="w3-blue ">
                                 <th> S# </th>
-                                <th> Event Name </th>
-                                <th> Date Time </th>
-                                <th> Location </th>
-                                <th> Organizor </th>
+                                <th> Title </th>
+                                <th> Date </th>
                                 <th> View </th>
                                 <th> Edit </th>
                                 <th> Delete </th>
@@ -112,25 +109,23 @@ else if($_SESSION['username'] != 'admin'){
                             </thead>
 
                             <?php
-                            include('EventsDB.php');
+                            include('ToDoDB.php');
 
-                            $aEvents = SelectAllEvents(0);
-                            $iCounter = 0;
-
-                            foreach($aEvents as $aEvent)
+                            $aToDos = SelectAllToDO(0);
+                                $iCounter = 0;
+                            foreach($aToDos as $aToDo)
                             {
                                 $iCounter++;
                              ?>
 
                                 <tr>
                                     <td> <?php echo $iCounter ?> </td>
-                                    <td> <?php echo $aEvent['EventName'] ?> </td>
-                                    <td> <?php echo $aEvent['DateTime'] ?> </td>
-                                    <td> <?php echo $aEvent['Location'] ?> </td>
-                                     <td> <?php echo $aEvent['Organizor'] ?> </td>
-                                    <td ><a href="./ViewEvent.php?EventId=<?php echo $aEvent['EventId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="./EditEvent.php?EventId=<?php echo $aEvent['EventId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="EventsHandler.php?action=DeleteRecord&EventId=<?php echo $aEvent['EventId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                    <td> <?php echo $aToDo['Title'] ?> </td>
+
+                                    <td> <?php echo $aToDo['Date'] ?> </td>
+                                    <td ><a href="./ViewToDo.php?To_Do_Id=<?php echo $aToDo['To_Do_Id'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="./EditToDo.php?To_Do_Id=<?php echo $aToDo['To_Do_Id'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="ToDoHandler.php?action=DeleteRecord&To_Do_Id=<?php echo $aToDo['To_Do_Id'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                    </tr>
                                 <?php
                             }

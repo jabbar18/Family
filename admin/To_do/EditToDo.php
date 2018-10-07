@@ -16,7 +16,6 @@ else  if($_SESSION['username'] != 'admin'){
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Events Management</title>
@@ -38,10 +37,8 @@ else  if($_SESSION['username'] != 'admin'){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-59852500-1', 'auto');
         ga('send', 'pageview');
-
     </script>
 </head>
 <body data-post="http://www.egrappler.com/templatevamp-free-twitter-bootstrap-admin-template/">
@@ -53,8 +50,9 @@ else  if($_SESSION['username'] != 'admin'){
                 <li ><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
                 <li ><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
                 <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
-                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li> <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                <li class="active"><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
                 <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
+                  <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -73,7 +71,7 @@ else  if($_SESSION['username'] != 'admin'){
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>Add Event</h3>
+                        <h3>Update To Do</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
@@ -91,14 +89,31 @@ else  if($_SESSION['username'] != 'admin'){
                         }
                         ?>
 
-                        <form action="EventsHandler.php" method="post" class="form-horizontal">
+                         <?php
+                        if(isset($_GET['To_Do_Id']))
+                          $To_Do_Id= $_GET['To_Do_Id']  ;
+                        else 
+                           die("unathorized Way .. !");    
 
-                            <input type="hidden" name="action" value="AddRecord" />
 
+
+                      include_once('ToDoDB.php');
+                        $aEvents = SelectAllToDo($To_Do_Id);  
+                        $aEventsMembers    =   SelectAllToDoMember($To_Do_Id);
+                    //   print_r($aEvents);    
+                    // //   die;
+                        ?>
+
+                        <form action="ToDoHandler.php" method="post" class="form-horizontal">
+
+                            <input type="hidden" name="action" value="EditRecord" />
+                            <input type="hidden" name="id" value="<?php echo $To_Do_Id?>" />
+
+                        
                             <div class="control-group">
-                                <label class="control-label" for="name">Event Name</label>
+                                <label class="control-label" for="uname">Title</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name" required>
+                                    <input type="text" class="span4" id="title" name="title" value=" <?php  echo $aEvents[0]['Title'] ?>" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
@@ -108,15 +123,21 @@ else  if($_SESSION['username'] != 'admin'){
                                 <div class="controls">
                                     <!-- <input type="text" class="span4" id="name" name="name" required> -->
                                     <select  required class="mdb-select md-form colorful-select dropdown-primary" multiple searchable="Search here.." name="Members[]">
+                              ]
                                     <?php 
-                                        include('../Members/MembersDB.php'); 
+                                      //  include_once('../Members/MembersDB.php'); 
                                          $aMembers = SelectAllMembers(0);
+
 
                                         foreach($aMembers as $aMember)
                                     {
-                                       
+                                        
+                                          $select="";
+                                    if( in_array($aMember['MemberId'] , $aEventsMembers)  ) 
+                                        { $select="Selected='true'";} 
                                      ?>
-                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId']  ?>"  <?php echo $select ?> ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
                                       <?php } ?>  
   
@@ -132,48 +153,25 @@ else  if($_SESSION['username'] != 'admin'){
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date</label>
                                 <div class="controls">
-                                    <input type="datetime-local" class="span4" id="ed" name="ed" required>
+                                    <input type="date" class="span4" id="tododate" name="tododate"  value="<?php  echo $aEvents[0]['Date'] ?>"   required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
+                           
 
 
                             <div class="control-group">
-                                <label class="control-label" for="uname">Location</label>
+                                <label class="control-label" for="uname">Description</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="l" name="l" required>
+                                    <input type="text" class="span4" id="description" name="description"  value=" <?php  echo $aEvents[0]['Description'] ?>"   required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
-                            <div class="control-group">
-                                <label class="control-label" for="eo">Event Organizor </label>
-                                <div class="controls">
-                                    <select required class=""  name="eo" id="eo" >
-                                    <?php 
-                                      // /  include_once('../Members/MembersDB.php'); 
+                           
 
-                                        foreach($aMembers as $aMember)
-                                    {
-                                       
-                                     ?>
-                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
-
-                                      <?php } ?>  
-                              
-  
-                                    </select>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnumber">Event Members</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="em" name="em" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
+                           
                             <div class="control-group">
                                 <div class="controls">
-                                    <button class="btn btn-primary" style="width: 200px">Add Event</button>
+                                    <button class="btn btn-primary" style="width: 200px">Update To Do</button>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 

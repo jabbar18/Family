@@ -14,26 +14,25 @@ class DB_Functions
         $this->conn = $db->connect();
     }
 
-    // destructor
-    function __destruct()
-    {
-
-    }
-
     public function getUserByUsernameAndPassword($username, $password)
     {
 
-        $stmt = $this->conn->prepare("SELECT * FROM teacher WHERE password = ? AND user_name = ?");
+        $query = "SELECT * FROM members WHERE UserName = '$username' AND Password = '$password'";
+        $result = mysqli_query($this->conn, $query);
 
-        $stmt->bind_param("ss", $password, $username);
 
-        if ($stmt->execute()) {
-            $user = $stmt->get_result()->fetch_assoc();
-            $stmt->close();
-            return $user;
-        } else {
-            return NULL;
+        $user = false;
+
+        if($result){
+            if($row = mysqli_fetch_array($result)){
+                $user = array("MemberId"=>$row['MemberId'], "UserName"=>$row['UserName']);
+            }
         }
+
+        echo mysqli_error($this->conn);
+
+        mysqli_close($this->conn);
+        return $user;
     }
 
 

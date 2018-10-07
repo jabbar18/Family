@@ -19,7 +19,7 @@ else  if($_SESSION['username'] != 'admin'){
 
 <head>
     <meta charset="utf-8">
-    <title>Events Management</title>
+    <title>Members Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -50,11 +50,12 @@ else  if($_SESSION['username'] != 'admin'){
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li ><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li ><a href="Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li><a href="../students.php"><i class="shortcut-icon icon-user"></i><span>Students</span> </a> </li>
                 <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
-                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li> <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                <li ><a href="To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li><li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
+                 <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -73,7 +74,7 @@ else  if($_SESSION['username'] != 'admin'){
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>Add Event</h3>
+                        <h3>Add Charity</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
@@ -90,95 +91,93 @@ else  if($_SESSION['username'] != 'admin'){
                             <?php
                         }
                         ?>
+                         <?php
+                            include('CharityDB.php');
+                            // include_once('../Members/MembersDB.php'); 
 
-                        <form action="EventsHandler.php" method="post" class="form-horizontal">
+                            $iCharityId = $_GET['CharityId'];
+                            // $iMemberId = $_GET['MemberId'];
 
-                            <input type="hidden" name="action" value="AddRecord" />
+                            $aCharityMembers = SelectAllCharityMembers($iCharityId);
+                            
+                       
+                            foreach($aCharityMembers as $aCharityMember)
+                            {
+                                // $sGender = $aCharityMember['Gender'];
+
+                                // if($sGender == "on")
+                                //     $sMale = "checked";
+                                // else
+                                //     $sFemale = "checked";
+                             ?>
+
+                        <form action="CharityHandler.php" method="post" class="form-horizontal">
+
+                            <!-- <input type="hidden" name="action" value="AddRecord" /> -->
 
                             <div class="control-group">
-                                <label class="control-label" for="name">Event Name</label>
+                                <label class="control-label" for="name">Name</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-
-                          <div class="control-group">
-                                <label class="control-label" for="name">Members</label>
-                                <div class="controls">
-                                    <!-- <input type="text" class="span4" id="name" name="name" required> -->
-                                    <select  required class="mdb-select md-form colorful-select dropdown-primary" multiple searchable="Search here.." name="Members[]">
-                                    <?php 
-                                        include('../Members/MembersDB.php'); 
-                                         $aMembers = SelectAllMembers(0);
-
+                                <select readonly name="name" id="name" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                                <option value="" disabled selected>Select Member Name</option>
+                                
+                                <?php 
+                                    
+                                      $aMembers = SelectAllMembers(0);
+                                      
                                         foreach($aMembers as $aMember)
                                     {
-                                       
+                                        $select="";
+                                    if($aMember['MemberId']  == $aCharityMember['MemberId']  ) 
+                                        { $select="Selected='true'";} 
                                      ?>
-                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+                                  <option value="<?php echo $aMember['MemberId']; ?>" <?php  echo $select;  ?>   ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
                                       <?php } ?>  
-  
-                                    </select>
-
-
+                               
+                            </select>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
-  
+                                    
+                          <div class="control-group">
+                                <label class="control-label" for="name">Donor Name</label>
+                                <div class="controls">
+                            <select name="donorid" readonly id="donorid" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                                <option value="" disabled selected>Select Donor Name</option>
+                                
+                                <?php 
+                                    
+                                      $aMembers = SelectAllMembers(0);
+                                      
+                                        foreach($aMembers as $aMember)
+                                    {
+                                        $select="";
+                                    if($aMember['MemberId']  == $aCharityMember['DonorMemberId']  ) 
+                                        { $select="Selected='true'";} 
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId']; ?>" <?php  echo $select;  ?>   ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
-
+                                      <?php } ?>  
+                            </select>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+                           
+                            <div class="control-group">
+                                <label class="control-label" for="slongitude">Account Balance</label>
+                                <div class="controls">
+                                    <input type="number" class="span4" id="donateammount" readonly name="donateammount" value="<?php  echo $aCharityMember['DonateAmount'] ?>" required range=" min=5 ">
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date</label>
                                 <div class="controls">
-                                    <input type="datetime-local" class="span4" id="ed" name="ed" required>
+                                    <input type="date" class="span4" id="donatedate" readonly value="<?php echo $aCharityMember['DonateDateTime'] ?>" name="donatedate" required range=" min=5 ">
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
-
-
-                            <div class="control-group">
-                                <label class="control-label" for="uname">Location</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="l" name="l" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="eo">Event Organizor </label>
-                                <div class="controls">
-                                    <select required class=""  name="eo" id="eo" >
-                                    <?php 
-                                      // /  include_once('../Members/MembersDB.php'); 
-
-                                        foreach($aMembers as $aMember)
-                                    {
-                                       
-                                     ?>
-                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
-
-                                      <?php } ?>  
-                              
-  
-                                    </select>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnumber">Event Members</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="em" name="em" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <div class="controls">
-                                    <button class="btn btn-primary" style="width: 200px">Add Event</button>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
 
                         </form>
+                        <?php }?>
                     </div>
                 </div>
 

@@ -4,11 +4,9 @@
 
   if(isset($_SESSION['username'])){
 
-       if($_SESSION['username'] == 'admin'){
-        header('location:  ./admin/index.php');
-      }else{
+
         header("location: ./admin/Members/Members.php");
-      }
+
   }
 
 ?>

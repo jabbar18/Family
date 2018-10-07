@@ -11,14 +11,13 @@ function AddRecord()
 
 
 
-    $sname = $_POST['name'];
-    $sed = $_POST['ed'];
-    $sl = $_POST['l'];
-    $seo = $_POST['eo'];
+    $sTitle = $_POST['title'];
+    $sToDoDate = $_POST['tododate'];
+    $sDescription = $_POST['description'];
     $aMembers= $_POST['Members'];
 
-   	
-    $sQuery = "INSERT INTO events (EventName, DateTime, Location,EventOrganizorId) VALUES( '$sname', '$sed', '$sl', '$seo')";
+   
+    $sQuery = "INSERT INTO to_do (Title, Date, Description ) VALUES( '$sTitle', '$sToDoDate', '$sDescription')";
    
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
@@ -33,8 +32,8 @@ function AddRecord()
 
 
 		foreach ($aMembers as $key => $value) {
-    		 $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$isCreated', '$value')";
-
+    		 $sQuery = "INSERT INTO to_do_members (To_Do_Id, MemberId) VALUES( '$isCreated', '$value')";
+			 
     		$sResult = mysqli_query($GLOBALS['link'], $sQuery);
     		if(!($sResult))
     			return false;
@@ -50,46 +49,39 @@ function AddRecord()
 }
 
 //Update member
-function EditRecord($iEventId)
+function EditRecord()
 {
 	establishConnectionToDatabase();
 
-	$sname = $_POST['name'];
-    $sed = $_POST['ed'];
-    $sl = $_POST['l'];
-    $seo = $_POST['eo'];
+
+	$iMemberId = $_POST['id'];
+    $sTitle = $_POST['title'];
+    $sToDoDate = $_POST['tododate'];
+    $sDescription = $_POST['description'];
     $aMembers= $_POST['Members'];
-    // $iEventId =$this->iEventId;
-   	
-    $sQuery = "Update  events SET EventName='$sname',  DateTime='$sed', Location='$sl', EventOrganizorId='$seo'   WHERE  EventId='$iEventId'";
+    
+    $sQuery = "UPDATE to_do SET Title = '$sTitle',  Date='$sToDoDate', Description='$sDescription'  WHERE To_Do_Id='$iMemberId'";
 
 
-   	// die($sQuery);
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 	
-	if(mysqli_affected_rows($GLOBALS['link']) >= 0){
-		$isUpdated = "Event Updated Successfully";
+	if(mysqli_affected_rows($GLOBALS['link']) > 0){
+		$isUpdated = "Member Updated Successfully";
 	}else{
 		$isUpdated = false;
-		return false;
 	}
-
-	
-	$sQuery = "DELETE FROM events_members   WHERE  EventId='$iEventId'";
+	$sQuery = "DELETE FROM to_do_members WHERE To_Do_Id ='$iMemberId'";
 	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
 	foreach ($aMembers as $key => $value) {
-    		 $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$iEventId', '$value')";
-
-    		$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-    		if(!($sResult))
-    			return false;
-
-
-    	}
+		$sQuery = "INSERT INTO to_do_members (To_Do_Id, MemberId) VALUES( '$iMemberId', '$value')";
+		
+	   $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+	   if(!($sResult))
+		   return false;
 
 
-
+   }
 
 
     mysqli_close($GLOBALS['link']);
@@ -101,7 +93,7 @@ function DeleteEvent($iMemberId)
 {
 	establishConnectionToDatabase();
 	
-	$query = "DELETE FROM events WHERE EventId = $iMemberId";
+	$query = "DELETE FROM to_do WHERE To_Do_Id = $iMemberId";
 	$result = mysqli_query($GLOBALS['link'], $query);
 	
 	if(mysqli_affected_rows($GLOBALS['link']) > 0)
@@ -112,7 +104,7 @@ function DeleteEvent($iMemberId)
 	{
         $sReturn = false;
 	}
-	$query = "DELETE FROM events_members WHERE EventId = $iMemberId";
+	$query = "DELETE FROM to_do_members WHERE To_Do_Id = $iMemberId";
 	$result = mysqli_query($GLOBALS['link'], $query);
 	
 	mysqli_close($GLOBALS['link']);
@@ -149,17 +141,17 @@ function SelectAllMembers($iMemberId)
 	}
 
 }	
-	function SelectAllEvents($iEventId)
+	function SelectAllToDo($iToDoId)
 {
 	establishConnectionToDatabase();
 
     $sCondition = "";
 
-	if($iEventId > 0)
-	    $sCondition = "WHERE E.EventId ='$iEventId' LIMIT 1";
+	if($iToDoId > 0)
+	    $sCondition = "WHERE To_Do_Id ='$iToDoId' LIMIT 1";
 
 
-	$sQuery = "SELECT E.*,M.UserName AS 'Organizor' FROM events AS E INNER JOIN members AS M ON M.MemberId = E.EventOrganizorId  $sCondition";
+	$sQuery = "SELECT * FROM to_do $sCondition";
 
 	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
 	
@@ -169,7 +161,7 @@ function SelectAllMembers($iMemberId)
 		
 		while($row = mysqli_fetch_array($sResult))
         {
-			$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor']);
+			$aEvent = array("To_Do_Id"=>$row['To_Do_Id'],"Title"=>$row['Title'], "Date"=>$row['Date'], "Description"=>$row['Description']);
         	array_push($aEvents, $aEvent);
 		}
 		
@@ -184,17 +176,17 @@ function SelectAllMembers($iMemberId)
 
 
 
-function SelectAllEventMember($iEventId)
+function SelectAllToDoMember($iEventId)
 {
 	establishConnectionToDatabase();
 
     $sCondition = "";
 
 	if($iEventId > 0)
-	    $sCondition = "WHERE E.EventId ='$iEventId' ";
+	    $sCondition = "WHERE E.To_Do_Id ='$iEventId' ";
 
 
-	$sQuery = "SELECT E.* FROM events_members AS E   $sCondition";
+	$sQuery = "SELECT E.* FROM to_do_members AS E   $sCondition";
 	
 	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
 	

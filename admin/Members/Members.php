@@ -8,10 +8,6 @@ if(!isset($_SESSION['username'])){
 
 }
 
-else if($_SESSION['username'] != 'admin'){
-    header("location: ../../index.php");
-}
-
 ?>
 
 <!DOCTYPE html>
