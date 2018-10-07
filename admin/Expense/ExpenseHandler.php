@@ -24,16 +24,14 @@ else
 if($sAction == 'AddRecord')
 {
     $iMemberId = AddRecord();
-
     if($iMemberId)
     {
-        // echo 'YES';
-        header("location: Expense.php?m=Member Created Successfully");
+        echo 'Expense.php?m=Member Created Successfully';
+        // header("location: );
     }
     else
     {
-        // echo 'NO';
-        header("location: Expense.php?m=Can't Create Member");
+        echo 'Expense.php?m=Can\'t Create Member';
     }
 
 }

@@ -51,12 +51,9 @@ else if($_SESSION['username'] != 'admin'){
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-            
                 <li ><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
                 <li><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
-                 <li class="active"><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
-                 <li><a href="../To_do/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
-                  <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                  <li class="active" ><a href="Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
@@ -103,7 +100,6 @@ else if($_SESSION['username'] != 'admin'){
                                 <th> S# </th>
                                 <th> Name </th>
                                 <th> Amount </th>
-                                <th> Item </th>
                                 <th> Date Time </th>
                                 <th> View </th>
                                 <th> Edit </th>
@@ -128,7 +124,6 @@ else if($_SESSION['username'] != 'admin'){
                                     <td> <?php echo $iCounter ?> </td>
                                     <td> <?php echo $aExpense['MemberName'] ?> </td>
                                     <td> <?php echo $aExpense['Amount'] ?> </td>
-                                    <td> <?php echo $aExpense['ItemId'] ?> </td>
                                     <td> <?php echo $aExpense['DateTime'] ?> </td>
                                     <td ><a href="./ViewMember.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
                                     <td ><a href="./EditMember.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>

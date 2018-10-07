@@ -244,7 +244,8 @@ else if($_SESSION['username'] != 'admin')
                 data:{action:action, amount_sum:amount_sum, items:items, amount:amount, member_id:member_id, balance:balance, exp_date:exp_date},
                 success:function(msg)
                 {
-                    alert(msg);
+                    // alert(msg);
+                    location.assign(msg);
                 }
             })
         })

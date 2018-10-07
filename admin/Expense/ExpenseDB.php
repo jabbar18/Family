@@ -7,7 +7,7 @@ include_once("../../files/database/inc/dbconnection.inc.php");
 function AddRecord()
 {
 	establishConnectionToDatabase();
-	
+
 	$saction = $_POST['action'];
 	$smember_id = $_POST['member_id'];
 	$sbalance = $_POST['balance'];
@@ -36,7 +36,6 @@ function AddRecord()
 	}
 	
 	mysqli_close($GLOBALS['link']);
-	
 	return $isCreated;
 }
 
@@ -124,7 +123,7 @@ function SelectAllExpense($iExpenseId)
 		
 		while($row = mysqli_fetch_array($sResult))
         {
-			$aMember = array("MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "ExpenseId"=>$row['ExpenseId'], "Amount"=>$row['Amount'], "ItemId"=>$row['ItemId'], "DateTime"=>$row['DateTime']);
+			$aMember = array("MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "ExpenseId"=>$row['ExpenseId'], "Amount"=>$row['Amount'], "DateTime"=>$row['DateTime']);
         	array_push($aMembers, $aMember);
 		}
 		
