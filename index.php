@@ -51,7 +51,10 @@
    <div class="main-inner">
 
     <div class="container">
-	<div class="span5" style="margin-left:5%;"> <a href="index.php"><img src="img/banner.png" width="800" height="150" alt=""/></a>
+	<div class="span5" style="margin-left:5%;"> <a href="index.php"><img src="img/banner.png" alt="" style="
+                                                                        width: 900px;
+                                                                        height: 200px;
+                                                                    "></a>
 
 <div class="widget" style="margin-top:5%;margin-right:-50%; margin-left:25%;">
 
