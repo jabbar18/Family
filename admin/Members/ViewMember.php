@@ -106,10 +106,10 @@ else  if($_SESSION['username'] != 'admin')
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
                             <div class="control-group">
-                                <label class="control-label" for="name">Name</label>
+                                <label class="control-label" for="name"> Mother Name</label>
                                 <div class="controls">
-                                <select name="smothername" id="smothername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
-                                <option value="" disabled selected>Select Mother Name</option>
+                                <select disabled name="smothername" id="smothername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                               
                                 
                                 <?php 
                                       //  include('../Members/MembersDB.php'); 
@@ -140,7 +140,7 @@ else  if($_SESSION['username'] != 'admin')
                             <div class="control-group">
                                 <label class="control-label" for="uname" readonly>Gender</label>
                                 <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" readonly value="<?php echo $aMember['Gender'] ?>" <?if($aMember['Gender'] ==1)?>range=" min=5 "> Male
+                                    <input type="radio" class="" id="male" name="gender" readonly value="<?php echo $aMember['Gender'] ?> if($aMember['Gender'] ==1)?> range=" min=5 "> Male
                                     <input type="radio" class="" id="female" name="gender" readonly value="<?php echo $aMember['Gender'] ?>" range=" min=5 "> Female
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
