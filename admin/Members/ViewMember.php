@@ -105,6 +105,32 @@ else  if($_SESSION['username'] != 'admin')
                                     <input type="text" class="span4" id="name" name="name"  readonly value="<?php echo $aMember['MemberName'] ?>" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
+
+                             <div class="control-group">
+                                <label class="control-label" for="name"> Father Name</label>
+                                <div class="controls">
+                                <select  name="smothername" id="smothername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                               
+                                
+                                <?php 
+                                      //  include('../Members/MembersDB.php'); 
+                                         $aMembers = SelectAllMembers($iMemberId);
+                                         
+                                         $iFatherId=$aMembers['FatherId'];
+
+                                         $aMembers3 = SelectAllMembers(0);
+                                        foreach($aMembers3 as $aMember2)
+                                    {
+                                       
+                                     ?>
+                                  <option <?php if($iFatherId == $aMember2['MotherId']) {?>  selected="selected"<?php } ?> value="<?php echo $aMember2['FatherId']  ?>"   ><?php echo $aMember2['MemberName'] ."( ".   $aMember2['UserName'] .")" ?></option>
+
+                                      <?php
+                                    } ?>  
+                            </select>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+
                             <div class="control-group">
                                 <label class="control-label" for="name"> Mother Name</label>
                                 <div class="controls">
