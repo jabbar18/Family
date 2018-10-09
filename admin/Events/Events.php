@@ -50,7 +50,7 @@ else if($_SESSION['username'] != 'admin'){
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li ><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li ><a href="../Members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
                 <li class="active"><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
                 <li><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
                 <li><a href="../To_do/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
