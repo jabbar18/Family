@@ -100,7 +100,7 @@ else  if($_SESSION['username'] != 'admin'){
                                 <label class="control-label" for="name">Members</label>
                                 <div class="controls">
                                     <!-- <input type="text" class="span4" id="name" name="name" required> -->
-                                    <select  required class="mdb-select md-form colorful-select dropdown-primary" multiple searchable="Search here.." name="Members[]">
+                                    <select  required class="mdb-select md-form colorful-select dropdown-primary"  name="member">
                                     <?php 
                                         include('../Members/MembersDB.php'); 
                                          $aMembers = SelectAllMembers(0);

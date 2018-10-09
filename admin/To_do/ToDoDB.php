@@ -8,17 +8,16 @@ function AddRecord()
 {
 	establishConnectionToDatabase();
 
-
-
-
     $sTitle = $_POST['title'];
     $sToDoDate = $_POST['tododate'];
     $sDescription = $_POST['description'];
-    $aMembers= $_POST['Members'];
+    $iMemberId= $_POST['member'];
 
    
-    $sQuery = "INSERT INTO to_do (Title, Date, Description ) VALUES( '$sTitle', '$sToDoDate', '$sDescription')";
-   
+    $sQuery = "INSERT INTO todo (Title, TodoDate, Description, TodoMemberId ) VALUES( '$sTitle', '$sToDoDate', '$sDescription', '$iMemberId')";
+   	
+    die($sQuery);
+
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
 	if($sResult)
@@ -29,17 +28,6 @@ function AddRecord()
 	{
 		$isCreated = false;
 	}
-
-
-		foreach ($aMembers as $key => $value) {
-    		 $sQuery = "INSERT INTO to_do_members (To_Do_Id, MemberId) VALUES( '$isCreated', '$value')";
-			 
-    		$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-    		if(!($sResult))
-    			return false;
-
-
-    	}
 
 
 	

@@ -23,9 +23,9 @@ else
 //If Request is to Create An New Event
 if($sAction == 'AddRecord')
 {
-    $iEventId = AddRecord();
+    $iTodoId = AddRecord();
 
-    if($iEventId)
+    if($iTodoId)
     {
 
         header("location: To_Do.php?m=To Do Created Successfully");
