@@ -211,7 +211,7 @@ else  if($_SESSION['username'] != 'admin')
                             <div class="control-group">
                                 <label class="control-label" for="slongitude">School Longitude</label>
                                 <div class="controls">
-                                    <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 " value="<?php echo $aMember['SchoolLongitude'] ?>" readonly>
+                                    <input type="text" class="span4" id="slongitude" name="slongitude" range=" min=5 " value="<?php echo $aMember['SchoolLongitude'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
                         </form>
