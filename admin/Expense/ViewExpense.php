@@ -73,13 +73,13 @@ else  if($_SESSION['username'] != 'admin')
 
                     <div class="widget-header">
                         <i class="icon-user"></i>
-                        <h3>View Member</h3>
+                        <h3>View Expense</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
 
                        <?php
-                            include('MembersDB.php');
+                            include('ExpenseDB.php');
 
                             $iMemberId = $_GET['MemberId'];
 
@@ -95,7 +95,7 @@ else  if($_SESSION['username'] != 'admin')
                                     $sFemale = "checked";
                              ?>
 
-                        <form action="MembersHandler.php" method="post" class="form-horizontal">
+                        <form action="ExpenseHandler.php" method="post" class="form-horizontal">
 
                             <input type="hidden" name="action" value="EditRecord" />
 

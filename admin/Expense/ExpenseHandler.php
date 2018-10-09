@@ -26,12 +26,12 @@ if($sAction == 'AddRecord')
     $iMemberId = AddRecord();
     if($iMemberId)
     {
-        echo 'Expense.php?m=Member Created Successfully';
+        echo 'Expense.php?m=Expense Created Successfully';
         // header("location: );
     }
     else
     {
-        echo 'Expense.php?m=Can\'t Create Member';
+        echo 'Expense.php?m=Can\'t Create Expense';
     }
 
 }
@@ -43,11 +43,11 @@ else if($sAction == 'EditRecord')
     if($iMemberId)
     {
 
-        header("location: EditMember.php?m=Member Edited Successfully");
+        header("location: Expense.php?m=Expense Edited Successfully");
     }
     else
     {
-        header("location: Expense.php?m=Can't Edit Member");
+        header("location: Expense.php?m=Can't Edit Expense");
     }
 
 }
@@ -59,7 +59,7 @@ else if($sAction == 'DeleteRecord')
 
     DeleteMember($iMemberId);
 
-    header("location: Expense.php?m=Member Deleted Successfully");
+    header("location: Expense.php?m=Expense Deleted Successfully");
 }
 
 ?>

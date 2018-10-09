@@ -126,9 +126,9 @@ else if($_SESSION['username'] != 'admin'){
                                     <td> <?php echo $aExpense['MemberName'] ?> </td>
                                     <td> <?php echo $aExpense['Amount'] ?> </td>
                                     <td> <?php echo $aExpense['DateTime'] ?> </td>
-                                    <td ><a href="./ViewMember.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="./EditMember.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
-                                    <td ><a href="MembersHandler.php?action=DeleteRecord&ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
+                                    <td ><a href="./ViewExpense.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="./EditExpense.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>
+                                    <td ><a href="ExpenseHandler.php?action=DeleteRecord&ExpenseId=<?php echo $aExpense['ExpenseId'] ?>" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                                    </tr>
                                 <?php
                             }
