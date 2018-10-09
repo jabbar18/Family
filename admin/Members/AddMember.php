@@ -50,9 +50,11 @@ else  if($_SESSION['username'] != 'admin'){
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li><a href="../students.php"><i class="shortcut-icon icon-user"></i><span>Students</span> </a> </li>
-                <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                 <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
+                <li><a href="../To_do/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
+                <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -100,6 +102,52 @@ else  if($_SESSION['username'] != 'admin'){
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
+                        <div class="control-group">
+                                <label class="control-label" for="name">Father Name</label>
+                                <div class="controls">
+                        <select name="sfathername" id="sfathername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                            <option value="" disabled selected>Select Father Name</option>
+
+                                      <?php 
+                                        include('../Members/MembersDB.php'); 
+                                         $aMembers = SelectAllMembers(0);
+
+                                        foreach($aMembers as $aMember)
+                                    {
+                                        if($aMember['Gender'] == '0')
+                                        {
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                      <?php
+                                    } } ?>  
+                        </select>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="name">Mother Name</label>
+                                <div class="controls">
+                            <select name="smothername" id="smothername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                                <option value="" disabled selected>Select Mother Name</option>
+                                
+                                <?php 
+                                      //  include('../Members/MembersDB.php'); 
+                                         $aMembers = SelectAllMembers(0);
+
+                                        foreach($aMembers as $aMember)
+                                    {
+                                        if($aMember['Gender'] == '1')
+                                        {
+                                     ?>
+                                  <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                      <?php
+                                    } } ?>  
+                            </select>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+                         
+
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date of Birth</label>
                                 <div class="controls">
@@ -110,8 +158,8 @@ else  if($_SESSION['username'] != 'admin'){
                             <div class="control-group">
                                 <label class="control-label" for="uname">Gender</label>
                                 <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" checked range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" required range=" min=5 "> Female
+                                    <input type="radio" class="" id="male" name="gender" value="0"  range=" min=5 "> Male
+                                    <input type="radio" class="" id="female" name="gender" required value="1" range=" min=5 "> Female
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
@@ -206,6 +254,12 @@ else  if($_SESSION['username'] != 'admin'){
                                 <label class="control-label" for="slongitude">School Longitude</label>
                                 <div class="controls">
                                     <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 ">
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="slongitude">Account Balance</label>
+                                <div class="controls">
+                                    <input type="number" class="span4" id="accountbalance" name="accountbalance" required >
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 

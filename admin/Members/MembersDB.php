@@ -9,13 +9,15 @@ function AddRecord()
 	establishConnectionToDatabase();
 
     $sMemberName = $_POST['name'];
-    $sUserName = $_POST['uname'];
+	$sUserName = $_POST['uname'];
+	$sFatherName = $_POST['sfathername'];
+	$sMotherName = $_POST['smothername'];
     $sPassword = $_POST['password'];
     $sQualification = $_POST['qualification'];
     $dContactNumber = $_POST['cnumber'];
     $dCNIC = $_POST['cnic'];
     $sEmail = $_POST['email'];
-    $sGender = $_POST['gender'];
+	$sGender = $_POST['gender'];
     $dDateofBirth = $_POST['dob'];
     $sSchoolName = $_POST['sname'];
     $sSchoolFees = $_POST['sfees'];
@@ -23,11 +25,12 @@ function AddRecord()
     $dSchoolLatitude = $_POST['slatitude'];
     $dSchoolLongitude = $_POST['slongitude'];
     $sSchoolAddress = $_POST['saddress'];
-    $dMoney = $_POST['money'];
+	$dMoney = $_POST['money'];
+	$iAccountBalancee = $_POST['accountbalance'];
+	
 
 
-    $sQuery = "INSERT INTO members (MemberName, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney) VALUES('$sMemberName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney')";
-
+    $sQuery = "INSERT INTO members (MemberName,FatherId,MotherId, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney,AccountBalance) VALUES('$sMemberName','$sFatherName','$sMotherName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney', '$iAccountBalancee')";
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
 	if($sResult)
@@ -128,7 +131,7 @@ function SelectAllMembers($iMemberId)
 		
 		while($row = mysqli_fetch_array($sResult))
         {
-			$aMember = array("MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney']);
+			$aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance']);
         	array_push($aMembers, $aMember);
 		}
 		

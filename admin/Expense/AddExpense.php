@@ -50,8 +50,11 @@ else if($_SESSION['username'] != 'admin')
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li><a href="../students.php"><i class="shortcut-icon icon-user"></i><span>Students</span> </a> </li>
+            <li ><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                 <li ><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
+                 <li><a href="../To_do/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
+                 <li class="active" ><a href="Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
                 <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li class="active" ><a href="Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
@@ -100,7 +103,7 @@ else if($_SESSION['username'] != 'admin')
                                         <option value="0">Select A Member</option>
                                       <?php
                                         include('../Members/MembersDB.php');
-                                        $members = SelectAllMembers();
+                                        $members = SelectAllMembers(0);
                                         foreach($members as $member)
                                         {
                                           echo "<option value=" .$member['MemberId'] .">" .$member['MemberName'] ."</option>";
@@ -185,6 +188,7 @@ else if($_SESSION['username'] != 'admin')
         var action= 'AccountBalance';
         $("#member_id").change(function(){
             var MemberId= $(this).val();
+            // alert(MemberId);
             $.ajax({
                 url:'../Members/MembersHandler.php',
                 type:'POST',
@@ -210,9 +214,9 @@ else if($_SESSION['username'] != 'admin')
             $("#tmp_tbody").append(data);
         })
 
-        $(".rmv").click(function(){
-            $(this).closest('tr').remove();
-        })
+     $(document).on('click','.rmv', function(){
+           $(this).closest('tr').remove();
+       })
 
         $("#add_exp").click(function(){
             var tmp_tbody= $("#tmp_tbody").html();

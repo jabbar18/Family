@@ -62,5 +62,17 @@ else if($sAction == 'DeleteRecord')
 
     header("location: Members.php?m=Member Deleted Successfully");
 }
+else if($sAction == 'AccountBalance')
+{
+    $iMemberId = $_POST['MemberId'];
+
+    $aMembers = SelectAllMembers($iMemberId);
+
+    foreach($aMembers as $aMember)
+    {
+        $iAccountBalance = $aMember['AccountBalance'];
+    }
+        echo $iAccountBalance;
+}
 
 ?>

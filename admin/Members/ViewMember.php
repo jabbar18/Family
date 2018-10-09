@@ -50,9 +50,11 @@ else  if($_SESSION['username'] != 'admin')
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li><a href="../students.php"><i class="shortcut-icon icon-user"></i><span>Students</span> </a> </li>
-                <li><a href="../assets.php"><i class="icon-list-alt"></i><span>Assets</span> </a> </li>
+                 <li class="active"><a href="Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
+                <li><a href="../Events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
+                <li><a href="../Charity/Charity.php"><i class="shortcut-icon icon-user"></i><span>Charity</span> </a> </li>
+                <li><a href="../To_do/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
+                <li ><a href="../Expense/Expense.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
                 <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
                 <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
             </ul>
@@ -103,6 +105,30 @@ else  if($_SESSION['username'] != 'admin')
                                     <input type="text" class="span4" id="name" name="name"  readonly value="<?php echo $aMember['MemberName'] ?>" required>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="name">Name</label>
+                                <div class="controls">
+                                <select name="smothername" id="smothername" class="mdb-select md-form colorful-select dropdown-primary" style="width: 23em" searchable="Search here..">
+                                <option value="" disabled selected>Select Mother Name</option>
+                                
+                                <?php 
+                                      //  include('../Members/MembersDB.php'); 
+                                         $aMembers = SelectAllMembers($iMemberId);
+                                         
+                                         $iMotherId=$aMembers['MotherId'];
+
+                                         $aMembers2 = SelectAllMembers(0);
+                                        foreach($aMembers2 as $aMember)
+                                    {
+                                       
+                                     ?>
+                                  <option <?php if($iMotherId == $aMember['MotherId']) {?>  selected="selected"<?php } ?> value="<?php echo $aMember['MotherId']  ?>"   ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                      <?php
+                                    } ?>  
+                            </select>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
 
                             <div class="control-group">
                                 <label class="control-label" for="dob">Date of Birth</label>
@@ -114,8 +140,8 @@ else  if($_SESSION['username'] != 'admin')
                             <div class="control-group">
                                 <label class="control-label" for="uname" readonly>Gender</label>
                                 <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" readonly <?php echo $sMale ?> range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" readonly <?php echo $sFemale ?> range=" min=5 "> Female
+                                    <input type="radio" class="" id="male" name="gender" readonly value="<?php echo $aMember['Gender'] ?>" <?if($aMember['Gender'] ==1)?>range=" min=5 "> Male
+                                    <input type="radio" class="" id="female" name="gender" readonly value="<?php echo $aMember['Gender'] ?>" range=" min=5 "> Female
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
 
@@ -210,6 +236,12 @@ else  if($_SESSION['username'] != 'admin')
                                 <label class="control-label" for="slongitude">School Longitude</label>
                                 <div class="controls">
                                     <input type="text" class="span4" id="slongitude" name="slongitude" required range=" min=5 " value="<?php echo $aMember['SchoolLongitude'] ?>" readonly>
+                                </div> <!-- /controls -->
+                            </div> <!-- /control-group -->
+                            <div class="control-group">
+                                <label class="control-label" for="money">Account Balance</label>
+                                <div class="controls">
+                                    <input type="number" class="span4" id="accountbalance" name="accountbalance" range=" min=5 " value="<?php echo $aMember['AccountBalance'] ?>" readonly>
                                 </div> <!-- /controls -->
                             </div> <!-- /control-group -->
                         </form>
