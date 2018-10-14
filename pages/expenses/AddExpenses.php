@@ -220,26 +220,26 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../Dashboard/Home.php">
+                    <a href="../dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
                 <li>
-                    <a href="../Members/Members.php">
+                    <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
 
                     </a>
                 </li>
 
-                <li class="active">
-                    <a href="../Events/Events.php">
+                <li>
+                    <a href="../events/Events.php">
                         <i class="fa fa-money"></i> <span>Events</span>
 
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="./Expenses.php">
                         <i class="fa fa-plane"></i> <span>Expenses</span>
 
@@ -247,14 +247,14 @@ else
                 </li>
 
                 <li>
-                    <a href="../ToDo/ToDo.php">
+                    <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="../Polls/Polls.php">
+                    <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
                     </a>

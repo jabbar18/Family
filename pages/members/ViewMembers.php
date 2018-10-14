@@ -68,7 +68,7 @@ else
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="../Dashboard/Home.php" class="logo">
+        <a href="../dashboard/Home.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -235,41 +235,41 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../Dashboard/Home.php">
+                    <a href="../dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
                 <li class="active">
-                    <a href="Members.php">
+                    <a href="members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="../Expenses/Expenses.php">
+                    <a href="../expenses/Expenses.php">
                         <i class="fa fa-money"></i> <span>Expenses</span>
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="../Events/Events.php">
+                    <a href="../events/Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="../ToDo/ToDo.php">
+                    <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
 
                     </a>
                 </li>
 
                 <li>
-                    <a href="../Polls/Polls.php">
+                    <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
                     </a>
