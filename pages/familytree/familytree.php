@@ -9,15 +9,43 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
+    include_once("../../files/database/inc/dbconnection.inc.php");
 
-    include('EventsDB.php');
 
-    $aRecords = SelectAllEvents(0);
+    establishConnectionToDatabase();
 
-    $iCounter = 0;
+
+    $sQuery = "SELECT * FROM members $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $i = 0;
+        $aMembers = array();
+        $aData = array();
+        while($rs = $sResult->fetch_array(MYSQLI_ASSOC)) {
+
+            $iMemberId = $rs["MemberId"];
+            $sMemberName = $rs["MemberName"];
+            $iFatherId = $rs["FatherId"];
+
+            $aMembers[$i] = $iMemberId;
+
+            $aData[$i][0] = $iMemberId;
+            $aData[$i][1] = $sMemberName;
+            $aData[$i][2] = $iFatherId;
+
+
+            $i++;
+        }
+
+    }
 
 
 }
+
+
 
 
 ?>
@@ -27,7 +55,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Events</title>
+    <title>Family Tree</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -224,12 +252,13 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../dashboard/Home.php">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <a href="../dashboard/Home.php"
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
-                <li >
+
+                <li class="active">
                     <a href="../familytree/familytree.php"
                     <i class="fa fa-tree"></i> <span>Family Tree</span>
 
@@ -249,7 +278,7 @@ else
                     </a>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="../events/Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
@@ -294,13 +323,13 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Family Tree
 
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Events</a></li>
-                <li class="active">Events</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Family Tree</a></li>
+                <li class="active"><a href="#">Family Tree</a></li>
+
             </ol>
         </section>
 
@@ -311,52 +340,43 @@ else
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"></h3>
 
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <h3 class="box-title"><a href="AddEvents.php"><button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Events</button></a></h3>
-
-                                </div>
-                            </div>
-                        </div>
                         <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th> S# </th>
-                                    <th> Event Name </th>
-                                    <th> Date Time </th>
-                                    <th> Location </th>
-                                    <th> Organizor </th>
-                                    <th> View </th>
-                                    <th> Delete </th>
-                                    <!---- <th>Edit</th> --->
+                        <?php
+                        for ($i=0; $i < count($aData); $i++)
+                        {
+                        if ($i > 0) $sDataRows .= ',';
+                        if (!in_array($aData[$i][2], $aMembers)) $aData[$i][2] = '';
 
-                                </tr>
-                                <?php
+                        $sDataRows .= '[{v:\'' . $aData[$i][0] . '\', f:\'<div style="color:blue;font-size:12px;">' . $aData[$i][1] . '</div>\'}, \'' . $aData[$i][2] . '\', \'' . $aData[$i][1] . ', ' . $aData[$i][2] . '\']' . "\n";
+                        }
 
-                                foreach($aRecords as $aRecord)
-                                {
-                                    $iCounter++;
-                                    ?>
+                        $sReturn = '
+                        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                        <script type="text/javascript">
+                            google.load("visualization", "1", {packages:["orgchart"], callback:function() { drawChart(); }});
+                            function drawChart()
+                            {
+                                var data = new google.visualization.DataTable();
+                                data.addColumn("string", "Department Name");
+                                data.addColumn("string", "Manager");
+                                data.addColumn("string", "ToolTip");
+                                data.addRows([
+                                    ' . $sDataRows . '
+                                ]);
+                                var chart = new google.visualization.OrgChart(document.getElementById("chart_div"));
+                                chart.draw(data, {allowHtml:true});
+                            }
+                        </script>
+                        <div id="chart_div"></div>';
 
-                                    <tr>
-                                        <td> <?php echo $iCounter ?> </td>
-                                        <td> <?php echo $aRecord['EventName'] ?> </td>
-                                        <td> <?php echo $aRecord['DateTime'] ?> </td>
-                                        <td> <?php echo $aRecord['Location'] ?> </td>
-                                        <td> <?php echo $aRecord['Organizor'] ?> </td>
-                                        <td ><a href="./ViewEvents.php?EventId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
-                                        <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
-                                        <td ><a href="./EventsHandler.php?action=DeleteRecord&EventId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
-                            </table>
-                        </div>
+
+                        echo $sReturn;
+
+                        ?>
+
+
+
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
@@ -574,5 +594,7 @@ else
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+
 </body>
 </html>
