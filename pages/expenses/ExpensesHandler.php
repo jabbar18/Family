@@ -26,8 +26,8 @@ if($sAction == 'AddRecord')
     $iMemberId = AddRecord();
     if($iMemberId)
     {
-        echo 'Expenses.php?m=Expense Created Successfully';
-        // header("location: );
+        header(" location : Expenses.php?m=Expense Created Successfully");
+
     }
     else
     {
