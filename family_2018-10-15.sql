@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.21)
 # Database: family
-# Generation Time: 2018-10-14 19:15:28 +0000
+# Generation Time: 2018-10-15 16:52:30 +0000
 # ************************************************************
 
 
@@ -131,12 +131,12 @@ CREATE TABLE `events_members` (
 
 
 
-# Dump of table expence_items
+# Dump of table expenses_items
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `expence_items`;
+DROP TABLE IF EXISTS `expenses_items`;
 
-CREATE TABLE `expence_items` (
+CREATE TABLE `expenses_items` (
   `ExpenceItemsId` int(11) NOT NULL AUTO_INCREMENT,
   `ExpenseId` int(11) NOT NULL,
   `Amount` int(11) NOT NULL,
@@ -144,16 +144,18 @@ CREATE TABLE `expence_items` (
   PRIMARY KEY (`ExpenceItemsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `expence_items` WRITE;
-/*!40000 ALTER TABLE `expence_items` DISABLE KEYS */;
+LOCK TABLES `expenses_items` WRITE;
+/*!40000 ALTER TABLE `expenses_items` DISABLE KEYS */;
 
-INSERT INTO `expence_items` (`ExpenceItemsId`, `ExpenseId`, `Amount`, `Item`)
+INSERT INTO `expenses_items` (`ExpenceItemsId`, `ExpenseId`, `Amount`, `Item`)
 VALUES
-	(1,5,2234,'234'),
-	(2,6,1234,'tewst'),
-	(3,6,5678,'test 2');
+	(1,1,2234,'234'),
+	(2,1,1234,'tewst'),
+	(3,6,5678,'test 2'),
+	(4,7,1000,'test 1'),
+	(5,7,500,'test 2');
 
-/*!40000 ALTER TABLE `expence_items` ENABLE KEYS */;
+/*!40000 ALTER TABLE `expenses_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -175,11 +177,12 @@ LOCK TABLES `expenses` WRITE;
 
 INSERT INTO `expenses` (`ExpenseId`, `MemberId`, `Amount`, `DateTime`)
 VALUES
-	(1,18,0.00,'2018-10-07 00:00:00'),
+	(1,18,234234.00,'2018-10-07 00:00:00'),
 	(3,13,11.00,'2018-10-07 00:00:00'),
 	(4,13,11.00,'2018-10-07 00:00:00'),
 	(5,1,2234.00,'2018-10-09 00:00:00'),
-	(6,16,6912.00,'2018-10-14 00:00:00');
+	(6,16,6912.00,'2018-10-14 00:00:00'),
+	(7,15,1500.00,'2018-10-15 00:00:00');
 
 /*!40000 ALTER TABLE `expenses` ENABLE KEYS */;
 UNLOCK TABLES;
