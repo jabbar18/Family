@@ -244,6 +244,13 @@ else
                     </a>
                 </li>
 
+                <li >
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
+
+                    </a>
+                </li>
+
                 <li>
                     <a href="../expenses/Expenses.php">
                         <i class="fa fa-money"></i> <span>Expenses</span>
