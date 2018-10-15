@@ -16,7 +16,7 @@ function AddRecord()
 	$samount = $_POST['amount'];
 	$iamount_sum = $_POST['amount_sum'];
 
-    $sQuery = "INSERT INTO `expenses` (`MemberId`, `Amount`, `DateTime`) VALUES ('$smember_id', '$iamount_sum', '$sexp_date');";
+    $sQuery = "INSERT INTO expenses (MemberId, Amount, DateTime) VALUES ('$smember_id', '$iamount_sum', '$sexp_date');";
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
     $sQuery1 = "INSERT INTO `expenses_items` (`ExpenseId`, `Amount`, `Item`) VALUES";

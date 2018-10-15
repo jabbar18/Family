@@ -602,7 +602,7 @@ else
                     $("#balance").val(msg);
                 }
             })
-        })
+        });
 
         $("#item_add").click(function(){
             var item= $("#item").val();
@@ -616,11 +616,11 @@ else
             }
             var data= "<tr><td class='item'>"+item+"</td><td class='amount'>"+amount+"</td><td><button class='btn btn-danger rmv'>X</button></td></tr>";
             $("#tmp_tbody").append(data);
-        })
+        });
 
         $(document).on('click','.rmv', function(){
             $(this).closest('tr').remove();
-        })
+        });
 
         $("#add_exp").click(function(){
             var tmp_tbody= $("#tmp_tbody").html();
@@ -647,7 +647,7 @@ else
             if(exp_date==0){alert("Select A Date!");return false;}
             var action= "AddRecord";
             $.ajax({
-                url:'ExpenseHandler.php',
+                url:'ExpensesHandler.php',
                 type:'POST',
                 data:{action:action, amount_sum:amount_sum, items:items, amount:amount, member_id:member_id, balance:balance, exp_date:exp_date},
                 success:function(msg)

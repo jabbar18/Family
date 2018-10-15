@@ -31,7 +31,7 @@ if($sAction == 'AddRecord')
     }
     else
     {
-        echo 'Expenses.php?m=Can\'t Create Expense';
+        header("location: Expenses.php?m=Can't Create Expense");
     }
 
 }
