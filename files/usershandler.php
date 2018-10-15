@@ -59,7 +59,7 @@ if($mode == 'l'){
 			$_SESSION['username'] = $user['username']; //Put UserName In Session
             $_SESSION['MemberName'] = $user['MemberName']; //Put UserName In Session
 			
-			header("location: ../pages/Members/Members.php"); //Redirect To Event Page
+			header("location: ../pages/dashboard/Home.php"); //Redirect To Event Page
 		}else{
 			header("location: ../index.php?m=User Name Or Passwrod Is Not Correct"); //Redirect To Event Page
 		}
