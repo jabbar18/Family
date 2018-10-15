@@ -15,7 +15,7 @@ else
     establishConnectionToDatabase();
 
 
-    $sQuery = "SELECT * FROM members $sCondition";
+    $sQuery = "SELECT * FROM members";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
@@ -228,6 +228,9 @@ else
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
+
+                     <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+
                 </ul>
             </div>
         </nav>
@@ -258,15 +261,18 @@ else
                     </a>
                 </li>
 
-                <li class="active">
-                    <a href="../familytree/familytree.php"
-                    <i class="fa fa-tree"></i> <span>Family Tree</span>
-
-                    </a>
-                </li>
+                
                 <li >
                     <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
+
+                    </a>
+                </li>
+
+
+                <li class="active">
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
 
                     </a>
                 </li>
@@ -343,6 +349,8 @@ else
 
                         <!-- /.box-header -->
                         <?php
+
+                        $sDataRows = "";
                         for ($i=0; $i < count($aData); $i++)
                         {
                         if ($i > 0) $sDataRows .= ',';

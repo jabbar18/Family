@@ -344,7 +344,7 @@ if(!isset($_SESSION['username'])){
                                         <td> <?php echo $aExpense['DateTime'] ?> </td>
                                         <td ><a href="./ViewExpenses.php?ExpenseId=<?php echo $aExpense['ExpenseId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
                                         <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aExpense['ExpenseId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
-                                        <td ><a href="./ExpenseHandler.php?action=DeleteRecord&ExpenseId=<?php echo $aExpense['ExpenseId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
+                                        <td ><a href="./ExpensesHandler.php?action=DeleteRecord&ExpenseId=<?php echo $aExpense['ExpenseId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
                                     </tr>
                                     <?php
                                 }
