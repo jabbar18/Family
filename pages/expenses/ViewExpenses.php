@@ -2,254 +2,589 @@
 
 session_start();
 
-if(!isset($_SESSION['username']))
-{
-    header("location: ./index.php");
-}
+if(!isset($_SESSION['username'])){
 
-else  if($_SESSION['username'] != 'admin')
+    header("location: ../../index.php");
+
+}
+else
 {
-    header("location: ../index.php");
+    include_once('./ExpenseDB.php');
+
+    $iRecordId = $_GET['ExpenseId'];
+
+    $aRecords = SelectAllExpense($iRecordId);
+    $aExpensesItems = SelectAllExpensesItems($iRecordId);
+
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
-     <title>Expense Management</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../../fonts.googleapis.com/css6454.css?family=Open+Sans:400italic,600italic,400,600"
-          rel="stylesheet">
-    <link href="../css/font-awesome.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/pages/dashboard.css" rel="stylesheet">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Expenses</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-59852500-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body data-post="http://www.egrappler.com/templatevamp-free-twitter-bootstrap-admin-template/">
-<!-- /navbar -->
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <ul class="mainnav">
-           <li ><a href="../members/Members.php"><i class="shortcut-icon icon-user"></i><span>Members</span> </a> </li>
-                <li ><a href="../events/Events.php"><i class="shortcut-icon icon-user"></i><span>Events</span> </a> </li>
-                <li><a href="../todo/To_Do.php"><i class="shortcut-icon icon-user"></i><span>To Do</span> </a> </li>
-                <li class="active"><a href="../expenses/Expenses.php"><i class="shortcut-icon icon-user"></i><span>Expense</span> </a> </li>
-                <li><a href="../settings.php"><i class="icon-cog "></i><span>Settings</span> </a> </li>
-                <li><a href="../files/usershandler.php?m=lo"><i class="icon-off"></i><span>Logout</span> </a> </li>
-            </ul>
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /subnavbar-inner -->
-</div>
-<!-- /subnavbar -->
-<div >
-    <div class="main-inner">
-        <div class="container">
-            <div class="span12">
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-                <div class="widget">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="../Dashboard/Home.php" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>A</b>LT</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Family </b>MS</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
 
-                    <div class="widget-header">
-                        <i class="icon-user"></i>
-                        <h3>View Expense</h3>
-                    </div> <!-- /widget-header -->
-
-                    <div class="widget-content">
-
-                       <?php
-                            include('ExpenseDB.php');
-
-                            $iMemberId = $_GET['MemberId'];
-
-                            $aMembers = SelectAllMembers($iMemberId);
-
-                            foreach($aMembers as $aMember)
-                            {
-                                $sGender = $aMember['Gender'];
-
-                                if($sGender == "on")
-                                    $sMale = "checked";
-                                else
-                                    $sFemale = "checked";
-                             ?>
-
-                        <form action="ExpenseHandler.php" method="post" class="form-horizontal">
-
-                            <input type="hidden" name="action" value="EditRecord" />
-
-                            <div class="control-group">
-                                <label class="control-label" for="name">Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="name" name="name"  readonly value="<?php echo $aMember['MemberName'] ?>" required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="dob">Date of Birth</label>
-                                <div class="controls">
-                                    <input type="date" class="span4" id="dob" name="dob" readonly value="<?php echo $aMember['DateOfBirth'] ?>" required range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="uname" readonly>Gender</label>
-                                <div class="controls">
-                                    <input type="radio" class="" id="male" name="gender" readonly <?php echo $sMale ?> range=" min=5 "> Male
-                                    <input type="radio" class="" id="female" name="gender" readonly <?php echo $sFemale ?> range=" min=5 "> Female
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-
-                            <div class="control-group">
-                                <label class="control-label" for="uname">User Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="uname" name="uname" value="<?php echo $aMember['UserName'] ?>" readonly required range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="password">Password</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="password" value="<?php echo $aMember['Password'] ?>" readonly name="password" range=" min=5 ">
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnumber">Contact Number</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="cnumber" name="cnumber" value="<?php echo $aMember['ContactNumber'] ?>" readonly required>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="cnic">CNIC</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="cnic" name="cnic" value="<?php echo $aMember['CNIC'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-
-
-                            <div class="control-group">
-                                <label class="control-label" for="email">Email Address</label>
-                                <div class="controls">
-                                    <input type="email" class="span4" id="email" name="email" range=" min=5 " value="<?php echo $aMember['Email'] ?>"readonly >
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="money">Monthely Pocket Money</label>
-                                <div class="controls">
-                                    <input type="number" class="span4" id="money" name="money" range=" min=5 " value="<?php echo $aMember['MonthlyPocketMoney'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="qulatification">Qualification</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="qualification" name="qualification" range=" min=5 " value="<?php echo $aMember['Qualification'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sname">School Name</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sname" name="sname" range=" min=5 " value="<?php echo $aMember['SchoolName'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="scontact">School Contact Number</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="scontact" name="scontact" range=" min=5" value="<?php echo $aMember['SchoolContactNumber'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="sfees">School Fees</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="sfees" name="sfees" range=" min=5 " value="<?php echo $aMember['SchoolFees'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="saddress">School Address</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="saddress" name="saddress" range=" min=5 " value="<?php echo $aMember['SchoolAddress'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slatitude">School Latitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slatitude" name="slatitude" range=" min=5 " value="<?php echo $aMember['SchoolLatitude'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-
-                            <div class="control-group">
-                                <label class="control-label" for="slongitude">School Longitude</label>
-                                <div class="controls">
-                                    <input type="text" class="span4" id="slongitude" name="slongitude" range=" min=5 " value="<?php echo $aMember['SchoolLongitude'] ?>" readonly>
-                                </div> <!-- /controls -->
-                            </div> <!-- /control-group -->
-                        </form>
-
-                            <?php
-                            }
-
-                            ?>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success">4</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have 4 messages</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li><!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Support Team
+                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <!-- end message -->
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <h4>
+                                                AdminLTE Design Team
+                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Developers
+                                                <small><i class="fa fa-clock-o"></i> Today</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Sales Department
+                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            </div>
+                                            <h4>
+                                                Reviewers
+                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <li class="dropdown notifications-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning">10</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have 10 notifications</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                                            page and may cause design problems
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-users text-red"></i> 5 new members joined
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-user text-red"></i> You changed your username
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">View all</a></li>
+                        </ul>
+                    </li>
 
 
-
-                    </div>
-                </div>
-
-                <!-- /widget -->
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
             </div>
-            <!-- /span6 -->
-        </div>
-        <!-- /row -->
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p></ph><?php echo $_SESSION["MemberName"] ?></p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
+                <li>
+                    <a href="../dashboard/Home.php" >
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+
+                    </a>
+                </li>
+                <li >
+                    <a href="../members/Members.php">
+                        <i class="fa fa-users"></i> <span>Members</span>
+
+                    </a>
+                </li>
+
+
+
+                <li class="active">
+                    <a href="../expenses/Expenses.php">
+                        <i class="fa fa-money"></i> <span>Expenses</span>
+
+                    </a>
+                </li>
+
+                <li >
+                    <a href="../events/events.php">
+                        <i class="fa fa-plane"></i> <span>Events</span>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../todo/ToDo.php">
+                        <i class="fa fa-edit"></i> <span>ToDo</span>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../polls/Polls.php">
+                        <i class="fa fa-pie-chart"></i> <span>Polls</span>
+
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-folder"></i> <span>Examples</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                 </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Expenses
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="./Expenses.php">Expenses</a></li>
+                <li class="active">View Expenses</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <form action="ExpensesHandler.php" method="post" role="form">
+
+                                <input type="hidden" name="action" value="AddRecord" />
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="name">Member Name</label>
+                                        <input type="text" class="form-control" id="name" name="name"  required value="<?php echo $aRecords[0]['MemberName'] ?>" disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">Amount</label>
+
+                                        <input type="text" class="form-control" id="name" name="name"  required value="<?php echo $aRecords[0]['Amount'] ?>" disabled>
+                                       
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="ed">Expense Date</label>
+                                        <input type="datetime" class="form-control" id="ed" name="ed" value="<?php echo $aRecords[0]['DateTime'] ?>" disabled>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ed">Expense Items</label>
+
+                                    <div class="box-body table-responsive no-padding">
+                                        <table class="table table-hover">
+                                            <tr>
+                                                <th> S# </th>
+                                                <th> Item </th>
+                                                <th> Amount </th>
+
+                                            </tr>
+                                            <?php
+                                          $iCounter = 0;
+
+                                            foreach($aExpensesItems as $aExpense)
+                                            {
+                                                $iCounter++;
+                                                ?>
+
+                                                <tr>
+                                                    <td> <?php echo $iCounter ?> </td>
+                                                    <td> <?php echo $aExpense['Item'] ?> </td>
+                                                    <td> <?php echo $aExpense['Amount'] ?> </td>
+                                                          </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </table>
+                                    </div>
+                                       </div>
+
+
+                                </div>
+                                <!-- /.box-body -->
+
+
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- /container -->
+    <!-- /.content-wrapper -->
+
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Recent Activity</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                <p>Will be 23 on April 24th</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon fa fa-user bg-yellow"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                                <p>New phone +1(800)555-1234</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                                <p>nora@example.com</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                                <p>Execution time 5 seconds</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="label label-danger pull-right">70%</span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                                Update Resume
+                                <span class="label label-success pull-right">95%</span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                                Laravel Integration
+                                <span class="label label-warning pull-right">50%</span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <h4 class="control-sidebar-subheading">
+                                Back End Framework
+                                <span class="label label-primary pull-right">68%</span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Allow mail redirect
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Other sets of options are available
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Expose author name in posts
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Allow the user to show his name in blog posts
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Show me as online
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Turn off notifications
+                            <input type="checkbox" class="pull-right">
+                        </label>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Delete chat history
+                            <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                        </label>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
 </div>
-<!-- /main-inner -->
-</div>
-<!-- /main -->
+<!-- ./wrapper -->
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="../wp-content/themes/piha/js/top-bar.js" ></script>
-<script type="text/javascript" src="../wp-content/themes/piha/js/bsa-ads.js" ></script>
-<script src="../js/excanvas.min.js"></script>
-<script src="../js/chart.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="../js/full-calendar/fullcalendar.min.js"></script>
-
-<script src="../js/base.js"></script>
-
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 </body>
-
 </html>

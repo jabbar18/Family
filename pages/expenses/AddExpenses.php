@@ -339,8 +339,8 @@ else
 
                                     <div class="form-group">
                                         <label for="t">Add Items</label>
-                                        <input type="text" class="form-control" id="item" name="">
-                                        <input type="number" class="form-control" id="amount" name="">
+                                        <input type="text" class="form-control" id="item" name="" placeholder="Item Name">
+                                        <input type="number" class="form-control" id="amount" name="" placeholder="0.00">
                                         <button type="button" class="btn btn-info btn-xs" id="item_add" name="">+</button>
 
                                     </div>
