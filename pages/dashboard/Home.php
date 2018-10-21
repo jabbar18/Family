@@ -11,13 +11,17 @@ else
 {
 
     include('../Events/EventsDB.php');
+
     $aMembers = SelectAllMembers(0);
     $aEvents = SelectAllEvents(0, 1);
-
-
     $iTotalMembers = count($aMembers);
     $iTotalEvents = count($aEvents);
     $iTotalEvents = count($aEvents);
+    $date = date('Y-m-d');
+    $sMemberBirthday = MemberBirthday($date);
+    $TodoNotifications = TodoNotification($date);
+    $sBirthdayNotify = BirthdayNotification($date);
+
 
 }
 
@@ -168,22 +172,36 @@ else
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
+                                    <?php foreach ($sBirthdayNotify as $Notification){
+                                       $NameOfWiher = $Notification['MemberWisherId'];
+                                        $aMembers = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+
+
+                                    ?>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                            <i class="fa fa-users text-aqua"></i>Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
+                                            <?php echo $Notification['BirthdayMessage']; ?>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                                            page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
+                                    <?php }?>
+                                    <?php foreach ($TodoNotifications as $TodoNotification){
+                                        $TodoMemberId = $TodoNotification['TodoMemberId'];
+                                        $Title = $TodoNotification['Title'];
+                                        $aMembers = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers[0]['MemberName'];
+
+
+                                        ?>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i>Todo  <strong><?php echo $TotoMember; ?></strong><br>
+                                                <?php echo $Title; ?><br>
+                                               DeadLine Date: <?php echo $TodoNotification['DeadlineDate']; ?>
+                                            </a>
+                                        </li>
+                                    <?php }?>
                                     <li>
                                         <a href="#">
                                             <i class="fa fa-shopping-cart text-green"></i> 25 sales made
@@ -533,6 +551,145 @@ else
                         <!-- /.box-footer -->
                     </div>
                     <!-- /.box -->
+
+                    <!-- Birthday LIST -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Birthday</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+
+                                <?php
+
+                                foreach($sMemberBirthday as $dBirthday)
+                                {
+                                    $Name = $dBirthday['MemberName'];
+                                    $MemberId = $dBirthday['MemberId'];
+
+
+
+
+                                    ?>
+
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="../../dist/img/birthday.jpg" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title"><?php echo $Name .' Birthday'; ?>
+                                                <span class="label label-warning pull-right">Today</span></a>
+                                            <span class="product-description">
+
+                         <form action="../Events/EventsHandler.php" method="post"><input type="hidden" name="action" id="action" value="BirthdayWish" /><input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId"><table><tr><td><input type="text" id="birthdaymessage" name="birthdaymessage" class="form-control input-sm" style="width: 210px" placeholder="Birhday wish"></td><td><button class="btn-primary" type="submit">send</button></td></tr></table></form>
+                        </span>
+                                        </div>
+                                    </li>
+
+                                <?php }  ?>
+                                <!-- /.item -->
+
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
+                    </div>
+
+<!--                    Birthday  wish-->
+                    <!-- Poll Start -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Poll</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form action="../Events/EventsHandler.php" method="post">
+                            <ul class="products-list product-list-in-box">
+
+
+                                <?php
+
+
+                                $sPolls = PollVoting($date);
+
+                                foreach($sPolls as $sPoll)
+                                {
+                                    $Question = $sPoll['Question'];
+                                    $Answer1 = $sPoll['Answer1'];
+                                    $Answer2 = $sPoll['Answer2'];
+                                    $Answer3 = $sPoll['Answer3'];
+                                    $Answer4 = $sPoll['Answer4'];
+
+
+
+
+                                    ?>
+
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="../../dist/img/birthday.jpg" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title"><?php echo $Question; ?>
+                                                <span class="label label-warning pull-right">Today</span></a>
+                                            <span class="product-description">
+
+                                                <input type="hidden" name="action" id="action" value="BirthdayWish" />
+                                                <input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId">
+                                                <table >
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage"  value="<?php echo  $Answer1;?>"><?php echo  $Answer1;?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer2;?>"><?php echo  $Answer2;?>
+                                                        </td>
+                                                    </tr>
+                                                     <tr>
+                                                        <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer3;?>"><?php echo  $Answer3;?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer4;?>"><?php echo  $Answer4;?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                        </span>
+                                        </div>
+                                    </li>
+
+                                <?php }  ?>
+                                <!-- /.item -->
+
+                                <!-- /.item -->
+                            </ul>
+                                <button class="btn-primary" type="submit">Vote</button>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <!-- /.box-footer -->
+                    </div>
+
+                    <!--                    Poll  End-->
                 </div>
                 <!-- /.col -->
             </div>

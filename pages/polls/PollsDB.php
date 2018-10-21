@@ -6,16 +6,23 @@ include_once("../../files/database/inc/dbconnection.inc.php");
 //Create member 
 function AddRecord()
 {
+
 	establishConnectionToDatabase();
 
-    $sTitle = $_POST['title'];
-    $sToDoDate = $_POST['tododate'];
-    $sDeadlineDoDate = $_POST['tododeadlinedate'];
-    $sDescription = $_POST['description'];
-    $iMemberId= $_POST['member'];
+    $iPollmemberid = $_POST['pollmemberid'];
+    $sQuestion = $_POST['question'];
+    $sAnswer1 = $_POST['ans1'];
+    $sAnswer2 = $_POST['ans2'];
+    $sAnswer3= $_POST['ans3'];
+    $sAnswer4= $_POST['ans4'];
+    $dPollstartdate = $_POST['pollstartdate'];
+    $dPollenddate = $_POST['pollenddate'];
+    $sNotes= $_POST['notes'];
+    $dCurrentDate = date('Y-m-d');
 
    
-    $sQuery = "INSERT INTO todo (Title, TodoDate, DeadlineDate, Description, TodoMemberId ) VALUES( '$sTitle', '$sToDoDate','$sDeadlineDoDate', '$sDescription', '$iMemberId')";
+    $sQuery = "INSERT INTO polls (Question, Answer1,Answer2,Answer3,Answer4,PollStartDateTime,PollEndDateTime,Notes,PollAddedBy,PollAddedOn)
+VALUES( '$sQuestion', '$sAnswer1','$sAnswer2', '$sAnswer3', '$sAnswer4','$dPollstartdate', '$dPollenddate','$sNotes', '$iPollmemberid', '$dCurrentDate')";
    	
 
 
@@ -82,12 +89,12 @@ function DeleteEvent($iMemberId)
 {
 	establishConnectionToDatabase();
 	
-	$query = "DELETE FROM todo WHERE TodoId = $iMemberId";
+	$query = "DELETE FROM polls WHERE PollId = $iMemberId";
 	$result = mysqli_query($GLOBALS['link'], $query);
 	
 	if(mysqli_affected_rows($GLOBALS['link']) > 0)
 	{
-		$sReturn = "Member Deleted Successfully";
+		$sReturn = "Poll Deleted Successfully";
 	}
 	else
 	{
@@ -139,10 +146,10 @@ function SelectAllMembers($iMemberId)
 
 
 	if($iToDoId > 0)
-	    $sCondition = "WHERE TodoId ='$iToDoId' LIMIT 1";
+	    $sCondition = "WHERE PollId ='$iToDoId' LIMIT 1";
 
 
-	$sQuery = "SELECT * FROM todo $sCondition";
+	$sQuery = "SELECT * FROM polls $sCondition";
 
 
 	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
@@ -153,7 +160,7 @@ function SelectAllMembers($iMemberId)
 		
 		while($row = mysqli_fetch_array($sResult))
         {
-			$aEvent = array("TodoId"=>$row['TodoId'],"Title"=>$row['Title'], "TodoDate"=>$row['TodoDate'], "TodoMemberId"=>$row['TodoMemberId'], "Description"=>$row['Description'], "DeadlineDate"=>$row['DeadlineDate']);
+			$aEvent = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
         	array_push($aEvents, $aEvent);
 		}
 		

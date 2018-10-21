@@ -63,5 +63,21 @@ else if($sAction == 'DeleteRecord')
 
     header("location: Events.php?m=Event Deleted Successfully");
 }
+else if($sAction == 'BirthdayWish')
+{
+
+    $iBirthdayWishId = BirthdayWish();
+
+    if($iBirthdayWishId)
+    {
+
+        header("location: ../dashboard/home.php?m=Wish Successfully");
+    }
+    else
+    {
+        header("location: ../dashboard/home.php?m=Can't Create Event");
+    }
+
+}
 
 ?>

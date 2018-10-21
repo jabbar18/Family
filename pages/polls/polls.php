@@ -9,14 +9,13 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-    if(isset($_GET['To_Do_Id']))
-        $To_Do_Id= $_GET['To_Do_Id']  ;
-    else
-        die("unathorized Way .. !");
 
-    include_once('ToDoDB.php');
-    $aTodo = SelectAllToDo($To_Do_Id);
-    $aTodoMemberId = $aTodo[0]['TodoMemberId'];
+    include('PollsDB.php');
+
+    $aToDos = SelectAllToDO(0);
+
+
+    $iCounter = 0;
 
 
 }
@@ -29,7 +28,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Events</title>
+    <title>Polls</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -202,6 +201,9 @@ else
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
+
+                     <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+
                 </ul>
             </div>
         </nav>
@@ -226,14 +228,22 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../dashboard/Home.php" >
+                    <a href="../dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
+                
                 <li >
                     <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
+
+                    </a>
+                </li>
+
+                <li >
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
 
                     </a>
                 </li>
@@ -290,12 +300,13 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Polls
+
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="./Events.php">Events</a></li>
-                <li class="active">View Events</li>
+                <li><a href="#">Polls</a></li>
+                <li class="active">Polls</li>
             </ol>
         </section>
 
@@ -306,83 +317,53 @@ else
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"></h3>
 
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <h3 class="box-title"><a href="AddPolls.php"><button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Polls</button></a></h3>
+
+                                </div>
+                            </div>
+                        </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <form action="EventsHandler.php" method="post" role="form">
+                            <table class="table table-hover">
+                                <tr class="w3-blue ">
+                                    <th> S# </th>
+                                    <th> Question </th>
+                                    <th> Poll Added By </th>
+                                    <th> Poll Start Date </th>
+                                    <th> Poll End Date </th>
+                                    <th> View </th>
+                                    <th> Delete </th>
 
-                                <input type="hidden" name="action" value="AddRecord" />
-                                <div class="box-body">
+                                </tr>
+                                <?php
 
-                                    <div class="form-group">
-                                        <label for="name">Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Todo Name" value="<?php echo $aTodo[0]['Title'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="smothername">Member</label>
+                                foreach($aToDos as $aToDo)
+                                {
+                                    $iCounter++;
+                                    $sPollMemberId = $aToDo['PollAddedBy'];
+                                    $aOrganizorData = SelectAllMembers($sPollMemberId);
+                                    ?>
 
-                                        <select name="smothername" id="smothername" class="form-control" disabled>
-                                            <?php
+                                    <tr>
+                                        <td> <?php echo $iCounter ?> </td>
+                                        <td> <?php echo $aToDo['Question'] ?> </td>
 
-                                            $iOrganizorId = $aTodoMemberId;
-
-
-                                            $aOrganizorData = SelectAllMembers($iOrganizorId);
-
-
-                                            ?>
-                                            <option value="<?php echo $aOrganizorData[0]['MemberId']  ?>"  ><?php echo $aOrganizorData[0]['MemberName'] ."( ".   $aOrganizorData[0]['UserName'] .")" ?></option>
-
-                                            <?php
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ed">Todo Date</label>
-<!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                        <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['TodoDate'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                    <label for="ed">DeadLine Date</label>
-                                    <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                    <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['DeadlineDate'] ?>" disabled>
-                                </div>
-                                <div class="form-group">
-                                <label for="ed">Description</label>
-                                <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['Description'] ?>" disabled>
-                        </div>
-
-
-
-
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="sfathername">Event Members</label>-->
-<!---->
-<!--                                        <select name="sfathername" id="sfathername" class="form-control" multiple disabled>-->
-<!--                                            --><?php
-//
-//                                            foreach($aMembers as $aMember)
-//                                            {
-//
-//                                                if( in_array($aMember['MemberId'] , $aEventsMembers)  )
-//                                                {
-//                                                    ?>
-<!---->
-<!--                                                    <option>--><?php //echo $aMember['MemberName'] ?><!--</option>-->
-<!---->
-<!--                                                --><?php //}} ?>
-<!--                                        </select>-->
-<!--                                    </div>-->
-
-
-
-
-                                    <div class="form-group">
-                                <!-- /.box-body -->
-
-
-                            </form>
+                                        <td> <?php echo $aOrganizorData[0]['MemberName'] ?> </td>
+                                        <td> <?php echo $aToDo['PollStartDateTime'] ?> </td>
+                                        <td> <?php echo $aToDo['PollEndDateTime'] ?> </td>
+                                        <td ><a href="./ViewPolls.php?PollsId=<?php echo $aToDo['PollId'] ?>" <button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
+<!--                                        <td ><a href="./EditToDo.php?To_Do_Id=--><?php //echo $aToDo['TodoId'] ?><!--" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>-->
+                                        <td ><a href="PollsHandler.php?action=DeleteRecord&PollsId=<?php echo $aToDo['PollId'] ?>" <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                            </table>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -392,8 +373,6 @@ else
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

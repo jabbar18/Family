@@ -9,15 +9,9 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-    if(isset($_GET['To_Do_Id']))
-        $To_Do_Id= $_GET['To_Do_Id']  ;
-    else
-        die("unathorized Way .. !");
 
-    include_once('ToDoDB.php');
-    $aTodo = SelectAllToDo($To_Do_Id);
-    $aTodoMemberId = $aTodo[0]['TodoMemberId'];
-
+    include('../members/MembersDB.php');
+    $aMembers = SelectAllMembers(0);
 
 }
 
@@ -29,7 +23,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Events</title>
+    <title>Todo</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -226,12 +220,12 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../dashboard/Home.php" >
+                    <a href="../Dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
-                <li >
+                <li>
                     <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
 
@@ -246,7 +240,7 @@ else
                 </li>
 
                 <li class="active">
-                    <a href="../events/Events.php">
+                    <a href="./Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
                     </a>
@@ -290,12 +284,13 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Add Polls
+
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="./Events.php">Events</a></li>
-                <li class="active">View Events</li>
+                <li><a href="./polls.php.php">Polls</a></li>
+                <li class="active">Add Polls</li>
             </ol>
         </section>
 
@@ -309,79 +304,74 @@ else
 
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <form action="EventsHandler.php" method="post" role="form">
+                            <form action="PollsHandler.php" method="post" role="form">
 
                                 <input type="hidden" name="action" value="AddRecord" />
                                 <div class="box-body">
 
-                                    <div class="form-group">
-                                        <label for="name">Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Todo Name" value="<?php echo $aTodo[0]['Title'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="smothername">Member</label>
 
-                                        <select name="smothername" id="smothername" class="form-control" disabled>
+
+
+                                    <div class="form-group">
+                                        <label for="eo">Member</label>
+
+                                        <select name="pollmemberid" class="form-control"  >
                                             <?php
 
-                                            $iOrganizorId = $aTodoMemberId;
+                                            foreach($aMembers as $aMember)
+                                            {
 
+                                                    ?>
+                                                    <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
-                                            $aOrganizorData = SelectAllMembers($iOrganizorId);
-
-
-                                            ?>
-                                            <option value="<?php echo $aOrganizorData[0]['MemberId']  ?>"  ><?php echo $aOrganizorData[0]['MemberName'] ."( ".   $aOrganizorData[0]['UserName'] .")" ?></option>
-
-                                            <?php
-                                            ?>
+                                                    <?php
+                                                } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ed">Todo Date</label>
-<!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                        <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['TodoDate'] ?>" disabled>
+                                        <label for="name">Question</label>
+                                        <input type="text" class="form-control" id="question" name="question" placeholder="Question" required>
                                     </div>
                                     <div class="form-group">
-                                    <label for="ed">DeadLine Date</label>
-                                    <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                    <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['DeadlineDate'] ?>" disabled>
-                                </div>
-                                <div class="form-group">
-                                <label for="ed">Description</label>
-                                <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['Description'] ?>" disabled>
-                        </div>
-
-
-
-
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="sfathername">Event Members</label>-->
-<!---->
-<!--                                        <select name="sfathername" id="sfathername" class="form-control" multiple disabled>-->
-<!--                                            --><?php
-//
-//                                            foreach($aMembers as $aMember)
-//                                            {
-//
-//                                                if( in_array($aMember['MemberId'] , $aEventsMembers)  )
-//                                                {
-//                                                    ?>
-<!---->
-<!--                                                    <option>--><?php //echo $aMember['MemberName'] ?><!--</option>-->
-<!---->
-<!--                                                --><?php //}} ?>
-<!--                                        </select>-->
-<!--                                    </div>-->
-
-
-
+                                        <label for="name">Answer 1</label>
+                                        <input type="text" class="form-control" id="ans1" name="ans1" placeholder="Answer 1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 2</label>
+                                        <input type="text" class="form-control" id="ans2" name="ans2" placeholder="Answer 2" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 3</label>
+                                        <input type="text" class="form-control" id="ans3" name="ans3" placeholder="Answer 3" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 4</label>
+                                        <input type="text" class="form-control" id="ans4" name="ans4" placeholder="Answer 4" >
+                                    </div>
 
                                     <div class="form-group">
+                                        <label for="email">Poll Start Date</label>
+                                        <input type="datetime-local" class="form-control" id="pollstartdate" name="pollstartdate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ed">Poll End Date</label>
+
+                                        <input type="datetime-local" class="form-control" id="pollenddate" name="pollenddate"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Notes</label>
+                                        <textarea  class="form-control" id="notes" name="notes" placeholder="Poll Description"></textarea>
+                                    </div>
+
+
+
+
+                                </div>
                                 <!-- /.box-body -->
 
-
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <!-- /.box-body -->

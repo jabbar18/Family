@@ -9,14 +9,16 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-    if(isset($_GET['To_Do_Id']))
-        $To_Do_Id= $_GET['To_Do_Id']  ;
+    if(isset($_GET['PollsId']))
+        $To_Do_Id= $_GET['PollsId']  ;
     else
         die("unathorized Way .. !");
 
-    include_once('ToDoDB.php');
+    include_once('PollsDB.php');
     $aTodo = SelectAllToDo($To_Do_Id);
-    $aTodoMemberId = $aTodo[0]['TodoMemberId'];
+    $aTodoMemberId = $aTodo[0]['PollAddedBy'];
+
+
 
 
 }
@@ -290,12 +292,12 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Polls
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="./Events.php">Events</a></li>
-                <li class="active">View Events</li>
+                <li><a href="./polls.php">Polls</a></li>
+                <li class="active">View Polls</li>
             </ol>
         </section>
 
@@ -314,10 +316,6 @@ else
                                 <input type="hidden" name="action" value="AddRecord" />
                                 <div class="box-body">
 
-                                    <div class="form-group">
-                                        <label for="name">Title</label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Todo Name" value="<?php echo $aTodo[0]['Title'] ?>" disabled>
-                                    </div>
                                     <div class="form-group">
                                         <label for="smothername">Member</label>
 
@@ -338,50 +336,48 @@ else
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ed">Todo Date</label>
-<!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                        <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['TodoDate'] ?>" disabled>
+                                        <label for="name">Question</label>
+                                        <input type="text" class="form-control" id="question" name="question"  value="<?php echo $aTodo[0]['Question'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                    <label for="ed">DeadLine Date</label>
-                                    <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                    <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['DeadlineDate'] ?>" disabled>
-                                </div>
-                                <div class="form-group">
-                                <label for="ed">Description</label>
-                                <!--                                        <input type="datetime" class="form-control" id="ed" name="ed" value="--><?php //echo $aRecords[0]['DateTime'] ?><!--" disabled>-->
-                                <input type="datetime" class="form-control" id="tododate" name="tododate" value="<?php echo $aTodo[0]['Description'] ?>" disabled>
-                        </div>
-
-
-
-
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="sfathername">Event Members</label>-->
-<!---->
-<!--                                        <select name="sfathername" id="sfathername" class="form-control" multiple disabled>-->
-<!--                                            --><?php
-//
-//                                            foreach($aMembers as $aMember)
-//                                            {
-//
-//                                                if( in_array($aMember['MemberId'] , $aEventsMembers)  )
-//                                                {
-//                                                    ?>
-<!---->
-<!--                                                    <option>--><?php //echo $aMember['MemberName'] ?><!--</option>-->
-<!---->
-<!--                                                --><?php //}} ?>
-<!--                                        </select>-->
-<!--                                    </div>-->
-
-
-
+                                        <label for="name">Answer 1</label>
+                                        <input type="text" class="form-control" id="ans1" name="ans1" value="<?php echo $aTodo[0]['Answer1'] ?>"  disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 2</label>
+                                        <input type="text" class="form-control" id="ans2" name="ans2" value="<?php echo $aTodo[0]['Answer2'] ?>"  disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 3</label>
+                                        <input type="text" class="form-control" id="ans3" name="ans3"  value="<?php echo $aTodo[0]['Answer3'] ?>" disabled >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Answer 4</label>
+                                        <input type="text" class="form-control" id="ans4" name="ans4" value="<?php echo $aTodo[0]['Answer4'] ?>"  disabled>
+                                    </div>
 
                                     <div class="form-group">
+                                        <label for="email">Poll Start Date</label>
+                                        <input type="datetime" class="form-control" id="pollstartdate" value="<?php echo $aTodo[0]['PollStartDateTime'] ?>" name="pollstartdate" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ed">Poll End Date</label>
+
+                                        <input type="datetime" class="form-control" id="pollenddate" value="<?php echo $aTodo[0]['PollEndDateTime'] ?>" name="pollenddate" disabled >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Notes</label>
+
+                                        <textarea  class="form-control" id="notes" name="notes" value="<?php echo $aTodo[0]['Notes'] ?>" disabled><?php echo $aTodo[0]['Notes'] ?></textarea>
+                                    </div>
+
+
+
+
+
                                 <!-- /.box-body -->
 
-
+                                </div>
                             </form>
                         </div>
                         <!-- /.box-body -->

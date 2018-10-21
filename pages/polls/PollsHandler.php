@@ -9,7 +9,7 @@
 */
 
 //Include Event Database Functions
-include("ToDoDB.php");
+include("PollsDB.php");
 
 if(isset($_POST['action']))
 {
@@ -28,11 +28,11 @@ if($sAction == 'AddRecord')
     if($iTodoId)
     {
 
-        header("location: Todo.php?m=To Do Created Successfully");
+        header("location: polls.php?m=To Do Created Successfully");
     }
     else
     {
-        header("location: Todo.php?m=Can't Create To Do");
+        header("location: polls.php?m=Can't Create To Do");
     }
 
 }
@@ -44,7 +44,7 @@ else if($sAction == 'EditRecord')
     if($iEventId)
     {
 
-        header("location: EditToDo.php?m=Event Edited Successfully&To_Do_Id=$iCharityId");
+        header("location: EditToDo.php?m=Event Edited Successfully&PollsId=$iCharityId");
     }
     else
     {
@@ -55,12 +55,12 @@ else if($sAction == 'EditRecord')
 else if($sAction == 'DeleteRecord')
 {
 
-    $iEventId = $_GET['To_Do_Id'];
+    $iEventId = $_GET['PollsId'];
 
 
     DeleteEvent($iEventId);
 
-    header("location: Todo.php?m=To Do Deleted Successfully");
+    header("location: polls.php?m=To Do Deleted Successfully");
 }
 
 ?>

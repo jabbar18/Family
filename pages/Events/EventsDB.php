@@ -222,12 +222,184 @@ function SelectAllEventMember($iEventId)
 	mysqli_close($GLOBALS['link']);
 	return false;
 }
+// Birthday Funtion
+
+function MemberBirthday($ddate)
+{
+    establishConnectionToDatabase();
+
+    $dDay = date("d",strtotime($ddate));
+    $dMonth = date("m",strtotime($ddate));
+
+    if($ddate != '')
+        $sCondition = "WHERE Day(DateOfBirth) = '$dDay' and Month(DateOfBirth) = '$dMonth'";
+
+
+    $sQuery = "SELECT * FROM members $sCondition";
+
+
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+
+        $aMembers = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aMember = array("MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "DateOfBirth"=>$row['DateOfBirth']);
+            array_push($aMembers, $aMember);
+        }
+
+        return $aMembers;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+function BirthdayWish()
+{
+    session_start(); //Start Session
+
+    establishConnectionToDatabase();
+    $sMemberBirthdayId = $_REQUEST['MemberId'];
+    $WisherId = $_SESSION['id'];
+    $sBirthdayMessage = $_POST['birthdaymessage'];
+    date_default_timezone_set('asia/karachi');
+    $dDateTime = date('Y-m-d h:i:sa');
+
+    $sQuery = "INSERT INTO birthday (BirthdayMessage, WishDateTime, BirthdayMemberId, MemberWisherId) VALUES( '$sBirthdayMessage', '$dDateTime', '$sMemberBirthdayId', '$WisherId')";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $isCreated = mysqli_insert_id($GLOBALS['link']);
+    }
+    else
+    {
+        $isCreated = false;
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return $isCreated;
+}
+
+
+//poll voting
+function PollVoting($dDate)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+
+    if($dDate != '')
+        $sCondition = "WHERE PollStartDateTime <='$dDate 00:00:00' AND PollEndDateTime >= '$dDate 23:59:59' LIMIT 1";
+
+
+    $sQuery = "SELECT * FROM polls $sCondition";
+
+
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+function BirthdayNotification($dDate)
+{
+    establishConnectionToDatabase();
 
 
 
 
+    $WisherId = $_SESSION['id'];
+
+    $sCondition = "";
 
 
+    if($dDate != '')
+        $sCondition = "WHERE WishDateTime BETWEEN '$dDate 00:00:00' AND  '$dDate 23:59:59' AND BirthdayMemberId ='$WisherId'";
+
+
+    $sQuery = "SELECT * FROM birthday $sCondition";
+
+
+
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("id"=>$row['id'],"BirthdayMessage"=>$row['BirthdayMessage'], "WishDateTime"=>$row['WishDateTime'], "BirthdayMemberId"=>$row['BirthdayMemberId'], "MemberWisherId"=>$row['MemberWisherId']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+//todo notificatiom
+
+function TodoNotification($dDate)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+    $iToDoId = $_SESSION['id'];
+
+
+    if($dDate != '')
+        $sCondition = "WHERE TodoDate <='$dDate' AND DeadlineDate >= '$dDate' AND TodoMemberId ='$iToDoId'";
+
+
+    $sQuery = "SELECT * FROM todo $sCondition";
+
+
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("TodoId"=>$row['TodoId'],"Title"=>$row['Title'], "TodoDate"=>$row['TodoDate'], "TodoMemberId"=>$row['TodoMemberId'], "Description"=>$row['Description'], "DeadlineDate"=>$row['DeadlineDate']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
 
 
 ?>
