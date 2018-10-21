@@ -255,14 +255,14 @@ else
                     </a>
                 </li>
 
-                <li class="active">
+                <li >
                     <a href="../events/Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
 
@@ -272,6 +272,13 @@ else
                 <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
+
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="../tracking/tracking.php"
+                    <i class="fa fa-car"></i> <span>Members Tracking</span>
 
                     </a>
                 </li>
