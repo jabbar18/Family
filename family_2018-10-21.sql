@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.21)
 # Database: family
-# Generation Time: 2018-10-15 16:52:30 +0000
+# Generation Time: 2018-10-21 13:14:22 +0000
 # ************************************************************
 
 
@@ -40,6 +40,34 @@ VALUES
 	(1,'admin','12345');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table birthday
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `birthday`;
+
+CREATE TABLE `birthday` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `BirthdayMessage` text,
+  `WishDateTime` datetime DEFAULT NULL,
+  `BirthdayMemberId` int(11) DEFAULT NULL,
+  `MemberWisherId` int(11) DEFAULT NULL,
+  `Status` int(3) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `birthday` WRITE;
+/*!40000 ALTER TABLE `birthday` DISABLE KEYS */;
+
+INSERT INTO `birthday` (`id`, `BirthdayMessage`, `WishDateTime`, `BirthdayMemberId`, `MemberWisherId`, `Status`)
+VALUES
+	(1,'happy Birthday day May Allah Bless you','2018-10-21 02:59:59',18,14,1),
+	(2,'happy birthay day','2018-10-21 03:06:35',29,14,1),
+	(3,'janam din mubarak','2018-10-21 03:08:13',18,14,1);
+
+/*!40000 ALTER TABLE `birthday` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -113,7 +141,9 @@ LOCK TABLES `events` WRITE;
 INSERT INTO `events` (`EventId`, `EventName`, `Description`, `DateTime`, `Location`, `EventOrganizorId`)
 VALUES
 	(2,'event new',NULL,'2018-10-09 04:44:00','hyderabd',1),
-	(5,'React KHI','react native kaarachio ','2018-10-10 02:02:00','sukkur',14);
+	(5,'React KHI','react native kaarachio ','2018-10-10 02:02:00','sukkur',14),
+	(6,'test','test','2018-10-15 15:33:00','asdadf',14),
+	(7,'beg','asdasd','2018-10-16 02:22:00','Karachi',15);
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -129,33 +159,19 @@ CREATE TABLE `events_members` (
   `MemberId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `events_members` WRITE;
+/*!40000 ALTER TABLE `events_members` DISABLE KEYS */;
 
-
-# Dump of table expenses_items
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `expenses_items`;
-
-CREATE TABLE `expenses_items` (
-  `ExpenceItemsId` int(11) NOT NULL AUTO_INCREMENT,
-  `ExpenseId` int(11) NOT NULL,
-  `Amount` int(11) NOT NULL,
-  `Item` varchar(199) NOT NULL,
-  PRIMARY KEY (`ExpenceItemsId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `expenses_items` WRITE;
-/*!40000 ALTER TABLE `expenses_items` DISABLE KEYS */;
-
-INSERT INTO `expenses_items` (`ExpenceItemsId`, `ExpenseId`, `Amount`, `Item`)
+INSERT INTO `events_members` (`EventId`, `MemberId`)
 VALUES
-	(1,1,2234,'234'),
-	(2,1,1234,'tewst'),
-	(3,6,5678,'test 2'),
-	(4,7,1000,'test 1'),
-	(5,7,500,'test 2');
+	(6,14),
+	(6,15),
+	(6,16),
+	(6,18),
+	(7,16),
+	(7,18);
 
-/*!40000 ALTER TABLE `expenses_items` ENABLE KEYS */;
+/*!40000 ALTER TABLE `events_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -177,14 +193,35 @@ LOCK TABLES `expenses` WRITE;
 
 INSERT INTO `expenses` (`ExpenseId`, `MemberId`, `Amount`, `DateTime`)
 VALUES
-	(1,18,234234.00,'2018-10-07 00:00:00'),
-	(3,13,11.00,'2018-10-07 00:00:00'),
-	(4,13,11.00,'2018-10-07 00:00:00'),
-	(5,1,2234.00,'2018-10-09 00:00:00'),
-	(6,16,6912.00,'2018-10-14 00:00:00'),
-	(7,15,1500.00,'2018-10-15 00:00:00');
+	(1,14,123.00,'2018-10-16 00:00:00'),
+	(2,16,234.00,'2018-10-21 00:00:00');
 
 /*!40000 ALTER TABLE `expenses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table expenses_items
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `expenses_items`;
+
+CREATE TABLE `expenses_items` (
+  `ExpenceItemsId` int(11) NOT NULL AUTO_INCREMENT,
+  `ExpenseId` int(11) NOT NULL,
+  `Amount` int(11) NOT NULL,
+  `Item` varchar(199) NOT NULL,
+  PRIMARY KEY (`ExpenceItemsId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `expenses_items` WRITE;
+/*!40000 ALTER TABLE `expenses_items` DISABLE KEYS */;
+
+INSERT INTO `expenses_items` (`ExpenceItemsId`, `ExpenseId`, `Amount`, `Item`)
+VALUES
+	(1,1,123,'adadf'),
+	(2,2,234,'dfsf');
+
+/*!40000 ALTER TABLE `expenses_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -210,6 +247,53 @@ CREATE TABLE `grocery_items` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+# Dump of table member_detail
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `member_detail`;
+
+CREATE TABLE `member_detail` (
+  `member_id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `member_img` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `member_detail` WRITE;
+/*!40000 ALTER TABLE `member_detail` DISABLE KEYS */;
+
+INSERT INTO `member_detail` (`member_id`, `parent_id`, `first_name`, `last_name`, `member_img`)
+VALUES
+	(1,NULL,'AAA','AA','159'),
+	(2,1,'BB','AAA','123'),
+	(3,1,'CC','AAA','1597'),
+	(4,2,'DD','BB',''),
+	(5,2,'EE','BB',''),
+	(6,2,'FF','BB',''),
+	(7,3,'HH','CC',''),
+	(8,3,'WW','CC','1596'),
+	(9,4,'II','DD','dd'),
+	(10,6,'KK','FF',''),
+	(11,6,'KB','FF',''),
+	(12,5,'LL','EE',''),
+	(13,5,'MM','EE',''),
+	(14,4,'JJ','JJ',''),
+	(15,7,'OO','HH','456'),
+	(16,8,'JI','WW','519'),
+	(17,12,'PP','LL','789'),
+	(18,10,'RK','KK',NULL),
+	(19,10,'VK','KK',''),
+	(20,8,'YY','BB',''),
+	(21,18,'RJ','LL',''),
+	(22,2,'GG','BB',''),
+	(23,21,'RT','RJ','159');
+
+/*!40000 ALTER TABLE `member_detail` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table members
@@ -247,10 +331,11 @@ LOCK TABLES `members` WRITE;
 
 INSERT INTO `members` (`MemberId`, `Admin`, `UserName`, `Password`, `MemberName`, `Qualification`, `ContactNumber`, `CNIC`, `Email`, `Gender`, `SchoolName`, `SchoolFees`, `SchoolContactNumber`, `SchoolLatitude`, `SchoolLongitude`, `SchoolAddress`, `MonthlyPocketMoney`, `AccountBalance`, `MotherId`, `FatherId`, `DateOfBirth`)
 VALUES
-	(14,1,'admin','admin','Abdul Jabbar Memon','','23','3423423','jabbarmemon02@gmail.com','0','','','','','e3','','',NULL,15,16,NULL),
-	(15,0,'1234','1234','test 2','','3232','','','1','','','','','','','','234234',14,1,NULL),
-	(16,0,'admin','admin','raheel','','234','','','0','','','','','','','','23',15,1,NULL),
-	(18,0,'jabbarmemon','12345','Abdul Jabbar','BA','23423','234','jabbarmemon02@gmail.com','0','BFC','1234134','03363084077','12313','13212','Qasimabad Hyderabad','2000','200000',15,16,NULL);
+	(14,1,'admin','admin','Abdul Jabbar Memon','','23','3423423','jabbarmemon02@gmail.com','0','','','','','e3','','',NULL,15,18,NULL),
+	(15,0,'1234','1234','test 2','','3232','','','1','','','','','','','','234234',14,18,NULL),
+	(16,0,'sdfsd','sdfds','Raheel','','3232','','','1','','','','','','','','234234',14,14,NULL),
+	(18,0,'jabbarmemon','admin','Abdul Jabbar','BA','23423','234','jabbarmemon02@gmail.com','0','BFC','1234134','03363084077','12313','13212','Qasimabad Hyderabad','2000','200000',15,0,'2018-10-21'),
+	(19,0,'admin','admin','test','','','','','0','','','','','','','','',15,14,'2018-10-21');
 
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -296,6 +381,15 @@ CREATE TABLE `polls` (
   PRIMARY KEY (`PollId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `polls` WRITE;
+/*!40000 ALTER TABLE `polls` DISABLE KEYS */;
+
+INSERT INTO `polls` (`PollId`, `Question`, `Answer1`, `Answer2`, `Answer3`, `Answer4`, `Answer5`, `Answer6`, `PollStartDateTime`, `PollEndDateTime`, `Status`, `StatusUpdates`, `Notes`, `PollAddedOn`, `PollAddedBy`)
+VALUES
+	(2,'what is laravel','Framework','database engine','server','ram',NULL,NULL,'2018-01-01 02:00:00','2018-12-15 01:01:00',1,NULL,'here','2018-10-20 00:00:00',18);
+
+/*!40000 ALTER TABLE `polls` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table polls_answers
@@ -333,15 +427,17 @@ CREATE TABLE `todo` (
   `Description` text,
   `TodoDate` date DEFAULT NULL,
   `TodoMemberId` int(11) DEFAULT NULL,
+  `DeadlineDate` date DEFAULT NULL,
   PRIMARY KEY (`TodoId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `todo` WRITE;
 /*!40000 ALTER TABLE `todo` DISABLE KEYS */;
 
-INSERT INTO `todo` (`TodoId`, `Title`, `Description`, `TodoDate`, `TodoMemberId`)
+INSERT INTO `todo` (`TodoId`, `Title`, `Description`, `TodoDate`, `TodoMemberId`, `DeadlineDate`)
 VALUES
-	(1,'tes','asd','2018-10-04',1);
+	(1,'tes','asd','2018-10-04',1,NULL),
+	(6,'mantance database','here','2018-07-01',18,'2018-12-01');
 
 /*!40000 ALTER TABLE `todo` ENABLE KEYS */;
 UNLOCK TABLES;
