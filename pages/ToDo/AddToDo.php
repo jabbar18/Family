@@ -232,6 +232,13 @@ else
                     </a>
                 </li>
 
+                 <li >
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
+
+                    </a>
+                </li>
+
                 <li>
                     <a href="../expenses/Expenses.php">
                         <i class="fa fa-money"></i> <span>Expenses</span>
@@ -239,14 +246,14 @@ else
                     </a>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="./Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
 
@@ -259,6 +266,14 @@ else
 
                     </a>
                 </li>
+
+                <li>
+                    <a href="../tracking/tracking.php"
+                    <i class="fa fa-car"></i> <span>Members Tracking</span>
+
+                    </a>
+                </li>
+
 
                 <li class="treeview">
                     <a href="#">

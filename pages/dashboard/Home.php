@@ -9,7 +9,6 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-
     include('../Events/EventsDB.php');
 
     $aMembers = SelectAllMembers(0);
@@ -21,7 +20,6 @@ else
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
-
 
 }
 
@@ -251,7 +249,7 @@ else
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
                     <a href="../dashboard/Home.php">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        <i class="fa fa-dashboard"></i><span>Dashboard</span>
 
                     </a>
                 </li>
@@ -264,7 +262,7 @@ else
 
                 <li >
                     <a href="../familytree/familytree.php"
-                    <i class="fa fa-tree"></i> <span>Family Tree</span>
+                    <i class="fa fa-tree"></i> <span> Family Tree</span>
 
                     </a>
                 </li>

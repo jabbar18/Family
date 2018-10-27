@@ -255,7 +255,11 @@ else
                     </a>
                 </li>
 
-                <li class="active">
+<<<<<<< HEAD
+                <li >
+=======
+                <li>
+>>>>>>> c92dd964f5703dc99c2f83200fac42d7f7b00320
                     <a href="../events/Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 
@@ -269,9 +273,16 @@ else
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../tracking/tracking.php"
+                    <i class="fa fa-car"></i> <span>Members Tracking</span>
 
                     </a>
                 </li>
