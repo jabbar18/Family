@@ -255,15 +255,7 @@ else
                     </a>
                 </li>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <li >
-=======
                 <li>
->>>>>>> c92dd964f5703dc99c2f83200fac42d7f7b00320
-=======
-                <li>
->>>>>>> c92dd964f5703dc99c2f83200fac42d7f7b00320
                     <a href="../events/Events.php">
                         <i class="fa fa-plane"></i> <span>Events</span>
 

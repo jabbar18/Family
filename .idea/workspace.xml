@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FML_REST/db_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/FML_REST/db_functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/dashboard/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/Home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/polls/polls.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/polls/polls.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,61 +11,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="db_functions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+    <leaf>
+      <file leaf-file-name="dbconnection.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2002">
-              <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+            <state relative-caret-position="70">
+              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FML_REST/login.php">
+      <file leaf-file-name="db_config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FML_REST/db_config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            <state relative-caret-position="84">
+              <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="polls.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="polls.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/polls/polls.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3696">
-              <caret line="264" column="20" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/Events/EventsDB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5558">
-              <caret line="397" column="5" selection-start-line="371" selection-start-column="4" selection-end-line="397" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="usershandler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/files/usershandler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+            <state relative-caret-position="177">
+              <caret line="258" selection-start-line="258" selection-end-line="258" />
             </state>
           </provider>
         </entry>
@@ -96,22 +65,7 @@
       <find>mult</find>
       <find>Member</find>
       <find>$sLoginType</find>
-      <find>tmp_tbody</find>
-      <find>Add Items</find>
-      <find>expence</find>
-      <find>event da</find>
-      <find>mainContainer</find>
-      <find>Members</find>
-      <find>family</find>
-      <find>viewexp</find>
-      <find>sdata</find>
-      <find>document.</find>
-      <find>eve</find>
-      <find>amount_sum</find>
-      <find>$sQuery1</find>
-      <find>Tree</find>
-      <find>active</find>
-      <find>dashboard</find>
+      <find>head</find>
     </findStrings>
     <replaceStrings>
       <replace>Event</replace>
@@ -124,6 +78,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pages/members/members.php" />
+        <option value="$PROJECT_DIR$/pages/members/Members.php" />
         <option value="$PROJECT_DIR$/pages/members/AddMember.php" />
         <option value="$PROJECT_DIR$/pages/database/usersdb.php" />
         <option value="$PROJECT_DIR$/pages/UserHandler.php" />
@@ -146,29 +101,14 @@
         <option value="$PROJECT_DIR$/admin/files/usershandler.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/FML_REST/db_connect.php" />
+        <option value="$PROJECT_DIR$/files/usershandler.php" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/admin/Members/Members.php" />
         <option value="$PROJECT_DIR$/files/database/usersdb.php" />
         <option value="$PROJECT_DIR$/FML_REST/login.php" />
-        <option value="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/ViewExpenses.php" />
-        <option value="$PROJECT_DIR$/pages/Events/Events.php" />
-        <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
-        <option value="$PROJECT_DIR$/pages/familytree/treedata.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/pages/members/Members.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/Expenses.php" />
-        <option value="$PROJECT_DIR$/files/usershandler.php" />
-        <option value="$PROJECT_DIR$/pages/familytree/familytree.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/ExpensesHandler.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/ExpenseDB.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/AddExpenses.php" />
-        <option value="$PROJECT_DIR$/pages/tracking/tracking.php" />
-        <option value="$PROJECT_DIR$/FML_REST/get_subjects.php" />
-        <option value="$PROJECT_DIR$/FML_REST/get_homedata.php" />
-        <option value="$PROJECT_DIR$/pages/ToDo/Todo.php" />
-        <option value="$PROJECT_DIR$/pages/polls/polls.php" />
         <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
-        <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
+        <option value="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" />
+        <option value="$PROJECT_DIR$/pages/polls/polls.php" />
       </list>
     </option>
   </component>
@@ -196,10 +136,10 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="721" />
+    <option name="height" value="712" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -209,7 +149,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -220,18 +159,7 @@
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
@@ -239,16 +167,11 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="polls" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="ToDo" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,7 +182,6 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/pages/familytree" />
       <recent name="$PROJECT_DIR$/admin/Members" />
       <recent name="$PROJECT_DIR$/fml/include" />
       <recent name="$PROJECT_DIR$/fml" />
@@ -301,33 +223,27 @@
       <workItem from="1538897419904" duration="6795000" />
       <workItem from="1538973458621" duration="143000" />
       <workItem from="1539528807289" duration="64000" />
-      <workItem from="1539528876927" duration="662000" />
-      <workItem from="1539545588745" duration="308000" />
-      <workItem from="1539594807440" duration="172000" />
-      <workItem from="1539619990775" duration="10342000" />
-      <workItem from="1539665321377" duration="12000" />
-      <workItem from="1540110126218" duration="5089000" />
-      <workItem from="1540183362650" duration="234000" />
+      <workItem from="1540639993148" duration="273000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43197000" />
+    <option name="totallyTimeSpent" value="26651000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="721" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="721" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27578124" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -362,6 +278,22 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
+    <entry file="file://$PROJECT_DIR$/pages/UserHandler.php" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/pages/members/jquery-datatable.html" />
+    <entry file="file://$PROJECT_DIR$/pages/members/normal-tables.html" />
+    <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html" />
+    <entry file="file://$PROJECT_DIR$/pages/database/usersdb.php" />
+    <entry file="file://$PROJECT_DIR$/pages/members/Members.php" />
+    <entry file="file://$PROJECT_DIR$/pages/Members/member_process.php" />
+    <entry file="file://$PROJECT_DIR$/pages/Members/AddMember.php" />
+    <entry file="file://$PROJECT_DIR$/pages/Members/MembersActions.php" />
+    <entry file="file://$PROJECT_DIR$/pages/UserHandler.php" />
+    <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
+    <entry file="file://$PROJECT_DIR$/fml/login/index.php" />
+    <entry file="file://$PROJECT_DIR$/fml/include/include.php" />
+    <entry file="file://$PROJECT_DIR$/index2.php" />
     <entry file="file://$PROJECT_DIR$/login.php" />
     <entry file="file://$PROJECT_DIR$/classes/clsDatabase.php" />
     <entry file="file://$PROJECT_DIR$/fml/login/index.php" />
@@ -388,172 +320,75 @@
     <entry file="file://$PROJECT_DIR$/admin/index.php" />
     <entry file="file://$PROJECT_DIR$/admin/Members/Members.php" />
     <entry file="file://$PROJECT_DIR$/admin/Events/AddEvent.php" />
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_connect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/files/usershandler.php" />
     <entry file="file://$PROJECT_DIR$/admin/files/database/usersdb.php" />
-    <entry file="file://$PROJECT_DIR$/files/database/usersdb.php" />
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/database/usersdb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/usershandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+          <folding>
+            <element signature="e#2534#4154#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Expense/ExpenseHandler.php" />
     <entry file="file://$PROJECT_DIR$/admin/Expense/ExpenseDB.php" />
-    <entry file="file://$PROJECT_DIR$/admin/Members/MembersDB.php" />
-    <entry file="file://$PROJECT_DIR$/admin/Expense/AddExpense.php" />
-    <entry file="file://$PROJECT_DIR$/pages/Events/ViewEvents.php">
+    <entry file="file://$PROJECT_DIR$/FML_REST/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" lean-forward="true" selection-end-line="607" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/ViewExpenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/familytree/treedata.php" />
-    <entry file="file://$PROJECT_DIR$/pages/Events/Events.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="242" column="21" lean-forward="true" selection-start-line="242" selection-start-column="21" selection-end-line="242" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="235" column="21" selection-start-line="235" selection-start-column="21" selection-end-line="235" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3290">
-          <caret line="235" column="21" selection-start-line="230" selection-start-column="16" selection-end-line="235" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="80" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="80" />
+        <state relative-caret-position="378">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/ExpensesHandler.php">
+    <entry file="file://$PROJECT_DIR$/admin/Members/MembersDB.php" />
+    <entry file="file://$PROJECT_DIR$/admin/Expense/AddExpense.php" />
+    <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="70">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/MembersDB.php">
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" selection-start-line="2" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/ExpenseDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/db_connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/tracking/tracking.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="313" column="32" selection-start-line="313" selection-start-column="32" selection-end-line="313" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/familytree/familytree.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="352" column="25" selection-end-line="608" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/AddExpenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="639" column="30" selection-start-line="639" selection-start-column="30" selection-end-line="639" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/usershandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        <state relative-caret-position="84">
+          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/polls/polls.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3696">
-          <caret line="264" column="20" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/ToDo/Todo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3598">
-          <caret line="257" column="21" lean-forward="true" selection-start-line="257" selection-start-column="21" selection-end-line="257" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/Events/EventsDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5558">
-          <caret line="397" column="5" selection-start-line="371" selection-start-column="4" selection-end-line="397" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/get_subjects.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2002">
-          <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="177">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
         </state>
       </provider>
     </entry>
