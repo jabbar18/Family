@@ -413,9 +413,10 @@ function Expenses_Data()
 
 
     $iUserId = $_SESSION['id'];
+    $iAdmin = $_SESSION['Admin'];
 
-    if($iUserId > 1)
-        $sCondition = " WHERE E.MemberId = $iUserId";
+    if($iAdmin == 0)
+        $sCondition = "WHERE E.MemberId = $iUserId";
 
     $sQuery = "SELECT SUM(E.Amount) AS Total,MONTHNAME(E.DateTime) AS MonthName 
                 FROM expenses E 
@@ -446,8 +447,6 @@ function PollVote()
     $sResult = explode("_", $QuestionAnswer);
     $QuestionNo = $sResult[0];
     $AnswerNo = $sResult[1];
-
-
 
     $sQuery = "INSERT INTO polls_answers (QuestionId, AnswerId, MemberId) VALUES('$QuestionNo', '$AnswerNo', '$MembersId')";
 

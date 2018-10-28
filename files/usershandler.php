@@ -58,6 +58,7 @@ if($mode == 'l'){
 			$_SESSION['id'] = $user['id']; //Put UserId In Session
 			$_SESSION['username'] = $user['username']; //Put UserName In Session
             $_SESSION['MemberName'] = $user['MemberName']; //Put UserName In Session
+            $_SESSION['Admin'] = $user['Admin']; //Put UserName In Session
 			
 			header("location: ../pages/dashboard/Home.php"); //Redirect To Event Page
 		}else{

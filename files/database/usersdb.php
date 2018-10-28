@@ -32,7 +32,7 @@ function selectAdmin($userName, $password){
 	
 	if($result){
 		if($row = mysqli_fetch_array($result)){
-			$user = array("id"=>$row['MemberId'], "username"=>$row['UserName'], "MemberName"=>$row['MemberName']);
+			$user = array("id"=>$row['MemberId'], "username"=>$row['UserName'], "MemberName"=>$row['MemberName'], "Admin"=>$row['Admin']);
 		}
 	}
 	
@@ -40,45 +40,5 @@ function selectAdmin($userName, $password){
 	
 	mysqli_close($GLOBALS['link']);
 	return $user;
-}
-
-//Select Specific User with username And password
-function selectUser($userName, $password){
-	establishConnectionToDatabase();
-
-	$query = "SELECT * FROM teacher WHERE user_name = '$userName' AND password = '$password'";
-	$result = mysqli_query($GLOBALS['link'], $query);
-	
-	$user = false;
-	
-	if($result){
-		if($row = mysqli_fetch_array($result)){
-			$user = array("id"=>$row['teacher_id'], "username"=>$row['user_name'], "password"=>$row['password'], "MemberName"=>$row['MemberName']);
-		}
-	}
-	
-	echo mysqli_error($GLOBALS['link']);
-	
-	mysqli_close($GLOBALS['link']);
-	return $user;
-}
-
-//Select Specific User with username And password
-function isUserValid($userName, $password){
-	establishConnectionToDatabase();
-
-	$query = "SELECT * FROM teacher WHERE user_name = '$userName' AND password = '$password'";
-
-	$result = mysqli_query($GLOBALS['link'], $query);
-
-	$row = mysqli_fetch_array($result);
-	
-	if(!empty($row['teacher_id'])){
-		mysqli_close($GLOBALS['link']);	
-		return true; //If UserName AND Password Is Correct Then return True
-	}
-	
-	mysqli_close($GLOBALS['link']);
-	return false;
 }
 ?>
