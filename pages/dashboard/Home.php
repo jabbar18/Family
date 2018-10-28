@@ -22,7 +22,6 @@ else
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
     $aExpenses_Data = Expenses_Data();
-
     $iTotalExpenses = $aExpenses_Data["Total"];
 
 }
@@ -331,7 +330,7 @@ else
         <section class="content-header">
             <h1>
                 Dashboard
-                <small>Version 2.0</small>
+
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -398,6 +397,11 @@ else
                 <div class="col-md-8">
                     <!-- MAP & BOX PANE -->
 
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/data.js"></script>
+                    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+
                     <!-- /.box -->
 
                     <!-- /.row -->
@@ -405,7 +409,7 @@ else
                     <!-- TABLE: LATEST ORDERS -->
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Latest Orders</h3>
+                            <h3 class="box-title">Expenses Chart</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -415,82 +419,74 @@ else
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div class="table-responsive">
-                                <table class="table no-margin">
-                                    <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Popularity</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR9842</a></td>
-                                        <td>Call of Duty IV</td>
-                                        <td><span class="label label-success">Shipped</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR1848</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="label label-danger">Delivered</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR7429</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="label label-info">Processing</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR1848</a></td>
-                                        <td>Samsung Smart TV</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR7429</a></td>
-                                        <td>iPhone 6 Plus</td>
-                                        <td><span class="label label-danger">Delivered</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="examples/invoice.html">OR9842</a></td>
-                                        <td>Call of Duty IV</td>
-                                        <td><span class="label label-success">Shipped</span></td>
-                                        <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                            <div id="BarChart" style="height: 400px"></div>
+                            <script type="text/javascript">
+                                Highcharts.chart('BarChart', {
+                                    chart: {
+                                        renderTo: "histogram",
+                                        type: "column"
+                                    },
+                                    plotOptions: {
+                                        column: {
+                                            colorByPoint: true
+                                        }
+                                    },
+                                    title: { text: "" },
+                                    credits: { enabled:false },
+                                    xAxis: {
+                                        categories: [<?=$aExpenses_Data['Categories'];?>],
+                                        labels: {
+
+                                            align: "center",
+                                            style: {
+                                                fontSize: "10px",
+                                                textShadow:false,
+                                                fontFamily: "Trebuchet MS, Verdana, sans-serif"
+                                            }
+                                        }
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        allowDecimals: false,
+                                        title: {
+                                            text: ""
+                                        }
+                                    },
+                                    legend: {
+                                        enabled: false
+                                    },
+                                    plotOptions: {
+                                        series: {
+                                            borderWidth: 0,
+                                            dataLabels: {
+                                                enabled: true,
+                                                format: '{point.y:.1f}'
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        formatter: function() {
+                                            return "<b>" + this.x + "</b><br/>Total : "+ Highcharts.numberFormat(this.y, 0);
+                                        }
+                                    },
+
+                                    series: [{
+                                        name: "",
+                                        data: [<?=$aExpenses_Data['Data'];?>],
+                                        dataLabels: {
+                                            enabled: true,
+                                            color: "#00000",
+                                            align: "right",
+                                            x: 4,
+                                            y: 10,
+                                            style: {
+                                                fontSize: "10px",
+                                                textShadow:false
+                                            }
+                                        }
+                                    }]
+                                });
+                            </script>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -773,97 +769,6 @@ else
             </div>
             <!-- /.row -->
 
-            <div class="row">
-                <div class="col-sm-8">
-                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                    <script src="https://code.highcharts.com/modules/data.js"></script>
-                    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-
-                    <!-- Adeel Ahmed -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Expanse Chart</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <div class="box-body">
-                            <div id="BarChart" style="height: 400px"></div>
-                            <script type="text/javascript">
-                                Highcharts.chart('BarChart', {
-                                    chart: {
-                                        renderTo: "histogram",
-                                        type: "column"
-                                    },
-                                    plotOptions: {
-                                        column: {
-                                            colorByPoint: true
-                                        }
-                                    },
-                                    title: { text: "" },
-                                    credits: { enabled:false },
-                                    xAxis: {
-                                        categories: [<?=$aExpenses_Data['Categories'];?>],
-                                        labels: {
-
-                                            align: "center",
-                                            style: {
-                                                fontSize: "10px",
-                                                textShadow:false,
-                                                fontFamily: "Trebuchet MS, Verdana, sans-serif"
-                                            }
-                                        }
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        allowDecimals: false,
-                                        title: {
-                                            text: ""
-                                        }
-                                    },
-                                    legend: {
-                                        enabled: false
-                                    },
-                                    plotOptions: {
-                                        series: {
-                                            borderWidth: 0,
-                                            dataLabels: {
-                                                enabled: true,
-                                                format: '{point.y:.1f}'
-                                            }
-                                        }
-                                    },
-                                    tooltip: {
-                                        formatter: function() {
-                                            return "<b>" + this.x + "</b><br/>Total : "+ Highcharts.numberFormat(this.y, 0);
-                                        }
-                                    },
-
-                                    series: [{
-                                        name: "",
-                                        data: [<?=$aExpenses_Data['Data'];?>],
-                                        dataLabels: {
-                                            enabled: true,
-                                            color: "#00000",
-                                            align: "right",
-                                            x: 4,
-                                            y: 10,
-                                            style: {
-                                                fontSize: "10px",
-                                                textShadow:false
-                                            }
-                                        }
-                                    }]
-                                });
-                            </script>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
         </section>
         <!-- /.content -->
