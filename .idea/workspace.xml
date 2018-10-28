@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/pages/polls/polls.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/polls/polls.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Events/EventsDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Events/EventsDB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Events/EventsHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Events/EventsHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/dashboard/Home.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dashboard/Home.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,34 +16,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="738">
+              <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="dbconnection.inc.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+            <state relative-caret-position="126">
+              <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FML_REST/db_config.php">
+      <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/Events/EventsDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+            <state relative-caret-position="260">
+              <caret line="411" column="20" selection-start-line="411" selection-start-column="20" selection-end-line="411" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polls.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/polls/polls.php">
+      <file leaf-file-name="EventsHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/Events/EventsHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="258" selection-start-line="258" selection-end-line="258" />
+            <state relative-caret-position="532">
+              <caret line="99" column="2" selection-start-line="99" selection-start-column="2" selection-end-line="99" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -66,6 +80,7 @@
       <find>Member</find>
       <find>$sLoginType</find>
       <find>head</find>
+      <find>expense</find>
     </findStrings>
     <replaceStrings>
       <replace>Event</replace>
@@ -102,13 +117,16 @@
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/FML_REST/db_connect.php" />
         <option value="$PROJECT_DIR$/files/usershandler.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/admin/Members/Members.php" />
         <option value="$PROJECT_DIR$/files/database/usersdb.php" />
         <option value="$PROJECT_DIR$/FML_REST/login.php" />
         <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
-        <option value="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" />
         <option value="$PROJECT_DIR$/pages/polls/polls.php" />
+        <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/files/database/inc/dbconnection.inc.php" />
+        <option value="$PROJECT_DIR$/pages/Events/EventsHandler.php" />
+        <option value="$PROJECT_DIR$/pages/Events/EventsDB.php" />
       </list>
     </option>
   </component>
@@ -136,10 +154,10 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="712" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -149,6 +167,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,19 +178,36 @@
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="inc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="polls" type="462c0819:PsiDirectoryNode" />
+              <item name="Events" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,15 +259,17 @@
       <workItem from="1538897419904" duration="6795000" />
       <workItem from="1538973458621" duration="143000" />
       <workItem from="1539528807289" duration="64000" />
-      <workItem from="1540639993148" duration="273000" />
+      <workItem from="1540639993148" duration="1504000" />
+      <workItem from="1540713315289" duration="888000" />
+      <workItem from="1540715614544" duration="1086000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26651000" />
+    <option name="totallyTimeSpent" value="29856000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="721" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="726" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27578124" />
@@ -240,12 +278,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -278,9 +316,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/database/inc/dbconnection.inc.php" />
-    <entry file="file://$PROJECT_DIR$/pages/UserHandler.php" />
-    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/pages/members/jquery-datatable.html" />
     <entry file="file://$PROJECT_DIR$/pages/members/normal-tables.html" />
     <entry file="file://$PROJECT_DIR$/pages/forms/basic-form-elements.html" />
@@ -362,33 +397,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/Members/MembersDB.php" />
     <entry file="file://$PROJECT_DIR$/admin/Expense/AddExpense.php" />
-    <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
+    <entry file="file://$PROJECT_DIR$/pages/polls/polls.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        <state relative-caret-position="3612">
+          <caret line="258" selection-start-line="258" selection-end-line="258" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FML_REST/db_config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/polls/polls.php">
+    <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="258" selection-start-line="258" selection-end-line="258" />
+        <state relative-caret-position="196">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/database/inc/dbconnection.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Events/EventsHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="99" column="2" selection-start-line="99" selection-start-column="2" selection-end-line="99" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/Events/EventsDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="411" column="20" selection-start-line="411" selection-start-column="20" selection-end-line="411" selection-end-column="20" />
         </state>
       </provider>
     </entry>

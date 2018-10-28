@@ -3,10 +3,11 @@
 //Include Database Connection Function To Make Connection With Database
 include_once("../../files/database/inc/dbconnection.inc.php");
 
-//Create member 
+$aColors = array("AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E", "588526", "B3AA00", "C07878", "78C08b", "C0b878", "7892c0", "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E", "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E", "588526", "B3AA00", "C07878", "78C08b", "C0b878", "7892c0", "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E", "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E", "588526", "B3AA00", "C07878", "78C08b", "C0b878", "7892c0", "AFD8F8", "F6BD0F", "8BBA00", "FF8E46", "008E8E", "D64646", "8E468E");
+//Create member
 function AddRecord()
 {
-	establishConnectionToDatabase();
+    establishConnectionToDatabase();
 
 
     $sname = $_POST['name'];
@@ -17,140 +18,140 @@ function AddRecord()
     $sDescription= $_POST['des'];
 
     $sQuery = "INSERT INTO events (EventName, DateTime, Location, EventOrganizorId, Description) VALUES( '$sname', '$sed', '$sl', '$seo', '$sDescription')";
-   
+
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
-	if($sResult)
-	{
-	    $isCreated = mysqli_insert_id($GLOBALS['link']);
-	}
-	else
-	{
-		$isCreated = false;
-	}
+    if($sResult)
+    {
+        $isCreated = mysqli_insert_id($GLOBALS['link']);
+    }
+    else
+    {
+        $isCreated = false;
+    }
 
 
-		foreach ($aMembers as $key => $value) {
-    		 $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$isCreated', '$value')";
+    foreach ($aMembers as $key => $value) {
+        $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$isCreated', '$value')";
 
-    		$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-    		if(!($sResult))
-    			return false;
-
-
-    	}
+        $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+        if(!($sResult))
+            return false;
 
 
-	
-	mysqli_close($GLOBALS['link']);
-	
-	return $isCreated;
+    }
+
+
+
+    mysqli_close($GLOBALS['link']);
+
+    return $isCreated;
 }
 
 //Update member
 function EditRecord($iEventId)
 {
-	establishConnectionToDatabase();
+    establishConnectionToDatabase();
 
-	$sname = $_POST['name'];
+    $sname = $_POST['name'];
     $sed = $_POST['ed'];
     $sl = $_POST['l'];
     $seo = $_POST['eo'];
     $aMembers= $_POST['Members'];
     // $iEventId =$this->iEventId;
-   	
+
     $sQuery = "Update  events SET EventName='$sname',  DateTime='$sed', Location='$sl', EventOrganizorId='$seo'   WHERE  EventId='$iEventId'";
 
 
-   	// die($sQuery);
+    // die($sQuery);
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
-	
-	if(mysqli_affected_rows($GLOBALS['link']) >= 0){
-		$isUpdated = "Event Updated Successfully";
-	}else{
-		$isUpdated = false;
-		return false;
-	}
 
-	
-	$sQuery = "DELETE FROM events_members   WHERE  EventId='$iEventId'";
-	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-
-	foreach ($aMembers as $key => $value) {
-    		 $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$iEventId', '$value')";
-
-    		$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-    		if(!($sResult))
-    			return false;
+    if(mysqli_affected_rows($GLOBALS['link']) >= 0){
+        $isUpdated = "Event Updated Successfully";
+    }else{
+        $isUpdated = false;
+        return false;
+    }
 
 
-    	}
+    $sQuery = "DELETE FROM events_members   WHERE  EventId='$iEventId'";
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    foreach ($aMembers as $key => $value) {
+        $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$iEventId', '$value')";
+
+        $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+        if(!($sResult))
+            return false;
+
+
+    }
 
 
 
 
 
     mysqli_close($GLOBALS['link']);
-	return $isUpdated;
+    return $isUpdated;
 }
 
 //Delete member
 function DeleteEvent($iMemberId)
 {
-	establishConnectionToDatabase();
-	
-	$query = "DELETE FROM events WHERE EventId = $iMemberId";
-	$result = mysqli_query($GLOBALS['link'], $query);
-	
-	if(mysqli_affected_rows($GLOBALS['link']) > 0)
-	{
-		$sReturn = "Member Deleted Successfully";
-	}
-	else
-	{
+    establishConnectionToDatabase();
+
+    $query = "DELETE FROM events WHERE EventId = $iMemberId";
+    $result = mysqli_query($GLOBALS['link'], $query);
+
+    if(mysqli_affected_rows($GLOBALS['link']) > 0)
+    {
+        $sReturn = "Member Deleted Successfully";
+    }
+    else
+    {
         $sReturn = false;
-	}
-	$query = "DELETE FROM events_members WHERE EventId = $iMemberId";
-	$result = mysqli_query($GLOBALS['link'], $query);
-	
-	mysqli_close($GLOBALS['link']);
-	return $sReturn;
+    }
+    $query = "DELETE FROM events_members WHERE EventId = $iMemberId";
+    $result = mysqli_query($GLOBALS['link'], $query);
+
+    mysqli_close($GLOBALS['link']);
+    return $sReturn;
 }
 
 
-	function SelectAllEvents($iEventId, $sSort = 0)
+function SelectAllEvents($iEventId, $sSort = 0)
 {
-	establishConnectionToDatabase();
+    establishConnectionToDatabase();
 
     $sCondition = "";
 
     if($sSort == 1)
         $sCondition = "ORDER BY E.DateTime DESC LIMIT 5";
 
-	if($iEventId > 0)
-	    $sCondition = "WHERE E.EventId ='$iEventId' LIMIT 1";
+    if($iEventId > 0)
+        $sCondition = "WHERE E.EventId ='$iEventId' LIMIT 1";
 
 
-	$sQuery = "SELECT E.*, M.MemberName AS 'Organizor' FROM events AS E INNER JOIN members AS M ON M.MemberId = E.EventOrganizorId  $sCondition";
+    $sQuery = "SELECT E.*, M.MemberName AS 'Organizor' FROM events AS E INNER JOIN members AS M ON M.MemberId = E.EventOrganizorId  $sCondition";
 
-	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-	
-	if($sResult)
-	{
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
         $aEvents = array();
-		
-		while($row = mysqli_fetch_array($sResult))
-        {
-			$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor'], "Description"=>$row['Description']);
-        	array_push($aEvents, $aEvent);
-		}
 
-		return $aEvents;
-		
-	}
-	
-	mysqli_close($GLOBALS['link']);
-	return false;
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor'], "Description"=>$row['Description']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
 }
 
 //Select All members
@@ -191,36 +192,36 @@ function SelectAllMembers($iMemberId)
 
 function SelectAllEventMember($iEventId)
 {
-	establishConnectionToDatabase();
+    establishConnectionToDatabase();
 
     $sCondition = "";
 
-	if($iEventId > 0)
-	    $sCondition = "WHERE E.EventId ='$iEventId' ";
+    if($iEventId > 0)
+        $sCondition = "WHERE E.EventId ='$iEventId' ";
 
 
-	$sQuery = "SELECT E.* FROM events_members AS E   $sCondition";
-	
-	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
-	
-	if($sResult)
-	{
+    $sQuery = "SELECT E.* FROM events_members AS E   $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
         $aEvents = array();
-		
-		while($row = mysqli_fetch_array($sResult))
-        {
-			//$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor']);
-        //	array_push($aEvents, $row['MemberId'] );
-			$aEvents[]=$row['MemberId'];
-		}
-		
-		return $aEvents;
 
-		
-	}
-	
-	mysqli_close($GLOBALS['link']);
-	return false;
+        while($row = mysqli_fetch_array($sResult))
+        {
+            //$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor']);
+            //	array_push($aEvents, $row['MemberId'] );
+            $aEvents[]=$row['MemberId'];
+        }
+
+        return $aEvents;
+
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
 }
 // Birthday Funtion
 
@@ -297,7 +298,7 @@ function PollVoting($dDate)
 
 
     if($dDate != '')
-        $sCondition = "WHERE PollStartDateTime <='$dDate 00:00:00' AND PollEndDateTime >= '$dDate 23:59:59' LIMIT 1";
+        $sCondition = "WHERE PollStartDateTime <='$dDate 00:00:00' AND PollEndDateTime >= '$dDate 23:59:59'";
 
 
     $sQuery = "SELECT * FROM polls $sCondition";
@@ -401,5 +402,133 @@ function TodoNotification($dDate)
     return false;
 }
 
+function Expenses_Data()
+{
+    establishConnectionToDatabase();
+    global $aColors;
+    $counter=0;
+    $sCateogries='';
+    $sData='';
+    $sCondition= "";
 
+
+    $iUserId = $_SESSION['id'];
+
+    if($iUserId > 1)
+        $sCondition = " WHERE E.MemberId = $iUserId";
+
+    $sQuery = "SELECT SUM(E.Amount) AS Total,MONTHNAME(E.DateTime) AS MonthName 
+                FROM expenses E 
+                $sCondition
+                GROUP BY MONTHNAME(E.DateTime)
+                ORDER BY str_to_date(MONTHNAME(E.DateTime),'%M') ASC";
+
+    $ObjResult = mysqli_query($GLOBALS['link'], $sQuery);
+    while($aRow = mysqli_fetch_assoc($ObjResult))
+    {
+        $counter++;
+        $sData .="{y:".$aRow['Total'].", color: \"#".$aColors[$counter]."\"},";
+        $sCateogries .="'".$aRow['MonthName']."',";
+    }
+    $aData=["Data"=>trim($sData,','),"Categories" => trim($sCateogries,',')];
+    return $aData;
+
+}
+
+function PollVote()
+{
+    establishConnectionToDatabase();
+
+
+    $QuestionAnswer = $_POST['Question_'];
+    $MembersId = $_POST['MemberId'];
+
+    $sResult = explode("_", $QuestionAnswer);
+    $QuestionNo = $sResult[0];
+    $AnswerNo = $sResult[1];
+
+
+
+    $sQuery = "INSERT INTO polls_answers (QuestionId, AnswerId, MemberId) VALUES('$QuestionNo', '$AnswerNo', '$MembersId')";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $isCreated = mysqli_insert_id($GLOBALS['link']);
+    }
+    else
+    {
+        $isCreated = false;
+    }
+
+    mysqli_close($GLOBALS['link']);
+
+    return $isCreated;
+}
+
+function CheckPoll()
+{
+    establishConnectionToDatabase();
+    $que= "SELECT COUNT(id) from polls_answers WHERE MemberId='14'";
+    $sResult = mysqli_query($GLOBALS['link'], $que);
+    return $sResult;
+//    die($sResult);
+}
+function PollResult($QuestionId,$MemberId)
+{
+
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($QuestionId != '')
+        $sCondition = "WHERE QuestionId ='$QuestionId'  AND MemberId ='$MemberId'";
+
+
+    $sQuery = "SELECT * FROM polls_answers $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+    $aVotes = array();
+
+    if($sResult)
+    {
+
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aVotes[0] = ["MemberId"=>$row['MemberId'],"QuestionId"=>$row['QuestionId'], "AnswerId"=>$row['AnswerId']];
+//            array_push($aVotes, $aVote);
+        }
+
+    }
+    $sQuery = "SELECT
+    QuestionId,
+    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='1' AND QuestionId='$QuestionId') AS 'Answer_1',
+    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='2' AND QuestionId='$QuestionId') AS 'Answer_2',
+    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='3' AND QuestionId='$QuestionId') AS 'Answer_3',
+    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='4' AND QuestionId='$QuestionId') AS 'Answer_4'
+    FROM
+    polls_answers
+    WHERE QuestionId = '$QuestionId'
+    LIMIT 1";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+
+    if($sResult)
+    {
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aVotes[1] = ["Answer_1"=>$row['Answer_1'],"Answer_2"=>$row['Answer_2'], "Answer_3"=>$row['Answer_3'], "Answer_4"=>$row['Answer_4']];
+
+        }
+
+    }
+//    array_push($aVotes, $aVote);
+    mysqli_close($GLOBALS['link']);
+
+    return $aVotes;
+}
 ?>

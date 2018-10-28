@@ -9,6 +9,7 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
+
     include('../Events/EventsDB.php');
 
     $aMembers = SelectAllMembers(0);
@@ -20,7 +21,7 @@ else
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
-
+    $aExpenses_Data = Expenses_Data();
 }
 
 
@@ -171,18 +172,18 @@ else
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
-                                       $NameOfWiher = $Notification['MemberWisherId'];
+                                        $NameOfWiher = $Notification['MemberWisherId'];
                                         $aMembers = SelectAllMembers($NameOfWiher);
                                         $NameOfWiher1 = $aMembers[0]['MemberName'];
 
 
-                                    ?>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i>Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
-                                            <?php echo $Notification['BirthdayMessage']; ?>
-                                        </a>
-                                    </li>
+                                        ?>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i>Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
+                                                <?php echo $Notification['BirthdayMessage']; ?>
+                                            </a>
+                                        </li>
                                     <?php }?>
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
@@ -196,7 +197,7 @@ else
                                             <a href="#">
                                                 <i class="fa fa-users text-aqua"></i>Todo  <strong><?php echo $TotoMember; ?></strong><br>
                                                 <?php echo $Title; ?><br>
-                                               DeadLine Date: <?php echo $TodoNotification['DeadlineDate']; ?>
+                                                DeadLine Date: <?php echo $TodoNotification['DeadlineDate']; ?>
                                             </a>
                                         </li>
                                     <?php }?>
@@ -218,7 +219,7 @@ else
 
 
                     <!-- Control Sidebar Toggle Button -->
-                     <li>
+                    <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
 
@@ -249,7 +250,7 @@ else
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
                     <a href="../dashboard/Home.php">
-                        <i class="fa fa-dashboard"></i><span>Dashboard</span>
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
@@ -262,7 +263,7 @@ else
 
                 <li >
                     <a href="../familytree/familytree.php"
-                    <i class="fa fa-tree"></i> <span> Family Tree</span>
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
 
                     </a>
                 </li>
@@ -495,10 +496,6 @@ else
                 <!-- /.col -->
 
                 <div class="col-md-4">
-                    <!-- Info Boxes Style 2 -->
-
-
-                    <!-- /.box -->
 
                     <!-- PRODUCT LIST -->
                     <div class="box box-primary">
@@ -519,22 +516,22 @@ else
 
                                 foreach($aEvents as $aEvent)
                                 {
-                              
 
-                                ?>
 
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title"><?php echo $aEvent['EventName'] ?>
-                                            <span class="label label-warning pull-right"><?php echo $aEvent['DateTime'] ?></span></a>
-                                        <span class="product-description">
+                                    ?>
+
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="../../dist/img/default-50x50.gif" alt="Product Image">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title"><?php echo $aEvent['EventName'] ?>
+                                                <span class="label label-warning pull-right"><?php echo $aEvent['DateTime'] ?></span></a>
+                                            <span class="product-description">
                          <?php echo $aEvent['Description'] ?>
                         </span>
-                                    </div>
-                                </li>
+                                        </div>
+                                    </li>
 
                                 <?php }  ?>
                                 <!-- /.item -->
@@ -602,7 +599,8 @@ else
                         <!-- /.box-footer -->
                     </div>
 
-<!--                    Birthday  wish-->
+                    <!--                    Birthday  wish-->
+                    <!-- Poll Start -->
                     <!-- Poll Start -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -616,7 +614,7 @@ else
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <form action="../Events/EventsHandler.php" method="post">
+
                             <ul class="products-list product-list-in-box">
 
 
@@ -624,63 +622,142 @@ else
 
 
                                 $sPolls = PollVoting($date);
+                                $i = 0;
+                                $MemberIdloop =0;
+                                $QuestionIdloop = 0;
 
                                 foreach($sPolls as $sPoll)
                                 {
+                                    $QuestionId = $sPoll['PollId'];
                                     $Question = $sPoll['Question'];
                                     $Answer1 = $sPoll['Answer1'];
                                     $Answer2 = $sPoll['Answer2'];
                                     $Answer3 = $sPoll['Answer3'];
                                     $Answer4 = $sPoll['Answer4'];
+                                    $MemberId = $_SESSION['id'];
+
+
+                                    $PollResult =  PollResult($QuestionId,$MemberId);
+//                                        print_r($PollResult);
+//                                        die;
+
+                                    if (!empty($PollResult)) {
+//                                        $MemberIdloop = $PollResult[0]['MemberId'];
+//                                        $QuestionIdloop = $PollResult[0]['QuestionId'];
+                                        $Answer_1 = $PollResult[1]['Answer_1'];
+                                        $Answer_2 = $PollResult[1]['Answer_2'];
+                                        $Answer_3 = $PollResult[1]['Answer_3'];
+                                        $Answer_4 = $PollResult[1]['Answer_4'];
+                                    }
+                                    $CheckPoll= CheckPoll();
+
+//                                    if($MemberIdloop == $MemberId && $QuestionIdloop == $QuestionId   )
+                                    if($CheckPoll>0)
+                                    {
 
 
 
+                                        ?>
 
-                                    ?>
+                                        <form action="../Events/EventsHandler.php" method="post">
 
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../../dist/img/birthday.jpg" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title"><?php echo $Question; ?>
-                                                <span class="label label-warning pull-right">Today</span></a>
-                                            <span class="product-description">
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="../../dist/img/birthday.jpg" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title"><?php echo $Question ?>
+                                                        <span class="label label-warning pull-right">Today</span></a>
+                                                    <span class="product-description">
 
-                                                <input type="hidden" name="action" id="action" value="BirthdayWish" />
+                                                <input type="hidden" name="action" id="action" value="Poll" />
+                                                <input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId">
+
+                                                        <!--                                                        start -->
+                                                        <!--                                                        wnd-->
+                                                <table >
+                                                    <tr>
+                                                        <td>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php  echo $Answer_1; ?>" ><?php  echo $Answer1; ?> Votes :<?php  echo $Answer_1; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_2; ?>"><?php  echo $Answer2; ?> Votes :<?php echo  $Answer_2;?>
+                                                        </td>
+                                                    </tr>
+
+                                                    <?php  echo $Answer3 != '' ? '<tr>
+                                                        <td>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="'.$Answer_3.'">'.$Answer3 . ' Votes :'.$Answer_3.'
+                                                        </td>
+                                                    </tr>' : '';?>
+                                                    <?php  echo $Answer4 != '' ? '<tr>
+                                                        <td>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="'.$Answer_4.'">'.$Answer4 . ' Votes :'.$Answer_4.'
+                                                        </td>
+                                                    </tr>' : '';?>
+
+
+                                                </table>
+                        </span>
+                                                </div>
+                                            </li>
+
+                                        </form>
+                                    <?php } else { ?>
+
+                                        <form action="../Events/EventsHandler.php" method="post">
+
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="../../dist/img/birthday.jpg" alt="Product Image">
+                                                </div>
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title"><?php echo $Question; ?>
+                                                        <span class="label label-warning pull-right">Today</span></a>
+                                                    <span class="product-description">
+
+                                                <input type="hidden" name="action" id="action" value="Poll" />
                                                 <input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId">
                                                 <table >
                                                     <tr>
                                                         <td>
-                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage"  value="<?php echo  $Answer1;?>"><?php echo  $Answer1;?>
+                                                            <input type="radio" id="Question_" name="Question_"  value="<?php echo $QuestionId.'_1';?>"><?php echo  $Answer1;?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer2;?>"><?php echo  $Answer2;?>
+                                                            <input type="radio" id="Question_" name="Question_" value="<?php echo  $QuestionId.'_2';?>"><?php echo  $Answer2;?>
                                                         </td>
                                                     </tr>
-                                                     <tr>
-                                                        <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer3;?>"><?php echo  $Answer3;?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
+
+                                                    <?php  echo $Answer3 != '' ? '<tr>
                                                         <td>
-                                                            <input type="radio" id="birthdaymessage" name="birthdaymessage" value="<?php echo  $Answer4;?>"><?php echo  $Answer4;?>
+                                                            <input type="radio" id="Question_" name="Question_" value="'.$QuestionId.'_3'.'">'.$Answer3.'
                                                         </td>
-                                                    </tr>
+                                                    </tr>' : '';?>
+                                                    <?php  echo $Answer4 != '' ? '<tr>
+                                                        <td>
+                                                            <input type="radio" id="Question_" name="Question_" value="'.$QuestionId.'_4'.'">'.$Answer4.'
+                                                        </td>
+                                                    </tr>' : '';?>
+
+
                                                 </table>
                         </span>
-                                        </div>
-                                    </li>
+                                                </div>
+                                            </li>
+                                            <button class="btn-primary" type="submit">Vote</button>
+                                        </form>
 
-                                <?php }  ?>
+                                    <?php }  }?>
                                 <!-- /.item -->
 
                                 <!-- /.item -->
                             </ul>
-                                <button class="btn-primary" type="submit">Vote</button>
-                            </form>
+
+
                         </div>
                         <!-- /.box-body -->
 
@@ -691,9 +768,100 @@ else
                 </div>
                 <!-- /.col -->
             </div>
-
-
             <!-- /.row -->
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/data.js"></script>
+                    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+                    <!-- Adeel Ahmed -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Expanse Chart</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div id="BarChart" style="height: 400px"></div>
+                            <script type="text/javascript">
+                                Highcharts.chart('BarChart', {
+                                    chart: {
+                                        renderTo: "histogram",
+                                        type: "column"
+                                    },
+                                    plotOptions: {
+                                        column: {
+                                            colorByPoint: true
+                                        }
+                                    },
+                                    title: { text: "" },
+                                    credits: { enabled:false },
+                                    xAxis: {
+                                        categories: [<?=$aExpenses_Data['Categories'];?>],
+                                        labels: {
+
+                                            align: "center",
+                                            style: {
+                                                fontSize: "10px",
+                                                textShadow:false,
+                                                fontFamily: "Trebuchet MS, Verdana, sans-serif"
+                                            }
+                                        }
+                                    },
+                                    yAxis: {
+                                        min: 0,
+                                        allowDecimals: false,
+                                        title: {
+                                            text: ""
+                                        }
+                                    },
+                                    legend: {
+                                        enabled: false
+                                    },
+                                    plotOptions: {
+                                        series: {
+                                            borderWidth: 0,
+                                            dataLabels: {
+                                                enabled: true,
+                                                format: '{point.y:.1f}'
+                                            }
+                                        }
+                                    },
+                                    tooltip: {
+                                        formatter: function() {
+                                            return "<b>" + this.x + "</b><br/>Total : "+ Highcharts.numberFormat(this.y, 0);
+                                        }
+                                    },
+
+                                    series: [{
+                                        name: "",
+                                        data: [<?=$aExpenses_Data['Data'];?>],
+                                        dataLabels: {
+                                            enabled: true,
+                                            color: "#00000",
+                                            align: "right",
+                                            x: 4,
+                                            y: 10,
+                                            style: {
+                                                fontSize: "10px",
+                                                textShadow:false
+                                            }
+                                        }
+                                    }]
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
         <!-- /.content -->
     </div>
@@ -896,6 +1064,7 @@ else
 
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->

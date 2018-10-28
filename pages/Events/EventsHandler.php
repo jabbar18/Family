@@ -80,4 +80,21 @@ else if($sAction == 'BirthdayWish')
 
 }
 
+else if($sAction == 'Poll')
+{
+
+    $iBirthdayWishId = PollVote();
+
+    if($iBirthdayWishId)
+    {
+
+        header("location: ../dashboard/home.php?m=Wish Successfully");
+    }
+    else
+    {
+        header("location: ../dashboard/home.php?m=Can't Create Event");
+    }
+
+}
+
 ?>
