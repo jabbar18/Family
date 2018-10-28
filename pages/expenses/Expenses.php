@@ -7,6 +7,20 @@ if(!isset($_SESSION['username'])){
     header("location: ../../index.php");
 
 }
+else
+{
+    include('ExpenseDB.php');
+
+
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['id'];
+
+    $aExpenses = SelectAllExpense(0, $iUserId);
+
+}
 
 
 ?>
@@ -333,9 +347,6 @@ if(!isset($_SESSION['username'])){
                                     <th> Delete </th>
                                 </tr>
                                 <?php
-                                include('ExpenseDB.php');
-
-                                $aExpenses = SelectAllExpense(0);
 
                                 $iCounter = 0;
 

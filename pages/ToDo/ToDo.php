@@ -12,8 +12,14 @@ else
 
     include('ToDoDB.php');
 
-    $aToDos = SelectAllToDO(0);
 
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['id'];
+
+    $aToDos = SelectAllToDO(0, $iUserId);
 
     $iCounter = 0;
 

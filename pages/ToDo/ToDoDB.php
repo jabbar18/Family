@@ -131,26 +131,26 @@ function SelectAllMembers($iMemberId)
 	}
 
 }	
-	function SelectAllToDo($iToDoId)
+	function SelectAllToDo($iToDoId, $iUserId = 0)
 {
 	establishConnectionToDatabase();
 
     $sCondition = "";
 
+    if($iUserId > 0)
+        $sCondition = "WHERE TodoMemberId = '$iUserId'";
 
 	if($iToDoId > 0)
-	    $sCondition = "WHERE TodoId ='$iToDoId' LIMIT 1";
-
+	    $sCondition .= "WHERE TodoId ='$iToDoId' LIMIT 1";
 
 	$sQuery = "SELECT * FROM todo $sCondition";
 
-
 	$sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    $aEvents = array();
 	
 	if($sResult)
 	{
-        $aEvents = array();
-		
 		while($row = mysqli_fetch_array($sResult))
         {
 			$aEvent = array("TodoId"=>$row['TodoId'],"Title"=>$row['Title'], "TodoDate"=>$row['TodoDate'], "TodoMemberId"=>$row['TodoMemberId'], "Description"=>$row['Description'], "DeadlineDate"=>$row['DeadlineDate']);

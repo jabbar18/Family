@@ -2,16 +2,21 @@
 
 session_start();
 
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
 
     header("location: ../../index.php");
 
-}
-else
-{
+} else {
 
     include('../Members/MembersDB.php');
-    $aMembers = SelectAllMembers(0);
+
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['Admin'];
+
+    $aMembers = SelectAllMembers($iUserId);
 
 }
 
@@ -46,7 +51,8 @@ else
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -85,7 +91,8 @@ else
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <h4>
                                                 Support Team
@@ -98,7 +105,8 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <h4>
                                                 AdminLTE Design Team
@@ -110,7 +118,8 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <h4>
                                                 Developers
@@ -122,7 +131,8 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <h4>
                                                 Sales Department
@@ -134,7 +144,8 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <h4>
                                                 Reviewers
@@ -166,7 +177,8 @@ else
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                                            <i class="fa fa-warning text-yellow"></i> Very long description here that
+                                            may not fit into the
                                             page and may cause design problems
                                         </a>
                                     </li>
@@ -232,13 +244,6 @@ else
                     </a>
                 </li>
 
-                 <li >
-                    <a href="../familytree/familytree.php"
-                    <i class="fa fa-tree"></i> <span>Family Tree</span>
-
-                    </a>
-                </li>
-
                 <li>
                     <a href="../events/Events.php">
                         <i class="fa fa-money"></i> <span>Events</span>
@@ -263,13 +268,6 @@ else
                 <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
-
-                    </a>
-                </li>
-
-                 <li>
-                    <a href="../tracking/tracking.php"
-                    <i class="fa fa-car"></i> <span>Members Tracking</span>
 
                     </a>
                 </li>
@@ -318,23 +316,23 @@ else
 
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <form action="ExpensesHandler.php" method="post" role="form">
+                            <form  method="post" role="form" onsubmit="return false">
 
-                                <input type="hidden" name="action" value="AddRecord" />
+                                <input type="hidden" name="action" value="AddRecord"/>
                                 <div class="box-body">
 
                                     <div class="form-group">
                                         <label for="eo">Member Name</label>
 
-                                        <select name="member_id" id="member_id" class="form-control" aria-multiselectable="true" >
+                                        <select name="member_id" id="member_id" class="form-control"
+                                                aria-multiselectable="true">
                                             <option value="0">Select A Member</option>
                                             <?php
 
-                                            foreach($aMembers as $aMember)
-                                            {
+                                            foreach ($aMembers as $aMember) {
 
                                                 ?>
-                                                <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+                                                <option value="<?php echo $aMember['MemberId'] ?>"><?php echo $aMember['MemberName'] . "( " . $aMember['UserName'] . ")" ?></option>
 
                                                 <?php
                                             } ?>
@@ -353,9 +351,12 @@ else
 
                                     <div class="form-group">
                                         <label for="t">Add Items</label>
-                                        <input type="text" class="form-control" id="item" name="" placeholder="Item Name">
-                                        <input type="number" class="form-control" id="amount" name="" placeholder="0.00">
-                                        <button type="button" class="btn btn-info btn-xs" id="item_add" name="">+</button>
+                                        <input type="text" class="form-control" id="item" name=""
+                                               placeholder="Item Name">
+                                        <input type="number" class="form-control" id="amount" name=""
+                                               placeholder="0.00">
+                                        <button type="button" class="btn btn-info btn-xs" id="item_add" name="">+
+                                        </button>
 
                                     </div>
 
@@ -371,7 +372,6 @@ else
                                             <tbody id="tmp_tbody"></tbody>
                                         </table>
                                     </div>
-
 
 
                                 </div>
@@ -513,7 +513,7 @@ else
             <!-- /.tab-pane -->
             <!-- Settings tab content -->
             <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
+                <form method="post" >
                     <h3 class="control-sidebar-heading">General Settings</h3>
 
                     <div class="form-group">
@@ -602,72 +602,94 @@ else
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script>
-    $(document).ready(function(){
-        var action= 'AccountBalance';
-        $("#member_id").change(function(){
-            var MemberId= $(this).val();
+    $(document).ready(function () {
+        var action = 'AccountBalance';
+        $("#member_id").change(function () {
+            var MemberId = $(this).val();
             // alert(MemberId);
             $.ajax({
-                url:'../Members/MembersHandler.php',
-                type:'POST',
-                data:{action:action,MemberId:MemberId},
-                success:function(msg)
-                {
+                url: '../Members/MembersHandler.php',
+                type: 'POST',
+                data: {action: action, MemberId: MemberId},
+                success: function (msg) {
                     $("#balance").val(msg);
                 }
             })
         });
 
-        $("#item_add").click(function(){
-            var item= $("#item").val();
-            if(item==''){alert("Item Fiels Can Not Be Blank!");return false;}
-            var amount= $("#amount").val();
-            if(amount < 0 || amount == '')
-            {
-                amount=0;
+        $("#item_add").click(function () {
+            var item = $("#item").val();
+            if (item == '') {
+                alert("Item Fiels Can Not Be Blank!");
+                return false;
+            }
+            var amount = $("#amount").val();
+            if (amount < 0 || amount == '') {
+                amount = 0;
                 // alert("Amount Fiels Can Not Be Negative!");
                 // return false;
             }
-            var data= "<tr><td class='item'>"+item+"</td><td class='amount'>"+amount+"</td><td><button class='btn btn-danger rmv'>X</button></td></tr>";
+            var data = "<tr><td class='item'>" + item + "</td><td class='amount'>" + amount + "</td><td><button class='btn btn-danger rmv'>X</button></td></tr>";
             $("#tmp_tbody").append(data);
         });
 
-        $(document).on('click','.rmv', function(){
+        $(document).on('click', '.rmv', function () {
             $(this).closest('tr').remove();
         });
 
-        $("#add_exp").click(function(){
-            var tmp_tbody= $("#tmp_tbody").html();
-            if(tmp_tbody==0)
-            {
+        $("#add_exp").click(function () {
+            var tmp_tbody = $("#tmp_tbody").html();
+            if (tmp_tbody == 0) {
                 alert("Add Some Item To The Table");
                 return false;
             }
-            else
-            {
-                var items=[];
-                var amount=[];
-                var amount_sum=0;
-                $("#tmp_tbody tr").each(function(){
+            else {
+                var items = [];
+                var amount = [];
+                var amount_sum = 0;
+                $("#tmp_tbody tr").each(function () {
                     items.push($(this).closest('tr').find('.item').html());
                     amount.push($(this).closest('tr').find('.amount').html());
-                    amount_sum+= +$(this).closest('tr').find('.amount').html();
+                    amount_sum += +$(this).closest('tr').find('.amount').html();
                 })
             }
-            var member_id= $("#member_id").val();
-            if(member_id==0){alert("Select A Member!");return false;}
-            var balance= $("#balance").val();
-            var exp_date= $("#exp_date").val();
-            if(exp_date==0){alert("Select A Date!");return false;}
-            var action= "AddRecord";
+            var member_id = $("#member_id").val();
+            if (member_id == 0) {
+                alert("Select A Member!");
+                return false;
+            }
+            var balance = $("#balance").val();
+            var exp_date = $("#exp_date").val();
+            if (exp_date == 0) {
+                alert("Select A Date!");
+                return false;
+            }
+            var action = "AddRecord";
+
+
             $.ajax({
-                url:'ExpensesHandler.php',
-                type:'POST',
-                data:{action:action, amount_sum:amount_sum, items:items, amount:amount, member_id:member_id, balance:balance, exp_date:exp_date},
-                success:function(msg)
-                {
-                    // alert(msg);
-                    location.assign(msg);
+                url: 'ExpensesHandler.php',
+                type: 'POST',
+                data: {
+                    action: action,
+                    amount_sum: amount_sum,
+                    items: items,
+                    amount: amount,
+                    member_id: member_id,
+                    balance: balance,
+                    exp_date: exp_date
+                },
+                success: function (msg) {
+//                     alert(msg);
+//                    location.assign("Expenses.php?m=Expense Created Successfully");
+                    if(msg>0)
+                    {
+                        location.assign("Expenses.php?m=Expense Created Successfully");
+                    }
+                    else
+                    {
+                        location.assign("Expenses.php?m=Can't Create Expense");
+                    }
                 }
             })
         })

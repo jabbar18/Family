@@ -410,6 +410,7 @@ function Expenses_Data()
     $sCateogries='';
     $sData='';
     $sCondition= "";
+    $iTotal = 0;
 
 
     $iUserId = $_SESSION['id'];
@@ -428,10 +429,11 @@ function Expenses_Data()
     while($aRow = mysqli_fetch_assoc($ObjResult))
     {
         $counter++;
+        $iTotal += $aRow['Total'];
         $sData .="{y:".$aRow['Total'].", color: \"#".$aColors[$counter]."\"},";
         $sCateogries .="'".$aRow['MonthName']."',";
     }
-    $aData=["Data"=>trim($sData,','),"Categories" => trim($sCateogries,',')];
+    $aData=["Data"=>trim($sData,','),"Categories" => trim($sCateogries,','), "Total" => $iTotal];
     return $aData;
 
 }

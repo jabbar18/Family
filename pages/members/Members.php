@@ -7,6 +7,20 @@ if(!isset($_SESSION['username'])){
     header("location: ../../index.php");
 
 }
+else
+{
+
+    include('MembersDB.php');
+
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['id'];
+
+    $aMembers = SelectAllMembers($iUserId);
+
+}
 
 
 ?>
@@ -316,7 +330,13 @@ if(!isset($_SESSION['username'])){
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <h3 class="box-title"><a href="AddMembers.php"><button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Members</button></a></h3>
+
+                                    <?php
+
+                                    if($iAdmin == 1)
+                                        echo "<h3 class=\"box-title\"><a href=\"AddMembers.php\"><button type=\"button\" class=\"btn btn-block btn-success\"><i class=\"fa fa-plus\"></i> Add Members</button></a></h3>";
+                                    ?>
+
 
                                 </div>
                             </div>
@@ -336,9 +356,7 @@ if(!isset($_SESSION['username'])){
                                     <th>Delete</th>
                                 </tr>
                                 <?php
-                                include('MembersDB.php');
 
-                                $aMembers = SelectAllMembers(0);
 
                                 $iCounter = 0;
 

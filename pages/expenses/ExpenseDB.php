@@ -139,7 +139,7 @@ function DeleteMember($iExpenseId)
 }
 
 //Select All members
-function SelectAllExpense($iExpenseId)
+function SelectAllExpense($iExpenseId, $iUserId = 0)
 {
 	establishConnectionToDatabase();
 
@@ -147,6 +147,9 @@ function SelectAllExpense($iExpenseId)
 
 	if($iExpenseId > 0)
 	    $sCondition = "WHERE E.ExpenseId ='$iExpenseId'";
+
+    if($iUserId > 0)
+        $sCondition = "WHERE E.MemberId ='$iUserId'";
 
 
 	$sQuery = "SELECT E.*, M.MemberName FROM expenses AS E INNER JOIN members AS M ON E.MemberId = M.MemberId $sCondition";

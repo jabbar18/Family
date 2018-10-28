@@ -22,6 +22,9 @@ else
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
     $aExpenses_Data = Expenses_Data();
+
+    $iTotalExpenses = $aExpenses_Data["Total"];
+
 }
 
 
@@ -375,8 +378,8 @@ else
                         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-text">Expenses</span>
+                            <span class="info-box-number"><?php echo $iTotalExpenses; ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>

@@ -19,21 +19,22 @@ else
 {
     $sAction = $_GET['action'];
 }
-
 //If Request is to Create An New Event
 if($sAction == 'AddRecord')
 {
-    $iMemberId = AddRecord();
-    if($iMemberId)
-    {
-        header(" location : Expenses.php?m=Expense Created Successfully");
-
-    }
-    else
-    {
-        header("location: Expenses.php?m=Can't Create Expense");
-    }
-
+    AddRecord();
+//    echo "h1";
+//    $iMemberId = AddRecord();
+//    die($iMemberId);
+//    if($iMemberId)
+//    {
+//        header(" location : Expenses.php?m=Expense Created Successfully");
+//
+//    }
+//    else
+//    {
+//        header("location: Expenses.php?m=Can't Create Expense");
+//    }
 }
 else if($sAction == 'EditRecord')
 {

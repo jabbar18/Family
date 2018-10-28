@@ -64,8 +64,8 @@
     <form action="./files/usershandler.php" method="post" class="form-horizontal">
 
                        <input type="hidden" name="m" value="l" />
-                        <input type="radio" value="a" name="account" checked>&nbsp; Admin &nbsp; &nbsp; &nbsp;
-                                           <input type="radio" value="t" name="account"> &nbsp; Members &nbsp; &nbsp;
+                        <input type="radio" value="a" name="account" checked>&nbsp; Members Login &nbsp; &nbsp; &nbsp;
+
     <br /><br />
    <div class="form-group has-feedback">
         <input type="text" id="name" name="username" class="form-control" placeholder="Username">
