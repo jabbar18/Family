@@ -12,6 +12,8 @@ else
 
     include('EventsDB.php');
 
+    $iAdmin = $_SESSION['Admin'];
+
     $aRecords = SelectAllEvents(0);
 
     $iCounter = 0;
@@ -328,7 +330,17 @@ else
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <h3 class="box-title"><a href="AddEvents.php"><button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Events</button></a></h3>
+
+
+
+                                    <?php
+
+                                    if($iAdmin == 1)
+                                      echo "   
+                                    <h3 class=\"box-title\"><a href=\"AddEvents.php\"><button type=\"button\" class=\"btn btn-block btn-success\"><i class=\"fa fa-plus\"></i> Add Events</button></a></h3>";
+
+                                    ?>
+
 
                                 </div>
                             </div>
@@ -362,8 +374,16 @@ else
                                         <td> <?php echo $aRecord['Organizor'] ?> </td>
                                         <td ><a href="./ViewEvents.php?EventId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
                                         <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
-                                        <td ><a href="./EventsHandler.php?action=DeleteRecord&EventId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
-                                    </tr>
+
+
+                                        <?php
+
+                                        if($iAdmin == 1)
+                                           echo "<td ><a href=\"./EventsHandler.php?action=DeleteRecord&EventId=" . $aRecord['EventId'] . "><button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
+
+                                        ?>
+
+                                        </tr>
                                     <?php
                                 }
                                 ?>

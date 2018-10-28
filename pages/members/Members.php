@@ -374,8 +374,14 @@ else
                                         <td> <?php echo $aMember['Email'] ?> </td>
                                         <td ><a href="./ViewMembers.php?MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
                                         <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
-                                        <td ><a href="./MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
-                                      </tr>
+
+                                        <?php
+
+                                        if($iAdmin == 1)
+                                            echo "<td ><a href=\"./MembersHandler.php?action=DeleteRecord&MemberId=" . $aMember['MemberId'] . "><button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
+
+                                        ?>
+                                       </tr>
                                     <?php
                                 }
                                 ?>
