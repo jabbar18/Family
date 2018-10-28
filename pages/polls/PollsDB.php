@@ -9,36 +9,55 @@ function AddRecord()
 
 	establishConnectionToDatabase();
 
-    $iPollmemberid = $_POST['pollmemberid'];
+	session_start();
+
+    $aMembers = $_POST['Members'];
     $sQuestion = $_POST['question'];
     $sAnswer1 = $_POST['ans1'];
     $sAnswer2 = $_POST['ans2'];
-    $sAnswer3= $_POST['ans3'];
+    $sAnswer3= $iUserId = $_SESSION['id'];$_POST['ans3'];
     $sAnswer4= $_POST['ans4'];
     $dPollstartdate = $_POST['pollstartdate'];
     $dPollenddate = $_POST['pollenddate'];
     $sNotes= $_POST['notes'];
     $dCurrentDate = date('Y-m-d');
 
-   
-    $sQuery = "INSERT INTO polls (Question, Answer1,Answer2,Answer3,Answer4,PollStartDateTime,PollEndDateTime,Notes,PollAddedBy,PollAddedOn)
-VALUES( '$sQuestion', '$sAnswer1','$sAnswer2', '$sAnswer3', '$sAnswer4','$dPollstartdate', '$dPollenddate','$sNotes', '$iPollmemberid', '$dCurrentDate')";
-   	
 
+
+    $sQuery = "INSERT INTO polls (Question, Answer1,Answer2,Answer3,Answer4,PollStartDateTime,PollEndDateTime,Notes,PollAddedBy,PollAddedOn)
+    VALUES( '$sQuestion', '$sAnswer1','$sAnswer2', '$sAnswer3', '$sAnswer4','$dPollstartdate', '$dPollenddate','$sNotes', '$iUserId','$dCurrentDate')";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
-	if($sResult)
-	{
-	    $isCreated = mysqli_insert_id($GLOBALS['link']);
-	}
-	else
-	{
-		$isCreated = false;
-	}
+    if($sResult)
+    {
+        $isCreated = mysqli_insert_id($GLOBALS['link']);
+    }
+    else
+    {
+        $isCreated = false;
+    }
+
+    $i  = 0;
 
 
-	
+    if($isCreated > 0)
+    {
+        foreach ($aMembers as $key => $value) {
+
+            echo $i++;
+            $sQuery2 = "INSERT INTO polls_members (PollId, MemberId) VALUES( '$isCreated', '$value')";
+
+            $sResult = mysqli_query($GLOBALS['link'], $sQuery2);
+            if(!($sResult))
+                return false;
+
+
+        }
+
+    }
+
+
 	mysqli_close($GLOBALS['link']);
 	
 	return $isCreated;

@@ -295,21 +295,19 @@ function PollVoting($dDate)
     establishConnectionToDatabase();
 
     $sCondition = "";
-
+    $iUserId = $_SESSION['id'];
 
     if($dDate != '')
-        $sCondition = "WHERE PollStartDateTime <='$dDate 00:00:00' AND PollEndDateTime >= '$dDate 23:59:59'";
+        $sCondition = "WHERE P.PollStartDateTime >= '$dDate 00:00:00' AND PS.MemberId = '$iUserId'";
 
-
-    $sQuery = "SELECT * FROM polls $sCondition";
-
-
+    $sQuery = "SELECT P.*, PS.MemberId FROM polls AS P INNER JOIN polls_members AS PS ON PS.PollId = P.PollId $sCondition";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
+    $aEvents = array();
     if($sResult)
     {
-        $aEvents = array();
+
 
         while($row = mysqli_fetch_array($sResult))
         {
@@ -342,14 +340,13 @@ function BirthdayNotification($dDate)
 
     $sQuery = "SELECT * FROM birthday $sCondition";
 
-
-
-
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    $aEvents = array();
 
     if($sResult)
     {
-        $aEvents = array();
+
 
         while($row = mysqli_fetch_array($sResult))
         {
@@ -384,9 +381,11 @@ function TodoNotification($dDate)
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
+    $aEvents = array();
+
     if($sResult)
     {
-        $aEvents = array();
+
 
         while($row = mysqli_fetch_array($sResult))
         {
@@ -468,15 +467,26 @@ function PollVote()
     return $isCreated;
 }
 
-function CheckPoll()
+function CheckPoll($iQuestionId, $iMemberId)
 {
     establishConnectionToDatabase();
-    $que= "SELECT COUNT(id) from polls_answers WHERE MemberId='14'";
+
+    $iCount = 0;
+
+    $que= "SELECT COUNT(id) AS 'Counting' from polls_answers WHERE MemberId='$iMemberId' AND QuestionId='$iQuestionId'";
+
     $sResult = mysqli_query($GLOBALS['link'], $que);
-    return $sResult;
+
+    while($row = mysqli_fetch_array($sResult))
+    {
+
+        $iCount = $row['Counting'];
+    }
+
+    return $iCount;
 //    die($sResult);
 }
-function PollResult($QuestionId,$MemberId)
+function PollResult($QuestionId, $MemberId)
 {
 
     establishConnectionToDatabase();
@@ -484,7 +494,7 @@ function PollResult($QuestionId,$MemberId)
     $sCondition = "";
 
     if($QuestionId != '')
-        $sCondition = "WHERE QuestionId ='$QuestionId'  AND MemberId ='$MemberId'";
+        $sCondition = "WHERE QuestionId ='$QuestionId' AND MemberId ='$MemberId'";
 
 
     $sQuery = "SELECT * FROM polls_answers $sCondition";

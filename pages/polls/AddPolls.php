@@ -324,23 +324,23 @@ else
                                 <div class="box-body">
 
 
-
-
                                     <div class="form-group">
                                         <label for="eo">Member</label>
 
-                                        <select name="pollmemberid" class="form-control"  >
+                                          <select name="Members[]" id="Members[]" class="form-control" aria-multiselectable="true" multiple>
                                             <?php
 
                                             foreach($aMembers as $aMember)
                                             {
 
-                                                    ?>
-                                                    <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+                                                ?>
+                                                <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
-                                                    <?php
-                                                } ?>
+                                                <?php
+                                            }  ?>
                                         </select>
+
+
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Question</label>

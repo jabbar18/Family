@@ -21,6 +21,10 @@ else
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
+
+    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
+
+
     $aExpenses_Data = Expenses_Data();
     $iTotalExpenses = $aExpenses_Data["Total"];
 
@@ -166,10 +170,10 @@ else
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning"><?php echo $iNotifications?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header">You have <?php echo $iNotifications?> notifications</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
@@ -199,20 +203,11 @@ else
                                             <a href="#">
                                                 <i class="fa fa-users text-aqua"></i>Todo  <strong><?php echo $TotoMember; ?></strong><br>
                                                 <?php echo $Title; ?><br>
-                                                DeadLine Date: <?php echo $TodoNotification['DeadlineDate']; ?>
+                                                  Deadline: <?php echo $TodoNotification['DeadlineDate']; ?>
                                             </a>
                                         </li>
                                     <?php }?>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </li>
                             <li class="footer"><a href="#">View all</a></li>
@@ -635,8 +630,10 @@ else
                                     $Answer4 = $sPoll['Answer4'];
                                     $MemberId = $_SESSION['id'];
 
+                                    $i++;
 
-                                    $PollResult =  PollResult($QuestionId,$MemberId);
+
+                                    $PollResult =  PollResult($QuestionId, $MemberId);
 //                                        print_r($PollResult);
 //                                        die;
 
@@ -648,13 +645,13 @@ else
                                         $Answer_3 = $PollResult[1]['Answer_3'];
                                         $Answer_4 = $PollResult[1]['Answer_4'];
                                     }
-                                    $CheckPoll= CheckPoll();
+
+
+                                    $CheckPoll = CheckPoll($QuestionId, $MemberId);
 
 //                                    if($MemberIdloop == $MemberId && $QuestionIdloop == $QuestionId   )
-                                    if($CheckPoll>0)
+                                    if($CheckPoll > 0)
                                     {
-
-
 
                                         ?>
 
@@ -750,7 +747,7 @@ else
                                             <button class="btn-primary" type="submit">Vote</button>
                                         </form>
 
-                                    <?php }  }?>
+                                    <?php $CheckPoll = false; }  }?>
                                 <!-- /.item -->
 
                                 <!-- /.item -->

@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])) {
     $iUserId = 0;
 
     if($iAdmin == 0)
-        $iUserId = $_SESSION['Admin'];
+        $iUserId = $_SESSION['id'];
 
     $aMembers = SelectAllMembers($iUserId);
 

@@ -11,7 +11,15 @@ else
 {
 
     include('../members/MembersDB.php');
-    $aMembers = SelectAllMembers(0);
+
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['id'];
+
+
+    $aMembers = SelectAllMembers($iUserId);
 
 }
 
@@ -330,18 +338,21 @@ else
                                     <div class="form-group">
                                         <label for="eo">Member</label>
 
-                                        <select name="member" class="form-control"  >
+                                        <label for="Members[]">Event Members</label>
+
+                                        <select name="Members[]" id="Members[]" class="form-control" aria-multiselectable="true" multiple>
                                             <?php
 
                                             foreach($aMembers as $aMember)
                                             {
 
-                                                    ?>
-                                                    <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+                                                ?>
+                                                <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
 
-                                                    <?php
-                                                } ?>
+                                                <?php
+                                            }  ?>
                                         </select>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Title</label>
