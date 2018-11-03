@@ -8,6 +8,7 @@ class DB_Functions
     // constructor
     function __construct()
     {
+        header('Access-Control-Allow-Origin: *');
         require_once 'db_connect.php';
         // connecting to database
         $db = new Db_Connect();
@@ -30,7 +31,6 @@ class DB_Functions
 
         echo mysqli_error($this->conn);
 
-        mysqli_close($this->conn);
         return $user;
     }
 
@@ -50,8 +50,7 @@ class DB_Functions
     {
         $dCurrentDate = date("Y-m-d");
 
-        $sCondition = "";
-        $iToDoId = $_SESSION['id'];
+        $sCondition = "WHERE TodoMemberId ='$iMemberId'";
 
 
 //      if($dCurrentDate != '')
@@ -77,7 +76,6 @@ class DB_Functions
 
         echo mysqli_error($this->conn);
 
-        mysqli_close($this->conn);
         return $aToDos;
 
     }
@@ -106,7 +104,6 @@ class DB_Functions
 
         echo mysqli_error($this->conn);
 
-        mysqli_close($this->conn);
         return $aEvents;
 
     }
@@ -136,7 +133,6 @@ class DB_Functions
 
         echo mysqli_error($this->conn);
 
-        mysqli_close($this->conn);
         return $aBirthdays;
 
     }
@@ -163,7 +159,6 @@ class DB_Functions
         }
         echo mysqli_error($this->conn);
 
-        mysqli_close($this->conn);
        return $aMembers;
 
     }

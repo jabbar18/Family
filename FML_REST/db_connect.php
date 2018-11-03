@@ -11,7 +11,7 @@ class DB_Connect {
         $DB_HOST = "localhost";
         $DB_NAME = "family";
 
-        $this->conn = mysqli_connect($DB_HOST, $DB_USER_NAME, $DB_PASSWORD, $DB_NAME, 8889) ;
+        $this->conn = mysqli_connect($DB_HOST, $DB_USER_NAME, $DB_PASSWORD, $DB_NAME) ;
 
         // return database handler
         return $this->conn;

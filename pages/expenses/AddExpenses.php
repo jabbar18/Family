@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 
 } else {
 
-    include('../Members/MembersDB.php');
+    include('../members/MembersDB.php');
 
     $iAdmin = $_SESSION['Admin'];
     $iUserId = 0;
