@@ -673,7 +673,7 @@ if (!isset($_SESSION['username'])) {
 
             if(amount_sum > balance)
             {
-                alert("Expenses can not be greate than account balance");
+                alert("Expenses can not be greater than account balance");
                 return false;
 
             }
