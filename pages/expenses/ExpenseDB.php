@@ -9,14 +9,18 @@ function AddRecord()
 	establishConnectionToDatabase();
 
 	$saction = $_POST['action'];
-	$smember_id = $_POST['member_id'];
+    $iMemberId = $_POST['member_id'];
 	$sbalance = $_POST['balance'];
 	$sexp_date = $_POST['exp_date'];
 	$sitems = $_POST['items'];
 	$samount = $_POST['amount'];
 	$iamount_sum = $_POST['amount_sum'];
 
-    $sQuery = "INSERT INTO expenses (MemberId, Amount, DateTime) VALUES ('$smember_id', '$iamount_sum', '$sexp_date');";
+
+    $sbalance = $sbalance - $iamount_sum;
+
+
+    $sQuery = "INSERT INTO expenses (MemberId, Amount, DateTime) VALUES ('$iMemberId', '$iamount_sum', '$sexp_date');";
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
     $sQuery1 = "INSERT INTO `expenses_items` (`ExpenseId`, `Amount`, `Item`) VALUES";
@@ -29,7 +33,11 @@ function AddRecord()
 	    }
 	    $sQuery1= rtrim($sQuery1,',');
 	    $sResult1 = mysqli_query($GLOBALS['link'], $sQuery1);
-	}
+
+        $sQuery2 = "UPDATE members SET AccountBalance = '$sbalance'  WHERE MemberId='$iMemberId'";
+        $sResult2 = mysqli_query($GLOBALS['link'], $sQuery2);
+
+    }
 	else
 	{
 		$isCreated = false;

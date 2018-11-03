@@ -341,7 +341,7 @@ if (!isset($_SESSION['username'])) {
 
                                     <div class="form-group">
                                         <label for="email">Account Balance</label>
-                                        <input type="text" class="form-control" id="balance" name="balance" value="0">
+                                        <input type="text" class="form-control" id="balance" name="balance"  value="0" disabled>
                                     </div>
 
                                     <div class="form-group">
@@ -612,7 +612,11 @@ if (!isset($_SESSION['username'])) {
                 type: 'POST',
                 data: {action: action, MemberId: MemberId},
                 success: function (msg) {
-                    $("#balance").val(msg);
+
+                    if(msg > 0)
+                        $("#balance").val(msg);
+                    else
+                        $("#balance").val(0);
                 }
             })
         });
@@ -659,6 +663,21 @@ if (!isset($_SESSION['username'])) {
                 return false;
             }
             var balance = $("#balance").val();
+
+            if(balance == 0)
+            {
+                alert("Account balance can not be 0");
+                return false;
+
+            }
+
+            if(amount_sum > balance)
+            {
+                alert("Expenses can not be greate than account balance");
+                return false;
+
+            }
+
             var exp_date = $("#exp_date").val();
             if (exp_date == 0) {
                 alert("Select A Date!");
