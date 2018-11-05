@@ -10,7 +10,7 @@ if(!isset($_SESSION['username'])){
 else
 {
 
-    include('../Events/EventsDB.php');
+    include('../events/EventsDB.php');
 
     $aMembers = SelectAllMembers(0);
     $aEvents = SelectAllEvents(0, 1);
