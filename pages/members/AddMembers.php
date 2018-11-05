@@ -224,7 +224,7 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../ashboard/Home.php">
+                    <a href="../dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
@@ -232,6 +232,14 @@ else
                 <li class="active">
                     <a href="Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
+
+                    </a>
+                </li>
+
+
+                <li >
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
 
                     </a>
                 </li>
@@ -263,6 +271,14 @@ else
 
                     </a>
                 </li>
+
+                 <li>
+                    <a href="../tracking/tracking.php"
+                    <i class="fa fa-car"></i> <span>Members Tracking</span>
+
+                    </a>
+                </li>
+
 
                 <li class="treeview">
                     <a href="#">
