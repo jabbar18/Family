@@ -38,14 +38,10 @@ function AddRecord()
         $isCreated = false;
     }
 
-    $i  = 0;
-
-
     if($isCreated > 0)
     {
         foreach ($aMembers as $key => $value) {
 
-            echo $i++;
             $sQuery2 = "INSERT INTO polls_members (PollId, MemberId) VALUES( '$isCreated', '$value')";
 
             $sResult = mysqli_query($GLOBALS['link'], $sQuery2);

@@ -23,32 +23,16 @@ else
 //If Request is to Create An New Event
 if($sAction == 'AddRecord')
 {
-    $iTodoId = AddRecord();
+    $iPollId = AddRecord();
 
-    if($iTodoId)
+    if($iPollId)
     {
 
-        header("location: polls.php?m=To Do Created Successfully");
+        header("location: Polls.php?m=Poll Created Successfully");
     }
     else
     {
-        header("location: polls.php?m=Can't Create To Do");
-    }
-
-}
-else if($sAction == 'EditRecord')
-{
-    $iCharityId = $_POST['id'];
-    $iEventId = EditRecord();
-
-    if($iEventId)
-    {
-
-        header("location: EditToDo.php?m=Event Edited Successfully&PollsId=$iCharityId");
-    }
-    else
-    {
-        header("location: Todo.php?m=Can't Edit Event");
+        header("location: Polls.php?m=Can't Create Poll");
     }
 
 }
@@ -60,7 +44,7 @@ else if($sAction == 'DeleteRecord')
 
     DeleteEvent($iEventId);
 
-    header("location: polls.php?m=To Do Deleted Successfully");
+    header("location: Polls.php?m=To Do Deleted Successfully");
 }
 
 ?>

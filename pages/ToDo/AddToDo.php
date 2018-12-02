@@ -338,9 +338,9 @@ else
                                     <div class="form-group">
                                         <label for="eo">Member</label>
 
-                                        <label for="Members[]">Event Members</label>
+                                        <label for="Members[]">Todo Members</label>
 
-                                        <select name="Members[]" id="Members[]" class="form-control" aria-multiselectable="true" multiple>
+                                        <select name="member" id="member" class="form-control" aria-multiselectable="true">
                                             <?php
 
                                             foreach($aMembers as $aMember)

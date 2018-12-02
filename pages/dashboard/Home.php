@@ -16,15 +16,12 @@ else
     $aEvents = SelectAllEvents(0, 1);
     $iTotalMembers = count($aMembers);
     $iTotalEvents = count($aEvents);
-    $iTotalEvents = count($aEvents);
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
 
     $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
-
-
     $aExpenses_Data = Expenses_Data();
     $iTotalExpenses = $aExpenses_Data["Total"];
 

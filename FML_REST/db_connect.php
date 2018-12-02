@@ -7,7 +7,7 @@ class DB_Connect {
 
          // Connecting to mysql database
         $DB_USER_NAME = "root";
-        $DB_PASSWORD = "root";
+        $DB_PASSWORD = "";
         $DB_HOST = "localhost";
         $DB_NAME = "family";
 

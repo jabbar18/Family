@@ -96,10 +96,9 @@ function DeleteMember($iMemberId)
 	
 	$query = "DELETE FROM members WHERE MemberId = $iMemberId";
 	$result = mysqli_query($GLOBALS['link'], $query);
-	
-	if(mysqli_affected_rows($GLOBALS['link']) > 0)
+	if($result)
 	{
-		$sReturn = "Member Deleted Successfully";
+		$sReturn = true;
 	}
 	else
 	{

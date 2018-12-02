@@ -378,7 +378,7 @@ else
                                         <?php
 
                                         if($iAdmin == 1)
-                                            echo "<td ><a href=\"./MembersHandler.php?action=DeleteRecord&MemberId=" . $aMember['MemberId'] . "><button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
+                                            echo "<td ><a href=\"./MembersHandler.php?action=DeleteRecord&MemberId=" . $aMember['MemberId'] . "<button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
 
                                         ?>
                                        </tr>
