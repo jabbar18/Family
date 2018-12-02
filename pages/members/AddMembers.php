@@ -324,14 +324,19 @@ else
 
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <form action="MembersHandler.php" method="post" role="form">
+                            <form action="MembersHandler.php" ENCTYPE="multipart/form-data" method="post" role="form">
 
                                 <input type="hidden" name="action" value="AddRecord" />
                                 <div class="box-body">
                                     <div class="form-group">
+                                    <input type="file" class="form-control" id="file_up" name="file_up" style="width: 30%;float: right">
+                                    </div>
+
+
+                                    <div class="form-group">
                                         <label for="name">Member Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Member Name" required>
-                                      </div>
+                                    </div>
 
 
                                     <div class="form-group">

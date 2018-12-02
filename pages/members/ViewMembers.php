@@ -244,7 +244,7 @@ else
                     </a>
                 </li>
                 <li class="active">
-                    <a href="members.php">
+                    <a href="Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
 
                     </a>
@@ -342,6 +342,23 @@ else
 
                                 <input type="hidden" name="action" value="AddRecord" />
                                 <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="name"></label>
+
+                                        <?php
+
+                                        if($aMembers[0]['Photo'] != "")
+                                        {
+                                            echo '<img src="../../files/'.$aMembers[0]['Photo'].'" class="img-circle" alt="User Image" style="height:70px; width: 70px; float: right">';
+                                        }
+                                        else
+                                        {
+                                            echo '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" style="height:70px; width: 70px; float: right">';
+                                        }
+
+                                        ?>
+                                        </div>
+
                                     <div class="form-group">
                                         <label for="name">Member Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Member Name" required value="<?php echo $aMembers[0]['MemberName'] ?>" disabled>

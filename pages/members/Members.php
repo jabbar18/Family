@@ -346,6 +346,7 @@ else
                             <table class="table table-hover">
                                 <tr>
                                     <th>S#</th>
+                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>User Name</th>
                                     <th>Date of Birth</th>
@@ -367,6 +368,20 @@ else
 
                                     <tr>
                                         <td> <?php echo $iCounter ?> </td>
+                                        <?php
+
+                                        if($aMember['Photo'] != "")
+                                        {
+                                            $sPhoto = '<img src="../../files/'.$aMember['Photo'].'" class="img-circle" alt="User Image" style="height:50px; width: 50px">';
+                                        }
+                                        else
+                                        {
+                                            $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" style="height:50px; width: 50px">';
+                                        }
+
+                                        ?>
+
+                                        <td> <?php echo $sPhoto ?> </td>
                                         <td> <?php echo $aMember['MemberName'] ?> </td>
                                         <td> <?php echo $aMember['UserName'] ?> </td>
                                         <td> <?php echo $aMember['DateOfBirth'] ?> </td>
@@ -377,9 +392,9 @@ else
 
                                         <?php
 
-                                        if($iAdmin == 1)
-                                            echo "<td ><a href=\"./MembersHandler.php?action=DeleteRecord&MemberId=" . $aMember['MemberId'] . "<button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
-
+                                        if($iAdmin == 1) { ?>
+                                              <td ><a href="./MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
+                                           <?php }
                                         ?>
                                        </tr>
                                     <?php

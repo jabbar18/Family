@@ -608,7 +608,7 @@ if (!isset($_SESSION['username'])) {
             var MemberId = $(this).val();
             // alert(MemberId);
             $.ajax({
-                url: '../Members/MembersHandler.php',
+                url: '../members/MembersHandler.php',
                 type: 'POST',
                 data: {action: action, MemberId: MemberId},
                 success: function (msg) {

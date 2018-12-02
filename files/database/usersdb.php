@@ -32,7 +32,7 @@ function selectAdmin($userName, $password){
 	
 	if($result){
 		if($row = mysqli_fetch_array($result)){
-			$user = array("id"=>$row['MemberId'], "username"=>$row['UserName'], "MemberName"=>$row['MemberName'], "Admin"=>$row['Admin']);
+			$user = array("id"=>$row['MemberId'], "username"=>$row['UserName'], "MemberName"=>$row['MemberName'], "Admin"=>$row['Admin'], "Photo"=>$row['Photo']);
 		}
 	}
 	
