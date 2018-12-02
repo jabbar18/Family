@@ -17,6 +17,15 @@ else
 
     $sGender = $aMembers[0]['Gender'];
 
+    if($_SESSION['Photo'] != "")
+    {
+        $sPhoto = '<img src="../../files/'.$_SESSION['Photo'].'" class="img-circle" alt="User Image" style="height:45px">';
+    }
+    else
+    {
+        $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">';
+    }
+
     if($sGender == "0")
     {
         $sMale = "checked";
@@ -225,7 +234,7 @@ else
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <?php echo $sPhoto ?>
                 </div>
                 <div class="pull-left info">
                     <p></ph><?php echo $_SESSION["MemberName"] ?></p>

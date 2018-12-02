@@ -13,6 +13,15 @@ else
     include('../members/MembersDB.php');
     $aMembers = SelectAllMembers(0);
 
+    if($_SESSION['Photo'] != "")
+    {
+        $sPhoto = '<img src="../../files/'.$_SESSION['Photo'].'" class="img-circle" alt="User Image" style="height:45px">';
+    }
+    else
+    {
+        $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">';
+    }
+
 }
 
 
@@ -196,6 +205,10 @@ else
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
+
+                    
+                            <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+                            
                 </ul>
             </div>
         </nav>
@@ -207,7 +220,7 @@ else
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <?php echo $sPhoto ?>
                 </div>
                 <div class="pull-left info">
                     <p></ph><?php echo $_SESSION["MemberName"] ?></p>

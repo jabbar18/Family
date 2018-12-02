@@ -18,6 +18,15 @@ if (!isset($_SESSION['username'])) {
 
     $aMembers = SelectAllMembers($iUserId);
 
+    if($_SESSION['Photo'] != "")
+    {
+        $sPhoto = '<img src="../../files/'.$_SESSION['Photo'].'" class="img-circle" alt="User Image" style="height:45px">';
+    }
+    else
+    {
+        $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">';
+    }
+
 }
 
 
@@ -208,6 +217,9 @@ if (!isset($_SESSION['username'])) {
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
+
+                    <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+
                 </ul>
             </div>
         </nav>
@@ -219,7 +231,7 @@ if (!isset($_SESSION['username'])) {
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                     <?php echo $sPhoto ?>
                 </div>
                 <div class="pull-left info">
                     <p></ph><?php echo $_SESSION["MemberName"] ?></p>
@@ -243,6 +255,14 @@ if (!isset($_SESSION['username'])) {
 
                     </a>
                 </li>
+
+                <li >
+                    <a href="../familytree/familytree.php"
+                    <i class="fa fa-tree"></i> <span>Family Tree</span>
+
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="../events/Events.php">
@@ -268,6 +288,13 @@ if (!isset($_SESSION['username'])) {
                 <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
+
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="../tracking/tracking.php"
+                    <i class="fa fa-car"></i> <span>Members Tracking</span>
 
                     </a>
                 </li>
