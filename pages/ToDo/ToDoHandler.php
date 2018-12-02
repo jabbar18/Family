@@ -28,11 +28,11 @@ if($sAction == 'AddRecord')
     if($iTodoId)
     {
 
-        header("location: Todo.php?m=To Do Created Successfully");
+        header("location: ToDo.php?m=To Do Created Successfully");
     }
     else
     {
-        header("location: Todo.php?m=Can't Create To Do");
+        header("location: ToDo.php?m=Can't Create To Do");
     }
 
 }
@@ -48,7 +48,7 @@ else if($sAction == 'EditRecord')
     }
     else
     {
-        header("location: Todo.php?m=Can't Edit Event");
+        header("location: ToDo.php?m=Can't Edit Event");
     }
 
 }
@@ -60,7 +60,7 @@ else if($sAction == 'DeleteRecord')
 
     DeleteEvent($iEventId);
 
-    header("location: Todo.php?m=To Do Deleted Successfully");
+    header("location: ToDo.php?m=To Do Deleted Successfully");
 }
 
 ?>
