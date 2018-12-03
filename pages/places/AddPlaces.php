@@ -223,6 +223,9 @@ else
                     <li>
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
+
+                     <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+                     
                 </ul>
             </div>
         </nav>
