@@ -176,7 +176,7 @@ function SelectAllMembers($iMemberId)
 
         while($row = mysqli_fetch_array($sResult))
         {
-            $aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance']);
+            $aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance'], "Photo"=>$row['Photo']);
             array_push($aMembers, $aMember);
         }
 
@@ -542,4 +542,143 @@ function PollResult($QuestionId, $MemberId)
 
     return $aVotes;
 }
+
+
+
+//Select All members
+function SelectAllExpense($iExpenseId, $iUserId = 0)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iExpenseId > 0)
+        $sCondition = "WHERE E.ExpenseId ='$iExpenseId'";
+
+    if($iUserId > 0)
+        $sCondition = "WHERE E.MemberId ='$iUserId'";
+
+
+    $sQuery = "SELECT E.*, M.MemberName FROM expenses AS E INNER JOIN members AS M ON E.MemberId = M.MemberId $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aMembers = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aMember = array("MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "ExpenseId"=>$row['ExpenseId'], "Amount"=>$row['Amount'], "DateTime"=>$row['DateTime']);
+            array_push($aMembers, $aMember);
+        }
+
+        return $aMembers;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
+function SelectAllExpensesItems($iExpenseId)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iExpenseId > 0)
+        $sCondition = "WHERE EI.ExpenseId ='$iExpenseId'";
+
+
+    $sQuery = "SELECT EI.* FROM expenses_items AS EI $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aExpensesItems = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aExpensesItem = array("ExpenseId"=>$row['ExpenseId'], "Amount"=>$row['Amount'], "Item"=>$row['Item']);
+            array_push($aExpensesItems, $aExpensesItem);
+        }
+
+        return $aExpensesItems;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
+function SelectAllPolls($iToDoId)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+
+    if($iToDoId > 0)
+        $sCondition = "WHERE PollId ='$iToDoId' LIMIT 1";
+
+
+    $sQuery = "SELECT * FROM polls $sCondition";
+
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
+function SelectAllToDo($iToDoId, $iUserId = 0)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iUserId > 0)
+        $sCondition = "WHERE TodoMemberId = '$iUserId'";
+
+    if($iToDoId > 0)
+        $sCondition .= "WHERE TodoId ='$iToDoId' LIMIT 1";
+
+    $sQuery = "SELECT * FROM todo $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    $aEvents = array();
+
+    if($sResult)
+    {
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aEvent = array("TodoId"=>$row['TodoId'],"Title"=>$row['Title'], "TodoDate"=>$row['TodoDate'], "TodoMemberId"=>$row['TodoMemberId'], "Description"=>$row['Description'], "DeadlineDate"=>$row['DeadlineDate']);
+            array_push($aEvents, $aEvent);
+        }
+
+        return $aEvents;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
 ?>

@@ -10,7 +10,7 @@ if(!isset($_SESSION['username'])){
 else
 {
 
-    include('../members/MembersDB.php');
+    include('../events/EventsDB.php');
 
     $iAdmin = $_SESSION['Admin'];
     $iUserId = 0;
@@ -20,6 +20,13 @@ else
 
 
     $aMembers = SelectAllMembers($iUserId);
+
+    $date = date('Y-m-d');
+    $sMemberBirthday = MemberBirthday($date);
+    $TodoNotifications = TodoNotification($date);
+    $sBirthdayNotify = BirthdayNotification($date);
+
+    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
 
     if($_SESSION['Photo'] != "")
     {
@@ -169,43 +176,47 @@ else
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning"><?php echo $iNotifications?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header">You have <?php echo $iNotifications?> notifications</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                                            page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
+                                    <?php foreach ($sBirthdayNotify as $Notification){
+                                        $NameOfWiher = $Notification['MemberWisherId'];
+                                        $aMembers = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+
+
+                                        ?>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i>Birthday Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
+                                                <?php echo $Notification['BirthdayMessage']; ?>
+                                            </a>
+                                        </li>
+                                    <?php }?>
+                                    <?php foreach ($TodoNotifications as $TodoNotification){
+                                        $TodoMemberId = $TodoNotification['TodoMemberId'];
+                                        $Title = $TodoNotification['Title'];
+                                        $aMembers = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers[0]['MemberName'];
+
+
+                                        ?>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i>Todo  <strong><?php echo $TotoMember; ?></strong><br>
+                                                <?php echo $Title; ?><br>
+                                                Deadline: <?php echo $TodoNotification['DeadlineDate']; ?>
+                                            </a>
+                                        </li>
+                                    <?php }?>
+
                                 </ul>
                             </li>
                             <li class="footer"><a href="#">View all</a></li>
-
                         </ul>
                     </li>
 

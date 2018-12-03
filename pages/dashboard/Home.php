@@ -9,7 +9,6 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-
     include('../events/EventsDB.php');
 
     $aMembers = SelectAllMembers(0);
@@ -194,7 +193,7 @@ else
                                         ?>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-users text-aqua"></i>Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
+                                                <i class="fa fa-users text-aqua"></i>Birthday Wish From <strong><?php echo $NameOfWiher1; ?></strong><br>
                                                 <?php echo $Notification['BirthdayMessage']; ?>
                                             </a>
                                         </li>
