@@ -46,22 +46,22 @@ function AddRecord()
 
 
 //Delete member
-function DeleteEvent($iMemberId)
+function DeleteEvent($iPlaceId)
 {
     establishConnectionToDatabase();
 
-    $query = "DELETE FROM events WHERE EventId = $iMemberId";
+    $query = "DELETE FROM places WHERE PlaceId = $iPlaceId";
     $result = mysqli_query($GLOBALS['link'], $query);
 
     if(mysqli_affected_rows($GLOBALS['link']) > 0)
     {
-        $sReturn = "Member Deleted Successfully";
+        $sReturn = "Place Deleted Successfully";
     }
     else
     {
         $sReturn = false;
     }
-    $query = "DELETE FROM events_members WHERE EventId = $iMemberId";
+    $query = "DELETE FROM places_members WHERE PlaceId = $iPlaceId";
     $result = mysqli_query($GLOBALS['link'], $query);
 
     mysqli_close($GLOBALS['link']);

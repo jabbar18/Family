@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/places/Places.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/places/Places.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/places/ViewPlaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/places/ViewPlaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/places/PlacesDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/places/PlacesDB.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +27,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Places.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Places.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/places/Places.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="345" column="30" selection-start-line="345" selection-start-column="29" selection-end-line="345" selection-end-column="30" />
+            <state relative-caret-position="319">
+              <caret line="408" lean-forward="true" selection-start-line="406" selection-start-column="39" selection-end-line="408" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Events.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlacesDB.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -79,7 +98,6 @@
       <find>$date</find>
       <find>member</find>
       <find>rem</find>
-      <find>delete</find>
       <find>user</find>
       <find>onlu</find>
       <find>jpg</find>
@@ -101,6 +119,7 @@
       <find>$aEventsMembers</find>
       <find>$aRecords</find>
       <find>Events</find>
+      <find>delete</find>
     </findStrings>
     <replaceStrings>
       <replace>Event</replace>
@@ -140,7 +159,6 @@
         <option value="$PROJECT_DIR$/pages/dashboard/dashboard.php" />
         <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
         <option value="$PROJECT_DIR$/pages/todo/ToDoHandler.php" />
-        <option value="$PROJECT_DIR$/pages/events/Events.php" />
         <option value="$PROJECT_DIR$/pages/events/ViewEvents.php" />
         <option value="$PROJECT_DIR$/pages/expenses/AddExpenses.php" />
         <option value="$PROJECT_DIR$/pages/expenses/Expenses.php" />
@@ -157,12 +175,13 @@
         <option value="$PROJECT_DIR$/pages/todo/ToDo.php" />
         <option value="$PROJECT_DIR$/pages/todo/ViewToDo.php" />
         <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
-        <option value="$PROJECT_DIR$/pages/places/PlacesDB.php" />
         <option value="$PROJECT_DIR$/pages/places/AddPlaces.php" />
         <option value="$PROJECT_DIR$/pages/places/PlacesHandler.php" />
         <option value="$PROJECT_DIR$/pages/events/EventsDB.php" />
         <option value="$PROJECT_DIR$/pages/places/ViewPlaces.php" />
         <option value="$PROJECT_DIR$/pages/places/Places.php" />
+        <option value="$PROJECT_DIR$/pages/events/Events.php" />
+        <option value="$PROJECT_DIR$/pages/places/PlacesDB.php" />
       </list>
     </option>
   </component>
@@ -319,12 +338,12 @@
       <workItem from="1543734164407" duration="10705000" />
       <workItem from="1543766309707" duration="3040000" />
       <workItem from="1543812064183" duration="63000" />
-      <workItem from="1543842093366" duration="2781000" />
+      <workItem from="1543842093366" duration="3139000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69665000" />
+    <option name="totallyTimeSpent" value="70023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="703" extended-state="0" />
@@ -516,13 +535,6 @@
         <state relative-caret-position="-1536" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="47" selection-start-line="16" selection-start-column="4" selection-end-line="29" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/expenses/ExpenseDB.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="430">
@@ -687,17 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding>
-            <element signature="n#DeleteEvent#0;n#!!top" />
-            <element signature="n#SelectAllEvents#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/places/AddPlaces.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -735,8 +736,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/places/Places.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="345" column="30" selection-start-line="345" selection-start-column="29" selection-end-line="345" selection-end-column="30" />
+        <state relative-caret-position="319">
+          <caret line="408" lean-forward="true" selection-start-line="406" selection-start-column="39" selection-end-line="408" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
         </state>
       </provider>
     </entry>
