@@ -154,6 +154,37 @@ function SelectAllEvents($iEventId, $sSort = 0)
     return false;
 }
 
+function SelectAllPlaces($iPlaceId)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iPlaceId > 0)
+        $sCondition = "WHERE E.PlaceId ='$iPlaceId' LIMIT 1";
+
+    $sQuery = "SELECT E.*, M.MemberName AS 'Organizor' FROM places AS E INNER JOIN members AS M ON M.MemberId = E.MemberId  $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aPlaces = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aPlace = array("PlaceId"=>$row['PlaceId'],"PlaceName"=>$row['PlaceName'], "MemberId"=>$row['MemberId'],"Organizor"=>$row['Organizor'], "Latitude"=>$row['Latitude'], "Longitude"=>$row['Longitude']);
+            array_push($aPlaces, $aPlace);
+        }
+
+        return $aPlaces;
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
 //Select All members
 function SelectAllMembers($iMemberId)
 {
@@ -201,6 +232,40 @@ function SelectAllEventMember($iEventId)
 
 
     $sQuery = "SELECT E.* FROM events_members AS E   $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            //$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor']);
+            //	array_push($aEvents, $row['MemberId'] );
+            $aEvents[]=$row['MemberId'];
+        }
+
+        return $aEvents;
+
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
+function SelectAllPlaceMember($iPlaceId)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iPlaceId > 0)
+        $sCondition = "WHERE E.PlaceId ='$iPlaceId' ";
+
+
+    $sQuery = "SELECT E.* FROM places_members AS E   $sCondition";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 

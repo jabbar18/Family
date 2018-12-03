@@ -9,21 +9,22 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
+
     include('../events/EventsDB.php');
 
+    $iAdmin = $_SESSION['Admin'];
+
+    $aRecords = SelectAllPlaces(0);
     $aMembers = SelectAllMembers(0);
-    $aEvents = SelectAllEvents(0, 1);
-    $iTotalMembers = count($aMembers);
-    $iTotalEvents = count($aEvents);
-    $date = date('Y-m-d');
+
+   $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
 
     $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
-    $aExpenses_Data = Expenses_Data();
-    $iTotalExpenses = $aExpenses_Data["Total"];
 
+    $iCounter = 0;
 
     if($_SESSION['Photo'] != "")
     {
@@ -45,7 +46,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Family Management System</title>
+    <title>Events</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -54,8 +55,6 @@ else
     <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -70,15 +69,14 @@ else
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="../home.html" class="logo">
+        <a href="../Dashboard/Home.php" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -174,6 +172,7 @@ else
                         </ul>
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
+                    <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
@@ -210,7 +209,7 @@ else
                                             <a href="#">
                                                 <i class="fa fa-users text-aqua"></i>Todo  <strong><?php echo $TotoMember; ?></strong><br>
                                                 <?php echo $Title; ?><br>
-                                                  Deadline: <?php echo $TodoNotification['DeadlineDate']; ?>
+                                                Deadline: <?php echo $TodoNotification['DeadlineDate']; ?>
                                             </a>
                                         </li>
                                     <?php }?>
@@ -227,7 +226,7 @@ else
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
 
-                    <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+                     <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
 
                 </ul>
             </div>
@@ -239,8 +238,8 @@ else
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
-                <div class="pull-left image" style="height: 40px;">
-                   <?php echo $sPhoto ?>
+                <div class="pull-left image">
+                    <?php echo $sPhoto ?>
                 </div>
                 <div class="pull-left info">
                     <p></ph><?php echo $_SESSION["MemberName"] ?></p>
@@ -252,12 +251,13 @@ else
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active">
+                <li>
                     <a href="../dashboard/Home.php">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
+                
                 <li >
                     <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
@@ -293,7 +293,7 @@ else
                     </a>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="../places/Places.php">
                         <i class="fa fa-home"></i> <span>Places</span>
 
@@ -307,7 +307,7 @@ else
                     </a>
                 </li>
 
-                <li>
+                 <li>
                     <a href="../tracking/tracking.php"
                     <i class="fa fa-car"></i> <span>Members Tracking</span>
 
@@ -338,449 +338,88 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
+                Events
 
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
+                <li><a href="#">Events</a></li>
+                <li class="active">Events</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-            <!-- Info boxes -->
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Members</span>
-                            <span class="info-box-number"><?php echo $iTotalMembers ?></span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-red"><i class="fa fa-plane"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Events</span>
-                            <span class="info-box-number"><?php echo $iTotalEvents ?></span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-
-                <!-- fix for small devices only -->
-                <div class="clearfix visible-sm-block"></div>
-
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Expenses</span>
-                            <span class="info-box-number"><?php echo $iTotalExpenses; ?></span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-
-                <!-- /.col -->
-            </div>
             <!-- /.row -->
-
-
-            <!-- Main row -->
             <div class="row">
-                <!-- Left col -->
-                <div class="col-md-8">
-                    <!-- MAP & BOX PANE -->
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"></h3>
 
-                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                    <script src="https://code.highcharts.com/modules/data.js"></script>
-                    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
 
 
-                    <!-- /.box -->
 
-                    <!-- /.row -->
+                                    <?php
 
-                    <!-- TABLE: LATEST ORDERS -->
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Expenses Chart</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div id="BarChart" style="height: 400px"></div>
-                            <script type="text/javascript">
-                                Highcharts.chart('BarChart', {
-                                    chart: {
-                                        renderTo: "histogram",
-                                        type: "column"
-                                    },
-                                    plotOptions: {
-                                        column: {
-                                            colorByPoint: true
-                                        }
-                                    },
-                                    title: { text: "" },
-                                    credits: { enabled:false },
-                                    xAxis: {
-                                        categories: [<?=$aExpenses_Data['Categories'];?>],
-                                        labels: {
-
-                                            align: "center",
-                                            style: {
-                                                fontSize: "10px",
-                                                textShadow:false,
-                                                fontFamily: "Trebuchet MS, Verdana, sans-serif"
-                                            }
-                                        }
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        allowDecimals: false,
-                                        title: {
-                                            text: ""
-                                        }
-                                    },
-                                    legend: {
-                                        enabled: false
-                                    },
-                                    plotOptions: {
-                                        series: {
-                                            borderWidth: 0,
-                                            dataLabels: {
-                                                enabled: true,
-                                                format: '{point.y:.1f}'
-                                            }
-                                        }
-                                    },
-                                    tooltip: {
-                                        formatter: function() {
-                                            return "<b>" + this.x + "</b><br/>Total : "+ Highcharts.numberFormat(this.y, 0);
-                                        }
-                                    },
-
-                                    series: [{
-                                        name: "",
-                                        data: [<?=$aExpenses_Data['Data'];?>],
-                                        dataLabels: {
-                                            enabled: true,
-                                            color: "#00000",
-                                            align: "right",
-                                            x: 4,
-                                            y: 10,
-                                            style: {
-                                                fontSize: "10px",
-                                                textShadow:false
-                                            }
-                                        }
-                                    }]
-                                });
-                            </script>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-md-4">
-
-                    <!-- PRODUCT LIST -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Events</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <ul class="products-list product-list-in-box">
-
-                                <?php
-
-                                foreach($aEvents as $aEvent)
-                                {
-
+                                    if($iAdmin == 1)
+                                      echo "   
+                                    <h3 class=\"box-title\"><a href=\"AddPlaces.php\"><button type=\"button\" class=\"btn btn-block btn-success\"><i class=\"fa fa-plus\"></i> Add Places</button></a></h3>";
 
                                     ?>
 
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../../dist/img/default-50x50.gif" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title"><?php echo $aEvent['EventName'] ?>
-                                                <span class="label label-warning pull-right"><?php echo $aEvent['DateTime'] ?></span></a>
-                                            <span class="product-description">
-                         <?php echo $aEvent['Description'] ?>
-                        </span>
-                                        </div>
-                                    </li>
 
-                                <?php }  ?>
-                                <!-- /.item -->
-
-                                <!-- /.item -->
-                            </ul>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-center">
-                            <a href="../events/Events.php" class="uppercase">View All Events</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!-- /.box -->
-
-                    <!-- Birthday LIST -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Birthday</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
                             </div>
                         </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
-                            <ul class="products-list product-list-in-box">
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th> S# </th>
+                                    <th> Place Name </th>
+                                    <th> Place Member </th>
+                                    <th> View </th>
+                                    <th> Delete </th>
+                                    <!---- <th>Edit</th> --->
 
+                                </tr>
                                 <?php
 
-                                foreach($sMemberBirthday as $dBirthday)
+                                foreach($aRecords as $aRecord)
                                 {
-                                    $Name = $dBirthday['MemberName'];
-                                    $MemberId = $dBirthday['MemberId'];
-
-
-
-
+                                    $iCounter++;
                                     ?>
 
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../../dist/img/birthday.jpg" alt="Product Image">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title"><?php echo $Name .' Birthday'; ?>
-                                                <span class="label label-warning pull-right">Today</span></a>
-                                            <span class="product-description">
-
-                         <form action="../Events/EventsHandler.php" method="post"><input type="hidden" name="action" id="action" value="BirthdayWish" /><input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId"><table><tr><td><input type="text" id="birthdaymessage" name="birthdaymessage" class="form-control input-sm" style="width: 210px" placeholder="Birhday wish"></td><td><button class="btn-primary" type="submit">send</button></td></tr></table></form>
-                        </span>
-                                        </div>
-                                    </li>
-
-                                <?php }  ?>
-                                <!-- /.item -->
-
-                                <!-- /.item -->
-                            </ul>
-                        </div>
-                        <!-- /.box-body -->
-
-                        <!-- /.box-footer -->
-                    </div>
-
-                    <!--                    Birthday  wish-->
-                    <!-- Poll Start -->
-                    <!-- Poll Start -->
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Poll</h3>
-
-                            <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-
-                            <ul class="products-list product-list-in-box">
+                                    <tr>
+                                        <td> <?php echo $iCounter ?> </td>
+                                        <td> <?php echo $aRecord['PlaceName'] ?> </td>
+                                        <td> <?php echo $aRecord['Organizor'] ?> </td>
+                                        <td ><a href="./ViewPlaces.php?PlaceId=<?php echo $aRecord['PlaceId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
+                                        <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aRecord['EventId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
 
 
-                                <?php
+                                        <?php
 
-
-                                $sPolls = PollVoting($date);
-                                $i = 0;
-                                $MemberIdloop =0;
-                                $QuestionIdloop = 0;
-
-                                foreach($sPolls as $sPoll)
-                                {
-                                    $QuestionId = $sPoll['PollId'];
-                                    $Question = $sPoll['Question'];
-                                    $Answer1 = $sPoll['Answer1'];
-                                    $Answer2 = $sPoll['Answer2'];
-                                    $Answer3 = $sPoll['Answer3'];
-                                    $Answer4 = $sPoll['Answer4'];
-                                    $MemberId = $_SESSION['id'];
-
-                                    $i++;
-
-
-                                    $PollResult =  PollResult($QuestionId, $MemberId);
-//                                        print_r($PollResult);
-//                                        die;
-
-                                    if (!empty($PollResult)) {
-//                                        $MemberIdloop = $PollResult[0]['MemberId'];
-//                                        $QuestionIdloop = $PollResult[0]['QuestionId'];
-                                        $Answer_1 = $PollResult[1]['Answer_1'];
-                                        $Answer_2 = $PollResult[1]['Answer_2'];
-                                        $Answer_3 = $PollResult[1]['Answer_3'];
-                                        $Answer_4 = $PollResult[1]['Answer_4'];
-                                    }
-
-
-                                    $CheckPoll = CheckPoll($QuestionId, $MemberId);
-
-//                                    if($MemberIdloop == $MemberId && $QuestionIdloop == $QuestionId   )
-                                    if($CheckPoll > 0)
-                                    {
+                                        if($iAdmin == 1)
+                                           echo "<td ><a href=\"./PlacesHandler.php?action=DeleteRecord&PlaceId=" . $aRecord['PlaceId'] . "><button type=\"button\" class=\"btn btn-danger\"><i class=\"fa fa-remove\"></i></button></a></td>";
 
                                         ?>
 
-                                        <form action="../Events/EventsHandler.php" method="post">
-
-                                            <li class="item">
-                                                <div class="product-img">
-                                                    <img src="../../dist/img/birthday.jpg" alt="Product Image">
-                                                </div>
-                                                <div class="product-info">
-                                                    <a href="javascript:void(0)" class="product-title"><?php echo $Question ?>
-                                                        <span class="label label-warning pull-right">Today</span></a>
-                                                    <span class="product-description">
-
-                                                <input type="hidden" name="action" id="action" value="Poll" />
-                                                <input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId">
-
-                                                        <!--                                                        start -->
-                                                        <!--                                                        wnd-->
-                                                <table >
-                                                    <tr>
-                                                        <td>
-                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php  echo $Answer_1; ?>" ><?php  echo $Answer1; ?> Votes :<?php  echo $Answer_1; ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_2; ?>"><?php  echo $Answer2; ?> Votes :<?php echo  $Answer_2;?>
-                                                        </td>
-                                                    </tr>
-
-                                                    <?php  echo $Answer3 != '' ? '<tr>
-                                                        <td>
-                                                            <input type="range" id="Question_" name="Question_" disabled value="'.$Answer_3.'">'.$Answer3 . ' Votes :'.$Answer_3.'
-                                                        </td>
-                                                    </tr>' : '';?>
-                                                    <?php  echo $Answer4 != '' ? '<tr>
-                                                        <td>
-                                                            <input type="range" id="Question_" name="Question_" disabled value="'.$Answer_4.'">'.$Answer4 . ' Votes :'.$Answer_4.'
-                                                        </td>
-                                                    </tr>' : '';?>
-
-
-                                                </table>
-                        </span>
-                                                </div>
-                                            </li>
-
-                                        </form>
-                                    <?php } else { ?>
-
-                                        <form action="../Events/EventsHandler.php" method="post">
-
-                                            <li class="item">
-                                                <div class="product-img">
-                                                    <img src="../../dist/img/birthday.jpg" alt="Product Image">
-                                                </div>
-                                                <div class="product-info">
-                                                    <a href="javascript:void(0)" class="product-title"><?php echo $Question; ?>
-                                                        <span class="label label-warning pull-right">Today</span></a>
-                                                    <span class="product-description">
-
-                                                <input type="hidden" name="action" id="action" value="Poll" />
-                                                <input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId">
-                                                <table >
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" id="Question_" name="Question_"  value="<?php echo $QuestionId.'_1';?>"><?php echo  $Answer1;?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="radio" id="Question_" name="Question_" value="<?php echo  $QuestionId.'_2';?>"><?php echo  $Answer2;?>
-                                                        </td>
-                                                    </tr>
-
-                                                    <?php  echo $Answer3 != '' ? '<tr>
-                                                        <td>
-                                                            <input type="radio" id="Question_" name="Question_" value="'.$QuestionId.'_3'.'">'.$Answer3.'
-                                                        </td>
-                                                    </tr>' : '';?>
-                                                    <?php  echo $Answer4 != '' ? '<tr>
-                                                        <td>
-                                                            <input type="radio" id="Question_" name="Question_" value="'.$QuestionId.'_4'.'">'.$Answer4.'
-                                                        </td>
-                                                    </tr>' : '';?>
-
-
-                                                </table>
-                        </span>
-                                                </div>
-                                            </li>
-                                            <button class="btn-primary" type="submit">Vote</button>
-                                        </form>
-
-                                    <?php $CheckPoll = false; }  }?>
-                                <!-- /.item -->
-
-                                <!-- /.item -->
-                            </ul>
-
-
+                                        </tr>
+                                    <?php
+                                }
+                                ?>
+                            </table>
                         </div>
                         <!-- /.box-body -->
-
-                        <!-- /.box-footer -->
                     </div>
-
-                    <!--                    Poll  End-->
+                    <!-- /.box -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-
-
         </section>
         <!-- /.content -->
     </div>
@@ -983,24 +622,14 @@ else
 
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
-<!-- Sparkline -->
-<script src="../../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap  -->
-<script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll -->
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS -->
-<script src="../../bower_components/chart.js/Chart.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 </body>
