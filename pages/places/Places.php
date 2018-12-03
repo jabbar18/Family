@@ -46,7 +46,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Events</title>
+    <title>Places</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -338,13 +338,13 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Places
 
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Events</a></li>
-                <li class="active">Events</li>
+                <li><a href="#">Places</a></li>
+                <li class="active">Places</li>
             </ol>
         </section>
 

@@ -336,12 +336,12 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Events
+                Places
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="./Events.php">Events</a></li>
-                <li class="active">View Events</li>
+                <li><a href="./Places.php">Places</a></li>
+                <li class="active">View Places</li>
             </ol>
         </section>
 
