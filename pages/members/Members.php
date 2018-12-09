@@ -18,13 +18,13 @@ else
     if($iAdmin == 0)
         $iUserId = $_SESSION['id'];
 
-    $aMembers = SelectAllMembers($iUserId);
+     $aMembers = SelectAllMembers($iUserId);
 
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
-    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
+    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
 
     if($_SESSION['Photo'] != "")
     {
@@ -183,8 +183,8 @@ else
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
                                         $NameOfWiher = $Notification['MemberWisherId'];
-                                        $aMembers = SelectAllMembers($NameOfWiher);
-                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+                                        $aMembers2 = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers2[0]['MemberName'];
 
 
                                         ?>
@@ -198,8 +198,8 @@ else
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
                                         $Title = $TodoNotification['Title'];
-                                        $aMembers = SelectAllMembers($TodoMemberId);
-                                        $TotoMember = $aMembers[0]['MemberName'];
+                                        $aMembers3 = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers3[0]['MemberName'];
 
 
                                         ?>
@@ -289,13 +289,6 @@ else
                 </li>
 
                 <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
-
-                    </a>
-                </li>
-
-                <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
@@ -378,7 +371,7 @@ else
                                     <th>Contact Number</th>
                                     <th>Email Address</th>
                                     <th>View</th>
-                                    <!---- <th>Edit</th> --->
+                                   <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 <?php
@@ -413,12 +406,13 @@ else
                                         <td> <?php echo $aMember['ContactNumber'] ?> </td>
                                         <td> <?php echo $aMember['Email'] ?> </td>
                                         <td ><a href="./ViewMembers.php?MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
-                                        <!-- <td ><a href="./EditMembers.php?MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-warning"><i class="fa fa-align-left"></i></button></a></td> -->
 
                                         <?php
 
                                         if($iAdmin == 1) { ?>
-                                              <td ><a href="./MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
+                                            <td ><a href="./EditMembers.php?MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button></a></td>
+
+                                            <td ><a href="./MembersHandler.php?action=DeleteRecord&MemberId=<?php echo $aMember['MemberId'] ?>"><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
                                            <?php }
                                         ?>
                                        </tr>

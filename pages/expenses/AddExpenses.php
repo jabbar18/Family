@@ -187,8 +187,8 @@ if (!isset($_SESSION['username'])) {
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
                                         $NameOfWiher = $Notification['MemberWisherId'];
-                                        $aMembers = SelectAllMembers($NameOfWiher);
-                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+                                        $aMembers2 = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers2[0]['MemberName'];
 
 
                                         ?>
@@ -202,8 +202,8 @@ if (!isset($_SESSION['username'])) {
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
                                         $Title = $TodoNotification['Title'];
-                                        $aMembers = SelectAllMembers($TodoMemberId);
-                                        $TotoMember = $aMembers[0]['MemberName'];
+                                        $aMembers3 = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers3[0]['MemberName'];
 
 
                                         ?>
@@ -291,13 +291,6 @@ if (!isset($_SESSION['username'])) {
                 <li>
                     <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
-
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
 
                     </a>
                 </li>

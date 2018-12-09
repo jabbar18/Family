@@ -290,13 +290,6 @@ else
                     </a>
                 </li>
 
-                <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
-
-                    </a>
-                </li>
-
                 <li class="active">
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>

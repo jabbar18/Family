@@ -9,8 +9,39 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
-    include_once("../../files/database/inc/dbconnection.inc.php");
+    include('../events/EventsDB.php');
 
+    $dLocationDate = date("Y-m-d");
+
+    $iAdmin = $_SESSION['Admin'];
+    $iUserId = 0;
+
+    if($iAdmin == 0)
+        $iUserId = $_SESSION['id'];
+
+    if (isset($_GET['id'])) {
+
+        $sTracking = GetTrackingData($_GET['id'], $_GET['trackingdate']);
+
+    }
+    else
+    {
+        $sTracking = GetTrackingData();
+
+    }
+
+    $iAdmin = $_SESSION['Admin'];
+
+
+
+    $aMembers = SelectAllMembers($iUserId);
+
+    $date = date('Y-m-d');
+    $sMemberBirthday = MemberBirthday($date);
+    $TodoNotifications = TodoNotification($date);
+    $sBirthdayNotify = BirthdayNotification($date);
+
+    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
 
     if($_SESSION['Photo'] != "")
     {
@@ -278,13 +309,6 @@ else
                 </li>
 
                 <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
-
-                    </a>
-                </li>
-
-                <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
@@ -338,58 +362,52 @@ else
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        <form action="tracking.php" method="get" role="form">
+                        <table width="100%">
+                            <tr>
+                                <td style="padding-right: 10px">
+
+
+                            <label for="Members[]">Tracking Members</label>
+
+                            <select name="id" id="id" class="form-control" aria-multiselectable="true">
+                                <option value="0"  >Select Member</option>
+
+                                <?php
+
+
+
+                                foreach($aMembers as $aMember)
+                                {
+
+                                    ?>
+                                    <option value="<?php echo $aMember['MemberId']  ?>"  ><?php echo $aMember['MemberName'] ."( ".   $aMember['UserName'] .")" ?></option>
+
+                                    <?php
+                                }  ?>
+                            </select>
+                                </td>
+
+
+                                <td style="padding-right: 10px">
+                                <label for="email">Location Date</label>
+                                <input type="date" class="form-control" value="<?php echo $dLocationDate ?>" id="trackingdate" name="trackingdate">
+                                </td>
+
+                                <td>
+                                        <h3 class="box-title" style="padding-top: 10px"><a href="tracking.php"><button type="submit" class="btn btn-block btn-success"><i class="fa fa-map-marker"></i> Track Member</button></a></h3>
+
+                                </td>
+
+                            </tr>
+                        </table>
+
+                        </form>
+
+
+
                         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
-                        <div id="map_div" style="height: 400px;"></div>
-
-                        <script>/*
- * declare map as a global variable
- */
-                            var map;
-
-                            /*
-                             * use google maps api built-in mechanism to attach dom events
-                             */
-                            google.maps.event.addDomListener(window, "load", function () {
-
-                                /*
-                                 * create map
-                                 */
-                                var map = new google.maps.Map(document.getElementById("map_div"), {
-                                    center: new google.maps.LatLng(25.4199, 68.2650),
-                                    zoom: 14,
-                                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                                });
-
-                                /*
-                                 * create infowindow (which will be used by markers)
-                                 */
-                                var infoWindow = new google.maps.InfoWindow();
-
-                                /*
-                                 * marker creater function (acts as a closure for html parameter)
-                                 */
-                                function createMarker(options, html) {
-                                    var marker = new google.maps.Marker(options);
-                                    if (html) {
-                                        google.maps.event.addListener(marker, "click", function () {
-                                            infoWindow.setContent(html);
-                                            infoWindow.open(options.map, this);
-                                        });
-                                    }
-                                    return marker;
-                                }
-
-                                /*
-                                 * add markers to map
-                                 */
-                                var marker0 = createMarker({
-                                    position: new google.maps.LatLng(25.4199, 68.2650),
-                                    map: map,
-                                    icon: "http://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-green.png"
-                                }, "<h1>University of Sindh</h1><p>This is the home marker.</p>");
-
-
-                            });</script>
+                        <?php echo $sTracking ?>
 
 
                         <!-- /.box-body -->

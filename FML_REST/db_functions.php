@@ -34,6 +34,35 @@ class DB_Functions
         return $user;
     }
 
+    public function addLocations($iMemberId, $iLatitude, $iLongitude)
+    {
+        $aReturn = array();
+        $aReturn["MemberId"] = $iMemberId;
+        $aReturn["Latitude"] = $iLatitude;
+        $aReturn["Longitude"] = $iLongitude;
+
+        $dLocationDate = date("Y-m-d H:i:s");
+
+        $sQuery = "INSERT INTO tracking (MemberId, Latitude, Longitude, LocationDate) VALUES( '$iMemberId', '$iLatitude','$iLongitude', '$dLocationDate')";
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        if($sResult)
+        {
+            $isCreated = true;
+        }
+        else
+        {
+            $isCreated = false;
+        }
+
+
+
+        return($aReturn);
+
+
+    }
+
 
     public function getHomeData($iMemberId)
     {
@@ -41,14 +70,74 @@ class DB_Functions
         $aReturn["Events"] = $this->getEventsData($iMemberId);
         $aReturn["BirthDays"] = $this->getAllBirthDays();
         $aReturn["Members"] = $this->getAllMembers();
-        $aReturn["ToDos"] = $this->getAllNotifications($iMemberId);
+        $aReturn["ToDos"] = $this->getAllTodos($iMemberId);
         $aReturn["Expenses"] = $this->getAllExpenses($iMemberId);
         $aReturn["Polls"] = $this->getPollsData($iMemberId);
+        $aReturn["Notifications"] = $this->getAllNotifications($iMemberId);
 
         return($aReturn);
     }
 
     public function getAllNotifications($iMemberId)
+    {
+        $dCurrentDate = date("Y-m-d");
+
+        $aReturn = array();
+
+        $sCondition = "";
+
+        if($dCurrentDate != '')
+            $sCondition = "WHERE TodoDate <='$dCurrentDate' AND DeadlineDate >= '$dCurrentDate' AND TodoMemberId ='$iMemberId'";
+
+
+        $sQuery = "SELECT T.*, M.MemberName FROM todo AS T INNER JOIN members AS M ON T.TodoMemberId = M.MemberId $sCondition";
+
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        if($sResult)
+        {
+            while($row = mysqli_fetch_array($sResult))
+            {
+                $aToDo = array("Type" => "Todo", "TodoId"=>$row['TodoId'], "MemberName"=>$row['MemberName'],"Title"=>$row['Title'], "TodoDate"=>$row['TodoDate'], "TodoMemberId"=>$row['TodoMemberId'], "Description"=>$row['Description'], "Date"=>$row['DeadlineDate'], "Icon"=> 'create');
+                array_push($aReturn, $aToDo);
+            }
+        }
+
+
+        $dDay = date("d",strtotime($dCurrentDate));
+        $dMonth = date("m",strtotime($dCurrentDate));
+
+        if($dCurrentDate != '')
+            $sCondition = "WHERE Day(DateOfBirth) = '$dDay' and Month(DateOfBirth) = '$dMonth'";
+
+
+        $sQuery = "SELECT * FROM members $sCondition";
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        if($sResult)
+        {
+
+
+
+            while($row = mysqli_fetch_array($sResult))
+            {
+                $aBirthDay = array("Type" => "Birthday", "Title" => 'Today is '.$row["MemberName"].' Birthday', "MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "Date"=>$row['DateOfBirth'], "Icon"=> 'archive');
+                array_push($aReturn, $aBirthDay);
+            }
+
+
+        }
+
+        echo mysqli_error($this->conn);
+
+        return $aReturn;
+
+    }
+
+
+    public function getAllTodos($iMemberId)
     {
         $dCurrentDate = date("Y-m-d");
 
@@ -143,6 +232,7 @@ class DB_Functions
 
     public function getAllExpenses($iMemberId)
     {
+        $sCondition = "";
 
         if($iMemberId > 0)
             $sCondition = "WHERE E.MemberId ='$iMemberId'";

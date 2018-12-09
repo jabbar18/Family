@@ -78,9 +78,7 @@
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
-            <label>
-<a href="register.html" class="text-center">Register a new membership</a>
-            </label>
+
           </div>
         </div>
         <!-- /.col -->

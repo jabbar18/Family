@@ -16,6 +16,7 @@ else
     $aMembers = SelectAllMembers($iMemberId);
 
     $sGender = $aMembers[0]['Gender'];
+    $sAdmin = $aMembers[0]['Admin'];
 
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
@@ -41,6 +42,17 @@ else
     {
         $sFemale = "checked";
         $sMale = "disabled";
+    }
+
+    if($sAdmin == "0")
+    {
+        $sAdmin = "";
+        $sMember = "selected";
+    }
+    else
+    {
+        $sAdmin = "selected";
+        $sMember = "";
     }
 
 }
@@ -191,8 +203,8 @@ else
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
                                         $NameOfWiher = $Notification['MemberWisherId'];
-                                        $aMembers = SelectAllMembers($NameOfWiher);
-                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+                                        $aMembers2 = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers2[0]['MemberName'];
 
 
                                         ?>
@@ -206,8 +218,8 @@ else
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
                                         $Title = $TodoNotification['Title'];
-                                        $aMembers = SelectAllMembers($TodoMemberId);
-                                        $TotoMember = $aMembers[0]['MemberName'];
+                                        $aMembers3 = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers3[0]['MemberName'];
 
 
                                         ?>
@@ -298,13 +310,6 @@ else
                 </li>
 
                 <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
-
-                    </a>
-                </li>
-
-                <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
@@ -389,6 +394,17 @@ else
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Member Name" required value="<?php echo $aMembers[0]['MemberName'] ?>" disabled>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="name">Member Type</label>
+                                        <select name="sfathername" id="sfathername" class="form-control" disabled>
+                                                <option <?php echo $sMember  ?> >Member</option>
+                                                <option <?php echo $sAdmin  ?>>Admin</option>
+
+
+                                        </select>
+
+                                    </div>
+
 
                                     <div class="form-group">
                                         <label for="uname">User Name</label>
@@ -435,9 +451,8 @@ else
 
                                             $aMothersArray = SelectAllMembers($iMotherId);
 
-
-                                                ?>
-                                                <option value="<?php echo $aMothersArray[0]['MemberId']  ?>"  ><?php echo $aMothersArray[0]['MemberName'] ."( ".   $aMothersArray[0]['UserName'] .")" ?></option>
+                                            ?>
+                                            <option value="<?php echo $aMothersArray[0]['MemberId']  ?>"  ><?php echo $aMothersArray[0]['MemberName'] ."( ".   $aMothersArray[0]['UserName'] .")" ?></option>
 
                                                 <?php
                                              ?>
