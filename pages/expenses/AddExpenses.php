@@ -22,7 +22,8 @@ if (!isset($_SESSION['username'])) {
     $sMemberBirthday = MemberBirthday($date);
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
-    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
+   $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
+
 
     if($_SESSION['Photo'] != "")
     {
@@ -291,6 +292,13 @@ if (!isset($_SESSION['username'])) {
                 <li>
                     <a href="../todo/ToDo.php">
                         <i class="fa fa-edit"></i> <span>ToDo</span>
+
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="../places/Places.php">
+                        <i class="fa fa-home"></i> <span>Places</span>
 
                     </a>
                 </li>

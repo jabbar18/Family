@@ -24,7 +24,8 @@ else
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
 
-    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
+   $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
+
 
     if($_SESSION['Photo'] != "")
     {

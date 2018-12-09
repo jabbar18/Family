@@ -20,7 +20,7 @@ else
     $TodoNotifications = TodoNotification($date);
     $sBirthdayNotify = BirthdayNotification($date);
 
-    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify);
+    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
     $aExpenses_Data = Expenses_Data();
     $iTotalExpenses = $aExpenses_Data["Total"];
 
