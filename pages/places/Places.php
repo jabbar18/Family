@@ -99,7 +99,9 @@ else
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
                             <span class="label label-success">4</span>
-                        </a>
+                       
+                    </li>
+                    <!-- Notifications: style can be found in dropdown.less --> </a>
                         <ul class="dropdown-menu">
                             <li class="header">You have 4 messages</li>
                             <li>
@@ -170,7 +172,7 @@ else
                             </li>
                             <li class="footer"><a href="#">See All Messages</a></li>
                         </ul>
-                    </li>
+                         
                     <!-- Notifications: style can be found in dropdown.less -->
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
