@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/places/Places.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/places/Places.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/places/PlacesDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/places/PlacesDB.php" afterDir="false" />
-    </list>
+    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,62 +14,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Home.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3942">
-              <caret line="284" lean-forward="true" selection-start-line="284" selection-end-line="284" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Places.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/places/Places.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="408" lean-forward="true" selection-start-line="406" selection-start-column="39" selection-end-line="408" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Events.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlacesDB.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewPlaces.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/places/ViewPlaces.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="345" column="18" lean-forward="true" selection-start-line="345" selection-start-column="18" selection-end-line="345" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="175" column="206" selection-start-line="175" selection-start-column="206" selection-end-line="175" selection-end-column="206" />
+            <state relative-caret-position="560">
+              <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Members.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
               <folding>
-                <element signature="n#SelectAllEvents#0;n#!!top" />
-                <element signature="n#SelectAllEventMember#0;n#!!top" />
-                <element signature="n#SelectAllExpense#0;n#!!top" />
-                <element signature="n#SelectAllExpensesItems#0;n#!!top" />
-                <element signature="n#SelectAllToDo#0;n#!!top" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
+              <folding>
+                <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
+                <element signature="n#addLocations#0;n#DB_Functions#0;n#!!top" />
+                <element signature="n#getAllTodos#0;n#DB_Functions#0;n#!!top" />
+                <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -90,36 +61,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>member_id</find>
-      <find>update</find>
-      <find>add_exp</find>
-      <find>amount_sum</find>
-      <find>poll</find>
-      <find>$date</find>
-      <find>member</find>
-      <find>rem</find>
-      <find>user</find>
-      <find>onlu</find>
-      <find>jpg</find>
-      <find>membernam</find>
-      <find>$sPhoto</find>
-      <find>&lt;?php</find>
-      <find>$aMembers</find>
-      <find>wish fr</find>
-      <find>photo</find>
-      <find>tree</find>
-      <find>$iNotifications</find>
-      <find>$aMothersArray</find>
-      <find>found</find>
-      <find>home&quot;</find>
-      <find>add Ev</find>
-      <find>events</find>
-      <find>Add E</find>
       <find>todo</find>
       <find>$aEventsMembers</find>
       <find>$aRecords</find>
       <find>Events</find>
       <find>delete</find>
+      <find>birthday</find>
+      <find>time</find>
+      <find>insert</find>
+      <find>$iLongitude</find>
+      <find>addto</find>
+      <find>$sEmployeeTrack</find>
+      <find>polls</find>
+      <find>$sEmployeeLocations</find>
+      <find>addtod</find>
+      <find>form</find>
+      <find>sEmployeeLocations</find>
+      <find>zoom</find>
+      <find>EventsHandler</find>
+      <find>viewmem</find>
+      <find>$aMembers</find>
+      <find>Member tp</find>
+      <find>sfathername</find>
+      <find>mt</find>
+      <find>$sSchoolFees</find>
+      <find>smothername</find>
+      <find>$sMotherName</find>
+      <find>$sAdmin</find>
+      <find>Members</find>
+      <find>reg</find>
+      <find>events_</find>
     </findStrings>
     <replaceStrings>
       <replace>Event</replace>
@@ -131,11 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/Events/EditEvent.php" />
-        <option value="$PROJECT_DIR$/admin/Events/EventsHandler.php" />
-        <option value="$PROJECT_DIR$/admin/Events/ViewEvent.php" />
-        <option value="$PROJECT_DIR$/admin/Events/AddEvent.php" />
-        <option value="$PROJECT_DIR$/admin/files/usershandler.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
         <option value="$PROJECT_DIR$/admin/Members/Members.php" />
         <option value="$PROJECT_DIR$/FML_REST/login.php" />
@@ -152,36 +118,41 @@
         <option value="$PROJECT_DIR$/FML_REST/add_todo.php" />
         <option value="$PROJECT_DIR$/pages/polls/PollsHandler.php" />
         <option value="$PROJECT_DIR$/pages/polls/PollsDB.php" />
-        <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/files/database/usersdb.php" />
         <option value="$PROJECT_DIR$/files/usershandler.php" />
         <option value="$PROJECT_DIR$/pages/dashboard/dashboard.php" />
-        <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
         <option value="$PROJECT_DIR$/pages/todo/ToDoHandler.php" />
-        <option value="$PROJECT_DIR$/pages/events/ViewEvents.php" />
-        <option value="$PROJECT_DIR$/pages/expenses/AddExpenses.php" />
         <option value="$PROJECT_DIR$/pages/expenses/Expenses.php" />
         <option value="$PROJECT_DIR$/pages/expenses/ViewExpenses.php" />
-        <option value="$PROJECT_DIR$/pages/members/ViewMembers.php" />
-        <option value="$PROJECT_DIR$/pages/members/Members.php" />
-        <option value="$PROJECT_DIR$/pages/members/AddMembers.php" />
         <option value="$PROJECT_DIR$/pages/familytree/familytree.php" />
-        <option value="$PROJECT_DIR$/pages/events/AddEvents.php" />
-        <option value="$PROJECT_DIR$/pages/polls/AddPolls.php" />
         <option value="$PROJECT_DIR$/pages/polls/polls.php" />
         <option value="$PROJECT_DIR$/pages/polls/ViewPolls.php" />
-        <option value="$PROJECT_DIR$/pages/todo/AddToDo.php" />
         <option value="$PROJECT_DIR$/pages/todo/ToDo.php" />
         <option value="$PROJECT_DIR$/pages/todo/ViewToDo.php" />
-        <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
         <option value="$PROJECT_DIR$/pages/places/AddPlaces.php" />
         <option value="$PROJECT_DIR$/pages/places/PlacesHandler.php" />
-        <option value="$PROJECT_DIR$/pages/events/EventsDB.php" />
-        <option value="$PROJECT_DIR$/pages/places/ViewPlaces.php" />
-        <option value="$PROJECT_DIR$/pages/places/Places.php" />
-        <option value="$PROJECT_DIR$/pages/events/Events.php" />
         <option value="$PROJECT_DIR$/pages/places/PlacesDB.php" />
+        <option value="$PROJECT_DIR$/FML_REST/addLocations.php" />
+        <option value="$PROJECT_DIR$/pages/tracking/eTracking.php" />
+        <option value="$PROJECT_DIR$/pages/tracking/tracking.php" />
+        <option value="$PROJECT_DIR$/pages/expenses/AddExpenses.php" />
+        <option value="$PROJECT_DIR$/pages/todo/AddToDo.php" />
+        <option value="$PROJECT_DIR$/pages/events/Events.php" />
+        <option value="$PROJECT_DIR$/pages/events/ViewEvents.php" />
+        <option value="$PROJECT_DIR$/pages/places/Places.php" />
+        <option value="$PROJECT_DIR$/pages/places/ViewPlaces.php" />
+        <option value="$PROJECT_DIR$/pages/polls/AddPolls.php" />
+        <option value="$PROJECT_DIR$/pages/members/AddMembers.php" />
+        <option value="$PROJECT_DIR$/pages/events/AddEvents.php" />
+        <option value="$PROJECT_DIR$/pages/events/EventsDB.php" />
+        <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
+        <option value="$PROJECT_DIR$/pages/members/ViewMembers.php" />
+        <option value="$PROJECT_DIR$/pages/members/MembersHandler.php" />
+        <option value="$PROJECT_DIR$/pages/members/EditMembers.php" />
+        <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
+        <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/pages/members/Members.php" />
       </list>
     </option>
   </component>
@@ -215,7 +186,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="703" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -225,6 +196,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,45 +212,16 @@
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="places" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="todo" type="462c0819:PsiDirectoryNode" />
+              <item name="FML_REST" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/Family/pages/members/AddMembers.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -338,18 +281,26 @@
       <workItem from="1543734164407" duration="10705000" />
       <workItem from="1543766309707" duration="3040000" />
       <workItem from="1543812064183" duration="63000" />
-      <workItem from="1543842093366" duration="3139000" />
+      <workItem from="1543842093366" duration="3215000" />
+      <workItem from="1543901156156" duration="154000" />
+      <workItem from="1544103516138" duration="1502000" />
+      <workItem from="1544158375872" duration="307000" />
+      <workItem from="1544287715186" duration="3269000" />
+      <workItem from="1544342440647" duration="978000" />
+      <workItem from="1544348436997" duration="127000" />
+      <workItem from="1544350133385" duration="8545000" />
+      <workItem from="1544376939757" duration="6467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70023000" />
+    <option name="totallyTimeSpent" value="91448000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="703" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="720" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27578124" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18671875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -390,16 +341,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/FML_REST/db_functions.php</url>
-          <line>50</line>
+          <line>139</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/Expense/ExpenseDB.php" />
-    <entry file="file://$PROJECT_DIR$/admin/Members/MembersDB.php" />
     <entry file="file://$PROJECT_DIR$/admin/Expense/AddExpense.php" />
     <entry file="file://$PROJECT_DIR$/FML_REST/db_config.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -419,20 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/EventsHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1288">
-          <caret line="99" column="2" selection-start-line="99" selection-start-column="2" selection-end-line="99" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="14" column="30" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -457,37 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="81" column="73" selection-start-line="81" selection-start-column="73" selection-end-line="81" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/MembersHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="133" column="13" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
-          <folding>
-            <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#getAllNotifications#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#getEventsData#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#getAllExpenses#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#SelectAllExpensesItems#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#getAllBirthDays#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#getAllMembers#0;n#DB_Functions#0;n#!!top" />
-            <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/polls/PollsHandler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -509,30 +413,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/dashboard/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1106">
-          <caret line="79" column="67" lean-forward="true" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/MembersDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2002">
-          <caret line="143" column="757" selection-start-line="143" selection-start-column="757" selection-end-line="143" selection-end-column="757" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/todo/ToDoHandler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/EditEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1536" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/expenses/ExpenseDB.php">
@@ -546,41 +431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="217" column="25" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/ViewExpenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="74" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="22" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/expenses/AddExpenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="222" column="25" selection-start-line="177" selection-start-column="19" selection-end-line="222" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/AddMembers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="150" column="44" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -598,31 +448,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/ViewMembers.php">
+    <entry file="file://$PROJECT_DIR$/pages/todo/ToDoDB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="435" column="47" lean-forward="true" selection-start-line="435" selection-start-column="47" selection-end-line="435" selection-end-column="47" />
+        <state relative-caret-position="235">
+          <caret line="165" column="1" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="165" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
+    <entry file="file://$PROJECT_DIR$/pages/places/EditPlaces.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="227" column="25" selection-start-line="182" selection-start-column="19" selection-end-line="227" selection-end-column="25" />
+        <state relative-caret-position="171">
+          <caret line="54" column="36" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/places/PlacesHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/polls/PollsDB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="187" column="1" lean-forward="true" selection-start-line="155" selection-start-column="4" selection-end-line="187" selection-end-column="1" />
+        <state relative-caret-position="560">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/polls/AddPolls.php">
+    <entry file="file://$PROJECT_DIR$/FML_REST/addLocations.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="212" column="25" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="25" />
+        <state relative-caret-position="42">
+          <caret line="3" selection-start-line="3" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tracking/tracking.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding>
+            <element signature="n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#aside#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tracking/eTracking.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="387" column="43" lean-forward="true" selection-start-line="386" selection-start-column="12" selection-end-line="387" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/AddExpenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="205" column="64" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3015">
+          <caret line="217" column="25" selection-start-line="217" selection-start-column="25" selection-end-line="217" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/ViewExpenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -640,62 +553,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/todo/ToDoDB.php">
+    <entry file="file://$PROJECT_DIR$/pages/todo/AddToDo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="165" column="1" lean-forward="true" selection-start-line="133" selection-start-column="4" selection-end-line="165" selection-end-column="1" />
-          <folding>
-            <element signature="n#SelectAllToDo#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="401">
+          <caret line="203" column="64" selection-start-line="203" selection-start-column="64" selection-end-line="203" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/todo/ToDo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3122">
-          <caret line="223" column="25" selection-start-line="223" selection-start-column="25" selection-end-line="223" selection-end-column="25" />
+        <state relative-caret-position="4970">
+          <caret line="355" selection-start-line="355" selection-end-line="355" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/todo/ViewToDo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1206">
-          <caret line="104" column="47" selection-start-line="104" selection-start-column="47" selection-end-line="104" selection-end-column="47" />
-          <folding>
-            <element signature="n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#aside#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/todo/AddToDo.php">
+    <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="220" column="25" selection-start-line="220" selection-start-column="25" selection-end-line="220" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/AddEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="218" column="25" selection-start-line="173" selection-start-column="20" selection-end-line="218" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/Events.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/EditPlaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="54" column="36" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/PlacesHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="2912">
+          <caret line="208" column="64" selection-start-line="208" selection-start-column="64" selection-end-line="208" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -706,52 +588,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/polls/AddPolls.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/dashboard/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="79" column="67" lean-forward="true" selection-start-line="79" selection-start-column="67" selection-end-line="79" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3942">
-          <caret line="284" lean-forward="true" selection-start-line="284" selection-end-line="284" />
+        <state relative-caret-position="442">
+          <caret line="738" column="56" lean-forward="true" selection-start-line="738" selection-start-column="56" selection-end-line="738" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
+    <entry file="file://$PROJECT_DIR$/pages/members/AddMembers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="175" column="206" selection-start-line="175" selection-start-column="206" selection-end-line="175" selection-end-column="206" />
-          <folding>
-            <element signature="n#SelectAllEvents#0;n#!!top" />
-            <element signature="n#SelectAllEventMember#0;n#!!top" />
-            <element signature="n#SelectAllExpense#0;n#!!top" />
-            <element signature="n#SelectAllExpensesItems#0;n#!!top" />
-            <element signature="n#SelectAllToDo#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/ViewPlaces.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="345" column="18" lean-forward="true" selection-start-line="345" selection-start-column="18" selection-end-line="345" selection-end-column="18" />
+        <state relative-caret-position="395">
+          <caret line="371" column="42" lean-forward="true" selection-end-line="728" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/places/Places.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="408" lean-forward="true" selection-start-line="406" selection-start-column="39" selection-end-line="408" />
+        <state relative-caret-position="553">
+          <caret line="195" column="56" selection-start-line="195" selection-start-column="56" selection-end-line="195" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/events/Events.php">
+    <entry file="file://$PROJECT_DIR$/pages/events/EventsHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="412" lean-forward="true" selection-start-line="412" selection-end-line="412" />
+        <state relative-caret-position="216">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/places/PlacesDB.php">
+    <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
+        <state relative-caret-position="154">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/places/ViewPlaces.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="202" column="49" selection-start-line="202" selection-start-column="40" selection-end-line="202" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/AddEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="393" column="49" lean-forward="true" selection-start-line="382" selection-start-column="39" selection-end-line="393" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/MembersHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/EditMembers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="454" column="82" selection-start-line="454" selection-start-column="71" selection-end-line="454" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/MembersDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/ViewMembers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="542" column="42" lean-forward="true" selection-start-line="479" selection-start-column="35" selection-end-line="542" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="75" column="75" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
+          <folding>
+            <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addLocations#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#getAllTodos#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="89" column="12" lean-forward="true" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -27,20 +27,31 @@ function AddRecord()
     $sSchoolAddress = $_POST['saddress'];
 	$dMoney = $_POST['money'];
 	$iAccountBalancee = $_POST['accountbalance'];
-	
+    $iAdmin = $_POST['mt'];
 
 	if(isset($_FILES['file_up']))
     {
+        if($_FILES['file_up'] != "")
+        {
+            $file_size = $_FILES['file_up']['size'];
 
-        $file = rand(1000,100000).".png";
-        $file_loc = $_FILES['file_up']['tmp_name'];
+            if($file_size > 0)
+            {
 
-        $folder="../../files/";
+                $file = rand(1000,100000).".png";
+                $file_loc = $_FILES['file_up']['tmp_name'];
 
-        move_uploaded_file($file_loc,$folder.$file);
+
+                $folder="../../files/";
+
+                move_uploaded_file($file_loc,$folder.$file);
+
+            }
+
+        }
     }
 
-    $sQuery = "INSERT INTO members (MemberName,FatherId,MotherId, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney,AccountBalance, Photo) VALUES('$sMemberName','$sFatherName','$sMotherName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney', '$iAccountBalancee', '$file')";
+    $sQuery = "INSERT INTO members (MemberName,FatherId,MotherId, UserName, Password, Qualification, ContactNumber, CNIC, Email, Gender, DateOfBirth, SchoolName, SchoolFees, SchoolContactNumber, SchoolLatitude, SchoolLongitude, SchoolAddress, MonthlyPocketMoney,AccountBalance, Photo, Admin) VALUES('$sMemberName','$sFatherName','$sMotherName', '$sUserName', '$sPassword', '$sQualification', '$dContactNumber', '$dCNIC', '$sEmail', '$sGender', '$dDateofBirth', '$sSchoolName', '$sSchoolFees', '$sSchoolContact', '$dSchoolLatitude', '$dSchoolLongitude', '$sSchoolAddress', '$dMoney', '$iAccountBalancee', '$file', $iAdmin)";
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
 	if($sResult)
@@ -62,10 +73,11 @@ function EditRecord()
 {
 	establishConnectionToDatabase();
 
-
     $iMemberId = $_POST['id'];
     $sMemberName = $_POST['name'];
     $sUserName = $_POST['uname'];
+    $sFatherName = $_POST['sfathername'];
+    $sMotherName = $_POST['smothername'];
     $sPassword = $_POST['password'];
     $sQualification = $_POST['qualification'];
     $dContactNumber = $_POST['cnumber'];
@@ -74,17 +86,41 @@ function EditRecord()
     $sGender = $_POST['gender'];
     $dDateofBirth = $_POST['dob'];
     $sSchoolName = $_POST['sname'];
-    $sSchoolFees = $_POST[''];
+    $sSchoolFees = $_POST['sfees'];
     $sSchoolContact = $_POST['scontact'];
     $dSchoolLatitude = $_POST['slatitude'];
     $dSchoolLongitude = $_POST['slongitude'];
     $sSchoolAddress = $_POST['saddress'];
     $dMoney = $_POST['money'];
+    $iAccountBalancee = $_POST['accountbalance'];
+    $iAdmin = $_POST['mt'];
+
+    if(isset($_FILES['file_up']))
+    {
+        if($_FILES['file_up'] != "")
+        {
+            $file_size = $_FILES['file_up']['size'];
+
+            if($file_size > 0)
+            {
+
+                $file = rand(1000,100000).".png";
+                $file_loc = $_FILES['file_up']['tmp_name'];
+
+
+                $folder="../../files/";
+
+                move_uploaded_file($file_loc,$folder.$file);
+
+            }
+
+        }
+    }
 
 
     $sQuery = "UPDATE members SET MemberName = '$sMemberName', UserName = '$sUserName', Password = '$sPassword', Qualification='$sQualification', ContactNumber='$dContactNumber', 
-    CNIC='$dCNIC', Email='$sEmail', Gender='$sGender', DateOfBirth='$dDateofBirth', 
-    SchoolName='$sSchoolName', SchoolFees='$sSchoolFees', SchoolContactNumber='$sSchoolContact', SchoolLatitude='$dSchoolLatitude', SchoolLongitude='$dSchoolLongitude', SchoolAddress='$sSchoolAddress', MonthlyPocketMoney='$dMoney'  WHERE MemberId='$iMemberId'";
+    CNIC='$dCNIC', Email='$sEmail', Gender='$sGender', DateOfBirth='$dDateofBirth', FatherId='$sFatherName', MotherId='$sMotherName',
+    SchoolName='$sSchoolName', SchoolFees='$sSchoolFees', SchoolContactNumber='$sSchoolContact', SchoolLatitude='$dSchoolLatitude', SchoolLongitude='$dSchoolLongitude', SchoolAddress='$sSchoolAddress', MonthlyPocketMoney='$dMoney', AccountBalance='$iAccountBalancee', Admin='$iAdmin', Photo='$file'  WHERE MemberId='$iMemberId'";
 
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);

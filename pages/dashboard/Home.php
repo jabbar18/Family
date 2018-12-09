@@ -591,7 +591,7 @@ else
                                                 <span class="label label-warning pull-right">Today</span></a>
                                             <span class="product-description">
 
-                         <form action="../Events/EventsHandler.php" method="post"><input type="hidden" name="action" id="action" value="BirthdayWish" /><input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId"><table><tr><td><input type="text" id="birthdaymessage" name="birthdaymessage" class="form-control input-sm" style="width: 210px" placeholder="Birhday wish"></td><td><button class="btn-primary" type="submit">send</button></td></tr></table></form>
+                         <form action="../events/EventsHandler.php" method="post"><input type="hidden" name="action" id="action" value="BirthdayWish" /><input type="hidden" value="<?php echo $MemberId?>" id="MemberId" name="MemberId"><table><tr><td><input type="text" id="birthdaymessage" name="birthdaymessage" class="form-control input-sm" style="width: 210px" placeholder="Birhday wish"></td><td><button class="btn-primary" type="submit">send</button></td></tr></table></form>
                         </span>
                                         </div>
                                     </li>
@@ -669,7 +669,7 @@ else
 
                                         ?>
 
-                                        <form action="../Events/EventsHandler.php" method="post">
+                                        <form action="../events/EventsHandler.php" method="post">
 
                                             <li class="item">
                                                 <div class="product-img">
@@ -717,7 +717,7 @@ else
                                         </form>
                                     <?php } else { ?>
 
-                                        <form action="../Events/EventsHandler.php" method="post">
+                                        <form action="../events/EventsHandler.php" method="post">
 
                                             <li class="item">
                                                 <div class="product-img">

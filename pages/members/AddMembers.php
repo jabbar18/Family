@@ -168,8 +168,8 @@ else
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
                                         $NameOfWiher = $Notification['MemberWisherId'];
-                                        $aMembers = SelectAllMembers($NameOfWiher);
-                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+                                        $aMembers2 = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers2[0]['MemberName'];
 
 
                                         ?>
@@ -183,8 +183,8 @@ else
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
                                         $Title = $TodoNotification['Title'];
-                                        $aMembers = SelectAllMembers($TodoMemberId);
-                                        $TotoMember = $aMembers[0]['MemberName'];
+                                        $aMembers3 = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers3[0]['MemberName'];
 
 
                                         ?>
@@ -275,13 +275,6 @@ else
                 </li>
 
                 <li>
-                    <a href="../places/Places.php">
-                        <i class="fa fa-home"></i> <span>Places</span>
-
-                    </a>
-                </li>
-
-                <li>
                     <a href="../polls/Polls.php">
                         <i class="fa fa-pie-chart"></i> <span>Polls</span>
 
@@ -352,6 +345,14 @@ else
                                     <div class="form-group">
                                         <label for="name">Member Name</label>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Member Name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">Member Type</label>
+                                        <select name="mt" id="mt" class="form-control">
+                                            <option value="0">Member</option>
+                                            <option value="1">Admin</option>
+                                        </select>
                                     </div>
 
 

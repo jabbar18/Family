@@ -187,8 +187,8 @@ else
                                 <ul class="menu">
                                     <?php foreach ($sBirthdayNotify as $Notification){
                                         $NameOfWiher = $Notification['MemberWisherId'];
-                                        $aMembers = SelectAllMembers($NameOfWiher);
-                                        $NameOfWiher1 = $aMembers[0]['MemberName'];
+                                        $aMembers2 = SelectAllMembers($NameOfWiher);
+                                        $NameOfWiher1 = $aMembers2[0]['MemberName'];
 
 
                                         ?>
@@ -202,8 +202,8 @@ else
                                     <?php foreach ($TodoNotifications as $TodoNotification){
                                         $TodoMemberId = $TodoNotification['TodoMemberId'];
                                         $Title = $TodoNotification['Title'];
-                                        $aMembers = SelectAllMembers($TodoMemberId);
-                                        $TotoMember = $aMembers[0]['MemberName'];
+                                        $aMembers3 = SelectAllMembers($TodoMemberId);
+                                        $TotoMember = $aMembers3[0]['MemberName'];
 
 
                                         ?>

@@ -31,15 +31,20 @@ function AddRecord()
     }
 
 
-    foreach ($aMembers as $key => $value) {
-        $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$isCreated', '$value')";
+    if(count($aMembers) > 0)
+    {
 
-        $sResult = mysqli_query($GLOBALS['link'], $sQuery);
-        if(!($sResult))
-            return false;
+        for($i = 0; $i < count($aMembers); $i++)
+        {
 
+            $sQuery2 = "INSERT INTO event_members (EventId, MemberId) VALUES( '$isCreated', '$aMembers[$i]')";
+            $sResult = mysqli_query($GLOBALS['link'], $sQuery2);
+
+        }
 
     }
+
+
 
 
 
@@ -74,11 +79,11 @@ function EditRecord($iEventId)
     }
 
 
-    $sQuery = "DELETE FROM events_members   WHERE  EventId='$iEventId'";
+    $sQuery = "DELETE FROM event_members   WHERE  EventId='$iEventId'";
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
     foreach ($aMembers as $key => $value) {
-        $sQuery = "INSERT INTO events_members (EventId, MemberId) VALUES( '$iEventId', '$value')";
+        $sQuery = "INSERT INTO event_members (EventId, MemberId) VALUES( '$iEventId', '$value')";
 
         $sResult = mysqli_query($GLOBALS['link'], $sQuery);
         if(!($sResult))
@@ -111,7 +116,7 @@ function DeleteEvent($iMemberId)
     {
         $sReturn = false;
     }
-    $query = "DELETE FROM events_members WHERE EventId = $iMemberId";
+    $query = "DELETE FROM event_members WHERE EventId = $iMemberId";
     $result = mysqli_query($GLOBALS['link'], $query);
 
     mysqli_close($GLOBALS['link']);
@@ -207,7 +212,7 @@ function SelectAllMembers($iMemberId)
 
         while($row = mysqli_fetch_array($sResult))
         {
-            $aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance'], "Photo"=>$row['Photo']);
+            $aMember = array("MemberId"=>$row['MemberId'], "Admin"=>$row['Admin'], "MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance'], "Photo"=>$row['Photo']);
             array_push($aMembers, $aMember);
         }
 
@@ -231,7 +236,7 @@ function SelectAllEventMember($iEventId)
         $sCondition = "WHERE E.EventId ='$iEventId' ";
 
 
-    $sQuery = "SELECT E.* FROM events_members AS E   $sCondition";
+    $sQuery = "SELECT E.* FROM event_members AS E   $sCondition";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
@@ -390,9 +395,6 @@ function PollVoting($dDate)
 function BirthdayNotification($dDate)
 {
     establishConnectionToDatabase();
-
-
-
 
     $WisherId = $_SESSION['id'];
 
@@ -745,5 +747,157 @@ function SelectAllToDo($iToDoId, $iUserId = 0)
     mysqli_close($GLOBALS['link']);
     return false;
 }
+
+
+function GetTrackingData($iMemberId = "", $dDate = "")
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($dDate != '' && $iMemberId > 0)
+    {
+        $sCondition = "WHERE 'LastLocation' >= '$dDate 00:00:00' AND T.MemberId = '$iMemberId' LIMIT 500";
+        $sQuery = "SELECT T.MemberId, T.Latitude, T.Longitude, T.LocationDate AS 'LastLocation', M.MemberName, M.Photo FROM tracking AS T INNER JOIN members AS M ON T.MemberId = M.MemberId $sCondition";
+
+
+    }
+    else
+    {
+
+        $sQuery = "SELECT T.MemberId, T.Latitude, T.Longitude, T.LocationDate, M.MemberName, M.Photo, (SELECT LocationDate FROM tracking WHERE MemberId=T.MemberId ORDER BY LocationDate DESC LIMIT 1) AS 'LastLocation' 
+         FROM tracking AS T INNER JOIN members AS M ON T.MemberId = M.MemberId GROUP BY T.MemberId";
+
+
+    }
+
+ $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    $aTracking = array();
+
+    $iCounter = 0;
+    $sMemberTrack = "";
+    $sMemberLocations = "";
+
+    if($sResult)
+    {
+        while($row = mysqli_fetch_array($sResult))
+        {
+            $aTrack = array("MemberId"=>$row['MemberId'],"Latitude"=>$row['Latitude'], "Longitude"=>$row['Longitude'], "LastLocation"=>$row['LastLocation'], "MemberName"=>$row['MemberName'], "Photo"=>$row['Photo']);
+
+
+            if($row['Photo'] != "")
+            {
+                $sPhoto =  "../../files/".$row['Photo'];
+            }
+            else
+            {
+                $sPhoto = "../../dist/img/user2-160x160.jpg";
+            }
+
+            $sIcon = "image = { url: '". $sPhoto ."',size: new google.maps.Size(30, 30),scaledSize: new google.maps.Size(30, 30)}";
+
+
+            $sMemberTrack .= (($iCounter > 0) ? ',' : '') . '["'. $row['MemberName'] .'", ' . $row['Latitude'] . ', ' . $row['Longitude'] . ', ' . $sIcon . ', "'. $row['LastLocation'] .'"]';
+
+            $sMemberLocations .= (($iCounter > 0) ? ',' : '') . 'new google.maps.LatLng(' . $row['Latitude'] . ', ' . $row['Longitude'] . ')';
+
+            $iCounter++;
+        }
+
+
+        if($dDate == '' && $iMemberId == "")
+            $sMemberLocations = "";
+
+        $sReturn = '<div style="width:100%; height:600px; margin-top:2px;" id="map_div"></div>
+            <!--Map script-->
+           <script type="text/javascript">
+           
+            function initialize() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: "roadmap"
+            };
+            var infowindow = new google.maps.InfoWindow({
+             maxWidth: 300
+            });
+    
+            var aEmployeeTrack = [ ' . $sMemberTrack . '];
+            
+            var sEmployeeLocations = [ ' . $sMemberLocations . ']
+            
+            console.log(aEmployeeTrack);
+    
+            // Display a map on the page
+            map = new google.maps.Map(document.getElementById("map_div"), mapOptions);
+            map.setTilt(45);
+            
+            var gEmployeeLocations = new google.maps.Polyline({ path: sEmployeeLocations, strokeColor: "#FF0000", strokeOpacity: 1, strokeWeight: 2 });
+			gEmployeeLocations.setMap(map);
+    
+            // Loop through our array of markers & place each one on the map  
+            for( i = 0; i < aEmployeeTrack.length; i++ ) {
+                var position = new google.maps.LatLng(aEmployeeTrack[i][1], aEmployeeTrack[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: aEmployeeTrack[i][0],
+                    icon: aEmployeeTrack[i][3],
+                    labelClass: "label", // the CSS class for the label
+                });
+                
+                //console.log(">>>"+aEmployeeTrack[i][0]);
+                // Automatically center the map fitting all markers on the screen
+                map.fitBounds(bounds);
+    
+                marker = new google.maps.Marker({ position: new google.maps.LatLng(aEmployeeTrack[i][1], aEmployeeTrack[i][2]), map: map, title: aEmployeeTrack[i][0], icon: aEmployeeTrack[i][3] });
+                google.maps.event.addListener(marker, "click", (function(marker, i) { return function() { map.setZoom(15); map.setCenter(marker.getPosition()); infowindow.setContent(aEmployeeTrack[i][0] + "<br /><br />" + aEmployeeTrack[i][4]); infowindow.open(map, marker); } })(marker, i));
+            }
+            
+               
+              var myoverlay = new google.maps.OverlayView();
+              myoverlay.draw = function () {
+                //this assigns an id to the markerlayer Pane, so it can be referenced by CSS
+                this.getPanes().markerLayer.id="markerLayer"; 
+              };
+              myoverlay.setMap(map);
+    
+            // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+//            var boundsListener = google.maps.event.addListener((map), "bounds_changed", function(event) {
+//                this.setZoom(6);
+//                google.maps.event.removeListener(boundsListener);
+//            });
+            
+          
+        }
+        initialize();
+        </script> <style>
+            
+            #markerLayer img {
+                border: 4px solid #fff !important;
+                width: 85% !important;
+                height: 90% !important;
+                border-radius: 50% 50% 50% 0;
+                transform: rotate(-45deg);
+            }
+            #markerLayer img:hover 
+            {
+                border: 4px solid #0c64ae !important;
+            }
+           
+            </style>';
+        return($sReturn);
+
+    }
+
+
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
+
 
 ?>
