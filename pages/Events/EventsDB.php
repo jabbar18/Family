@@ -511,12 +511,13 @@ function PollVote()
 
     $QuestionAnswer = $_POST['Question_'];
     $MembersId = $_POST['MemberId'];
+    $sComments = $_POST['comments'];
 
     $sResult = explode("_", $QuestionAnswer);
     $QuestionNo = $sResult[0];
     $AnswerNo = $sResult[1];
 
-    $sQuery = "INSERT INTO polls_answers (QuestionId, AnswerId, MemberId) VALUES('$QuestionNo', '$AnswerNo', '$MembersId')";
+    $sQuery = "INSERT INTO polls_answers (QuestionId, AnswerId, MemberId, Comments) VALUES('$QuestionNo', '$AnswerNo', '$MembersId', '$sComments')";
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
 
@@ -553,29 +554,29 @@ function CheckPoll($iQuestionId, $iMemberId)
     return $iCount;
 //    die($sResult);
 }
-function PollResult($QuestionId, $MemberId)
+
+function PollResult($QuestionId, $MemberId = "")
 {
 
     establishConnectionToDatabase();
 
     $sCondition = "";
 
-    if($QuestionId != '')
-        $sCondition = "WHERE QuestionId ='$QuestionId' AND MemberId ='$MemberId'";
+    if($MemberId != '')
+        $sCondition = "AND MemberId ='$MemberId'";
 
 
-    $sQuery = "SELECT * FROM polls_answers $sCondition";
+    $sQuery = "SELECT PA.*, M.MemberName, M.Photo FROM polls_answers AS PA INNER JOIN members AS M ON M.MemberId = PA.MemberId WHERE QuestionId ='$QuestionId' $sCondition";
+
 
     $sResult = mysqli_query($GLOBALS['link'], $sQuery);
     $aVotes = array();
 
     if($sResult)
     {
-
-
         while($row = mysqli_fetch_array($sResult))
         {
-            $aVotes[0] = ["MemberId"=>$row['MemberId'],"QuestionId"=>$row['QuestionId'], "AnswerId"=>$row['AnswerId']];
+            $aVotes["Answers"][] = ["MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "Photo"=>$row['Photo'],"QuestionId"=>$row['QuestionId'], "AnswerId"=>$row['AnswerId'], "Comments"=>$row['Comments']];
 //            array_push($aVotes, $aVote);
         }
 
@@ -585,7 +586,8 @@ function PollResult($QuestionId, $MemberId)
     (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='1' AND QuestionId='$QuestionId') AS 'Answer_1',
     (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='2' AND QuestionId='$QuestionId') AS 'Answer_2',
     (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='3' AND QuestionId='$QuestionId') AS 'Answer_3',
-    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='4' AND QuestionId='$QuestionId') AS 'Answer_4'
+    (SELECT COUNT(AnswerId) FROM polls_answers WHERE AnswerId='4' AND QuestionId='$QuestionId') AS 'Answer_4',
+    (SELECT COUNT(Comments) FROM polls_answers WHERE Comments  <> '' AND QuestionId='$QuestionId') AS 'Comments'
     FROM
     polls_answers
     WHERE QuestionId = '$QuestionId'
@@ -599,7 +601,7 @@ function PollResult($QuestionId, $MemberId)
 
         while($row = mysqli_fetch_array($sResult))
         {
-            $aVotes[1] = ["Answer_1"=>$row['Answer_1'],"Answer_2"=>$row['Answer_2'], "Answer_3"=>$row['Answer_3'], "Answer_4"=>$row['Answer_4']];
+            $aVotes["Total"] = ["Answer_1"=>$row['Answer_1'],"Answer_2"=>$row['Answer_2'], "Answer_3"=>$row['Answer_3'], "Answer_4"=>$row['Answer_4'], "Comments"=>$row['Comments']];
 
         }
 
@@ -897,7 +899,5 @@ function GetTrackingData($iMemberId = "", $dDate = "")
     mysqli_close($GLOBALS['link']);
     return false;
 }
-
-
 
 ?>

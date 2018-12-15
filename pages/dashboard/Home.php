@@ -642,6 +642,7 @@ else
                                     $Answer2 = $sPoll['Answer2'];
                                     $Answer3 = $sPoll['Answer3'];
                                     $Answer4 = $sPoll['Answer4'];
+                                    $iTotalComments = $sPoll['Answer4'];
                                     $MemberId = $_SESSION['id'];
 
                                     $i++;
@@ -658,6 +659,7 @@ else
                                         $Answer_2 = $PollResult[1]['Answer_2'];
                                         $Answer_3 = $PollResult[1]['Answer_3'];
                                         $Answer_4 = $PollResult[1]['Answer_4'];
+                                        $sComments = $PollResult[1]['Comments'];
                                     }
 
 
@@ -708,6 +710,12 @@ else
                                                         </td>
                                                     </tr>' : '';?>
 
+                                                    <?php  echo $sComments != '' ? '<tr>
+                                                        <td>
+                                                            Suggestions : ' .$sComments.'
+                                                        </td>
+                                                    </tr>' : '';?>
+
 
                                                 </table>
                         </span>
@@ -750,6 +758,13 @@ else
                                                     <?php  echo $Answer4 != '' ? '<tr>
                                                         <td>
                                                             <input type="radio" id="Question_" name="Question_" value="'.$QuestionId.'_4'.'">'.$Answer4.'
+                                                        </td>
+                                                    </tr>' : '';?>
+
+                                                    <?php  echo $iTotalComments != '' ? '<tr>
+                                                       
+                                                         <td>
+                                                            <input type="text" name="comments" value="" placeholder="Enter Suggestions">
                                                         </td>
                                                     </tr>' : '';?>
 

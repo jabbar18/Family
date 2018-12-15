@@ -9,10 +9,22 @@ if(!isset($_SESSION['username'])){
 }
 else
 {
+    if(isset($_GET['PollsId']))
+        $iPollsId= $_GET['PollsId']  ;
+    else
+        die("unathorized Way .. !");
 
-    include('../events/EventsDB.php');
+    include_once('../events/EventsDB.php');
+    $aTodo = SelectAllPolls($iPollsId);
+    $aTodoMemberId = $aTodo[0]['PollAddedBy'];
+    $aPollsResult = PollResult($iPollsId);
 
-    $aToDos = SelectAllPolls(0);
+    $Answer_1 = $aPollsResult["Total"]["Answer_1"];
+    $Answer_2 = $aPollsResult["Total"]["Answer_2"];
+    $Answer_3 = $aPollsResult["Total"]["Answer_3"];
+    $Answer_4 = $aPollsResult["Total"]["Answer_3"];
+
+
 
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
@@ -22,8 +34,6 @@ else
     $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
 
 
-
-    $iCounter = 0;
 
     if($_SESSION['Photo'] != "")
     {
@@ -45,7 +55,7 @@ else
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Polls</title>
+    <title>Events</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -224,7 +234,7 @@ else
                         <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                     </li>
 
-                     <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
+                    <li><a href="../../files/usershandler.php?m=lo"><i class="fa fa-lock"></i><span>Logout</span> </a> </li>
 
                 </ul>
             </div>
@@ -250,12 +260,11 @@ else
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li>
-                    <a href="../dashboard/Home.php">
+                    <a href="../dashboard/Home.php" >
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
                     </a>
                 </li>
-                
                 <li >
                     <a href="../members/Members.php">
                         <i class="fa fa-users"></i> <span>Members</span>
@@ -291,7 +300,7 @@ else
                     </a>
                 </li>
 
-                 <li>
+                <li>
                     <a href="../places/Places.php">
                         <i class="fa fa-home"></i> <span>Places</span>
 
@@ -336,13 +345,12 @@ else
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Polls
-
+                Polls Result
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Polls</a></li>
-                <li class="active">Polls</li>
+                <li><a href="./polls.php">Polls</a></li>
+                <li class="active">View Polls</li>
             </ol>
         </section>
 
@@ -353,55 +361,103 @@ else
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"></h3>
 
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <h3 class="box-title"><a href="AddPolls.php"><button type="button" class="btn btn-block btn-success"><i class="fa fa-plus"></i> Add Polls</button></a></h3>
-
-                                </div>
-                            </div>
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tr class="w3-blue ">
-                                    <th> S# </th>
-                                    <th> Question </th>
-                                    <th> Poll Added By </th>
-                                    <th> Poll Start Date </th>
-                                    <th> Poll End Date </th>
-                                    <th> View </th>
-                                    <th> Results</th>
-                                    <th> Delete </th>
+                            <form action="EventsHandler.php" method="post" role="form">
 
-                                </tr>
-                                <?php
+                                    <div class="form-group">
+                                        <label for="name">Question</label>
+                                        <input type="text" class="form-control" id="question" name="question"  value="<?php echo $aTodo[0]['Question'] ?>" disabled>
+                                    </div>
+                                <div class="form-group">
+                                    <label for="email">Poll Start Date</label>
+                                    <input type="datetime" class="form-control" id="pollstartdate" value="<?php echo $aTodo[0]['PollStartDateTime'] ?>" name="pollstartdate" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ed">Poll End Date</label>
 
-                                foreach($aToDos as $aToDo)
-                                {
-                                    $iCounter++;
-                                    $sPollMemberId = $aToDo['PollAddedBy'];
-                                    $aOrganizorData = SelectAllMembers($sPollMemberId);
-                                    ?>
+                                    <input type="datetime" class="form-control" id="pollenddate" value="<?php echo $aTodo[0]['PollEndDateTime'] ?>" name="pollenddate" disabled >
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Notes</label>
 
-                                    <tr>
-                                        <td> <?php echo $iCounter ?> </td>
-                                        <td> <?php echo $aToDo['Question'] ?> </td>
+                                    <textarea  class="form-control" id="notes" name="notes" value="<?php echo $aTodo[0]['Notes'] ?>" disabled><?php echo $aTodo[0]['Notes'] ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                                <table >
+                                                    <tr>
+                                                        <td style="padding-right: 100px">
+                                                            <label for="email">Answer 1 : <?php  echo $aTodo[0]['Answer1']; ?></label>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_1; ?>"> Votes :<?php echo  $Answer_1;?>
+                                                        </td>
+                                                        <td>
+                                                            <label for="email">Answer 2 : <?php  echo $aTodo[0]['Answer2']; ?></label>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_2; ?>"> Votes :<?php echo  $Answer_2;?>
+                                                        </td>
+                                                    </tr>
 
-                                        <td> <?php echo $aOrganizorData[0]['MemberName'] ?> </td>
-                                        <td> <?php echo $aToDo['PollStartDateTime'] ?> </td>
-                                        <td> <?php echo $aToDo['PollEndDateTime'] ?> </td>
-                                        <td ><a href="./ViewPolls.php?PollsId=<?php echo $aToDo['PollId'] ?>" <button type="button" class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
-                                        <td ><a href="./ViewPollsResult.php?PollsId=<?php echo $aToDo['PollId'] ?>" <button type="button" class="btn btn-warning"><i class="fa fa-eye"></i></button></a></td>
-                                        <!--                                        <td ><a href="./EditToDo.php?To_Do_Id=--><?php //echo $aToDo['TodoId'] ?><!--" class="btn w3-blue btn-small"><i class="btn-icon-only icon-eye-open"> </i></a></td>-->
-                                        <td ><a href="PollsHandler.php?action=DeleteRecord&PollsId=<?php echo $aToDo['PollId'] ?>" <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></a></td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
-                            </table>
+
+                                                    <tr>
+                                                        <td style="padding-right: 100px">
+                                                            <label for="email">Answer 3 : <?php  echo $aTodo[0]['Answer3']; ?></label>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_3; ?>"> Votes :<?php echo  $Answer_3;?>
+                                                        </td>
+                                                        <td>
+                                                            <label for="email">Answer 4 : <?php  echo $aTodo[0]['Answer4']; ?></label>
+                                                            <input type="range" id="Question_" name="Question_" disabled value="<?php echo  $Answer_4; ?>"> Votes :<?php echo  $Answer_4;?>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </table>
+
+                                </div>
+
+                                     <div class="form-group">
+                                    <label for="name">Suggestions</label>
+
+                                         <div class="box-body table-responsive no-padding">
+                                             <table class="table table-hover">
+                                                 <tr class="w3-blue ">
+                                                     <th> S# </th>
+                                                     <th> Member Name </th>
+                                                     <th> Suggestion </th>
+
+
+                                                 </tr>
+                                                 <?php
+
+                                                 $iCounter = 0;
+
+                                                 foreach($aPollsResult["Answers"] as $aPollResult)
+                                                 {
+                                                     $iCounter++;
+
+
+                                                     ?>
+
+                                                     <tr>
+                                                         <td> <?php echo $iCounter ?> </td>
+                                                         <td> <?php echo $aPollResult['MemberName'] ?> </td>
+                                                         <td> <?php echo $aPollResult['Comments'] ?> </td>
+
+
+
+                                                     </tr>
+                                                     <?php
+                                                 }
+                                                 ?>
+                                             </table>
+                                         </div>
+
+
+                                     </div>
+
+
+
+                                </div>
+                            </form>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -411,6 +467,8 @@ else
         </section>
         <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
+
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
