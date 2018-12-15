@@ -45,8 +45,9 @@
 <div class="login-box">
   <div class="login-logo">
     <a href="index.html">Family Management System</a>
+     <img src="logo.png" height="100px" width="360px"/>
   </div>
-  <!-- /.login-logo -->
+
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
@@ -64,9 +65,10 @@
     <form action="./files/usershandler.php" method="post" class="form-horizontal">
 
                        <input type="hidden" name="m" value="l" />
-                        <input type="radio" value="a" name="account" checked>&nbsp; Members Login &nbsp; &nbsp; &nbsp;
+                       <input type="hidden" name="account" value="a" />
 
-    <br /><br />
+
+
    <div class="form-group has-feedback">
         <input type="text" id="name" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
