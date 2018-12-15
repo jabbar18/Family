@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FML_REST/db_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/FML_REST/db_functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Events/EventsDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Events/EventsDB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/Events/EventsHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Events/EventsHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/polls/PollsDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/polls/PollsDB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/polls/ViewPolls.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/polls/ViewPolls.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/polls/ViewPollsResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/polls/ViewPollsResult.php" afterDir="false" />
-    </list>
+    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +17,8 @@
       <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="808" lean-forward="true" selection-start-line="808" selection-end-line="808" />
+            <state relative-caret-position="417">
+              <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
               <folding>
                 <element signature="n#AddRecord#0;n#!!top" />
                 <element signature="n#EditRecord#0;n#!!top" />
@@ -342,12 +334,12 @@
       <workItem from="1544376939757" duration="7190000" />
       <workItem from="1544417444983" duration="753000" />
       <workItem from="1544425196611" duration="6000" />
-      <workItem from="1544879153118" duration="10850000" />
+      <workItem from="1544879153118" duration="11135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103780000" />
+    <option name="totallyTimeSpent" value="104065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="720" extended-state="6" />
@@ -555,8 +547,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="808" lean-forward="true" selection-start-line="808" selection-end-line="808" />
+        <state relative-caret-position="417">
+          <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
           <folding>
             <element signature="n#AddRecord#0;n#!!top" />
             <element signature="n#EditRecord#0;n#!!top" />

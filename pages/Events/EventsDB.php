@@ -804,7 +804,7 @@ function GetTrackingData($iMemberId = "", $dDate = "")
         $dDate = strtotime($dDate);
         $dEndDate = strtotime($dEndDate);
 
-        $sCondition = "WHERE UNIX_TIMESTAMP(T.LocationDate)  >= '$dDate' AND UNIX_TIMESTAMP(T.LocationDate)  <= '$dEndDate' AND T.MemberId = '18' LIMIT 500";
+        $sCondition = "WHERE UNIX_TIMESTAMP(T.LocationDate)  >= '$dDate' AND UNIX_TIMESTAMP(T.LocationDate)  <= '$dEndDate' AND T.MemberId = '$iMemberId' LIMIT 500";
         $sQuery = "SELECT T.MemberId, T.Latitude, T.Longitude, UNIX_TIMESTAMP(T.LocationDate)  AS 'LastLocation', M.MemberName, M.Photo FROM tracking AS T INNER JOIN members AS M ON T.MemberId = M.MemberId $sCondition";
 
     }
