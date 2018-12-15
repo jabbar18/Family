@@ -71,11 +71,11 @@ else if($sAction == 'BirthdayWish')
     if($iBirthdayWishId)
     {
 
-        header("location: ../dashboard/home.php?m=Wish Successfully");
+        header("location: ../dashboard/Home.php?m=Wish Successfully");
     }
     else
     {
-        header("location: ../dashboard/home.php?m=Can't Create Event");
+        header("location: ../dashboard/Home.php?m=Can't Create Event");
     }
 
 }
@@ -88,11 +88,11 @@ else if($sAction == 'Poll')
     if($iPollVote)
     {
 
-        header("location: ../dashboard/home.php?m=Vote Successfully");
+        header("location: ../dashboard/Home.php?m=Vote Successfully");
     }
     else
     {
-        header("location: ../dashboard/home.php?m=Can't Create Vote");
+        header("location: ../dashboard/Home.php?m=Can't Create Vote");
     }
 
 }

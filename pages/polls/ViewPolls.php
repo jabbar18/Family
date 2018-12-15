@@ -10,13 +10,18 @@ if(!isset($_SESSION['username'])){
 else
 {
     if(isset($_GET['PollsId']))
-        $To_Do_Id= $_GET['PollsId']  ;
+        $iPollsId= $_GET['PollsId']  ;
     else
         die("unathorized Way .. !");
 
     include_once('../events/EventsDB.php');
-    $aTodo = SelectAllPolls($To_Do_Id);
+    $aTodo = SelectAllPolls($iPollsId);
     $aTodoMemberId = $aTodo[0]['PollAddedBy'];
+
+    $aEventsMembers = SelectAllPollsMember($iPollsId);
+
+
+    $aMembers = SelectAllMembers(0);
 
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
@@ -362,7 +367,7 @@ else
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label for="smothername">Member</label>
+                                        <label for="smothername">Poll Added By</label>
 
                                         <select name="smothername" id="smothername" class="form-control" disabled>
                                             <?php
@@ -378,6 +383,25 @@ else
 
                                             <?php
                                             ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="sfathername">Polls Members</label>
+
+                                        <select name="sfathername" id="sfathername" class="form-control" multiple disabled>
+                                            <?php
+
+                                            foreach($aMembers as $aMember)
+                                            {
+
+                                                if( in_array($aMember['MemberId'] , $aEventsMembers)  )
+                                                {
+                                                    ?>
+
+                                                    <option><?php echo $aMember['MemberName'] ?></option>
+
+                                                <?php }} ?>
                                         </select>
                                     </div>
                                     <div class="form-group">

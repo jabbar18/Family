@@ -15,7 +15,7 @@ function AddRecord()
     $sQuestion = $_POST['question'];
     $sAnswer1 = $_POST['ans1'];
     $sAnswer2 = $_POST['ans2'];
-    $sAnswer3= $iUserId = $_SESSION['id'];$_POST['ans3'];
+    $sAnswer3= $_POST['ans3'];
     $sAnswer4= $_POST['ans4'];
     $dPollstartdate = $_POST['pollstartdate'];
     $dPollenddate = $_POST['pollenddate'];

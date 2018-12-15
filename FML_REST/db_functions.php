@@ -205,20 +205,18 @@ class DB_Functions
         $dDate = date('Y-m-d');
 
 
-        $sCondition = "WHERE P.PollStartDateTime >= '$dDate 00:00:00' AND PS.MemberId = '$iMemberId'";
+        $sCondition = "WHERE P.PollStartDateTime >= '$dDate 00:00:00'";
 
-        $sQuery = "SELECT P.*, PS.MemberId FROM polls AS P INNER JOIN polls_members AS PS ON PS.PollId = P.PollId INNER JOIN members AS M ON P. $sCondition";
+        $sQuery = "SELECT P.* FROM polls AS P  $sCondition";
 
         $sResult = mysqli_query($this->conn, $sQuery);
 
         $aPolls = array();
         if($sResult)
         {
-
-
             while($row = mysqli_fetch_array($sResult))
             {
-                $aPoll = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
+                $aPoll["Polls"] = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
                 array_push($aPolls, $aPoll);
             }
 
@@ -343,7 +341,24 @@ class DB_Functions
 
             while($row = mysqli_fetch_array($sResult))
             {
-                $aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance']);
+                if($row["Photo"] == "")
+                {
+                    if($row["Gender"] == 0)
+                    {
+                        $sPhoto = "http://techsvision.com/Family/dist/img/avatar5.png";
+                    }
+                    else
+                    {
+                        $sPhoto = "http://techsvision.com/Family/dist/img/avatar2.png";
+
+                    }
+
+                }
+                else
+                    $sPhoto = "http://techsvision.com/Family/files/".$row["Photo"];
+
+
+                $aMember = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance'], "Photo"=>$sPhoto);
                 array_push($aMembers, $aMember);
             }
 

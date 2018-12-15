@@ -260,6 +260,40 @@ function SelectAllEventMember($iEventId)
     return false;
 }
 
+function SelectAllPollsMember($iEventId)
+{
+    establishConnectionToDatabase();
+
+    $sCondition = "";
+
+    if($iEventId > 0)
+        $sCondition = "WHERE E.PollId ='$iEventId' ";
+
+
+    $sQuery = "SELECT E.* FROM polls_members AS E   $sCondition";
+
+    $sResult = mysqli_query($GLOBALS['link'], $sQuery);
+
+    if($sResult)
+    {
+        $aEvents = array();
+
+        while($row = mysqli_fetch_array($sResult))
+        {
+            //$aEvent = array("EventId"=>$row['EventId'],"EventName"=>$row['EventName'], "DateTime"=>$row['DateTime'], "Location"=>$row['Location'], "EventOrganizorId"=>$row['EventOrganizorId'],"Organizor"=>$row['Organizor']);
+            //	array_push($aEvents, $row['MemberId'] );
+            $aEvents[]=$row['MemberId'];
+        }
+
+        return $aEvents;
+
+
+    }
+
+    mysqli_close($GLOBALS['link']);
+    return false;
+}
+
 function SelectAllPlaceMember($iPlaceId)
 {
     establishConnectionToDatabase();
@@ -577,7 +611,9 @@ function PollResult($QuestionId, $MemberId = "")
         while($row = mysqli_fetch_array($sResult))
         {
             $aVotes["Answers"][] = ["MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "Photo"=>$row['Photo'],"QuestionId"=>$row['QuestionId'], "AnswerId"=>$row['AnswerId'], "Comments"=>$row['Comments']];
-//            array_push($aVotes, $aVote);
+            $aVotes[0] = ["MemberId"=>$row['MemberId'], "MemberName"=>$row['MemberName'], "Photo"=>$row['Photo'],"QuestionId"=>$row['QuestionId'], "AnswerId"=>$row['AnswerId'], "Comments"=>$row['Comments']];
+
+            //            array_push($aVotes, $aVote);
         }
 
     }
@@ -602,6 +638,7 @@ function PollResult($QuestionId, $MemberId = "")
         while($row = mysqli_fetch_array($sResult))
         {
             $aVotes["Total"] = ["Answer_1"=>$row['Answer_1'],"Answer_2"=>$row['Answer_2'], "Answer_3"=>$row['Answer_3'], "Answer_4"=>$row['Answer_4'], "Comments"=>$row['Comments']];
+            $aVotes[1] = ["Answer_1"=>$row['Answer_1'],"Answer_2"=>$row['Answer_2'], "Answer_3"=>$row['Answer_3'], "Answer_4"=>$row['Answer_4'], "Comments"=>$row['Comments']];
 
         }
 
@@ -757,11 +794,18 @@ function GetTrackingData($iMemberId = "", $dDate = "")
 
     $sCondition = "";
 
+
     if($dDate != '' && $iMemberId > 0)
     {
-        $sCondition = "WHERE 'LastLocation' >= '$dDate 00:00:00' AND T.MemberId = '$iMemberId' LIMIT 500";
-        $sQuery = "SELECT T.MemberId, T.Latitude, T.Longitude, T.LocationDate AS 'LastLocation', M.MemberName, M.Photo FROM tracking AS T INNER JOIN members AS M ON T.MemberId = M.MemberId $sCondition";
 
+        $dEndDate = $dDate." 23:59:59";
+        $dDate = $dDate." 00:00:00";
+
+        $dDate = strtotime($dDate);
+        $dEndDate = strtotime($dEndDate);
+
+        $sCondition = "WHERE UNIX_TIMESTAMP(T.LocationDate)  >= '$dDate' AND UNIX_TIMESTAMP(T.LocationDate)  <= '$dEndDate' AND T.MemberId = '18' LIMIT 500";
+        $sQuery = "SELECT T.MemberId, T.Latitude, T.Longitude, UNIX_TIMESTAMP(T.LocationDate)  AS 'LastLocation', M.MemberName, M.Photo FROM tracking AS T INNER JOIN members AS M ON T.MemberId = M.MemberId $sCondition";
 
     }
     else

@@ -19,12 +19,31 @@ else
     $aTodoMemberId = $aTodo[0]['PollAddedBy'];
     $aPollsResult = PollResult($iPollsId);
 
-    $Answer_1 = $aPollsResult["Total"]["Answer_1"];
-    $Answer_2 = $aPollsResult["Total"]["Answer_2"];
-    $Answer_3 = $aPollsResult["Total"]["Answer_3"];
-    $Answer_4 = $aPollsResult["Total"]["Answer_3"];
 
 
+    $Answer_1 = 0;
+    $Answer_2 = 0;
+    $Answer_3 = 0;
+    $Answer_4 = 0;
+
+    if(count($aPollsResult) > 0)
+    {
+
+        $Answer_1 = $aPollsResult["Total"]["Answer_1"];
+        $Answer_2 = $aPollsResult["Total"]["Answer_2"];
+        $Answer_3 = $aPollsResult["Total"]["Answer_3"];
+        $Answer_4 = $aPollsResult["Total"]["Answer_4"];
+
+
+
+    }
+    else
+    {
+        $aPollsResult["Answers"] = array();
+
+
+
+    }
 
     $date = date('Y-m-d');
     $sMemberBirthday = MemberBirthday($date);
