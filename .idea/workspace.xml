@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="" />
+    <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/members/Members.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/members/Members.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventsDB.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
+            <state relative-caret-position="347">
+              <caret line="837" column="13" lean-forward="true" selection-start-line="837" selection-start-column="13" selection-end-line="837" selection-end-column="13" />
               <folding>
                 <element signature="n#AddRecord#0;n#!!top" />
                 <element signature="n#EditRecord#0;n#!!top" />
@@ -29,6 +32,19 @@
                 <element signature="n#SelectAllExpensesItems#0;n#!!top" />
                 <element signature="n#SelectAllToDo#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Members.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="411" column="84" selection-start-line="411" selection-start-column="84" selection-end-line="411" selection-end-column="84" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,7 +62,7 @@
       <file leaf-file-name="db_functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="3990">
               <caret line="361" column="42" selection-start-line="361" selection-start-column="42" selection-end-line="361" selection-end-column="42" />
               <folding>
                 <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
@@ -61,8 +77,8 @@
       <file leaf-file-name="Expenses.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="43" column="6" lean-forward="true" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+            <state relative-caret-position="602">
+              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -70,7 +86,7 @@
       <file leaf-file-name="ViewEvents.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="532">
               <caret line="38" column="40" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="40" />
             </state>
           </provider>
@@ -79,8 +95,8 @@
       <file leaf-file-name="Home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="631" column="47" lean-forward="true" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
+            <state relative-caret-position="8834">
+              <caret line="631" column="47" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -178,7 +194,6 @@
         <option value="$PROJECT_DIR$/pages/members/MembersHandler.php" />
         <option value="$PROJECT_DIR$/pages/members/EditMembers.php" />
         <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
-        <option value="$PROJECT_DIR$/pages/members/Members.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
         <option value="$PROJECT_DIR$/pages/polls/polls.php" />
@@ -188,6 +203,7 @@
         <option value="$PROJECT_DIR$/pages/polls/ViewPolls.php" />
         <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
         <option value="$PROJECT_DIR$/pages/events/EventsDB.php" />
+        <option value="$PROJECT_DIR$/pages/members/Members.php" />
       </list>
     </option>
   </component>
@@ -242,12 +258,6 @@
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
               <item name="Family" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Family" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Family" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="expenses" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Family" type="b2602c69:ProjectViewProjectNode" />
@@ -334,12 +344,15 @@
       <workItem from="1544376939757" duration="7190000" />
       <workItem from="1544417444983" duration="753000" />
       <workItem from="1544425196611" duration="6000" />
-      <workItem from="1544879153118" duration="11135000" />
+      <workItem from="1544879153118" duration="12345000" />
+      <workItem from="1544977100538" duration="141000" />
+      <workItem from="1545022941264" duration="27000" />
+      <workItem from="1545561231465" duration="844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104065000" />
+    <option name="totallyTimeSpent" value="106287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="720" extended-state="6" />
@@ -406,6 +419,183 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11830">
+          <caret line="845" lean-forward="true" selection-start-line="845" selection-end-line="845" />
+          <folding>
+            <element signature="n#AddRecord#0;n#!!top" />
+            <element signature="n#EditRecord#0;n#!!top" />
+            <element signature="n#DeleteEvent#0;n#!!top" />
+            <element signature="n#SelectAllPlaces#0;n#!!top" />
+            <element signature="n#SelectAllEventMember#0;n#!!top" />
+            <element signature="n#CheckPoll#0;n#!!top" />
+            <element signature="n#SelectAllExpensesItems#0;n#!!top" />
+            <element signature="n#SelectAllToDo#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3990">
+          <caret line="361" column="42" selection-start-line="361" selection-start-column="42" selection-end-line="361" selection-end-column="42" />
+          <folding>
+            <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addLocations#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#getAllTodos#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8834">
+          <caret line="631" column="47" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11438">
+          <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
+          <folding>
+            <element signature="n#AddRecord#0;n#!!top" />
+            <element signature="n#EditRecord#0;n#!!top" />
+            <element signature="n#DeleteEvent#0;n#!!top" />
+            <element signature="n#SelectAllPlaces#0;n#!!top" />
+            <element signature="n#SelectAllEventMember#0;n#!!top" />
+            <element signature="n#CheckPoll#0;n#!!top" />
+            <element signature="n#SelectAllExpensesItems#0;n#!!top" />
+            <element signature="n#SelectAllToDo#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5054">
+          <caret line="361" column="42" selection-start-line="361" selection-start-column="42" selection-end-line="361" selection-end-column="42" />
+          <folding>
+            <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addLocations#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#getAllTodos#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8834">
+          <caret line="631" column="47" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11438">
+          <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
+          <folding>
+            <element signature="n#AddRecord#0;n#!!top" />
+            <element signature="n#EditRecord#0;n#!!top" />
+            <element signature="n#DeleteEvent#0;n#!!top" />
+            <element signature="n#SelectAllPlaces#0;n#!!top" />
+            <element signature="n#SelectAllEventMember#0;n#!!top" />
+            <element signature="n#CheckPoll#0;n#!!top" />
+            <element signature="n#SelectAllExpensesItems#0;n#!!top" />
+            <element signature="n#SelectAllToDo#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/get_homedata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3990">
+          <caret line="361" column="42" selection-start-line="361" selection-start-column="42" selection-end-line="361" selection-end-column="42" />
+          <folding>
+            <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addLocations#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#getAllTodos#0;n#DB_Functions#0;n#!!top" />
+            <element signature="n#addTodo#0;n#DB_Functions#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="43" column="6" lean-forward="true" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="38" column="40" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8834">
+          <caret line="631" column="47" lean-forward="true" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4158">
           <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
           <folding>
@@ -439,19 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5404">
           <caret line="386" column="41" selection-start-line="386" selection-start-column="41" selection-end-line="386" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="380" column="43" selection-start-line="380" selection-start-column="43" selection-end-line="380" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -506,14 +683,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/dashboard/Home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="631" column="47" lean-forward="true" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
+        <state relative-caret-position="8834">
+          <caret line="631" column="47" selection-start-line="631" selection-start-column="47" selection-end-line="631" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/events/ViewEvents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="532">
           <caret line="38" column="40" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="40" />
         </state>
       </provider>
@@ -527,7 +704,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FML_REST/db_functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="3990">
           <caret line="361" column="42" selection-start-line="361" selection-start-column="42" selection-end-line="361" selection-end-column="42" />
           <folding>
             <element signature="n#getUserByUsernameAndPassword#0;n#DB_Functions#0;n#!!top" />
@@ -540,15 +717,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/expenses/Expenses.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="43" column="6" lean-forward="true" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+        <state relative-caret-position="602">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/events/EventsDB.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="817" column="5" selection-start-line="817" selection-start-column="5" selection-end-line="817" selection-end-column="5" />
+        <state relative-caret-position="347">
+          <caret line="837" column="13" lean-forward="true" selection-start-line="837" selection-start-column="13" selection-end-line="837" selection-end-column="13" />
           <folding>
             <element signature="n#AddRecord#0;n#!!top" />
             <element signature="n#EditRecord#0;n#!!top" />
@@ -559,6 +736,17 @@
             <element signature="n#SelectAllExpensesItems#0;n#!!top" />
             <element signature="n#SelectAllToDo#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="411" column="84" selection-start-line="411" selection-start-column="84" selection-end-line="411" selection-end-column="84" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

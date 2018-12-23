@@ -401,8 +401,21 @@ else
                                         }
                                         else
                                         {
-                                            $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" style="height:50px; width: 50px">';
-                                        }
+                                            if($aMember['Gender'] == 0)
+                                            {
+
+                                                $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" style="height:50px; width: 50px">';
+
+                                            }
+                                            else
+                                            {
+                                                $sPhoto = '<img src="../../dist/img/avatar2.png" class="img-circle" alt="User Image" style="height:50px; width: 50px">';
+
+                                            }
+
+                                          }
+
+
 
                                         ?>
 
