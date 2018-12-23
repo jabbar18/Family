@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47ba8fc8-41ff-4abf-b353-90483e9fccbc" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/members/Members.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/members/Members.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/members/AddMembers.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/members/AddMembers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/members/EditMembers.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/members/EditMembers.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,15 +37,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Members.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Members.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="411" column="84" selection-start-line="411" selection-start-column="84" selection-end-line="411" selection-end-column="84" />
+            <state relative-caret-position="176">
+              <caret line="237" column="42" lean-forward="true" selection-start-line="237" selection-start-column="20" selection-end-line="237" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditMembers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/members/EditMembers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-863">
+              <caret line="262" column="44" lean-forward="true" selection-start-line="262" selection-start-column="44" selection-end-line="262" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddMembers.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/members/AddMembers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -112,9 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>viewmem</find>
-      <find>Member tp</find>
-      <find>sfathername</find>
       <find>mt</find>
       <find>$sSchoolFees</find>
       <find>smothername</find>
@@ -142,6 +157,9 @@
       <find>Event M</find>
       <find>photo</find>
       <find>insert into polls</find>
+      <find>pull-</find>
+      <find>$sPhoto</find>
+      <find>asi</find>
     </findStrings>
     <replaceStrings>
       <replace>Event</replace>
@@ -188,11 +206,9 @@
         <option value="$PROJECT_DIR$/pages/places/Places.php" />
         <option value="$PROJECT_DIR$/pages/places/ViewPlaces.php" />
         <option value="$PROJECT_DIR$/pages/polls/AddPolls.php" />
-        <option value="$PROJECT_DIR$/pages/members/AddMembers.php" />
         <option value="$PROJECT_DIR$/pages/events/AddEvents.php" />
         <option value="$PROJECT_DIR$/pages/members/ViewMembers.php" />
         <option value="$PROJECT_DIR$/pages/members/MembersHandler.php" />
-        <option value="$PROJECT_DIR$/pages/members/EditMembers.php" />
         <option value="$PROJECT_DIR$/pages/members/MembersDB.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/pages/dashboard/Home.php" />
@@ -204,6 +220,8 @@
         <option value="$PROJECT_DIR$/FML_REST/db_functions.php" />
         <option value="$PROJECT_DIR$/pages/events/EventsDB.php" />
         <option value="$PROJECT_DIR$/pages/members/Members.php" />
+        <option value="$PROJECT_DIR$/pages/members/EditMembers.php" />
+        <option value="$PROJECT_DIR$/pages/members/AddMembers.php" />
       </list>
     </option>
   </component>
@@ -347,12 +365,12 @@
       <workItem from="1544879153118" duration="12345000" />
       <workItem from="1544977100538" duration="141000" />
       <workItem from="1545022941264" duration="27000" />
-      <workItem from="1545561231465" duration="844000" />
+      <workItem from="1545561231465" duration="1979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106287000" />
+    <option name="totallyTimeSpent" value="107422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="720" extended-state="6" />
@@ -742,12 +760,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/members/Members.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="411" column="84" selection-start-line="411" selection-start-column="84" selection-end-line="411" selection-end-column="84" />
+        <state relative-caret-position="176">
+          <caret line="237" column="42" lean-forward="true" selection-start-line="237" selection-start-column="20" selection-end-line="237" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/EditMembers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-863">
+          <caret line="262" column="44" lean-forward="true" selection-start-line="262" selection-start-column="44" selection-end-line="262" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/members/AddMembers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>

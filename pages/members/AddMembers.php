@@ -19,7 +19,15 @@ else
     $sBirthdayNotify = BirthdayNotification($date);
    $iNotifications = count($TodoNotifications) + count($sBirthdayNotify) + count($sMemberBirthday);
 
+}
 
+if($_SESSION['Photo'] != "")
+{
+    $sPhoto = '<img src="../../files/'.$_SESSION['Photo'].'" class="img-circle" alt="User Image" style="height:45px">';
+}
+else
+{
+    $sPhoto = '<img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">';
 }
 
 
@@ -93,7 +101,7 @@ else
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <?php echo $sPhoto ?>
                                             </div>
                                             <h4>
                                                 Support Team
@@ -106,7 +114,7 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <?php echo $sPhoto ?>
                                             </div>
                                             <h4>
                                                 AdminLTE Design Team
@@ -118,7 +126,7 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <?php echo $sPhoto ?>
                                             </div>
                                             <h4>
                                                 Developers
@@ -130,7 +138,7 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                <?php echo $sPhoto ?>
                                             </div>
                                             <h4>
                                                 Sales Department
@@ -142,7 +150,7 @@ else
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="../../dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                <?php echo $sPhoto ?>
                                             </div>
                                             <h4>
                                                 Reviewers
@@ -167,7 +175,8 @@ else
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <?php foreach ($sBirthdayNotify as $Notification){
+                                    <?php foreach ($sBirthdayNotify as $Notification)
+                                    {
                                         $NameOfWiher = $Notification['MemberWisherId'];
                                         $aMembers2 = SelectAllMembers($NameOfWiher);
                                         $NameOfWiher1 = $aMembers2[0]['MemberName'];
@@ -221,7 +230,7 @@ else
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <?php echo $sPhoto ?>
                 </div>
                 <div class="pull-left info">
                     <p></ph><?php echo $_SESSION["MemberName"] ?></p>
