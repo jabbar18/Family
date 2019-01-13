@@ -4,7 +4,7 @@ $db = new DB_Functions();
 if (isset($_GET['id'])) {
     // receiving the post params
     $iMemberId = $_GET['id'];
-    $sData = $db->getHomeData($iMemberId);
+    $sData = $db->getMessages($iMemberId);
     // keeping response header to json
     header('Content-Type: application/json');
 

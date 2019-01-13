@@ -56,10 +56,7 @@ class DB_Functions
             $isCreated = false;
         }
 
-
-
         return($aReturn);
-
 
     }
 
@@ -67,13 +64,15 @@ class DB_Functions
     public function getHomeData($iMemberId)
     {
         $aReturn = array();
+        $aReturn["MemberInfo"] = $this->getAllMembers($iMemberId);
         $aReturn["Events"] = $this->getEventsData($iMemberId);
         $aReturn["BirthDays"] = $this->getAllBirthDays();
         $aReturn["Members"] = $this->getAllMembers();
+        $aReturn["Polls"] = $this->getPollsData($iMemberId);
         $aReturn["ToDos"] = $this->getAllTodos($iMemberId);
         $aReturn["Expenses"] = $this->getAllExpenses($iMemberId);
-        $aReturn["Polls"] = $this->getPollsData($iMemberId);
         $aReturn["Notifications"] = $this->getAllNotifications($iMemberId);
+
 
         return($aReturn);
     }
@@ -205,9 +204,10 @@ class DB_Functions
         $dDate = date('Y-m-d');
 
 
-        $sCondition = "WHERE P.PollStartDateTime >= '$dDate 00:00:00'";
+        $sCondition = "";
 
-        $sQuery = "SELECT P.* FROM polls AS P  $sCondition";
+        $sQuery = "SELECT P.*, COUNT(PA.QuestionId) AS 'Counting' FROM polls AS P LEFT JOIN polls_answers AS PA ON PA.QuestionId = P.PollId 
+        GROUP BY P.PollId";
 
         $sResult = mysqli_query($this->conn, $sQuery);
 
@@ -216,11 +216,9 @@ class DB_Functions
         {
             while($row = mysqli_fetch_array($sResult))
             {
-                $aPoll["Polls"] = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy']);
+                $aPoll = array("PollId"=>$row['PollId'],"Question"=>$row['Question'], "Answer1"=>$row['Answer1'], "Answer2"=>$row['Answer2'], "Answer3"=>$row['Answer3'], "Answer4"=>$row['Answer4'],"PollStartDateTime"=>$row['PollStartDateTime'], "PollEndDateTime"=>$row['PollEndDateTime'], "PollAddedOn"=>$row['PollAddedOn'], "Notes"=>$row['Notes'], "PollAddedBy"=>$row['PollAddedBy'], "TotalVotes" => $row["Counting"]);
                 array_push($aPolls, $aPoll);
             }
-
-
         }
 
         return $aPolls;
@@ -328,9 +326,14 @@ class DB_Functions
 
     }
 
-    public function getAllMembers()
+    public function getAllMembers($iMemberId = 0)
     {
-         $sQuery = "SELECT * FROM members";
+        $sConditon = "";
+
+        if($iMemberId  > 0)
+            $sConditon = "WHERE MemberId = '$iMemberId'";
+
+        $sQuery = "SELECT * FROM members $sConditon";
         $sResult = mysqli_query($this->conn, $sQuery);
 
         $aMembers = array();
@@ -367,6 +370,9 @@ class DB_Functions
         }
         echo mysqli_error($this->conn);
 
+        if($iMemberId > 0)
+            return($aMember);
+
        return $aMembers;
 
     }
@@ -395,10 +401,130 @@ class DB_Functions
             $isCreated = false;
         }
 
+        return $isCreated;
 
+
+    }
+
+    public function addVote($iMemberId, $iPollId, $iAnswerId)
+    {
+
+        $sQuery = "INSERT INTO polls_answers (QuestionId, AnswerId, MemberId) VALUES('$iPollId', '$iAnswerId', '$iMemberId')";
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        if($sResult)
+        {
+            $isCreated = true;
+        }
+        else
+        {
+            $isCreated = false;
+        }
 
         return $isCreated;
 
+    }
+
+    public function getMessages($iMemberId)
+    {
+        $sQuery = "SELECT M.* FROM messages AS M INNER JOIN members AS MM ON M.ToMemberId = MM.MemberId WHERE ((M.FromMemberId='$iMemberId') OR (M.ToMemberId='$iMemberId')) GROUP BY M.FromMemberId ORDER BY M.DataTime ";
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        $aMessages = array();
+
+        if($sResult)
+        {
+            while($row2 = mysqli_fetch_array($sResult))
+            {
+
+                if($iMemberId == $row2['FromMemberId'])
+                    $iMemberId = $row2['ToMemberId'];
+
+                $sQuery2 = "SELECT * FROM members WHERE MemberId = '$iMemberId'";
+
+                $sResult2 = mysqli_query($this->conn, $sQuery2);
+
+                while($row = mysqli_fetch_array($sResult2))
+                {
+
+                    if ($row["Photo"] == "") {
+                        if ($row["Gender"] == 0) {
+                            $sPhoto = "http://techsvision.com/Family/dist/img/avatar5.png";
+                        } else {
+                            $sPhoto = "http://techsvision.com/Family/dist/img/avatar2.png";
+
+                        }
+
+                    } else
+                        $sPhoto = "http://techsvision.com/Family/files/" . $row["Photo"];
+
+
+                    $aMessage = array("MemberId"=>$row['MemberId'],"MotherId"=>$row['MotherId'],"FatherId"=>$row['FatherId'], "MemberName"=>$row['MemberName'], "UserName"=>$row['UserName'], "Password"=>$row['Password'], "Qualification"=>$row['Qualification'], "ContactNumber"=>$row['ContactNumber'], "CNIC"=>$row['CNIC'], "Email"=>$row['Email'], "Gender"=>$row['Gender'], "DateOfBirth"=>$row['DateOfBirth'], "SchoolName"=>$row['SchoolName'], "SchoolFees"=>$row['SchoolFees'], "SchoolContactNumber"=>$row['SchoolContactNumber'], "SchoolLatitude"=>$row['SchoolLatitude'], "SchoolLongitude"=>$row['SchoolLongitude'], "SchoolAddress"=>$row['SchoolAddress'], "MonthlyPocketMoney"=>$row['MonthlyPocketMoney'], "AccountBalance"=>$row['AccountBalance'], "Photo"=>$sPhoto, "Message"=>$row2['Message']);
+                    array_push($aMessages, $aMessage);
+
+                }
+
+
+            }
+
+        }
+        echo mysqli_error($this->conn);
+
+        return $aMessages;
+    }
+
+    public function addMessage($iMemberId)
+    {
+        $sMessage = $_GET['msg'];
+        $iToMemberId = $_GET['to_id'];
+
+        $dMessageDateTime = date('Y-m-d H:i:s');
+
+        $sQuery = "INSERT INTO messages (Message, FromMemberId, ToMemberId, DateTime) VALUES('$sMessage', '$iMemberId','$iToMemberId', '$dMessageDateTime')";
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        if($sResult)
+        {
+            $isCreated = true;
+        }
+        else
+        {
+            $isCreated = false;
+        }
+
+        return $isCreated;
+
+
+    }
+
+
+    function ChatMessages($iMemberId)
+    {
+        $iToMemberId = $_GET['to_id'];
+
+        $sQuery = "SELECT M.* FROM messages AS M WHERE ((M.FromMemberId='$iMemberId' AND M.ToMemberId='$iToMemberId') OR (M.FromMemberId='$iToMemberId' AND M.ToMemberId='$iMemberId'))";
+
+
+
+        $sResult = mysqli_query($this->conn, $sQuery);
+
+        $aMessages = array();
+        if($sResult)
+        {
+            while($row = mysqli_fetch_array($sResult))
+            {
+                $aMessage = array("messageId"=>$row['MessageId'],"message"=>$row['Message'],"userId"=> $row['FromMemberId'], "toUserId"=>$row['ToMemberId'], "time"=>$row['DateTime']);
+                array_push($aMessages, $aMessage);
+            }
+
+        }
+
+        echo mysqli_error($this->conn);
+
+        return $aMessages;
 
     }
 
